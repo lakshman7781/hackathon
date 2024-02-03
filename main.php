@@ -6,8 +6,6 @@
 	<!-- Basic -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
 	<title>Style Switcher | Porto - Multipurpose Website Template</title>
 
 	<meta name="keywords" content="WebSite Template" />
@@ -17,7 +15,6 @@
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
 	
-
 	<!-- Mobile Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
 
