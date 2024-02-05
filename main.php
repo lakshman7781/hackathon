@@ -67,11 +67,12 @@
 			<img src="img/1.svg" style="height: 150px; width:575px">
 
 		</div>
-
-		<div class="categorry">
+        <a href="events.php">
+		<div class="categorry" >
 			<img src="img/2.svg" style="height: 150px; width:575px">
 
 		</div>
+        </a>
 	</div>
 
 	<script>
