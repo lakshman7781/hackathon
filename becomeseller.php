@@ -711,17 +711,7 @@
 																	</select>
 																</div>
 															</div>
-															<div class="form-group row align-items-center">
-																<label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Sold Individually</label>
-																<div class="col-lg-7 col-xl-6">
-																	<div class="checkbox">
-																		<label class="my-2">
-																			<input type="checkbox" value="">
-																			Enable this to only allow one of this item to be bought in a single order
-																		</label>
-																	</div>
-																</div>
-															</div>
+															
 											      		</div>
 											      		
 											      		<div class="tab-pane fade" id="attributes" role="tabpanel" aria-labelledby="attributes-tab">
@@ -1186,6 +1176,7 @@ body {
         `;
 		});
 	</script>
+	
 	<!-- Vendor -->
 	<script src="vendor/plugins/js/plugins.min.js"></script>
 	<script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
