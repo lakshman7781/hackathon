@@ -348,7 +348,7 @@
 					</div>
 				</div>
 				<br><br>
-				<div class="row">
+				<!-- <div class="row">
     <div class="col-md-6 mb-3 mt-3">
         <h3 style="text-align: left; color: #0088cc; text-transform: none; margin: bottom -10px !important;">Apply For Your SellerID</h3> <p style="text-align: left; color: red; text-transform: none;">If You had already applied Ignore it. </p>
     </div>
@@ -406,7 +406,7 @@
         <div class="btn btn-primary" type="submit">Submit form</div>
     </form>
 
-    <!-- Modal -->
+    
     <div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="termsModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -417,7 +417,7 @@
                     </div>
                 </div>
                 <div class="modal-body">
-                    <!-- Add your terms and conditions content here -->
+                   
                     This is an example of terms and conditions.
                 </div>
                 <div class="modal-footer">
@@ -426,7 +426,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Bootstrap JS and Popper.js -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
