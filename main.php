@@ -121,7 +121,7 @@
 		</div>
 	</div>
 	<div class="chat-icon" onclick="openChatbot()">
-         <img src="img/chat-icon.png" alt="Chat Icon">
+         <img src="img/chatbot.svg" alt="Chat Icon">
     </div>
 
 

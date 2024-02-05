@@ -100,7 +100,7 @@
 			text-align: center;
 			padding: 20px;
 			margin: 5px;
-			min-height: 450px;
+			min-height: 300px;
 			border-radius: 5px;
 			margin-left: 30px;
 		}
@@ -126,6 +126,7 @@
 			margin-right: 40px;
 			margin-bottom: 20px;
 		}
+		
 
 		.profile-menu {
 			list-style: none;
@@ -165,6 +166,13 @@
 			text-decoration: none !important;
 			/* Added !important */
 		}
+		.nav-link{
+			text-decoration: none !important;
+			align-items: center;
+			padding: 10px;
+			margin-bottom: 10px;
+			margin-top: 10px;
+		}
 	</style>
 </head>
 
@@ -174,26 +182,18 @@
 	<div class="body">
 		<div class="left-section">
 			
-			<div class="left-section-bottom">
+			<div  class="left-section-bottom">
 				
 							<aside class="sidebar">
 								
 								<h5 class="font-weight-semi-bold pt-3" style="width: 100%;">Categories</h5>
 								<ul class="nav nav-list flex-column">
-									<li class="nav-item"><a class="nav-link" href="#">Arts & Crafts</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Automotive</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Baby</a></li>
 									<li class="nav-item"><a class="nav-link" href="#">Books</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Eletronics</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Women's Fashion</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Men's Fashion</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Health & Household</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Home & Kitchen</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Military Accessories</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Movies & Television</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Sports & Outdoors</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Tools & Home Improvement</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Toys & Games</a></li>
+									<li class="nav-item"><a class="nav-link" href="#">accessories</a></li>
+									<li class="nav-item"><a class="nav-link" href="#">Stationary</a></li>
+									<li class="nav-item"><a class="nav-link" href="#">Food</a></li>
+									<li class="nav-item"><a class="nav-link" href="#">Others</a></li>
+
 								</ul>
 								
 						</div> 
