@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Cart | Porto - Multipurpose Website Template</title>
+	<title>Campus Online</title>
 
 	<meta name="keywords" content="WebSite Template" />
 	<meta name="description" content="Porto - Multipurpose Website Template">
@@ -191,35 +191,36 @@
 
 
 		}
+
 		.form-check-label {
-            cursor: pointer;
-        }
+			cursor: pointer;
+		}
 
-        .modal-content {
-            background-color: #ffffff;
-        }
+		.modal-content {
+			background-color: #ffffff;
+		}
 
-        .modal-header {
-            border-bottom: none;
-        }
+		.modal-header {
+			border-bottom: none;
+		}
 
-        .modal-title {
-            font-size: 1.5rem;
-        }
+		.modal-title {
+			font-size: 1.5rem;
+		}
 
-        .modal-body {
-            font-size: 1rem;
-        }
+		.modal-body {
+			font-size: 1rem;
+		}
 
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
+		.btn-primary {
+			background-color: #007bff;
+			border-color: #007bff;
+		}
 
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
+		.btn-primary:hover {
+			background-color: #0056b3;
+			border-color: #0056b3;
+		}
 	</style>
 </head>
 
@@ -257,9 +258,9 @@
 
 					<li class="">
 						<a href="#" id="sellerorder">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
-  <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z"/>
-</svg>
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+								<path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
+							</svg>
 							&nbsp; SellerOrders
 						</a>
 					</li>
@@ -428,24 +429,24 @@
     </div>
 </div> -->
 
-<!-- Bootstrap JS and Popper.js -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-											</div>
-										</div>
-									</div>
-								</div>
-				
-
+				<!-- Bootstrap JS and Popper.js -->
+				<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+				<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 			</div>
 		</div>
+	</div>
+	</div>
+
+
+	</div>
+	</div>
 
 
 
 
 
-		<!-- end: page -->
+	<!-- end: page -->
 
 	</div>
 	<script>
@@ -689,21 +690,15 @@
 															</div>
 											      		</div>
 											      		<div class="tab-pane fade" id="inventory" role="tabpanel" aria-labelledby="inventory-tab">
-															<div class="form-group row align-items-center pb-3">
-																<label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">SKU</label>
+														  <div class="form-group row align-items-center pb-3">
+																<label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Category</label>
 																<div class="col-lg-7 col-xl-6">
-																	<input type="text" class="form-control form-control-modern" name="sku" value="" required />
-																</div>
-															</div>
-															<div class="form-group row align-items-center pb-3">
-																<label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Manage Stock?</label>
-																<div class="col-lg-7 col-xl-6">
-																	<div class="checkbox">
-																		<label class="my-2">
-																			<input type="checkbox" value="">
-																			Enable stock management at product level
-																		</label>
-																	</div>
+																	<select class="form-control form-control-modern" name="Category">
+																		<option value="in-stock" selected>Stationary</option>
+																		<option value="out-of-stock">Fashion</option>
+																		<option value="on-backorder">Electronics/Mobile</option>
+																		<option value="on-backorder">Books/Records</option>
+																	</select>
 																</div>
 															</div>
 															<div class="form-group row align-items-center pb-3">
@@ -716,17 +711,7 @@
 																	</select>
 																</div>
 															</div>
-															<div class="form-group row align-items-center">
-																<label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Sold Individually</label>
-																<div class="col-lg-7 col-xl-6">
-																	<div class="checkbox">
-																		<label class="my-2">
-																			<input type="checkbox" value="">
-																			Enable this to only allow one of this item to be bought in a single order
-																		</label>
-																	</div>
-																</div>
-															</div>
+															
 											      		</div>
 											      		
 											      		<div class="tab-pane fade" id="attributes" role="tabpanel" aria-labelledby="attributes-tab">
@@ -1191,6 +1176,9 @@ body {
         `;
 		});
 	</script>
+
+
+	
 	<!-- Vendor -->
 	<script src="vendor/plugins/js/plugins.min.js"></script>
 	<script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
