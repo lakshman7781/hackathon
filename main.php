@@ -46,6 +46,16 @@
 	<link rel="stylesheet" href="css/latest.css">
 
 </head>
+<style>
+	/* Style the button that is used to open and close the collapsible content */
+	.chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+</style>
 
 <body style="background-color:#f2f2f4 !important;">
 	<?php include "header.php"; ?>
@@ -65,6 +75,10 @@
 	</div>
 
 	<script>
+		function openChatbot() {
+        // Open the chatbot.html page in a new window or tab
+        window.open('\chatbot.html', '_blank');
+        }
 		// Define the scrollToMain function
 		function scrollToMain() {
 			const mainSection = document.getElementById('mainSection');
@@ -106,6 +120,9 @@
 			<button class="next" onclick="changePanel(1)">&#8250;</button>
 		</div>
 	</div>
+	<div class="chat-icon" onclick="openChatbot()">
+         <img src="img/chat-icon.png" alt="Chat Icon">
+    </div>
 
 
 	<div class="containeer">
