@@ -3,7 +3,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Chatbot in JavaScript | CodingNepal</title>
+    <title>CampusOnline</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google Fonts Link For Icons -->
@@ -12,51 +12,20 @@
     <meta>
     <style>
       /* Import Google font - Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+ /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap'); */
 
-* {
+ {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-}
-body {
-  background: #E3F2FD;
-}
-.chatbot-toggler {
-  position: fixed;
-  top: 10px;
-  right: 25px;
-  outline: none;
-  border: none;
-  height: 50px;
-  width: 50px;
-  display: flex;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: #724ae8;
-  transition: all 0.2s ease;
-}
-body.show-chatbot .chatbot-toggler {
-  transform: rotate(90deg);
-}
-.chatbot-toggler span {
-  color: #fff;
-  position: absolute;
-}
-.chatbot-toggler span:last-child,
-body.show-chatbot .chatbot-toggler span:first-child  {
-  opacity: 0;
-}
-body.show-chatbot .chatbot-toggler span:last-child {
-  opacity: 1;
-}
+ } 
+
 .chatbot {
   position: fixed;
   right: 410px;
   top: 50px;
+  bottom: 50px;
   width: 420px;
   background: #fff;
   border-radius: 15px;
@@ -79,7 +48,7 @@ body.show-chatbot .chatbot {
   position: relative;
   text-align: center;
   color: #fff;
-  background: #724ae8;
+  background: #03000a;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 .chatbot header span {
@@ -206,13 +175,13 @@ header h2 {
     display: block;
   }
 }
-    </style>
+  </style>
   </head>
-  <body>
-    <button class="chatbot-toggler">
-      <span class="material-symbols-rounded">mode_comment</span>
-      <span class="material-symbols-outlined">close</span>
-    </button>
+  <body class="show-chatbot">
+    <!-- <button class="chatbot-toggler">
+      <span class="material-symbols-rounded" >mode_comment</span>
+      <span class="material-symbols-outlined" >close</span>
+    </button> -->
     <div class="chatbot">
       <header>
         <h2>Chatbot</h2>
@@ -239,34 +208,34 @@ const chatbox = document.querySelector(".chatbox");
 const chatInput = document.querySelector(".chat-input textarea");
 const sendChatBtn = document.getElementById("send-btn");
 
-const recognition = new webkitSpeechRecognition();
-recognition.continuous = true;
-recognition.lang = "en-US";
-recognition.interimResults = false;
-recognition.maxAlternatives = 1;
-const cooldownPeriod = 5000; // 5 seconds
-let lastActivationTime = 0;
+// const recognition = new webkitSpeechRecognition();
+// recognition.continuous = true;
+// recognition.lang = "en-US";
+// recognition.interimResults = false;
+// recognition.maxAlternatives = 1;
+// const cooldownPeriod = 5000; // 5 seconds
+// let lastActivationTime = 0;
 
-recognition.onresult = function (event) {
-    const currentTime = new Date().getTime();
-    const voiceInput = "hey chatbot"//event.results[event.results.length - 1][0].transcript.toLowerCase();
-    console.log(voiceInput);
-    // Check if the voice command matches the trigger phrase
-    // if (voiceInput.includes("hey chatbot")) {
-    //     document.body.classList.add("show-chatbot");
-    // }
-    if (voiceInput.includes("hey chatbot") && (currentTime - lastActivationTime) > cooldownPeriod) {
-        document.body.classList.add("show-chatbot");
+// recognition.onresult = function (event) {
+//     const currentTime = new Date().getTime();
+//     const voiceInput = "hey chatbot"//event.results[event.results.length - 1][0].transcript.toLowerCase();
+//     console.log(voiceInput);
+//     // Check if the voice command matches the trigger phrase
+//     // if (voiceInput.includes("hey chatbot")) {
+//     //     document.body.classList.add("show-chatbot");
+//     // }
+//     if (voiceInput.includes("hey chatbot") && (currentTime - lastActivationTime) > cooldownPeriod) {
+//         document.body.classList.add("show-chatbot");
 
-        // Update the last activation time
-        lastActivationTime = currentTime;
-    }
-};
+//         // Update the last activation time
+//         lastActivationTime = currentTime;
+//     }
+// };
 
-// Start listening when the page loads
-window.onload = function () {
-    recognition.start();
-};
+// // Start listening when the page loads
+// window.onload = function () {
+//     recognition.start();
+// };
 const predefinedQuestions = {
     "what is your name?": "I am a chatbot designed to assist you.",
     "how does this work?": "You can ask me questions, and I will do my best to provide relevant information.",

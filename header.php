@@ -69,14 +69,14 @@
 										<li class="nav-item nav-item-anim-icon d-none d-md-block">
 											<a class="nav-link ps-0" href="about-us.html"><i class="fas fa-angle-right"></i> About Us</a>
 										</li>
+										
 
 
 										<li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-sm-show">
 											<span class="ws-nowrap"><i class="fas fa-phone"></i>Help</span>
 										</li>
 									</ul>
-								</nav>
-
+								</nav>                        
 							</div>
 							<div class="header-row">
 								<div class="header-nav pt-1">
@@ -147,6 +147,7 @@
 			</div>
 		</header>
 </div>
+
 </body>
 
 </html>

@@ -43,6 +43,16 @@
 	<link rel="stylesheet" href="css/latest.css">
 
 </head>
+<style>
+	/* Style the button that is used to open and close the collapsible content */
+	.chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+</style>
 
 <body  style="background-color:#f2f2f4 !important;">
 	<?php include "header.php"; ?>
@@ -62,6 +72,10 @@
 	</div>
 
 	<script>
+	 function openChatbot() {
+        // Open the chatbot.html page in a new window or tab
+        window.open('\chatbot.html', '_blank');
+     }
 		// Define the scrollToMain function
 		function scrollToMain() {
 			const mainSection = document.getElementById('mainSection');
@@ -81,6 +95,8 @@
 			domain1Element.addEventListener('click', scrollToMain);
 		}
 	</script>
+	
+
 
 	<div role="main" class="main">
 
@@ -168,6 +184,10 @@
   <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
 </svg></div>
 </div>
+           <!-- Add this to the common part of your HTML, e.g., header or footer -->
+           <div class="chat-icon" onclick="openChatbot()">
+             <img src="img/chat-icon.png" alt="Chat Icon">
+           </div>
 
 			
 			<div class="masonry-loader masonry-loader-showing">
