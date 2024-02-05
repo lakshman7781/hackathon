@@ -22,7 +22,7 @@
 
         .left-section-top {
             background-color: red;
-            color: white;
+            color: black;
             text-align: center;
             padding: 20px;
             margin: 5px;
