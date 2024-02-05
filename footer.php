@@ -67,7 +67,7 @@
 								<li class="mb-1"><i class="far fa-dot-circle text-color-primary"></i>Swapanth 2/4 CSD</a></li>
 								<li class="mb-1"><i class="far fa-dot-circle text-color-primary"></i>Nikhil   2/4 CSD</a></li>
 								<li class="mb-1"><i class="far fa-dot-circle text-color-primary"></i>Vamsi    2/4 CSD</a></li>
-								<li class="mb-1"><i class="far fa-dot-circle text-color-primary"></i>Ganesh   2/4 CSD</a></li>
+								<li class="mb-1"><i class="far fa-dot-circle text-color-primary"></i>Kodanda Rama Naga Ganesh 2/4 CSD</a></li>
 								<li class="mb-1"><i class="far fa-dot-circle text-color-primary"></i>Yeswanth 2/4 CSD</a></li>
 							
 						</div>
