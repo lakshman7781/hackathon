@@ -32,6 +32,7 @@
 	<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
 	<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
 	<link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
+	<link rel="stylesheet" href="css/latest.css">
 
 	<!-- Theme CSS -->
 	<link rel="stylesheet" href="css/theme.css">
@@ -43,7 +44,6 @@
 
 	<!-- Theme Custom CSS -->
 	<link rel="stylesheet" href="css/custom.css">
-	<link rel="stylesheet" href="css/latest.css">
 
 </head>
 <style>
