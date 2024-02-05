@@ -117,7 +117,7 @@
 
                 <ul class="list list-unstyled text-2">
                     <li class="mb-0">AVAILABILITY: <strong class="text-color-dark">AVAILABLE</strong></li>
-                    <li class="mb-0">SKU: <strong class="text-color-dark">1234567890</strong></li>
+                    <!-- <li class="mb-0">SKU: <strong class="text-color-dark"></strong></li> -->
                 </ul>
 
                 <form enctype="multipart/form-data" method="post" class="cart" action="shop-cart.html">
