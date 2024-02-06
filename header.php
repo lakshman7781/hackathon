@@ -73,6 +73,9 @@
 								<nav class="header-nav-top">
 									<ul class="nav nav-pills">
 									<li class="nav-item nav-item-anim-icon d-none d-md-block">
+											<a class="nav-link ps-0" href="login.php"><i class="fas fa-angle-right"></i>Login - Signup</a>
+										</li>
+									<li class="nav-item nav-item-anim-icon d-none d-md-block">
 											<a class="nav-link ps-0" href="index.php"><i class="fas fa-angle-right"></i> Home</a>
 										</li>
 										<li class="nav-item nav-item-anim-icon d-none d-md-block">
