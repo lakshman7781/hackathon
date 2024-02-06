@@ -4,13 +4,29 @@
   <head>
     <meta charset="utf-8">
     <title>CampusOnline</title>
-    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google Fonts Link For Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
     <meta>
     <style>
+.chatbot-toggler {
+  position: fixed;
+  bottom: 30px;
+  right: 35px;
+  outline: none;
+  border: none;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  cursor: pointer;
+  z-index: index 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #724ae8;
+  transition: all 0.2s ease;
+}
 .chatbot {
   position: fixed;
   right: 410px;
@@ -166,11 +182,14 @@ header h2 {
 }
   </style>
   </head>
+    <button class="chatbot-toggler">
+      <a href="#"><span class="material-symbols-outlined">close</span></a>
+    </button>
   <body class="show-chatbot">
     <div class="chatbot">
       <header>
         <h2>Chatbot</h2>
-        <span class="close-btn material-symbols-outlined">close</span>
+        <a href="#"><span class="close-btn material-symbols-outlined">close</span></a>
       </header>
       <ul class="chatbox">
         <li class="chat incoming">
@@ -270,6 +289,6 @@ chatInput.addEventListener("keydown", (e) => {
 });
 
 sendChatBtn.addEventListener("click", handleChat);
-closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
+// closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
 chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
 </script>

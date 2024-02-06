@@ -46,16 +46,7 @@
 	<link rel="stylesheet" href="css/latest.css">
 
 </head>
-<style>
-	/* Style the button that is used to open and close the collapsible content */
-	.chat-icon {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    cursor: pointer;
-    z-index: 1000;
-}
-</style>
+
 
 <body style="background-color:#f2f2f4 !important;">
 	<?php include "header.php"; ?>
@@ -75,22 +66,6 @@
 	</div>
 
 	<script>
-		function openChatbot() {
-        // Open the chatbot.html page in a new window or tab
-        window.open('\chatbot.html', '_blank');
-        }
-		// Define the scrollToMain function
-		function scrollToMain() {
-			const mainSection = document.getElementById('mainSection');
-			if (mainSection) {
-				const offset = mainSection.getBoundingClientRect().top + window.scrollY - 20;
-				window.scrollTo({
-					top: offset,
-					behavior: 'smooth'
-				});
-			}
-		}
-
 		// Attach the scrollToMain function to the click event of the "Ecommerce" word
 		var domain1Element = document.getElementById('domain1');
 
@@ -120,10 +95,6 @@
 			<button class="next" onclick="changePanel(1)">&#8250;</button>
 		</div>
 	</div>
-	<div class="chat-icon" onclick="openChatbot()">
-         <img src="img/chatbot.svg" alt="Chat Icon">
-    </div>
-
 
 	<div class="containeer">
 		<div class="category">
@@ -753,6 +724,7 @@
 			}).apply(this, [jQuery]);
 		</script>
 		<?php include "footer.php"; ?>
+		<?php include "chatbutton.php"; ?>
 </body>
 
 </html>
