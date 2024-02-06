@@ -1,0 +1,13 @@
+  <?php
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $otp1 = $_POST["otp1"];
+//     $otp2 = $_POST["otp2"];
+//     $otp3 = $_POST["otp3"];
+//     $otp4 = $_POST["otp4"];
+
+//     $otp = $otp1 . $otp2 . $otp3 . $otp4;
+
+//     // Now $otp contains the concatenated OTP
+//     echo "Entered OTP: " . $otp;
+// }
+?>

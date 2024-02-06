@@ -207,7 +207,7 @@
 											<i class="icons icon-bag"></i>
 										</a>
 									</div>
-
+<!-- //hello -->
 									<a href="#" class="quick-view text-uppercase font-weight-semibold text-2">
 										QUICK VIEW
 									</a>
