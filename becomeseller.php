@@ -602,7 +602,8 @@
 }
 
 </style>
-		<form class="#" action="#" method="post">
+<form class="#" action="process_form.php" method="post" enctype="multipart/form-data">
+  
 							<div class="row mt-2">
 								<div class="col">
 									<section class="card card-modern card-big-info">
@@ -623,7 +624,7 @@
 													<div class="form-group row">
 														<label class="col-lg-5 col-xl-3 control-label text-lg-end pt-2 mt-1 mb-0">Product Description</label>
 														<div class="col-lg-7 col-xl-6">
-															<textarea class="form-control form-control-modern" name="productDescription" rows="6"></textarea>
+															<textarea class="form-control form-control-modern" name="productDescription" rows="6" required></textarea>
 														</div>
 													</div>
 												</div>
@@ -650,7 +651,7 @@
 																	<i class="bx bxs-cloud-upload"></i>
 																	
 																	<label for="file-upload" class="text-color-primary"><b class="text-color-primary">Drag/Upload</b> your images here.</label>
-                <input type="file" id="file-upload" class="text-color-primary" />
+                <input type="file" id="file-upload" class="text-color-primary" required />
 																</span>
 															</div>
 														</div>
@@ -685,7 +686,7 @@
 															<div class="form-group row align-items-center">
 																<label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Sale Price ($)</label>
 																<div class="col-lg-7 col-xl-6">
-																	<input type="text" class="form-control form-control-modern" name="salePrice" value="" />
+																	<input type="text" class="form-control form-control-modern" name="salePrice" value="" required />
 																</div>
 															</div>
 											      		</div>
@@ -693,7 +694,7 @@
 														  <div class="form-group row align-items-center pb-3">
 																<label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Category</label>
 																<div class="col-lg-7 col-xl-6">
-																	<select class="form-control form-control-modern" name="Category">
+																	<select class="form-control form-control-modern" name="Category" >
 																		<option value="in-stock" selected>Stationary</option>
 																		<option value="out-of-stock">Fashion</option>
 																		<option value="on-backorder">Electronics/Mobile</option>
@@ -717,69 +718,42 @@
 											      		<div class="tab-pane fade" id="attributes" role="tabpanel" aria-labelledby="attributes-tab">
 															<div class="ecommerce-attributes-wrapper">
 																<div class="form-group row justify-content-center ecommerce-attribute-row pb-3">
-																	<div class="col-xl-3">
-																		<label class="control-label">Name</label>
-																		<input type="text" class="form-control form-control-modern" name="attName" value="Size" />
-																		<div class="checkbox mt-3 mb-3 mb-lg-0">
-																			<label class="my-2">
-																				<input type="checkbox" name="attVisible" value="1" checked>
-																				Visible on the product page
-																			</label>
-																		</div>
-																	</div>
+																	
 																	<div class="col-xl-6">
-																		<a href="#" class="ecommerce-attribute-remove text-color-danger float-end">Remove</a>
-																		<label class="control-label">Value(s)</label>
-																		<textarea class="form-control form-control-modern" name="attValue" rows="4" placeholder="Enter some text, or some attributes by | separating values">Small|Medium|Big</textarea>
+																		
+																		<label class="control-label">Size</label>
+																		<textarea class="form-control form-control-modern" name="sizevalue" rows="4" placeholder="Enter some text, or some attributes by | separating values">None|Small|Medium|Big</textarea>
 																	</div>
 																</div>
 																<div class="form-group row justify-content-center ecommerce-attribute-row">
-																	<div class="col-xl-3">
-																		<label class="control-label">Name</label>
-																		<input type="text" class="form-control form-control-modern" name="attName" value="Color" />
-																		<div class="checkbox mt-3 mb-3 mb-lg-0">
-																			<label class="my-2">
-																				<input type="checkbox" name="attVisible" value="1" checked>
-																				Visible on the product page
-																			</label>
-																		</div>
-																	</div>
 																	<div class="col-xl-6">
-																		<a href="#" class="ecommerce-attribute-remove text-color-danger float-end">Remove</a>
-																		<label class="control-label">Value(s)</label>
-																		<textarea class="form-control form-control-modern" name="attValue" rows="4" placeholder="Enter some text, or some attributes by | separating values">Blue|Red|Green</textarea>
+											
+																		<label class="control-label">Colour</label>
+																		<textarea class="form-control form-control-modern" name="colourvalue" rows="4" placeholder="Enter some text, or some attributes by | separating values">None|Blue|Red|Green</textarea>
 																	</div>
 																</div>
 															</div>
-															<div class="row justify-content-center mt-4">
-																<div class="col-xl-9 text-end">
-																	<a href="#" class="ecommerce-attribute-add-new btn btn-primary btn-px-4 btn-py-2">+ Add New</a>
-																</div>
-															</div>
+															
 											      		</div>
 											      		
 											    	</div>
 												</div>
+												
 											</div>
+											
 										</div>
 									</section>
-								</div>
-							</div>
-							<div class="row action-buttons">
-								<div class="col-12 col-md-auto">
-				
-									<a name="save" href="#" class="submitt-button btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">
-									<i class="bx bx-save text-4 me-2"></i>  Save Product
-									</a>
-								</div>
-								
-								<div class="col-12 col-md-auto ms-md-auto mt-3 mt-md-0 ms-auto">
-									<a href="#" class="delete-button btn btn-danger btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">
-										<i class="bx bx-trash text-4 me-2"></i> Cancel
-									</a>
-								</div>
-							</div>
-						</form>
+
+									<div class="row action-buttons d-flex justify-content-between">
+        <div class="col-12 col-md-auto">
+            <button name="save" class="submitt-button btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">
+                <i class="bx bx-save text-4 me-2"></i> Add Product
+            </button>
+        </div>
+		<br>
+       
+    </div>
+</form>
             
         `;
 		});
