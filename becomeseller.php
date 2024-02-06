@@ -768,8 +768,8 @@
 							<div class="row action-buttons">
 								<div class="col-12 col-md-auto">
 				
-									<a href="#" class="submitt-button btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">
-									<i class="bx bx-save text-4 me-2"></i> Save Product
+									<a name="save" href="#" class="submitt-button btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">
+									<i class="bx bx-save text-4 me-2"></i>  Save Product
 									</a>
 								</div>
 								
