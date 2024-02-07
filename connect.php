@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "", "campus_online");
+$conn = mysqli_connect("localhost", "root", "", "campusonline");
 
 
 if (!$conn) {
