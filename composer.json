@@ -1,0 +1,15 @@
+{
+    "name": "swapa/hackathon",
+    "require-dev": {
+        "monolog/monolog": "^3.5"
+    },
+    "authors": [
+        {
+            "name": "Swapanth",
+            "email": "swapanthvakapalli@gmail.com"
+        }
+    ],
+    "require": {
+        "google/cloud-recaptcha-enterprise": "^1.8"
+    }
+}
