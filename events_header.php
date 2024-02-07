@@ -62,7 +62,7 @@
 							<div class="header-column">
 								<div class="header-row">
 									<div class="header-logo">
-									<a href="main.php">
+									<a href="index.php">
 										<img alt="Porto" width="120" height="120" data-sticky-width="82" data-sticky-height="40" data-sticky-top="25" src="img/Campus.png">
 									</a>
 								</div>

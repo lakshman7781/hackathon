@@ -62,7 +62,7 @@
 							<div class="header-column">
 								<div class="header-row">
 									<div class="header-logo">
-									<a href="main.php">
+									<a href="index.php">
 										<img alt="Porto" width="120" height="120" data-sticky-width="82" data-sticky-height="40" data-sticky-top="25" src="img/Campus.png">
 									</a>
 								</div>
@@ -73,7 +73,13 @@
 								<nav class="header-nav-top">
 									<ul class="nav nav-pills">
 									<li class="nav-item nav-item-anim-icon d-none d-md-block">
-											<a class="nav-link ps-0" href="main.php"><i class="fas fa-angle-right"></i> Home</a>
+<<<<<<< HEAD
+=======
+											<a class="nav-link ps-0" href="login.php"><i class="fas fa-angle-right"></i>Login - Signup</a>
+										</li>
+									<li class="nav-item nav-item-anim-icon d-none d-md-block">
+>>>>>>> 9cb4a12501f294c61429d9d25d86424a3d1fe8fe
+											<a class="nav-link ps-0" href="index.php"><i class="fas fa-angle-right"></i> Home</a>
 										</li>
 										<li class="nav-item nav-item-anim-icon d-none d-md-block">
 											<a class="nav-link ps-0" href="about-us.html"><i class="fas fa-angle-right"></i> About Us</a>

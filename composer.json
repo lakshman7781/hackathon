@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "name": "swapa/hackathon",
     "require-dev": {
         "monolog/monolog": "^3.5"
@@ -11,5 +12,9 @@
     ],
     "require": {
         "google/cloud-recaptcha-enterprise": "^1.8"
+=======
+    "require": {
+        "twilio/sdk": "^7.14"
+>>>>>>> 9cb4a12501f294c61429d9d25d86424a3d1fe8fe
     }
 }
