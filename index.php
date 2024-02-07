@@ -69,9 +69,11 @@
 		</div>
 
 		<div class="categorry">
-			<img src="img/2.svg" style="height: 150px; width:575px">
+    <a href="campusupdates.php">
+        <img src="img/2.svg" style="height: 150px; width: 575px;">
+    </a>
+</div>
 
-		</div>
 	</div>
 
 	<script>
