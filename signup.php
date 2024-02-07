@@ -134,28 +134,28 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="validationDefault01">First name</label>
-                <input type="text" class="form-control" id="validationDefault01" value="" required>
+                <input type="text" class="form-control" name="firstname" id="validationDefault01" value="" required>
             </div>
             <div class="col-md-6 mb-3">
                 <label for="validationDefault02">Last name</label>
-                <input type="text" class="form-control" id="validationDefault02" value="" required>
+                <input type="text" class="form-control" name="lastname" id="validationDefault02" value="" required>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="validationDefault03">Email</label>
-                <input type="email" class="form-control" id="validationDefault03" required>
+                <input type="email" class="form-control" name="email" id="validationDefault03" required>
             </div>
 
 			
 			<div class="col-md-3 mb-3">
 				<label for="validationDefault05">Phone Number</label>
-				<input type="text" class="form-control" id="validationDefault05" required>
+				<input type="text" class="form-control" name="phonenumber" id="validationDefault05" required>
 			</div>
             <div class="col-md-3 mb-3">
                 <label for="validationDefault04">Academic Year</label>
-                <select class="form-select form-control" id="validationDefault04" required>
-                    <option selected disabled value="">1 Year</option>
+                <select class="form-select form-control" name="year" id="validationDefault04" required>
+                    <option  value="">1 Year</option>
                     <option>2 Year</option>
 					<option>3 Year</option>
 					<option>4 Year</option>
@@ -163,8 +163,13 @@
             </div>
 			<div class="col-md-6 mb-3">
     <label for="validationDefault03">Register Number</label>
-    <input type="text" class="form-control" id="validationDefault05" value="YourDefaultValue" readonly>
+    <input type="text" class="form-control" name="registernumb" id="validationDefault05" required>
 </div>
+<div class="col-md-6 mb-3">
+    <label for="validationDefault03">Password</label>
+    <input type="text" class="form-control" name="password" id="validationDefault06" required>
+</div>
+
 
            
         </div>
@@ -174,7 +179,7 @@
                 <label class="form-check-label" style="text-align:left !important; cursor: pointer;" for="invalidCheck2" id="termsLabel" >
                     Agree to terms and conditions
                 </label>
-                <button type="submit" class="btn btn-primary btn-modern float-endy" style="margin-left:30px; width:150px">Register</button>
+                <button type="register" name="register" class="btn btn-primary btn-modern float-endy" style="margin-left:30px; width:150px">Register</button>
             </div>
         </div>
     
@@ -199,3 +204,45 @@
 </body>
 
 </html>
+<?php
+// Step 1: Handle form submission
+if (isset($_POST['register'])) {
+
+    // Step 2: Establish a connection to your database
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "campusonline";
+
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+    // Check connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    // Step 3: Retrieve form data
+    $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
+    $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $phonenumber = mysqli_real_escape_string($conn, $_POST['phonenumber']);
+    $academicyear = mysqli_real_escape_string($conn, $_POST['academicyear']);
+    $registernumber = mysqli_real_escape_string($conn, $_POST['registernumb']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+
+    // Step 5: Prepare SQL INSERT statement
+    $sql = "INSERT INTO register (firstname, lastname, email, phonenumber, year, registernumb, password) 
+            VALUES ('$firstname', '$lastname', '$email', '$phonenumber', '$academicyear', '$registernumber', '$password')";
+
+    // Step 6: Execute INSERT statement
+    if (mysqli_query($conn, $sql)) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+
+    // Step 7: Close database connection
+    mysqli_close($conn);
+}
+?>
+
