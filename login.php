@@ -9,9 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<<<<<<< HEAD
-    <title>Document</title>
-=======
+
     <link id="googleFonts" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light&display=swap" rel="stylesheet" type="text/css">
 
 	<!-- Vendor CSS -->
@@ -47,7 +45,6 @@
 
 		<!-- latest css -->
 		<link rel="stylesheet" href="css/latest.css">
->>>>>>> 9cb4a12501f294c61429d9d25d86424a3d1fe8fe
     <style>
         body::after {
             content: "";
@@ -60,11 +57,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 9cb4a12501f294c61429d9d25d86424a3d1fe8fe
 <?php
 // require 'vendor/autoload.php';
 
@@ -111,19 +103,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
-<<<<<<< HEAD
-    <?php include 'header.php'; ?> <!-- Check that 'header.php' is properly formatted -->
-
-    <div class="row justify-content-md-center">
-        <div class="#" style="width: 600px; margin:45px; height:900px !important;">
-            <div class="featured-box featured-box-primary text-start mt-0">
-=======
-    <!-- Check that 'header.php' is properly formatted -->
 
     <div class="row justify-content-md-center" >
         <div class="#" style="width: 600px; margin:45px; height:900px !important;">
             <div class="featured-box featured-box-primary text-start mt-0"style="margin-top:90px !important;">
->>>>>>> 9cb4a12501f294c61429d9d25d86424a3d1fe8fe
+
                 <div class="box-content">
                     <div class="row">
                         <div class="col-md-6 mb-3">
