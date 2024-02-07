@@ -337,7 +337,7 @@ $connection->close();
                         <!-- Display the registration number -->
                         <div class="col-md-6 mb-6">
                             <label for="validationDefault03">Registration Number</label>
-                            <input type="text" class="form-control" id="validationDefault04" readonly value="<?php echo htmlspecialchars($regNumber); ?>">
+                            <input type="text" class="form-control" id="validationDefault04" readonly value="<?= htmlspecialchars($regNumber) ?>">
                         </div>
                     </div>
                     <div class="form-group">
@@ -362,6 +362,7 @@ $connection->close();
     // Call the function to display box content
     displayBoxContent();
 </script>
+
 
 <?php elseif (isset($error)) : ?>
     <div class='alert alert-danger'><?php echo $error; ?></div>
