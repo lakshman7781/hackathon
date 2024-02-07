@@ -295,15 +295,15 @@
 									<div class="contentnew">
 										<strong style="font-size:xx-large; color:black; margin-top:8px">1</strong>
 										<h4 style="font-size: large; color:#0088cc;  margin-bottom:-6px;">FIRST STEP</h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim</p>
+										<p>You must first register on CampusOnline in order to sell goods there.  </p>
 									</div>
 								</div>
 							</div>
 							<div class="flip-back d-flex align-items-center p-5" style="color:black; background-size: cover; background-position: center; height:250px">
 								<div class="flip-content my-4">
 
-									<p class="font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim</p>
-									<a href="#" class="btn btn-light btn-modern text-color-dark font-weight-bold">LEARN MORE</a>
+									<p class="font-weight-light"></p>
+									<!-- <a href="#" class="btn btn-light btn-modern text-color-dark font-weight-bold"></a> -->
 								</div>
 							</div>
 						</div>
@@ -315,15 +315,15 @@
 									<div class="contentnew">
 										<strong style="font-size:xx-large; color:black; margin-top:8px">2</strong>
 										<h4 style="font-size: large; color:#0088cc;  margin-bottom:-6px;">SECOND STEP</h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim</p>
+										<p>Go to the "Add Product" section located on the left sidebar if you have already registered.  </p>
 									</div>
 								</div>
 							</div>
 							<div class="flip-back d-flex align-items-center p-5" style="color:black; background-size: cover; background-position: center; height:250px">
 								<div class="flip-content my-4">
 
-									<p class="font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim</p>
-									<a href="#" class="btn btn-light btn-modern text-color-dark font-weight-bold">LEARN MORE</a>
+									<p class="font-weight-light"></p>
+									<!-- <a href="#" class="btn btn-light btn-modern text-color-dark font-weight-bold"></a> -->
 								</div>
 							</div>
 						</div>
@@ -335,15 +335,15 @@
 									<div class="contentnew">
 										<strong style="font-size:xx-large; color:black; margin-top:8px">3</strong>
 										<h4 style="font-size: large; color:#0088cc;  margin-bottom:-6px;">THIRD STEP</h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim</p>
+										<p>Fill up the product details, image, price, inventory, and attributes in the "Add Product" area.</p>
 									</div>
 								</div>
 							</div>
 							<div class="flip-back d-flex align-items-center p-5" style="color:black; background-size: cover; background-position: center; height:250px">
 								<div class="flip-content my-4">
 
-									<p class="font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim</p>
-									<a href="#" class="btn btn-light btn-modern text-color-dark font-weight-bold">LEARN MORE</a>
+									<p class="font-weight-light"></p>
+									<!-- <a href="#" class="btn btn-light btn-modern text-color-dark font-weight-bold"></a> -->
 								</div>
 							</div>
 						</div>
