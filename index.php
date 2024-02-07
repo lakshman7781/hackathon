@@ -236,8 +236,8 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
               
                 <p class="price text-5 mb-3">
-                    <span class="sale text-color-dark font-weight-semi-bold">$<?php echo $row['regularPrice']; ?></span>
-                    <span class="amount">$<?php echo $row['salePrice']; ?></span>
+                    <span class="sale text-color-dark font-weight-semi-bold">$<?php echo $row['salePrice']; ?></span>
+                    <span class="amount">$<?php echo $row['regularPrice']; ?></span>
                 </p>
             </div>
         </div>
