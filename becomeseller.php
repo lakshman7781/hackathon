@@ -227,6 +227,7 @@
 <body data-plugin-page-transition>
 
 	<?php include 'header.php'; ?>
+	<?php include  'connect.php'; ?>
 	<div class="body">
 		<div class="left-section">
 			<div class="left-section-top">
@@ -602,7 +603,7 @@
 }
 
 </style>
-<form class="#" action="process_form.php" method="post" enctype="multipart/form-data">
+<form class="#" action=" " method="post" enctype="multipart/form-data">
   
 							<div class="row mt-2">
 								<div class="col">
@@ -634,34 +635,36 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col">
-									<section class="card card-modern card-big-info">
-										<div class="card-body" style="border: 2px solid #666; border-radius:5px;">
-											<div class="row">
-												<div class="col-lg-2-5 col-xl-1-5">
-													<i class="card-big-info-icon bx bx-camera"></i>
-													<h2 class="card-big-info-title">Product Image</h2>
-													<p class="card-big-info-desc">Upload your Product image. You can add multiple images</p>
-												</div>
-												<div class="col-lg-3-5 col-xl-4-5">
-													<div class="form-group row align-items-center">
-														<div class="col">
-															<div id="dropzone-form-image" class="dropzone-modern dz-square">
-																<span class="dropzone-upload-message text-center">
-																	<i class="bx bxs-cloud-upload"></i>
-																	
-																	<label for="file-upload" class="text-color-primary"><b class="text-color-primary">Drag/Upload</b> your images here.</label>
-                <input type="file" id="file-upload" class="text-color-primary" required />
-																</span>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</section>
-								</div>
-							</div>
+    <div class="col">
+        <section class="card card-modern card-big-info">
+            <div class="card-body" style="border: 2px solid #666; border-radius:5px;">
+                <div class="row">
+                    <div class="col-lg-2-5 col-xl-1-5">
+                        <i class="card-big-info-icon bx bx-camera"></i>
+                        <h2 class="card-big-info-title">Product Image</h2>
+                        <p class="card-big-info-desc">Upload your Product image. You can add multiple images</p>
+                    </div>
+                    <div class="col-lg-3-5 col-xl-4-5">
+                        <div class="form-group row align-items-center">
+                            <div class="col">
+                                <div id="dropzone-form-image" class="dropzone-modern dz-square">
+                                    <span class="dropzone-upload-message text-center">
+                                        <i class="bx bxs-cloud-upload"></i>
+                                        <label for="file-upload" class="text-color-primary"><b class="text-color-primary">Drag/Upload</b> your images here.</label>
+                                        <input type="file" id="file-upload" name="productimage" class="text-color-primary" required onchange="previewImage(event)" />
+                                    </span>
+                                    <div id="image-preview" class="text-center mt-3">
+                                        <img id="preview" src="#" alt="Image Preview" style="max-width: 100%; max-height: 200px;"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
 							<div class="row">
 								<div class="col">
 									<section class="card card-modern card-big-info" >
@@ -722,14 +725,14 @@
 																	<div class="col-xl-6">
 																		
 																		<label class="control-label">Size</label>
-																		<textarea class="form-control form-control-modern" name="sizevalue" rows="4" placeholder="Enter some text, or some attributes by | separating values">None|Small|Medium|Big</textarea>
+																		<textarea class="form-control form-control-modern" name="size" rows="4" placeholder="None|Blue|Red|Green"></textarea>
 																	</div>
 																</div>
 																<div class="form-group row justify-content-center ecommerce-attribute-row">
 																	<div class="col-xl-6">
 											
 																		<label class="control-label">Colour</label>
-																		<textarea class="form-control form-control-modern" name="colourvalue" rows="4" placeholder="Enter some text, or some attributes by | separating values">None|Blue|Red|Green</textarea>
+																		<textarea class="form-control form-control-modern" name="colour" rows="4" placeholder="None|Blue|Red|Green"></textarea>
 																	</div>
 																</div>
 															</div>
@@ -1149,10 +1152,11 @@ body {
             
         `;
 		});
+		
 	</script>
 
 
-	
+
 	<!-- Vendor -->
 	<script src="vendor/plugins/js/plugins.min.js"></script>
 	<script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
@@ -1177,6 +1181,83 @@ const selectedProductCount = 1;
 // Update the count badge text
 document.querySelector('.count-badge').textContent = selectedProductCount.toString(); -->
 	<?php include 'footer.php'; ?>
+
+	<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var preview = document.getElementById('preview');
+            preview.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
 </body>
+<?php
+include 'connect.php';
+
+// Check if form is submitted
+if (isset($_POST['save'])) {
+	// Check if all required fields are filled
+	if (!empty($_POST['productName']) && !empty($_POST['productDescription']) && !empty($_POST['regularPrice']) && !empty($_POST['salePrice']) && !empty($_POST['Category']) && !empty($_POST['stockStatus']) && !empty($_POST['size']) && !empty($_POST['colour']) && !empty($_FILES['productimage']['name'])) {
+
+		// Set parameters
+		$productName = $_POST["productName"];
+		$productDescription = $_POST["productDescription"];
+		$regularPrice = $_POST["regularPrice"];
+		$salePrice = $_POST["salePrice"];
+		$Category = $_POST["Category"];
+		$stockStatus = $_POST["stockStatus"];
+		$size = $_POST["size"];
+		$colour = $_POST["colour"];
+
+		// File upload handling
+		$targetDirectory = "uploads/";
+		$targetFile = $targetDirectory . basename($_FILES["productimage"]["name"]);
+		$uploadOk = 1;
+		$imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+		// Check file size
+		if ($_FILES["productimage"]["size"] > 5000000) {
+			echo "Sorry, your file is too large.";
+			$uploadOk = 0;
+		}
+
+		// Check if file already exists
+		if (file_exists($targetFile)) {
+			echo "Sorry, file already exists.";
+			$uploadOk = 0;
+		}
+
+		// Check file format
+		if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+			echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+			$uploadOk = 0;
+		}
+
+		// Check if $uploadOk is set to 0 by an error
+		if ($uploadOk == 0) {
+			echo "Sorry, your file was not uploaded.";
+		} else {
+			// If everything is ok, try to upload file
+			if (move_uploaded_file($_FILES["productimage"]["tmp_name"], $targetFile)) {
+				// File uploaded successfully, now insert data into database
+				$image = $targetFile;
+				$insertQuery = "INSERT INTO seller (productName, productDescription, image, regularPrice, salePrice, Category, stockStatus, size, colour) VALUES ('$productName', '$productDescription', '$image', '$regularPrice', '$salePrice', '$Category', '$stockStatus', '$size', '$colour')";
+
+				if ($conn->query($insertQuery) === TRUE) {
+					echo "<script>alert('Product added successfully!');</script>";
+				} else {
+					echo "Error: " . $insertQuery . "<br>" . $conn->error;
+				}
+			} else {
+				echo "Sorry, there was an error uploading your file.";
+			}
+		}
+	} else {
+		echo "All fields are required";
+	}
+}
+?>
 
 </html>
