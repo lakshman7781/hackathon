@@ -729,6 +729,7 @@
 			}).apply(this, [jQuery]);
 		</script>
 		<?php include "footer.php"; ?>
+		<?php include "chatbutton.php"; ?>
 </body>
 
 </html>
