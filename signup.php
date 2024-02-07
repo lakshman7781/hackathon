@@ -23,7 +23,7 @@ function sendOTP($mobileNumber, $otp)
 
     // Twilio account credentials
     $sid = "AC5c473de347005dcc885efd5affed455b"; // Your Twilio SID
-    $token = "ccb3a3ab16e99433dc783c5f45e389d0"; // Your Twilio Auth Token
+    $token = "3ee3c93b2b755575f21e3b94e4bafbe2"; // Your Twilio Auth Token
     $twilioNumber = "+16598883893"; // Your Twilio phone number
 
     // Prepend "91" to the mobile number
@@ -44,7 +44,7 @@ function sendOTP($mobileNumber, $otp)
         ]
     );
 }
-
+$regNumber = "";
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // If OTP verification is requested
@@ -285,18 +285,20 @@ $connection->close();
     </form>
     <?php endif; ?>
     <?php if (isset($successMessage)) : ?>
-    <script>
-        // Function to display box content
-        function displayBoxContent() {
-            var boxarea = document.querySelector('.box-content');
+        
+        <script>
+    // Function to display box content based on success message
+    function displayBoxContent() {
+        var boxarea = document.querySelector('.box-content');
 
+        // Check if registration number is set
+        <?php if (isset($regNumber)) : ?>
             // Modify the content dynamically using insertAdjacentHTML
             boxarea.innerHTML = `
                 <div class="row">
                     <div class="">
                         <h3 style="text-align: left; color: #0088cc; text-transform: none; margin-bottom: -10px !important;">Welcome to Campus Online</h3> 
                     </div>
-
                 </div>
 
                 <form id="myForm" class="needs-validation">
@@ -322,7 +324,7 @@ $connection->close();
                         <div class="col-md-3 mb-3">
                             <label for="validationDefault04">Academic Year</label>
                             <select class="form-select form-control" id="validationDefault04" required>
-                                <option selected disabled value="">1 Year</option>
+                                <option value="">1 Year</option>
                                 <option>2 Year</option>
                                 <option>3 Year</option>
                                 <option>4 Year</option>
@@ -332,9 +334,10 @@ $connection->close();
                             <label for="validationDefault03">Set Password</label>
                             <input type="text" class="form-control" id="validationDefault05" required>
                         </div>
+                        <!-- Display the registration number -->
                         <div class="col-md-6 mb-6">
-                            <label for="validationDefault03"> Confirm Password</label>
-                            <input type="text" class="form-control" id="validationDefault04" required>
+                            <label for="validationDefault03">Registration Number</label>
+                            <input type="text" class="form-control" id="validationDefault04" readonly value="<?php echo htmlspecialchars($regNumber); ?>">
                         </div>
                     </div>
                     <div class="form-group">
@@ -348,11 +351,18 @@ $connection->close();
                     </div>
                 </form>
             `;
-        }
+        <?php else : ?>
+            // No registration number set, display an error
+            boxarea.innerHTML = `
+                <div class='alert alert-danger'>Registration number not set.</div>
+            `;
+        <?php endif; ?>
+    }
 
-        // Call the function to display box content
-        displayBoxContent();
-    </script>
+    // Call the function to display box content
+    displayBoxContent();
+</script>
+
 <?php elseif (isset($error)) : ?>
     <div class='alert alert-danger'><?php echo $error; ?></div>
 <?php endif; ?>
