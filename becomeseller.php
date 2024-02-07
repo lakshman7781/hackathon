@@ -698,10 +698,10 @@
 																<label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Category</label>
 																<div class="col-lg-7 col-xl-6">
 																	<select class="form-control form-control-modern" name="Category" >
-																		<option value="in-stock" selected>Stationary</option>
-																		<option value="out-of-stock">Fashion</option>
-																		<option value="on-backorder">Electronics/Mobile</option>
-																		<option value="on-backorder">Books/Records</option>
+																		<option value="Stationary" selected>Stationary</option>
+																		<option value="Fashion">Fashion</option>
+																		<option value="Electronics/Mobile">Electronics/Mobile</option>
+																		<option value="Books/Records">Books/Records</option>
 																	</select>
 																</div>
 															</div>

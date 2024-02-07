@@ -190,7 +190,7 @@
 
 
 				<div class="masonry-loader masonry-loader-showing">
-					<div class="row products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">v
+					<div class="row products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
 
 	<?php
 // Include the file to establish a database connection
@@ -274,8 +274,8 @@ mysqli_close($conn);
 				const carousel = document.getElementById('carousel');
 				const panelContainer = document.querySelector('.carousel-container');
 				const translateValue = -panelWidth * (currentPanel - 1);
-				carousel.style.transform = translateX(${translateValue}px);
-				panelContainer.style.width = ${panelWidth}px;
+				carousel.style.transform = `translateX(${translateValue}px)`;
+				panelContainer.style.width = `${panelWidth}px`;
 			}
 
 			function autoScroll() {
