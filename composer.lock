@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "40846e98565151942f48383cf1183ca7",
     "packages": [
         {
@@ -34,10 +35,38 @@
             "suggest": {
                 "ext-sodium": "Support EdDSA (Ed25519) signatures",
                 "paragonie/sodium_compat": "Support EdDSA (Ed25519) signatures when libsodium is not present"
+=======
+    "content-hash": "156391a4a979948ecb420f049da0c091",
+    "packages": [
+        {
+            "name": "twilio/sdk",
+            "version": "7.14.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:twilio/twilio-php.git",
+                "reference": "823f2630c14a67e904e1bf63f9b0d7053812d751"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/823f2630c14a67e904e1bf63f9b0d7053812d751",
+                "reference": "823f2630c14a67e904e1bf63f9b0d7053812d751",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^6.3 || ^7.0",
+                "phpunit/phpunit": ">=7.0 < 10"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
+>>>>>>> 9cb4a12501f294c61429d9d25d86424a3d1fe8fe
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
+<<<<<<< HEAD
                     "Firebase\\JWT\\": "src"
                 }
             },
@@ -512,6 +541,9 @@
                 ],
                 "psr-4": {
                     "GuzzleHttp\\": "src/"
+=======
+                    "Twilio\\": "src/Twilio/"
+>>>>>>> 9cb4a12501f294c61429d9d25d86424a3d1fe8fe
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -520,6 +552,7 @@
             ],
             "authors": [
                 {
+<<<<<<< HEAD
                     "name": "Graham Campbell",
                     "email": "hello@gjcampbell.co.uk",
                     "homepage": "https://github.com/GrahamCampbell"
@@ -1260,6 +1293,23 @@
             "time": "2021-07-14T16:46:02+00:00"
         }
     ],
+=======
+                    "name": "Twilio API Team",
+                    "email": "api@twilio.com"
+                }
+            ],
+            "description": "A PHP wrapper for Twilio's API",
+            "homepage": "https://github.com/twilio/twilio-php",
+            "keywords": [
+                "api",
+                "sms",
+                "twilio"
+            ],
+            "time": "2024-01-25T11:51:56+00:00"
+        }
+    ],
+    "packages-dev": [],
+>>>>>>> 9cb4a12501f294c61429d9d25d86424a3d1fe8fe
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],
