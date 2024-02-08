@@ -22,9 +22,9 @@ function sendOTP($mobileNumber, $otp)
     require_once 'Twilio/autoload.php';
 
     // Twilio account credentials
-    $sid = "AC5c473de347005dcc885efd5affed455b"; // Your Twilio SID
-    $token = "3ee3c93b2b755575f21e3b94e4bafbe2"; // Your Twilio Auth Token
-    $twilioNumber = "+16598883893"; // Your Twilio phone number
+    $sid = "AC2015e1f29a63bf5ea7005c4e3de06089"; // Your Twilio SID
+    $token = "4e40d1410ab1fc7b61c523c56404cb4d"; // Your Twilio Auth Token
+    $twilioNumber = "+13416675439"; // Your Twilio phone number
 
     // Prepend "91" to the mobile number
     $mobileNumber = "+91" . $mobileNumber;
@@ -44,7 +44,9 @@ function sendOTP($mobileNumber, $otp)
         ]
     );
 }
+
 $regNumber = "";
+
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // If OTP verification is requested
@@ -56,6 +58,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stored_otp == $user_otp) {
             // If OTP matches, display a success message
             $successMessage = "Login Successful";
+
+            // Store registration number in session for further use
+            $regNumber = $_POST['regNumber'];
+
+            // After processing registration number successfully, redirect to signupform.php
+            header("Location: signupform.php?regNumber=" . urlencode($regNumber));
+            exit(); // Terminate script execution after redirection
         } else {
             // If OTP does not match, display an error message
             $error = "Wrong OTP";
@@ -99,16 +108,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }
+    // Unset regNumber session variable here
+    unset($_SESSION['regNumber']);
 }
 
 // Close connection
 $connection->close();
 ?>
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -284,89 +290,7 @@ $connection->close();
         </div>
     </form>
     <?php endif; ?>
-    <?php if (isset($successMessage)) : ?>
-        
-        <script>
-    // Function to display box content based on success message
-    function displayBoxContent() {
-        var boxarea = document.querySelector('.box-content');
-
-        // Check if registration number is set
-        <?php if (isset($regNumber)) : ?>
-            // Modify the content dynamically using insertAdjacentHTML
-            boxarea.innerHTML = `
-                <div class="row">
-                    <div class="">
-                        <h3 style="text-align: left; color: #0088cc; text-transform: none; margin-bottom: -10px !important;">Welcome to Campus Online</h3> 
-                    </div>
-                </div>
-
-                <form id="myForm" class="needs-validation">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="validationDefault01">First name</label>
-                            <input type="text" class="form-control" id="validationDefault01" value="" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="validationDefault02">Last name</label>
-                            <input type="text" class="form-control" id="validationDefault02" value="" required>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="validationDefault03">Email</label>
-                            <input type="email" class="form-control" id="validationDefault03" required>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="validationDefault05">Phone Number</label>
-                            <input type="text" class="form-control" id="validationDefault05" required>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="validationDefault04">Academic Year</label>
-                            <select class="form-select form-control" id="validationDefault04" required>
-                                <option value="">1 Year</option>
-                                <option>2 Year</option>
-                                <option>3 Year</option>
-                                <option>4 Year</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="validationDefault03">Set Password</label>
-                            <input type="text" class="form-control" id="validationDefault05" required>
-                        </div>
-                        <!-- Display the registration number -->
-                        <div class="col-md-6 mb-6">
-                            <label for="validationDefault03">Registration Number</label>
-                            <input type="text" class="form-control" id="validationDefault04" readonly value="<?= htmlspecialchars($regNumber) ?>">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                            <label class="form-check-label" style="text-align:left !important; cursor: pointer;" for="invalidCheck2" id="termsLabel" >
-                                Agree to terms and conditions
-                            </label>
-                            <button type="submit" class="btn btn-primary btn-modern float-endy" style="margin-left:30px; width:150px">Register</button>
-                        </div>
-                    </div>
-                </form>
-            `;
-        <?php else : ?>
-            // No registration number set, display an error
-            boxarea.innerHTML = `
-                <div class='alert alert-danger'>Registration number not set.</div>
-            `;
-        <?php endif; ?>
-    }
-
-    // Call the function to display box content
-    displayBoxContent();
-</script>
-
-
-<?php elseif (isset($error)) : ?>
-    <div class='alert alert-danger'><?php echo $error; ?></div>
-<?php endif; ?>
+    
 
 
 
