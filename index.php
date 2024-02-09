@@ -129,43 +129,43 @@
 
 	<div class="containeer">
 		<div class="category">
-			<a href="categoryproducts.php">
+			<a href="stationary.php">
 				<img src="img/1.png">
 				<h6>Stationary</h6>
 			</a>
 		</div>
 		<div class="category">
-			<a href="categoryproducts.php">
+			<a href="#">
 				<img src="img/2.png">
 				<h6>Food</h6>
 			</a>
 		</div>
 		<!-- Add similar blocks for other categories -->
 		<div class="category">
-			<a href="categoryproducts.php">
+			<a href="fashion.php">
 				<img src="img/3.png">
 				<h6>Fashion</h6>
 			</a>
 		</div>
 		<div class="category">
-			<a href="categoryproducts.php">
+			<a href="electronics.php">
 				<img src="img/4.png">
 
 				<h6>Electronics & Mobile</h6>
 			</a>
 		</div>
 		<div class="category">
-			<a href="categoryproducts.php">
+			<a href="textbooks.php">
 				<img src="img/5.png">
 
 				<h6>Notes & Records</h6>
 			</a>
 		</div>
 		<div class="category">
-			<a href="categoryproducts.php">
-				<img src="crystal-vik-image.jpg">
+			<a href="Xeorox.php">
+			<img src="img/xerox.jpg"  style="height:80px; width:80px;">
 
-				<h6>Others</h6>
+				<h6>Xerox</h6>
 			</a>
 		</div>
 	</div>
