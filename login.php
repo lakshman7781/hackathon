@@ -53,6 +53,37 @@
 
 
         }
+ /* .forgot-password-link {
+  text-align: right;
+  margin-top: 10px;
+  
+}
+
+.forgot-password-link a {
+  color: #0077cc;
+  text-decoration: none;
+  font-size: 14px;
+  position: relative;
+  
+}*/
+.forgot-password-link {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.forgot-password-link a {
+  color: #0077cc;
+  text-decoration: none;
+  font-size: 14px;
+  position: relative;
+  top: -150px; /* move the link up by 10px */
+}
+
+.forgot-password-link a:hover {
+  text-decoration: underline;
+} 
+
     </style>
 </head>
 
@@ -136,9 +167,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <br>
                         <div class="g-recaptcha" data-sitekey="6Ldw-2cpAAAAAKCQkKIcOGEgkUBoMTUuRAVE0o_x"></div><br><br>
                         <button type="submit" class="btn btn-primary btn-modern float-endy" style="width: 150px; margin-top: 170px;">Login</button>
-
-                    </form>
-
+                        <div class="forgot-password-link">
+                          <a href="forgotverify.php">Forgot Password?</a>
+          </div>
+                    
+                </form>
+                  
                     <!-- Replace the variables below. -->
                     <script>
                         function onSubmit(token) {
