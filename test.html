@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style    >
+        /* FAQ Container */
+     .faq-container {
+       max-width: 300px;
+       margin: 5px;
+     }
+     
+     /* FAQ List */
+     .faq-list {
+       list-style: none;
+       padding: 10px;
+       background-color: #fff;
+       border-radius: 10px;
+     }
+     
+     /* FAQ Item */
+     .faq-item {
+       margin-bottom: 10px;
+       font-style:calc(1.5em + 1vw);
+       font-family:sans-serif;
+       font-size: smaller;
+     }
+     
+     /* Question */
+     .question {
+      font-size: 10px;
+       padding: 2px;
+       cursor: pointer;
+       border-radius: 5px;
+     }
+     
+     /* Answer */
+     .answer {
+       padding: 2px;
+       font-size: 10px;
+       background-color: #85d6ff;
+       display: none;
+       border-radius: 2px;
+     }
+     
+     /* Show Answer */
+     .answer.show {
+       display: block;
+     }
+     
+     /* Chat Container */
+ /* Chat Container */
+.chat-container {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  z-index: 9998;
+  width: 240px;
+  height: 330px;
+  
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #f2f4f4;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat Box */
+.chat-box {
+  height: calc(100% - 60px);
+   /* Adjust height for input and button */
+  overflow-y: auto;
+  padding: 10px;
+  background-image: linear-gradient( #00d5ff 0%, #00e1ff 35%,#ffffff  100%);
+  
+}
+
+/* Input Container */
+.input-container {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+/* User Input */
+#user-input {
+  flex: 1; /* Take remaining space */
+  padding: 5px;
+  border: 1px solid #0088cc;
+
+  border-radius: 18px;
+}
+
+/* Send Button */
+#send-btn {
+  padding: 5px;
+  width: 230px;
+  border: none;
+  border-radius: 15px;
+  background-color: #0088cc;
+  color: white;
+  cursor: pointer;
+  margin-left: 3px; /* Add some spacing between input and button */
+}
+
+#send-btn:hover {
+  background-color: #45a049;
+}
+::placeholder {
+        font-family: Arial, sans-serif; /* Change the font family */
+        font-size: 10px; /* Change the font size */
+        color: #999; /* Change the color of the placeholder text */
+    }
+    .heading{
+      background-color: #ffffff;
+      padding: 5px;
+      margin: 7px;
+      border-radius: 10px;
+    }
+       </style>
+ 
+
+  <div class="chat-container" id="chat-container">
+    <div class="chat-box" id="chat-box">
+      <img src="img/Campus.png"  style="width: 80px; height: 80px; ">
+<br>
+<div class="heading">
+      <div  style=" font-weight: bolder; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: #b0ae2a; border: black;">&nbsp;&nbsp;&nbsp;Nameste<span style='font-size:20px;'>&#128591;</span></div>
+      <div  style="font-weight: bolder; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: #b22f07;">&nbsp;How can We Help ?</div>
+    </div>
+      <div class="faq-container">
+        <ul class="faq-list">
+          <h5 style="font-family: Arial, Helvetica, sans-serif;">Frequently Asked Questions</h5>
+          <li class="faq-item">
+            <div class="question">How can I track my order?</div>
+            <div class="answer">Answer 1</div>
+          </li>
+          <li class="faq-item">
+            <div class="question">How long will it take for my order to arrive?</div>
+            <div class="answer">Answer 2</div>
+          </li>
+          <li class="faq-item">
+            <div class="question">Are the products on your website authentic?</div>
+            <div class="answer">Answer 3</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="input-container">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button id="send-btn">Send</button>
+      </div>
+    <br>
+  </div>
+
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const faqItems = document.querySelectorAll('.faq-item');
+      const chatContainer = document.getElementById('chat-container');
+    
+      // FAQ Toggle Functionality
+      faqItems.forEach(item => {
+    const question = item.querySelector('.question');
+    const answer = item.querySelector('.answer');
+
+    question.addEventListener('mouseover', function () {
+        answer.classList.add('show');
+    });
+
+    question.addEventListener('mouseout', function () {
+        answer.classList.remove('show');
+    });
+});
+
+    
+      // Add scrollbar to the chat box
+      const chatBox = document.getElementById('chat-box');
+      chatBox.scrollTop = 0;
+
+    });
+    
+      </script>
+</body>
+</html>
+
+
+ 
+</body>
+</html>

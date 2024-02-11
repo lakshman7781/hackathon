@@ -8,7 +8,7 @@
 
 
 
-	<title>Style Switcher | Porto - Multipurpose Website Template</title>
+
 
 	<meta name="keywords" content="WebSite Template" />
 	<meta name="description" content="Porto - Multipurpose Website Template">
@@ -58,9 +58,16 @@
 </style>
 
 <body style="background-color:#f2f2f4 !important;">
-	<?php include "header.php"; ?>
-
-
+	<?php include "dumbheader.php"; ?>
+<br>
+<div class="alert alert-danger alert-dismissible" role="alert"  style="margin: 15px;">
+	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	<strong><i class="fas fa-exclamation-triangle"></i>Oh snap!</strong> Please Login/Register to Enable to See More Featuers.
+	<!-- <ul>
+		<li>Inform your username.</li>
+		<li>Inform your password.</li>
+	</ul> -->
+</div>
 
 	<div class="containeeer">
 		<div class="categorry" id="domain1">
@@ -69,7 +76,7 @@
 		</div>
 
 		<div class="categorry">
-    <a href="campusupdates.php">
+    <a href="#">
         <img src="img/2.svg" style="height: 150px; width: 575px;">
     </a>
 </div>
@@ -77,10 +84,7 @@
 	</div>
 
 	<script>
-		function openChatbot() {
-        // Open the chatbot.html page in a new window or tab
-        window.open('\chatbot.php', '_blank');
-        }
+		
 		// Define the scrollToMain function
 		function scrollToMain() {
 			const mainSection = document.getElementById('mainSection');
@@ -122,14 +126,11 @@
 			<button class="next" onclick="changePanel(1)">&#8250;</button>
 		</div>
 	</div>
-	<div class="chat-icon" onclick="openChatbot()">
-         <img src="img/chatbot.svg" alt="Chat Icon">
-    </div>
-
+	
 
 	<div class="containeer">
 		<div class="category">
-			<a href="stationary.php">
+			<a href="#">
 				<img src="img/1.png">
 				<h6>Stationary</h6>
 			</a>
@@ -142,27 +143,27 @@
 		</div>
 		<!-- Add similar blocks for other categories -->
 		<div class="category">
-			<a href="fashion.php">
+			<a href="#">
 				<img src="img/3.png">
 				<h6>Fashion</h6>
 			</a>
 		</div>
 		<div class="category">
-			<a href="electronics.php">
+			<a href="#">
 				<img src="img/4.png">
 
 				<h6>Electronics & Mobile</h6>
 			</a>
 		</div>
 		<div class="category">
-			<a href="textbooks.php">
+			<a href="#">
 				<img src="img/5.png">
 
 				<h6>Notes & Records</h6>
 			</a>
 		</div>
 		<div class="category">
-			<a href="Xeorox.php">
+			<a href="#">
 			<img src="img/xerox.jpg"  style="height:80px; width:80px;">
 
 				<h6>Xerox</h6>
@@ -185,9 +186,7 @@
     Chat with Seller on WhatsApp
 </a>
 <a href="tel:+918712131582">Call Seller</a> -->
-					<button style="right:30px; top:720px;" class="next-btn">Next &nbsp; <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-							<path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
-						</svg></button>
+					
 				</div>
 
 
@@ -216,15 +215,13 @@ if (mysqli_num_rows($result) > 0) {
                 <div class="product-thumb-info border-0 mb-3">
 
                     <div class="addtocart-btn-wrapper">
-                        <a href="" class="text-decoration-none addtocart-btn" title="Add to Cart">
-                            <i class="icons icon-bag"></i>
-                        </a>
+                        
+                            
+                      
                     </div>
 
-                    <a href="" class="quick-view text-uppercase font-weight-semibold text-2">
-                        QUICK VIEW
-                    </a>
-                    <a href="">
+                   
+                    <a href="#">
                         <div class="product-thumb-info-image">
                             <img alt="" class="img-fluid" src="<?php echo $row['image']; ?>">
                         </div>
@@ -235,7 +232,7 @@ if (mysqli_num_rows($result) > 0) {
                         <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1"><?php echo $row['Category']; ?></a>
                         <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="#" class="text-color-dark text-color-hover-primary"><?php echo $row['productName']; ?></a></h3>
                     </div>
-                    <a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
+                   
                 </div>
               
                 <p class="price text-5 mb-3">
