@@ -8,7 +8,7 @@
 
 
 
-	<title>Style Switcher | Porto - Multipurpose Website Template</title>
+	<title>Campus Online</title>
 
 	<meta name="keywords" content="WebSite Template" />
 	<meta name="description" content="Porto - Multipurpose Website Template">
@@ -132,7 +132,7 @@
 			<a href="stationary.php">
 				<img src="img/1.png">
 				<h6>Stationary</h6>
-			</a>
+	</a>
 		</div>
 		<div class="category">
 			<a href="#">
