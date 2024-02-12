@@ -31,7 +31,7 @@
 
 
 
-	<!-- Theme CSS -->
+	
 	<link rel="stylesheet" href="css/theme.css">
 	<link rel="stylesheet" href="css/theme-elements.css">
 	<link rel="stylesheet" href="css/theme-blog.css">
