@@ -45,6 +45,7 @@
 	<link rel="stylesheet" href="css/custom.css">
 	<link rel="stylesheet" href="css/latest.css">
 
+
 </head>
 <style>
 	/* Style the button that is used to open and close the collapsible content */
@@ -58,8 +59,13 @@
 </style>
 
 <body style="background-color:#f2f2f4 !important;">
+
 	<?php include "header.php"; ?>
 
+
+	
+	<div id="testContainer"></div>
+	
 
 
 	<div class="containeeer">
@@ -77,10 +83,7 @@
 	</div>
 
 	<script>
-		function openChatbot() {
-        // Open the chatbot.html page in a new window or tab
-        window.open('\chatbot.php', '_blank');
-        }
+
 		// Define the scrollToMain function
 		function scrollToMain() {
 			const mainSection = document.getElementById('mainSection');
@@ -122,9 +125,8 @@
 			<button class="next" onclick="changePanel(1)">&#8250;</button>
 		</div>
 	</div>
-	<div class="chat-icon" onclick="openChatbot()">
-         <img src="img/chatbot.svg" alt="Chat Icon">
-    </div>
+
+
 
 
 	<div class="containeer">
@@ -298,6 +300,27 @@ mysqli_close($conn);
 				setInterval(autoScroll, autoScrollInterval);
 			});
 		</script>
+		<style>
+    /* CSS for styling purposes */
+    .chatcontainer {
+    display: none; /* Hide the container by default */
+    position: fixed; /* Make the container fixed */
+    top: 163px;
+    right: 60px;
+    z-index: 1;
+    width: 400px;
+    height: 550px;
+	border-radius: 5px;
+}
+
+.iframe-container {
+    width: 400px;
+    height: 550px;
+    border: none;
+    z-index: 1;
+}
+
+</style>
 
 
 		<!-- Vendor -->
@@ -343,6 +366,35 @@ mysqli_close($conn);
 			}).apply(this, [jQuery]);
 		</script>
 		<?php include "footer.php"; ?>
+
+			
+<div class="chat-icon" onclick="toggleTestBot()">
+    <img src="img/chatbot.gif" alt="Chat Icon" style="height: 75px; width:75px;">
+</div>
+
+<div class="chatcontainer" id="chatcontainer"></div>
+
+<script>
+    // JavaScript function to toggle the visibility of the chat container
+    function toggleTestBot() {
+        var chatContainer = document.getElementById("chatcontainer");
+        if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
+            // If container is hidden or not set, show it
+            chatContainer.style.display = "block";
+            // Create an iframe element
+            var iframe = document.createElement('iframe');
+            iframe.src = 'test.html';
+            iframe.classList.add('iframe-container');
+            // Append the iframe to the container
+            chatContainer.appendChild(iframe);
+        } else {
+            // If container is visible, hide it
+            chatContainer.style.display = "none";
+            // Clear the content when hiding
+            chatContainer.innerHTML = "";
+        }
+    }
+</script>
 </body>
 
 </html>

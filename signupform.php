@@ -176,6 +176,10 @@ if (isset($_POST['submit'])) {
 
             if ($conn->query($insertQuery) === TRUE) {
                 echo "<script>alert('Registration successful!');</script>";
+                header("Location: index.php");
+                exit(); 
+
+
             } else {
                 echo "Error: " . $insertQuery . "<br>" . $conn->error;
             }
