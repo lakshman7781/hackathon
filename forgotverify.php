@@ -62,8 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Store registration number in session for further use
             $regNumber = $_POST['regNumber'];
 
-            // After processing registration number successfully, redirect to signupform.php
-            header("Location: signupform.php?regNumber=" . urlencode($regNumber));
+            // After processing registration number successfully, redirect to forgot_password.php
+            header("Location: forgotverify.php?regNumber=" . urlencode($regNumber));
             exit(); // Terminate script execution after redirection
         } else {
             // If OTP does not match, display an error message
@@ -182,12 +182,10 @@ $connection->close();
                 <div class="box-content">
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Registering An Account</h4>
+                            <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Reset ur Passowrd</h4>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <a href="login.php" style="text-decoration: none; ">
-                                <h4 class="font-weight-semibold text-4 text-uppercase mb-3" style="color: green; margin-left:-35px;"> Login ?</h4>
-                            </a>
+                            
 
 
                         </div>

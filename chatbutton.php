@@ -26,14 +26,5 @@
         window.open('\chatbot.php', '_blank');
         }
 		// Define the scrollToMain function
-		function scrollToMain() {
-			const mainSection = document.getElementById('mainSection');
-			if (mainSection) {
-				const offset = mainSection.getBoundingClientRect().top + window.scrollY - 20;
-				window.scrollTo({
-					top: offset,
-					behavior: 'smooth'
-				});
-			}
-		}
+		
 </script>

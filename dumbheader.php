@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 	<!-- Basic -->
@@ -21,14 +20,14 @@
 
 	<!-- Vendor CSS -->
 	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
-	<link rel="stylesheet" href="vendor/animate/animate.compat.css">
-	<link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
-	<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
-	<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
-	<link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
-	<link rel="stylesheet" href="vendor/bootstrap-star-rating/css/star-rating.min.css">
-	<link rel="stylesheet" href="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.css">
+		<link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
+		<link rel="stylesheet" href="vendor/animate/animate.compat.css">
+		<link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
+		<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
+		<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
+		<link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
+		<link rel="stylesheet" href="vendor/bootstrap-star-rating/css/star-rating.min.css">
+		<link rel="stylesheet" href="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.css">
 
 
 
@@ -50,20 +49,20 @@
 	<!-- Bootstrap Icons CSS link -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.17.0/font/bootstrap-icons.css" rel="stylesheet">
 
-	<!-- latest css -->
-	<link rel="stylesheet" href="css/latest.css">
+		<!-- latest css -->
+		<link rel="stylesheet" href="css/latest.css">
 </head>
 
 <body data-plugin-page-transition style="background-color:#f2f2f4 !important;">
-	<div class="body">
-		<header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': false, 'stickyEnableOnMobile': false, 'stickyStartAt': 70, 'stickyChangeLogo': false, 'stickyHeaderContainerHeight': 70}">
-			<div class="header-body border-top-0 box-shadow-none">
-				<div class="header-container header-container-md container">
-					<div class="header-row">
-						<div class="header-column">
-							<div class="header-row">
-								<div class="header-logo">
-									<a href="index.php">
+<div class="body">
+			<header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': false, 'stickyEnableOnMobile': false, 'stickyStartAt': 70, 'stickyChangeLogo': false, 'stickyHeaderContainerHeight': 70}">
+				<div class="header-body border-top-0 box-shadow-none">
+					<div class="header-container header-container-md container">
+						<div class="header-row">
+							<div class="header-column">
+								<div class="header-row">
+									<div class="header-logo">
+									<a href="#">
 										<img alt="Porto" width="120" height="120" data-sticky-width="82" data-sticky-height="40" data-sticky-top="25" src="img/Campus.png">
 									</a>
 								</div>
@@ -73,11 +72,9 @@
 							<div class="header-row pt-3">
 								<nav class="header-nav-top">
 									<ul class="nav nav-pills">
+									
 										<li class="nav-item nav-item-anim-icon d-none d-md-block">
-											<a class="nav-link ps-0" href="campusupdates.php"><i class="fas fa-angle-right"></i> Home</a>
-										</li>
-										<li class="nav-item nav-item-anim-icon d-none d-md-block">
-											<a class="nav-link ps-0" href="about-us.html"><i class="fas fa-angle-right"></i> About Us</a>
+											<a class="nav-link ps-0" href="#"><i class="fas fa-angle-right"></i> About Us</a>
 										</li>
 
 
@@ -100,28 +97,24 @@
 												</svg>
 											</label>
 											<div class="border"></div>
-										</div>
+                                        </div>
 										&nbsp;&nbsp;
 										<nav class="collapse">
 											<ul class="nav nav-pills" id="mainNav">
 
 
 
+												
+
+
+											
 												<li class="">
-													<a href="index.php">
-														<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
-															<path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.37 2.37 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0M1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5M4 15h3v-5H4zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm3 0h-2v3h2z" />
-														</svg> &nbsp; E-commerce
+													<a class="dropdown-item dropdown-toggle" href="login.php">
+														<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+															<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
+														</svg> &nbsp; Login / Signup
 													</a>
-
 												</li>
-
-
-
-
-
-
-
 										</nav>
 									</div>
 
@@ -135,7 +128,7 @@
 				</div>
 			</div>
 		</header>
-	</div>
+</div>
 </body>
 
 </html>
