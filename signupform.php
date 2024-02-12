@@ -112,10 +112,10 @@ if (isset($_GET['regNumber'])) {
                             <input type="text" class="form-control" id="validationDefault05" required>
                         </div>
                         <!-- Display the registration number directly -->
-                        <div class="col-md-6 mb-6">
+                     
    
    <!-- Display the registration number directly -->
-<div class="col-md-6 mb-6">
+<div class="col-md-6 mb-3">
     <label for="validationDefault03">RegistrationNumber</label>
     <input type="text" class="form-control" id="validationDefault04" readonly value="<?php echo isset($_SESSION['regNumber']) ? htmlspecialchars($_SESSION['regNumber']) : ''; ?>">
 </div>
