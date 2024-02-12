@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+	<?php session_start(); ?>
 
 <head>
 
@@ -1198,6 +1199,7 @@ include 'connect.php';
 
 // Check if form is submitted
 if (isset($_POST['save'])) {
+
 	// Check if all required fields are filled
 	if (!empty($_POST['productName']) && !empty($_POST['productDescription']) && !empty($_POST['regularPrice']) && !empty($_POST['salePrice']) && !empty($_POST['Category']) && !empty($_POST['stockStatus']) && !empty($_POST['size']) && !empty($_POST['colour']) && !empty($_FILES['productimage']['name'])) {
 
@@ -1210,6 +1212,7 @@ if (isset($_POST['save'])) {
 		$stockStatus = $_POST["stockStatus"];
 		$size = $_POST["size"];
 		$colour = $_POST["colour"];
+		$reg_no = $_SESSION['idnum'];
 
 		// File upload handling
 		$targetDirectory = "uploads/";
@@ -1243,7 +1246,8 @@ if (isset($_POST['save'])) {
 			if (move_uploaded_file($_FILES["productimage"]["tmp_name"], $targetFile)) {
 				// File uploaded successfully, now insert data into database
 				$image = $targetFile;
-				$insertQuery = "INSERT INTO seller (productName, productDescription, image, regularPrice, salePrice, Category, stockStatus, size, colour) VALUES ('$productName', '$productDescription', '$image', '$regularPrice', '$salePrice', '$Category', '$stockStatus', '$size', '$colour')";
+				
+				$insertQuery = "INSERT INTO seller (productName, productDescription, image, regularPrice, salePrice, Category, stockStatus, size, colour,reg_no) VALUES ('$productName', '$productDescription', '$image', '$regularPrice', '$salePrice', '$Category', '$stockStatus', '$size', '$colour','$reg_no')";
 
 				if ($conn->query($insertQuery) === TRUE) {
 					echo "<script>alert('Product added successfully!');</script>";

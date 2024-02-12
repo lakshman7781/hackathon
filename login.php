@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+session_start();
 // Include the file for database connection
 include "connect.php";
 
@@ -8,10 +9,13 @@ if (isset($_POST['submit'])) {
     // Retrieve username and password from the form
     $username = $_POST["username"];
     $password = $_POST["password"];
+    $_SESSION['idnum'] = $username;
 
+   
     // Query to check if the username and password match in the database
     $query = "SELECT * FROM users WHERE reg_no = '$username' AND password = '$password'";
     $result = mysqli_query($conn, $query);
+
 
     if (mysqli_num_rows($result) == 1) {
         // If username and password are correct, redirect to another page
