@@ -134,66 +134,6 @@ if (isset($_GET['regNumber'])) {
                         <button type="submit"  name="submit"class="btn btn-primary btn-modern float-endy" style="margin-left:30px; width:150px">Register</button>
                     </div>
                 </div>
-<<<<<<< HEAD
-
-                <form id="myForm" class="needs-validation">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="validationDefault01">First name</label>
-                            <input type="text" class="form-control" id="validationDefault01" value="" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="validationDefault02">Last name</label>
-                            <input type="text" class="form-control" id="validationDefault02" value="" required>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="validationDefault03">Email</label>
-                            <input type="email" class="form-control" id="validationDefault03" required>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="validationDefault05">Phone Number</label>
-                            <input type="text" class="form-control" id="validationDefault05" required>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="validationDefault04">Academic Year</label>
-                            <select class="form-select form-control" id="validationDefault04" required>
-                                <option value="">1 Year</option>
-                                <option>2 Year</option>
-                                <option>3 Year</option>
-                                <option>4 Year</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="validationDefault03">Set Password</label>
-                            <input type="text" class="form-control" id="validationDefault05" required>
-                        </div>
-                        <!-- Display the registration number directly -->
-                     
-   
-   <!-- Display the registration number directly -->
-<div class="col-md-6 mb-3">
-    <label for="validationDefault03">RegistrationNumber</label>
-    <input type="text" class="form-control" id="validationDefault04" readonly value="<?php echo isset($_SESSION['regNumber']) ? htmlspecialchars($_SESSION['regNumber']) : ''; ?>">
-</div>
-
-
-</div>
-
-                       
-                    </div>
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                            <label class="form-check-label" style="text-align:left !important; cursor: pointer;" for="invalidCheck2" id="termsLabel" >
-                                Agree to terms and conditions
-                            </label>
-                            <button type="submit" class="btn btn-primary btn-modern float-endy" style="margin-left:30px; width:150px">Register</button>
-                        </div>
-                    </div>
-=======
->>>>>>> 4abe33938b552ccc714a3236875bd29f9bb27915
                 </form>
 
 
@@ -236,6 +176,10 @@ if (isset($_POST['submit'])) {
 
             if ($conn->query($insertQuery) === TRUE) {
                 echo "<script>alert('Registration successful!');</script>";
+                header("Location: index.php");
+                exit(); 
+
+
             } else {
                 echo "Error: " . $insertQuery . "<br>" . $conn->error;
             }
