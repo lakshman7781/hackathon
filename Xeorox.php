@@ -21,7 +21,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
 
     <!-- Web Fonts  -->
-    <link id="googleFonts" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap" rel="stylesheet" type="text/css">
+    <link id="googleFonts"
+        href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
+        rel="stylesheet" type="text/css">
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -227,172 +229,146 @@
 <body data-plugin-page-transition>
 
     <?php include 'header.php'; ?>
-    <?php include  'connect.php'; ?>
+    <?php include 'connect.php'; ?>
     <div class="body">
         <div class="left-section">
-            <div class="left-section-top">
-                <a href="img/12.png"> <img src="img/12.png" alt="12" width="100" height="100"> </a>
-                Hello &nbsp;
-                <h4>Left Top</h4>
-            </div>
+
             <div class="left-section-bottom">
-                <div class="col-lg-4 position-relative">
-                    <div class="card border-width-3 border-radius-0 border-color-hover-dark" style="min-height: 450px; min-width: 310px; margin-left:-10px;">
 
-                        <div class="card-body">
-                            <h4 class="font-weight-bold text-uppercase text-4 mb-3">Your Order Details</h4>
-                            <table class="shop_table cart-totals mb-3">
-                                <tbody>
-                                    <tr>
-                                        <td colspan="2" class="border-top-0">
-                                            <strong class="text-color-dark"> <p id="page-count-info"></p></strong>
-                                           
-                                        </td>
-                                    </tr>
-                    
-                                    <tr class="total">
-                                        <td>
-                                            <strong class="text-color-dark text-3-5">Total</strong>
-                                        </td>
-                                        <td class="text-end">
-                                            <strong class="text-color-dark"><span class="amount text-color-dark text-5">#0</span></strong>
-                                        </td>
-                                    </tr>
-                                    <tr class="payment-methods">
-                                        <td colspan="2">
-                                            <strong class="d-block text-color-dark mb-2">Payment Methods</strong>
+                <aside class="sidebar">
 
-                                            <div class="d-flex flex-column">
-                                                <label class="d-flex align-items-center text-color-grey mb-0" for="payment_method1">
-                                                    <input id="payment_method1" type="radio" class="me-2" name="payment_method" value="cash-on-delivery" checked />
-                                                    Cash On Delivery
-                                                </label>
-                                                <label class="d-flex align-items-center text-color-grey mb-0" for="payment_method2">
-                                                    <input id="payment_method2" type="radio" class="me-2" name="payment_method" value="paypal" />
-                                                    PayPal
-                                                </label>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                            <a href="ordercomplete.php" class="btn btn-dark btn-modern w-100 text-uppercase bg-color-hover-primary border-color-hover-primary border-radius-0 text-3 py-3">Place Order <i class="fas fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
+                    <h5 class="font-weight-semi-bold pt-3" style="width: 100%;">Categories</h5>
+                    <ul class="nav nav-list flex-column">
+                        <li class="nav-item"><a class="nav-link" href="textbooks.php">Books</a></li>
+                        <li class="nav-item"><a class="nav-link" href="electronics.php">accessories</a></li>
+                        <li class="nav-item"><a class="nav-link" href="stationary.php">Stationary</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Food</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Xeorox.php">Xerox</a></li>
+                    </ul>
 
             </div>
+
         </div>
     </div>
+    </div>
+    </div>
+
+
 
     <div class="right-section">
         <div class="right-section-inner">
-
             <div role="main" class="main shop pb-4">
-                <!-- <h4 style="text-align: center; color:#0088cc" >Become a Seller</h4> -->
-                <div class="poster1">
-
-                </div>
-
+                <div class="poster1"></div>
                 <div class="alert alert-warning alert-dismissible" role="alert" style="margin-top: 10px;">
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    <strong>Alert!</strong> You Need Some More Authentication to make u an Seller
+                    <strong>Alert!</strong> You need additional authentication to become a seller.
                 </div>
+                <td colspan="2" class="border-top-0">
+                    <strong class="text-color-dark">
+                        <p id="page-count-info"></p>
+                    </strong>
+
+                </td>
                 <div class="row">
                     <div class="col">
                         <section class="card card-modern card-big-info">
-                            <form>
-                                <div class="card-body" style="border: 2px solid #666; border-radius:5px;">
+                            <form method="post" action="" enctype="multipart/form-data">
+                                <div class="card-body" style="border: 2px solid #666; border-radius: 5px;">
                                     <div class="row">
                                         <div class="col-lg-2-5 col-xl-1-5">
                                             <i class="card-big-info-icon bx bx-camera"></i>
                                             <br>
-                                            <h3 class="card-big-info-title">Upload Ur Files</h3>
-
+                                            <h3 class="card-big-info-title">Upload Your Files</h3>
                                         </div>
-
-                                        <div class="col-lg-3-5 col-xl-4-5" style="border: 2px dashed #666; background-color:#f2f4f4;">
+                                        <div class="col-lg-3-5 col-xl-4-5"
+                                            style="border: 2px dashed #666; background-color: #f2f4f4;">
                                             <div class="form-group row align-items-center">
                                                 <div class="col">
                                                     <div id="dropzone-form-image" class="dropzone-modern dz-square">
-                                                        <span class="dropzone-upload-message text-center" style="border-color: #007bff;">
+                                                        <span class="dropzone-upload-message text-center"
+                                                            style="border-color: #007bff;">
                                                             <i class="bx bxs-cloud-upload"></i>
                                                             <br>
-
                                                             <label for="file-upload" class="custom-file-upload">
-    <span id="file-name"></span>
-</label>
-<input type="file" id="file-upload-input" name="productimage" required onchange="handleFileUpload(this.files)" />
-
-
+                                                                <span id="file-name"></span>
+                                                            </label>
+                                                            <input type="file" id="file" name="file" required
+                                                                onchange="handleFileUpload(this.files)" />
                                                         </span>
-
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div><br>
-                                    <div aria-labelledby="inventory-tab" style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); padding: 10px; border-radius: 5px;">
+                                    <div aria-labelledby="inventory-tab"
+                                        style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); padding: 10px; border-radius: 5px;">
                                         <br>
                                         <div class="form-group row align-items-center pb-3">
-
-                                            <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Category</label>
+                                            <label
+                                                class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Category</label>
                                             <div class="col-lg-7 col-xl-6">
-                                                <select class="form-control form-control-modern" name="Category">
-                                                    <option value="" selected>Colour</option>
-                                                    <option value="">Black & White</option>
-
+                                                <select class="form-control form-control-modern" name="category">
+                                                    <option value="Color" selected>Color</option>
+                                                    <option value="Black & White">Black & White</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group row align-items-center pb-3">
-
-                                            <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Printins Sides</label>
+                                            <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Printing
+                                                Sides</label>
                                             <div class="col-lg-7 col-xl-6">
-                                                <select class="form-control form-control-modern" name="Category">
-                                                    <option value="" selected>Both sides of Page</option>
-                                                    <option value="">One side of Page</option>
-
+                                                <select class="form-control form-control-modern" name="category1">
+                                                    <option value="Both Sides Of page" selected>Both sides of Page
+                                                    </option>
+                                                    <option value="One side of Page">One side of Page</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group row align-items-center pb-3">
-                                            <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">cover</label>
+                                            <label
+                                                class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Cover</label>
                                             <div class="col-lg-7 col-xl-6">
-                                                <select class="form-control form-control-modern" name="stockStatus">
-                                                    <option value="" selected>Spiral Binding</option>
-                                                    <option value="">Stick File</option>
-                                                    <option value="">None</option>
+                                                <select class="form-control form-control-modern" name="category2">
+                                                    <option value="Spiral Binding" selected>Spiral Binding</option>
+                                                    <option value="Stick File">Stick File</option>
+                                                    <option value="None">None</option>
                                                 </select>
-
                                             </div>
-
-
-
                                         </div>
                                         <div class="form-group row align-items-center pb-3">
                                             <p id="page-count-info"></p>
                                             <div class="col-lg-7 col-xl-6">
-                                                <button type="submit" class="btn btn-primary" style="left: 300px; width:120px; margin-bottom:10px;">Submit</button>
-                                            </div>
-                                        </div>
+                                                <button type="submit" name="submit" class="btn btn-primary"
+                                                    style="left: 300px; width: 120px; margin-bottom: 10px;">Submit</button>
+                                                <?php
+                                                $query = "SELECT * FROM xeorx";
+                                                $result = mysqli_query($conn, $query);
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    $id = $row['id'];
+                                                    $file = $row['file'];
+                                                    $category = $row['category'];
+                                                    $category1 = $row['category1'];
+                                                    $category2 = $row['category2'];
+                                                    $finalamount = $row['total'];
+                                                }
+                                                ?>
+                                                <a class ="btn btn-primary buynow">Buy Now</a>
 
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
-
                             </form>
                         </section>
                     </div>
                 </div>
-
                 <!-- Bootstrap JS and Popper.js -->
                 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.12.313/pdf.min.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
-
             </div>
         </div>
     </div>
@@ -404,8 +380,6 @@
 
 
     <style>
-       
-
         .custom-file-upload span {
             font-size: 16px;
             font-weight: 100;
@@ -422,72 +396,15 @@
     <!-- end: page -->
 
     </div>
-    <script>
-        //img upload
-        function handleFileUpload(files) {
-    console.log('Files:', files); // Check files parameter
-    const fileNameSpan = document.getElementById('file-name');
-    if (files.length > 0) {
-        console.log('File name:', files[0].name); // Check file name
-        fileNameSpan.textContent = files[0].name;
-    } else {
-        fileNameSpan.textContent = 'Choose File';
-    }
-};
-
-
-        // Store the original content when the page loads
-        // var originalContent = document.querySelector('.right-section-inner').innerHTML;
-
-        // document.getElementById('addproduct').addEventListener('click', function() {
-        //     var rightSectionInner = document.querySelector('.right-section-inner');
-
-        //     // Modify the content dynamically using insertAdjacentHTML
-        //     rightSectionInner.innerHTML = `
-
-
-        // `;
-        // });
-
-        let pdfInput = document.getElementById('file-upload-input');
-
-
-
-        // Event listener for file input change
-        pdfInput.onchange = function(event) {
-            let file = event.target.files[0];
-
-            // Create a FileReader object
-            let filereader = new FileReader();
-
-            // Event listener for FileReader's load event
-            filereader.onload = function() {
-                let typedarray = new Uint8Array(this.result);
-                console.log('FileReader onload triggered. Result:', this.result);
-
-                // Use PDF.js to parse the PDF file
-                pdfjsLib.getDocument(typedarray).promise.then(function(pdf) {
-                    let numPages = pdf.numPages;
-                    console.log('Number of pages in the PDF:', numPages);
-                    // Display number of pages in the HTML
-                    document.getElementById('page-count-info').textContent = 'Number of pages in the PDF: ' + numPages;
-                }).catch(function(error) {
-                    console.error('Error reading PDF:', error);
-                });
-            };
-
-            // Read the uploaded file as an ArrayBuffer
-            filereader.readAsArrayBuffer(file);
-        };
-    </script>
-
-
 
     <!-- Vendor -->
     <script src="vendor/plugins/js/plugins.min.js"></script>
     <script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
     <script src="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
     <script src="vendor/jquery.countdown/jquery.countdown.min.js"></script>
+
+
+
 
     <!-- Theme Base, Components and Settings -->
     <script src="js/theme.js"></script>
@@ -501,17 +418,113 @@
     <!-- Theme Initialization Files -->
     <script src="js/theme.init.js"></script>
     <!-- 
-					// Assuming you have a variable selectedProductCount that represents the count
+                    // Assuming you have a variable selectedProductCount that represents the count
 const selectedProductCount = 1;
 
 // Update the count badge text
 document.querySelector('.count-badge').textContent = selectedProductCount.toString(); -->
     <?php include 'footer.php'; ?>
+    <?php
+    include('connect.php');
+    include 'connect.php';
+
+    require_once('vendor/autoload.php');
+
+    use setasign\Fpdi\Fpdi;
+
+    function count_pdf_pages($pdf_path)
+    {
+        try {
+            $pdf = new Fpdi();
+            $num_pages = $pdf->setSourceFile($pdf_path);
+            return $num_pages;
+        } catch (Exception $e) {
+            return "Error: " . $e->getMessage();
+        }
+    }
+
+    // Check if form is submitted and file is uploaded
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
+        // Check for errors during file upload
+        if ($_FILES['file']['error'] !== UPLOAD_ERR_OK) {
+            echo "Error uploading file.";
+        } else {
+            $temp_file = $_FILES['file']['tmp_name'];
+            $page_count = count_pdf_pages($temp_file);
+            if (is_numeric($page_count)) {
+                $numpages = $page_count;
+            } else {
+                echo $page_count;
+            }
+        }
+    }
+
+    if (isset($_POST['submit'])) {
+        // Check if file was uploaded without errors
+        if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+            $file_name = $_FILES['file']['name'];
+            $file_tmp = $_FILES['file']['tmp_name'];
+
+            // Move the uploaded file to a specified directory
+            $upload_dir = 'uploads/'; // Change this to your desired upload directory
+            move_uploaded_file($file_tmp, $upload_dir . $file_name);
+
+            // Retrieve other form data
+            $category = $_POST['category'];
+            $category1 = $_POST['category1'];
+            $category2 = $_POST['category2'];
+            $colourprice = 5;
+            $bwprice = 2;
+            $spiralprice = 30;
+            $stickprice = 20;
+            $pages = $numpages;
+
+            $colour = $category;
+            $spiral = $category2;
+
+            if ($colour == "Color" && $spiral == "Spiral Binding") {
+                $total = $pages * $colourprice + $spiralprice;
+            } else if ($colour == "Color" && $spiral == "Stick File") {
+                $total = $pages * $colourprice + $stickprice;
+            } else if ($colour == "Black & White" && $spiral == "Spiral Binding") {
+                $total = $pages * $bwprice + $spiralprice;
+            } else if ($colour == "Black & White" && $spiral == "Stick File") {
+                $total = $pages * $bwprice + $stickprice;
+            } else if ($colour == "Black & White" && $spiral == "None") {
+                $total = $pages * $bwprice;
+            } else if ($colour == "Color" && $spiral == "None") {
+                $total = $pages * $colourprice;
+            } else {
+                $total = 10;
+            }
+
+            // Insert data into the database
+            $sql = "INSERT INTO xeorx (file, category, category1, category2,total) VALUES ('$file_name', '$category', '$category1', '$category2', '$total')";
+            $result = mysqli_query($conn, $sql);
+
+            if ($result) {
+                echo "<script>alert('Pdf Uploaded successfully!');</script>";
+            } else {
+                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            }
+
+            // Close the database connection
+            mysqli_close($conn);
+        } else {
+            echo "File upload error.";
+        }
+    }
+
+
+    ?>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <script>
         function previewImage(event) {
             var reader = new FileReader();
-            reader.onload = function() {
+            reader.onload = function () {
                 var preview = document.getElementById('preview');
                 preview.src = reader.result;
             }
@@ -519,71 +532,42 @@ document.querySelector('.count-badge').textContent = selectedProductCount.toStri
         }
     </script>
 </body>
-<?php
-include 'connect.php';
-
-// Check if form is submitted
-if (isset($_POST['save'])) {
-    // Check if all required fields are filled
-    if (!empty($_POST['productName']) && !empty($_POST['productDescription']) && !empty($_POST['regularPrice']) && !empty($_POST['salePrice']) && !empty($_POST['Category']) && !empty($_POST['stockStatus']) && !empty($_POST['size']) && !empty($_POST['colour']) && !empty($_FILES['productimage']['name'])) {
-
-        // Set parameters
-        $productName = $_POST["productName"];
-        $productDescription = $_POST["productDescription"];
-        $regularPrice = $_POST["regularPrice"];
-        $salePrice = $_POST["salePrice"];
-        $Category = $_POST["Category"];
-        $stockStatus = $_POST["stockStatus"];
-        $size = $_POST["size"];
-        $colour = $_POST["colour"];
-
-        // File upload handling
-        $targetDirectory = "uploads/";
-        $targetFile = $targetDirectory . basename($_FILES["productimage"]["name"]);
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-
-        // Check file size
-        if ($_FILES["productimage"]["size"] > 5000000) {
-            echo "Sorry, your file is too large.";
-            $uploadOk = 0;
-        }
-
-        // Check if file already exists
-        if (file_exists($targetFile)) {
-            echo "Sorry, file already exists.";
-            $uploadOk = 0;
-        }
-
-        // Check file format
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-            $uploadOk = 0;
-        }
-
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
-        } else {
-            // If everything is ok, try to upload file
-            if (move_uploaded_file($_FILES["productimage"]["tmp_name"], $targetFile)) {
-                // File uploaded successfully, now insert data into database
-                $image = $targetFile;
-                $insertQuery = "INSERT INTO seller (productName, productDescription, image, regularPrice, salePrice, Category, stockStatus, size, colour) VALUES ('$productName', '$productDescription', '$image', '$regularPrice', '$salePrice', '$Category', '$stockStatus', '$size', '$colour')";
-
-                if ($conn->query($insertQuery) === TRUE) {
-                    echo "<script>alert('Product added successfully!');</script>";
-                } else {
-                    echo "Error: " . $insertQuery . "<br>" . $conn->error;
-                }
-            } else {
-                echo "Sorry, there was an error uploading your file.";
+<script>
+$(document).ready(function() {
+    $(".buynow").click(function(e) {
+        e.preventDefault(); // Prevent default behavior of anchor tag click
+        var amount = <?php echo $finalamount; ?>;
+        var productname = "Xerox"; // Assuming this variable is defined elsewhere in your code
+        var options = {
+            "key": "rzp_live_2D4bAGktbYxm16",
+            "amount": amount * 100,
+            "name": "Campus Online",
+            "description": productname,
+            "image": "http://localhost/hackathon/img/Campus.png",
+            "handler": function(response) {
+                var paymentid = response.razorpay_payment_id;
+                $.ajax({
+                    url: "payment-process.php",
+                    type: "POST",
+                    data: { product_id: 'your_product_id', payment_id: paymentid }, // Replace 'your_product_id' with the actual product ID
+                    success: function(finalresponse) {
+                        if (finalresponse == 'done') {
+                            window.location.href = "http://localhost/hackathon/success.php";
+                        } else {
+                            alert('Please check console.log to find error');
+                            console.log(finalresponse);
+                        }
+                    }
+                });
+            },
+            "theme": {
+                "color": "#3399cc"
             }
-        }
-    } else {
-        echo "All fields are required";
-    }
-}
-?>
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    });
+});
+</script>
 
 </html>
