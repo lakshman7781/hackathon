@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php session_start(); ?>
 <head>
-    
+
 	<!-- Basic -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -219,7 +219,7 @@
 
 							&nbsp; Cart
 						</a>
-					
+
 
 					</li>
 					<li class="">
@@ -237,226 +237,138 @@
 		</div>
 	</div>
 
-		<div class="right-section">
-			<div class="right-section-inner">
+	<div class="right-section">
+		<div class="right-section-inner">
 
-				<div role="main" class="main shop pb-4">
-					<h4 style="text-align: center; color:#0088cc" >Your Wishlist</h4>
+			<div role="main" class="main shop pb-4">
+				<h4 style="text-align: center; color:#0088cc">Your Wishlist</h4>
 
-					<div class="container">
-
-
-						<div class="row pb-4 mb-5">
-							<div class="col-lg-8 mb-5 mb-lg-0">
-								<form method="post" action="">
-									<div class="">
-										<table class="shop_table cart">
-											<thead>
-												<tr class="text-color-dark">
-													<th class="product-thumbnail" width="15%">
-														&nbsp;
-													</th>
-													<th class="product-name text-uppercase" width="30%">
-														Product
-													</th>
-													<th class="product-price text-uppercase" width="15%">
-														Price
-													</th>
-													<th class="product-quantity text-uppercase" width="20%">
-														Quantity
-													</th>
-													<th class="product-subtotal text-uppercase text-end" width="20%">
-														Subtotal
-													</th>
-													
-												</tr>
-											</thead>
-											<tbody>
-
-												<tr class="cart_table_item">
-													<td class="product-thumbnail" style="height: 100px; width: 100px !important;">
-														<div class="product-thumbnail-wrapper" style="height: 100px; width: 100px !important;">
-															<a href="#" class="product-thumbnail-remove" title="Remove Product">
-																<i class="fas fa-times"></i>
-															</a>
-															<a href="shop-product-sidebar-right.html" class="product-thumbnail-image" title="Photo Camera">
-																<img width="250" height="250" alt="" class="img-fluid" src="img/products/product-grey-1.jpg">
-															</a>
-														</div>
-													</td>
-													<td class="product-name">
-														<a href="shop-product-sidebar-right.html" class="font-weight-semi-bold text-color-dark text-color-hover-primary text-decoration-none">Photo Camera</a>
-													</td>
-													<td class="product-price">
-														<span class="amount font-weight-medium text-color-grey">$59</span>
-													</td>
-													<td class="product-quantity">
-														<div class="quantity float-none m-0">
-															<input type="button" class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="-">
-															<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-															<input type="button" class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="+">
-														</div>
-													</td>
-													<td class="product-subtotal text-end">
-														<span class="amount text-color-dark font-weight-bold text-4">$59</span>
-													</td>
-												</tr>
-
-												<tr class="cart_table_item">
-													<td class="product-thumbnail">
-														<div class="product-thumbnail-wrapper">
-															<a href="#" class="product-thumbnail-remove" title="Remove Product">
-																<i class="fas fa-times"></i>
-															</a>
-															<a href="shop-product-sidebar-right.html" class="product-thumbnail-image" title="Porto Headphone">
-																<img width="150" height="150" alt="" class="img-fluid" src="img/products/product-grey-7.jpg">
-															</a>
-														</div>
-													</td>
-													<td class="product-name">
-														<a href="shop-product-sidebar-right.html" class="font-weight-semi-bold text-color-dark text-color-hover-primary text-decoration-none">Porto Headphone</a>
-													</td>
-													<td class="product-price">
-														<span class="amount font-weight-medium text-color-grey">$99</span>
-													</td>
-													<td class="product-quantity">
-														<div class="quantity float-none m-0">
-															<input type="button" class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="-">
-															<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-															<input type="button" class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="+">
-														</div>
-													</td>
-													<td class="product-subtotal text-end">
-														<span class="amount text-color-dark font-weight-bold text-4">$99</span>
-													</td>
-												</tr>
-
-												<tr class="cart_table_item">
-													<td class="product-thumbnail">
-														<div class="product-thumbnail-wrapper">
-															<a href="#" class="product-thumbnail-remove" title="Remove Product">
-																<i class="fas fa-times"></i>
-															</a>
-															<a href="shop-product-sidebar-right.html" class="product-thumbnail-image" title="Golf Bag">
-															<img  alt="" class="img-fluid" src="img/products/product-grey-2.jpg">
+				<div class="container">
 
 
-															</a>
-														</div>
-													</td>
-													<td class="product-name">
-														<a href="shop-product-sidebar-right.html" class="font-weight-semi-bold text-color-dark text-color-hover-primary text-decoration-none">Golf Bag</a>
-													</td>
-													<td class="product-price">
-														<span class="amount font-weight-medium text-color-grey">$19</span>
-													</td>
-													<td class="product-quantity">
-														<div class="quantity float-none m-0">
-															<input type="button" class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="-">
-															<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-															<input type="button" class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="+">
-														</div>
-													</td>
-													<td class="product-subtotal text-end">
-														<span class="amount text-color-dark font-weight-bold text-4">$19</span>
-													</td>
-												</tr>
+					<div class="row pb-4 mb-5">
+						<div class="col-lg-8 mb-5 mb-lg-0">
+							<form method="post" action="">
+								<div class="">
+									<table class="shop_table cart">
+										<thead>
+											<tr class="text-color-dark">
+												<th class="product-thumbnail" width="15%">
+													&nbsp;
+												</th>
+												<th class="product-name text-uppercase" width="30%">
+													Product
+												</th>
+												<th class="product-price text-uppercase" width="15%">
+													Price
+												</th>
+												<th class="product-quantity text-uppercase" width="20%">
+													Quantity
+												</th>
+												<th class="product-subtotal text-uppercase text-end" width="20%">
+													Subtotal
+												</th>
 
-												<tr class="cart_table_item">
-													<td class="product-thumbnail">
-														<div class="product-thumbnail-wrapper">
-															<a href="#" class="product-thumbnail-remove" title="Remove Product">
-																<i class="fas fa-times"></i>
-															</a>
-															<a href="shop-product-sidebar-right.html" class="product-thumbnail-image" title="Workout">
-																<img width="150" height="150" alt="" class="img-fluid" src="img/products/product-grey-3.jpg">
-															</a>
-														</div>
-													</td>
-													<td class="product-name">
-														<a href="shop-product-sidebar-right.html" class="font-weight-semi-bold text-color-dark text-color-hover-primary text-decoration-none">Workout</a>
-													</td>
-													<td class="product-price">
-														<span class="amount font-weight-medium text-color-grey">$30</span>
-													</td>
-													<td class="product-quantity">
-														<div class="quantity float-none m-0">
-															<input type="button" class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="-">
-															<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-															<input type="button" class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="+">
-														</div>
-													</td>
-													<td class="product-subtotal text-end">
-														<span class="amount text-color-dark font-weight-bold text-4">$30</span>
-													</td>
-												</tr>
+											</tr>
+										</thead>
+										<tbody>
 
-												<tr class="cart_table_item">
-													<td class="product-thumbnail">
-														<div class="product-thumbnail-wrapper">
-															<a href="#" class="product-thumbnail-remove" title="Remove Product">
-																<i class="fas fa-times"></i>
-															</a>
-															<a href="shop-product-sidebar-right.html" class="product-thumbnail-image" title="Luxury Bag">
-																<img width="150" height="150" alt="" class="img-fluid" src="img/products/product-grey-4.jpg">
-															</a>
-														</div>
-													</td>
-													<td class="product-name">
-														<a href="shop-product-sidebar-right.html" class="font-weight-semi-bold text-color-dark text-color-hover-primary text-decoration-none">Luxury Bag</a>
-													</td>
-													<td class="product-price">
-														<span class="amount font-weight-medium text-color-grey">$79</span>
-													</td>
-													<td class="product-quantity">
-														<div class="quantity float-none m-0">
-															<input type="button" class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="-">
-															<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-															<input type="button" class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="+">
-														</div>
-													</td>
-													<td class="product-subtotal text-end">
-														<span class="amount text-color-dark font-weight-bold text-4">$79</span>
-													</td>
-												</tr>
+											<?php
+											// Include the file to establish a database connection
+											include 'connect.php';
+
+											// Fetch data from the seller table based on matches with the wishlist table
+											$sql = "SELECT seller.productName,seller.image, seller.salePrice
+                                            FROM seller
+                                              JOIN wishlist ON seller.productid = wishlist.productid where wishlist.reg_no = '$_SESSION[idnum]'";
+
+											// Execute the query
+											$result = mysqli_query($conn, $sql);
+
+											// Check if there are any results
+											if (mysqli_num_rows($result) > 0) {
+												// Output data of each row
+												while ($row = mysqli_fetch_assoc($result)) {
+													// Output the HTML structure with product details
+											?>
+													<tr class="cart_table_item">
+														<td class="product-thumbnail" style="height: 100px; width: 100px !important;">
+															<div class="product-thumbnail-wrapper" style="height: 100px; width: 100px !important;">
+																<a href="#" class="product-thumbnail-remove" title="Remove Product">
+																	<i class="fas fa-times"></i>
+																</a>
+																<a href="shop-product-sidebar-right.html" class="product-thumbnail-image" title="<?php echo $row['productName']; ?>">
+																	<img width="250" height="250" alt="<?php echo $row['productName']; ?>" class="img-fluid" src="<?php echo $row['image']; ?>">
+																</a>
+															</div>
+														</td>
+														<td class="product-name">
+															<a href="shop-product-sidebar-right.html" class="font-weight-semi-bold text-color-dark text-color-hover-primary text-decoration-none"><?php echo $row['productName']; ?></a>
+														</td>
+														<td class="product-price">
+															<span class="amount font-weight-medium text-color-grey">₹<?php echo $row['salePrice']; ?></span>
+														</td>
+														<td class="product-quantity">
+															<div class="quantity float-none m-0">
+																<input type="button" class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="-">
+																<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+																<input type="button" class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="+">
+															</div>
+														</td>
+														<td class="product-subtotal text-end">
+															<span class="amount text-color-dark font-weight-bold text-4">₹<?php echo $row['salePrice']; ?></span>
+														</td>
+													</tr>
+											<?php
+												}
+											} else {
+												// If there are no results, you can display a message or take any other appropriate action
+												echo "0 results";
+											}
+
+											// Close the database connection
+											mysqli_close($conn);
+											?>
 
 
-											</tbody>
-										</table>
-									</div>
-								</form>
-							</div>
+
+
+										</tbody>
+									</table>
+								</div>
+							</form>
 						</div>
-
 					</div>
+
 				</div>
-				</div>
+			</div>
 		</div>
-				
-					<!-- Vendor -->
-					<script src="vendor/plugins/js/plugins.min.js"></script>
-					<script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
-					<script src="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
-					<script src="vendor/jquery.countdown/jquery.countdown.min.js"></script>
+	</div>
 
-					<!-- Theme Base, Components and Settings -->
-					<script src="js/theme.js"></script>
+	<!-- Vendor -->
+	<script src="vendor/plugins/js/plugins.min.js"></script>
+	<script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
+	<script src="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
+	<script src="vendor/jquery.countdown/jquery.countdown.min.js"></script>
 
-					<!-- Current Page Vendor and Views -->
-					<script src="js/views/view.shop.js"></script>
+	<!-- Theme Base, Components and Settings -->
+	<script src="js/theme.js"></script>
 
-					<!-- Theme Custom -->
-					<script src="js/custom.js"></script>
+	<!-- Current Page Vendor and Views -->
+	<script src="js/views/view.shop.js"></script>
 
-					<!-- Theme Initialization Files -->
-					<script src="js/theme.init.js"></script>
-<!-- 
+	<!-- Theme Custom -->
+	<script src="js/custom.js"></script>
+
+	<!-- Theme Initialization Files -->
+	<script src="js/theme.init.js"></script>
+	<!-- 
 					// Assuming you have a variable selectedProductCount that represents the count
 const selectedProductCount = 1;
 
 // Update the count badge text
 document.querySelector('.count-badge').textContent = selectedProductCount.toString(); -->
-<?php include 'footer.php'; ?>
+	<?php include 'footer.php'; ?>
 </body>
 
 </html>
