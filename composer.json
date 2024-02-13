@@ -1,5 +1,7 @@
 {
     "require": {
-        "twilio/sdk": "^7.14"
+        "twilio/sdk": "^7.14",
+        "setasign/fpdi": "^2.6",
+        "setasign/fpdf": "^1.8"
     }
 }
