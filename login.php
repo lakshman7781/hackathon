@@ -1,5 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+// Include the file for database connection
+include "connect.php";
+
+if (isset($_POST['submit'])) {
+    // Retrieve username and password from the form
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $_SESSION['idnum'] = $username;
+
+   
+    // Query to check if the username and password match in the database
+    $query = "SELECT * FROM users WHERE reg_no = '$username' AND password = '$password'";
+    $result = mysqli_query($conn, $query);
+
+
+    if (mysqli_num_rows($result) == 1) {
+        // If username and password are correct, redirect to another page
+        header("Location: index.php");
+        exit; // Always exit after a header redirection
+    } 
+}
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -88,52 +112,7 @@
 </head>
 
 <body>
-<?php
-// require 'vendor/autoload.php';
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Your login logic goes here
-
-    // Verify reCAPTCHA
-    $recaptcha_secret = "6Ldw-2cpAAAAAOnPxnirztcAyRzWxe1Iei7AiLZx";
-    $recaptcha_response = $_POST['g-recaptcha-response'];
-
-    $url = "https://www.google.com/recaptcha/api/siteverify";
-    $data = [
-        'secret' => $recaptcha_secret,
-        'response' => $recaptcha_response,
-    ];
-
-    $options = [
-        'http' => [
-            'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-            'method' => 'POST',
-            'content' => http_build_query($data),
-        ],
-    ];
-
-    $context = stream_context_create($options);
-    $result = file_get_contents($url, false, $context);
-    $result = json_decode($result, true);
-
-    if ($result['success']) {
-        // CAPTCHA verification passed, process the login
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-
-        // Your authentication logic goes here
-        // Example: Check credentials against a database
-        if ($username === 'demo' && $password === 'password') {
-            echo "Login successful!";
-        } else {
-            echo "Invalid username or password.";
-        }
-    } else {
-        // CAPTCHA verification failed
-        echo "CAPTCHA verification failed. Please try again.";
-    }
-}
-?>
 
     <div class="row justify-content-md-center" >
         <div class="#" style="width: 600px; margin:45px; height:900px !important;">
@@ -154,7 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
                     </div>
-                    <form action="/" id="frmSignUp" method="post" class="needs-validation">
+                    <form id="frmSignUp" method="post"  action =" "class="needs-validation">
                         <div class="row">
                             <label class="form-label" for="username">Register Number</label>
                             <input type="text" id="username" name="username" class="form-control form-control-lg" required>
@@ -166,7 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                       
                         <br>
                         <div class="g-recaptcha" data-sitekey="6Ldw-2cpAAAAAKCQkKIcOGEgkUBoMTUuRAVE0o_x"></div><br><br>
-                        <button type="submit" class="btn btn-primary btn-modern float-endy" style="width: 150px; margin-top: 170px;">Login</button>
+                        <button type="submit" name= "submit" class="btn btn-primary btn-modern float-endy" style="width: 150px; margin-top: 170px;">Login</button>
                         <div class="forgot-password-link">
                           <a href="forgotverify.php">Forgot Password?</a>
           </div>
@@ -179,7 +158,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             document.getElementById("demo-form").submit();
                         }
                     </script>
-
 
 
 

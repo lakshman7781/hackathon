@@ -422,9 +422,9 @@ h1 {
         </div>
        
 
-            <div class="row">
-                <div class="col">
-                    <div class="owl-carousel owl-theme stage-margin nav-style-1 " data-plugin-options="{'items': 7, 'margin': 26, 'loop': false, 'nav': true, 'dots': false, 'stagePadding': 20}" style="background-color: white; padding:10px; border-radius:10px; margin-top:10px; margin-right:10px;">
+            <div class="">
+                <div class="" style="margin-left: 40px; margin-right: 40px;">
+                    <div class="owl-carousel owl-theme stage-margin nav-style-1 " data-plugin-options="{'items': 7, 'margin': 20, 'loop': false, 'nav': true, 'dots': false, 'stagePadding': 20}" style="background-color: white; padding:10px; border-radius:10px; margin-top:10px;">
                         <div>
                         <a href="clubs.php">
                             <img alt="" class="img-fluid rounded" src="img/projects/project-5.jpg" style="height: 100px; width: 100px;">
@@ -462,283 +462,133 @@ h1 {
             </div>
 
            
-<div style="margin-left: 50px;margin-right: 50px;">
 
-<main id="app" >
-
-  <div class="post" >
-    
-<h3>Campus Buzz</h3>
-  <!-- <h1>Poll with Animation</h1> -->
-    <p class="text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, quas itaque! Aliquam laboriosam mollitia quod nulla nostrum possimus?
-    </p>
-
-    <section class="poll">
-      <p class="poll-details">
-        Poll • Ends in 22h
-      </p>
-      <ul class="poll-choices">
-        <li class="poll-choice choice-1">
-          <label for="choice-1">
-            <div class="poll-result">
-              <div class="star"><div></div></div>
-            </div>
-            <div class="poll-label">
-              <div class="radio"><input type=radio id="choice-1" name="poll" /></div>
-              <div class="answer">Dolor</div>
-            </div>
-            <p class="poll-percent">
-              0%
-            </p>
-          </label>
-        </li>
-        <li class="poll-choice choice-2">
-          <label for="choice-2">
-            <div class="poll-result">
-              <div class="star"><div></div></div>
-            </div>
-            <div class="poll-label">
-              <div class="radio"><input type=radio id="choice-2" name="poll" /></div>
-              <div class="answer">Lorem</div>
-            </div>
-            <p class="poll-percent">
-              0%
-            </p>
-          </label>
-        </li>
-        <li class="poll-choice choice-3">
-          <label for="choice-3">
-            <div class="poll-result">
-              <div class="star"><div></div></div>
-            </div>
-            <div class="poll-label">
-              <div class="radio"><input type=radio id="choice-3" name="poll" /></div>
-              <div class="answer">Assumenda, quas itaque! Aliquam laboriosam mollitia quod nulla nostrum possimus</div>
-            </div>
-            <p class="poll-percent">
-              0%
-            </p>
-          </label>
-        </li>
-        <li class="poll-choice choice-4">
-          <label for="choice-4">
-            <div class="poll-result">
-              <div class="star"><div></div></div>
-            </div>
-            <div class="poll-label">
-              <div class="radio"><input type=radio id="choice-4" name="poll" /></div>
-              <div class="answer">IDC, just wanna creep</div>
-            </div>
-            <p class="poll-percent">
-              0%
-            </p>
-          </label>
-        </li>
-      </ul>
-    </section>
-  </div>
-
-  <button>Reset</button>
-
-</main>
-<script>
-    const choices = document.querySelectorAll('input[name=poll]');
-
-const increaseNumber = (node,value) => {
-  node.innerText = "0%";
-  node.innerText = value + "%";
-  animateNumber(0,value, 1200,easeQuad,function(v) {
-    node.innerText = Math.ceil(v) + "%";
-  })
-}
-
-const reset = () => {
-  choices.forEach((c,i) => {
-    const pollChoice = c.closest(".poll-choice");
-    const result = pollChoice.querySelector(".poll-result");
-    c.closest(".poll").classList.remove("answered");
-    pollChoice.classList.remove("winner");
-    result.style.setProperty("--percent", 0 + "%");
-    pollChoice.querySelector(".poll-percent").innerText = "0%"; 
-  })
-}
-
-const handleChange = event => {
-  const choice = event.target;
-  const choiceIndex = [...choices].indexOf(choice);
-  let total = 100;
-  let remaining = total;
-  let values = [];
-  choices.forEach((c,i) => {
-    let r = Math.ceil(Math.random() * remaining);
-    remaining -= r;
-    values[i] = r;
-  });
-  values[values.length-1] = values[values.length-1] + remaining;
-  choices.forEach((c,i) => {
-    const pollChoice = c.closest(".poll-choice");
-    const result = pollChoice.querySelector(".poll-result");
-    pollChoice.classList.remove("winner");
-    if ( values[i] === Math.max(...values) ) {
-      pollChoice.classList.add("winner");
-    }
-    result.style.setProperty("--percent", values[i] + "%");
-    increaseNumber(pollChoice.querySelector(".poll-percent"), values[i]);
-      
-  });
-  choice.closest(".poll").classList.add("answered");
-}
-
-choices.forEach(choice => {
-  choice.addEventListener('change', handleChange );
-});
-
-// ----
-
-document.querySelector("button").addEventListener('click', reset);
-
-
-
-
-
-  function easeQuad(t) {
-    return t*t/(2*(t*t-t)+1)
-  }
-  
-  function animateNumber(
-    start,
-    end,
-    duration,
-    easingFunction,
-    callback 
-  ) {
-    const startTime = Date.now();
-    const endTime = startTime + duration;
-    const change = end - start;
-    const tick = () => {
-      const now = Date.now();
-      if (now >= endTime) {
-        callback(end);
-      } else {
-        const elapsed = now - startTime;
-        const value = easingFunction(elapsed / duration) * change + start;
-        callback(value);
-        requestAnimationFrame(tick);
-      }
-    };
-    tick();
-  }
-  </script>
-</div>
 
 
  
    
 
 
-            <div class="container" style="margin: 20px; margin-left: 30px; overflow: hidden;">
-          
-    <div class="category">
-        <br>
-       
-    <h2  style="left: 0% !important; margin-left:-799px;">Latest Updates</h2>
-        
-        <div class="#" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-            <div class="card" style="border-color: black;">
-                <div class="row g-0">
-                    <div class="col-lg-4">
-                        <img src="img/blog/medium/blog-1.jpg" class="card-img" alt="Blog Image">
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="card-body">
-                            <h4 class="card-title">Card Title</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rhoncus nulla dui, in dapi </p>
-                            <a href="#" class="btn btn-primary read-more" data-bs-toggle="collapse" data-bs-target="#new1" aria-expanded="false" aria-controls="new1">
-                                Read More <i class="fas fa-angle-down"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="collapse" id="new1" style="width:800px; ">
-                    <div class="card-body">
-                        <p>Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien. Praesent id enim sit amet odio vulputate eleifend in in tortor. Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien.</p>
-                    </div>
-                </div>
+            <div class="container" style="margin: 20px; margin-left: 50px;  overflow: hidden;">
+
+<div class="category">
+  <br>
+
+  <h2 style="left: 0% !important; margin-left:-799px;">Latest Updates</h2>
+
+
+  <div class="row align-items-center">
+    <div class="col-sm-5 mb-4 mb-sm-0">
+      <div class="product mb-0">
+        <div class="product-thumb-info border-0 mb-0">
+
+          <div class="product-thumb-info-badges-wrapper">
+            <span class="badge badge-ecommerce text-bg-success">NEW</span>
+
+          </div>
+          <a href="">
+            <div class=" ">
+              <img alt="" class="img-fluid" src="img/products/product-grey-1.jpg" style="height: 200px; width: 200px;">
+
             </div>
-            <br>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-7">
+      <div class="summary entry-summary">
 
-            <div class="card" style="border-color: black;">
-                <div class="row g-0">
-                    <div class="col-lg-4">
-                        <img src="img/blog/medium/blog-1.jpg" class="card-img" alt="Blog Image">
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="card-body" style="width: 100%;">
-                            <h4 class="card-title">Card Title</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rhoncus nulla dui, in dapi </p>
-                            <a href="#" class="btn btn-primary read-more" data-bs-toggle="collapse" data-bs-target="#new4" aria-expanded="false" aria-controls="new4">
-                                Read More <i class="fas fa-angle-down"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="collapse" id="new4" style="width:800px; ">
-                    <div class="card-body">
-                        <p>Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien. Praesent id enim sit amet odio vulputate eleifend in in tortor. Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien.</p>
-                    </div>
-                </div>
+        <h2 class="mb-0 font-weight-bold text-7"><a href="shop-product-sidebar-left.html" class="text-color-dark text-color-hover-primary text-decoration-none">Porto Headphone</a></h2>
+
+
+
+        <div class="divider divider-small">
+          <hr class="bg-color-grey-400">
+        </div>
+
+
+        <h4>Default</h4>
+
+        <div data-plugin-readmore data-plugin-options="{
+        'buttonOpenLabel': 'Read More <i class=\'fas fa-chevron-down text-2 ms-1\'></i>',
+        'buttonCloseLabel': 'Read Less <i class=\'fas fa-chevron-up text-2 ms-1\'></i>'
+         }">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing, elit. Totam placeat dolores, minima voluptas quo eos, repellat delectus inventore velit. Nulla placeat eius in, alias architecto magnam aliquid debitis adipisci voluptate. Lorem ipsum, dolor, sit amet consectetur adipisicing elit. Voluptate, aut. Aspernatur sapiente ad quod perspiciatis pariatur necessitatibus, omnis, labore dolore minus expedita, suscipit rerum vitae repellendus quia at aperiam laborum!</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis iusto odit quidem commodi voluptates vitae dolores temporibus itaque labore cumque nobis animi facilis, quod, nisi laboriosam sit. Veritatis tenetur, commodi.</p>
+          <div class="readmore-button-wrapper d-none">
+            <a href="#" class="text-decoration-none">
+              Read More
+              <i class="fas fa-chevron-down"></i>
+            </a>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    
+
+  </div>
+  <br>
+  <div class="divider divider-large">
+          <hr class="bg-color-grey-400">
+        </div>
+
+
+  <div class="row align-items-center">
+    <div class="col-sm-5 mb-4 mb-sm-0">
+      <div class="product mb-0">
+        <div class="product-thumb-info border-0 mb-0">
+
+          <div class="product-thumb-info-badges-wrapper">
+            <span class="badge badge-ecommerce text-bg-success">NEW</span>
+
+          </div>
+          <a href="">
+            <div class=" ">
+              <img alt="" class="img-fluid" src="img/products/product-grey-1.jpg" style="height: 200px; width: 200px;">
+
             </div>
-            <br>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-7">
+      <div class="summary entry-summary">
 
-<div class="card" style="border-color: black;">
-    <div class="row g-0">
-        <div class="col-lg-4">
-            <img src="img/blog/medium/blog-1.jpg" class="card-img" alt="Blog Image">
-        </div>
-        <div class="col-lg-8">
-            <div class="card-body" style="width: 100%;">
-                <h4 class="card-title">Card Title</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rhoncus nulla dui, in dapi </p>
-                <a href="#" class="btn btn-primary read-more" data-bs-toggle="collapse" data-bs-target="#new3" aria-expanded="false" aria-controls="new3">
-                    Read More <i class="fas fa-angle-down"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="collapse" id="new3" style="width:800px; ">
-        <div class="card-body">
-            <p>Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien. Praesent id enim sit amet odio vulputate eleifend in in tortor. Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien.</p>
-        </div>
-    </div>
-</div>
+        <h2 class="mb-0 font-weight-bold text-7"><a href="shop-product-sidebar-left.html" class="text-color-dark text-color-hover-primary text-decoration-none">Porto Headphone</a></h2>
 
 
-          <br>
-         
 
-<div class="card" style="border-color: black;">
-    <div class="row g-0">
-        <div class="col-lg-4">
-            <img src="img/blog/medium/blog-1.jpg" class="card-img" alt="Blog Image">
+        <div class="divider divider-small">
+          <hr class="bg-color-grey-400">
         </div>
-        <div class="col-lg-8">
-            <div class="card-body" style="width: 100%;">
-                <h4 class="card-title">Card Title</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rhoncus nulla dui, in dapi </p>
-                <a href="#" class="btn btn-primary read-more" data-bs-toggle="collapse" data-bs-target="#new4" aria-expanded="false" aria-controls="new4">
-                    Read More <i class="fas fa-angle-down"></i>
-                </a>
-            </div>
+
+
+        <h4>Default</h4>
+
+        <div data-plugin-readmore data-plugin-options="{
+        'buttonOpenLabel': 'Read More <i class=\'fas fa-chevron-down text-2 ms-1\'></i>',
+        'buttonCloseLabel': 'Read Less <i class=\'fas fa-chevron-up text-2 ms-1\'></i>'
+         }">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing, elit. Totam placeat dolores, minima voluptas quo eos, repellat delectus inventore velit. Nulla placeat eius in, alias architecto magnam aliquid debitis adipisci voluptate. Lorem ipsum, dolor, sit amet consectetur adipisicing elit. Voluptate, aut. Aspernatur sapiente ad quod perspiciatis pariatur necessitatibus, omnis, labore dolore minus expedita, suscipit rerum vitae repellendus quia at aperiam laborum!</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis iusto odit quidem commodi voluptates vitae dolores temporibus itaque labore cumque nobis animi facilis, quod, nisi laboriosam sit. Veritatis tenetur, commodi.</p>
+          <div class="readmore-button-wrapper d-none">
+            <a href="#" class="text-decoration-none">
+              Read More
+              <i class="fas fa-chevron-down"></i>
+            </a>
+          </div>
         </div>
+
+
+      </div>
     </div>
-    <div class="collapse" id="new4" style="width:800px; ">
-        <div class="card-body">
-            <p>Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien. Praesent id enim sit amet odio vulputate eleifend in in tortor. Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien.</p>
-        </div>
-    </div>
-</div>
+    
+
+  </div>
 <br>
+
 
             <!-- Bootstrap Bundle with Popper -->
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>

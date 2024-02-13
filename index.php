@@ -50,12 +50,12 @@
 <style>
 	/* Style the button that is used to open and close the collapsible content */
 	.chat-icon {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    cursor: pointer;
-    z-index: 1000;
-}
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+		cursor: pointer;
+		z-index: 1000;
+	}
 </style>
 
 <body style="background-color:#f2f2f4 !important;">
@@ -63,9 +63,9 @@
 	<?php include "header.php"; ?>
 
 
-	
+
 	<div id="testContainer"></div>
-	
+
 
 
 	<div class="containeeer">
@@ -75,15 +75,14 @@
 		</div>
 
 		<div class="categorry">
-    <a href="campusupdates.php">
-        <img src="img/2.svg" style="height: 150px; width: 575px;">
-    </a>
-</div>
+			<a href="eventshome.php">
+				<img src="img/2.svg" style="height: 150px; width: 575px;">
+			</a>
+		</div>
 
 	</div>
 
 	<script>
-
 		// Define the scrollToMain function
 		function scrollToMain() {
 			const mainSection = document.getElementById('mainSection');
@@ -134,7 +133,7 @@
 			<a href="stationary.php">
 				<img src="img/1.png">
 				<h6>Stationary</h6>
-	</a>
+			</a>
 		</div>
 		<div class="category">
 			<a href="#">
@@ -165,7 +164,7 @@
 		</div>
 		<div class="category">
 			<a href="Xeorox.php">
-			<img src="img/xerox.jpg"  style="height:80px; width:80px;">
+				<img src="img/xerox.jpg" style="height:80px; width:80px;">
 
 				<h6>Xerox</h6>
 			</a>
@@ -178,223 +177,269 @@
 	</div>
 	</div>
 	<div role="main" class="main shop pt-4">
-	<div class="containner">
+		<div class="containner">
 			<div class="cateegory">
-				
-					<h1 class="top-deals-heading">Top Deals</h1>
-					<!-- <a href="https://api.whatsapp.com/send?phone=9494410554" target="_blank">
+
+				<h1 class="top-deals-heading">Top Deals</h1>
+				<!-- <a href="https://api.whatsapp.com/send?phone=9494410554" target="_blank">
 
     Chat with Seller on WhatsApp
 </a>
 <a href="tel:+918712131582">Call Seller</a> -->
-					<button style="right:30px; top:720px;" class="next-btn">Next &nbsp; <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-							<path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
-						</svg></button>
-				</div>
+				<button style="right:30px; top:720px;" class="next-btn">Next &nbsp; <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+						<path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+					</svg></button>
+			</div>
 
 
-				<div class="masonry-loader masonry-loader-showing">
-					<div class="row products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
+			<div class="masonry-loader masonry-loader-showing">
+				<div class="row products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
 
-	<?php
-// Include the file to establish a database connection
-include 'connect.php';
+					<?php
+					// Include the file to establish a database connection
+					include 'connect.php';
 
-// Write your SQL query
-$sql = "SELECT * FROM seller";
+					// Write your SQL query
+					$sql = "SELECT * FROM seller";
 
-// Execute the query
-$result = mysqli_query($conn, $sql);
+					// Execute the query
+					$result = mysqli_query($conn, $sql);
 
-// Check if there are any results
-if (mysqli_num_rows($result) > 0) {
-    // Output data of each row
-    while ($row = mysqli_fetch_assoc($result)) {
-        // Output the HTML structure with product details
-?>
-        <div class="col-12 col-sm-6 col-lg-3">
-			<br>
-            <div class="product mb-0">
-                <div class="product-thumb-info border-0 mb-3">
+					// Check if there are any results
+					if (mysqli_num_rows($result) > 0) {
+						// Output data of each row
+						while ($row = mysqli_fetch_assoc($result)) {
+							// Output the HTML structure with product details
+					?>
+							<div class="col-12 col-sm-6 col-lg-3">
+								<br>
+								<div class="product mb-0">
+									<div class="product-thumb-info border-0 mb-3">
+										<div class="addtocart-btn-wrapper">
+											<a href="#" class="text-decoration-none addtocart-btn" title="Add to Cart" data-product-id="<?php echo $row['productid']; ?>">
+												<i class="icons icon-bag"></i>
+											</a>
+										</div>
+										<a href="product.php?productid=<?php echo $row['productid']; ?>" class=" text-uppercase font-weight-semibold text-2">
+											QUICK VIEW
+										</a>
+										<a href="">
+											<div class="product-thumb-info-image">
+												<img alt="" class="img-fluid" src="<?php echo $row['image']; ?>">
+											</div>
+										</a>
+									</div>
+									<div class="d-flex justify-content-between">
+										<div>
+											<a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1"><?php echo $row['Category']; ?></a>
+											<h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="#" class="text-color-dark text-color-hover-primary"><?php echo $row['productName']; ?></a></h3>
+										</div>
+										<a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4 heart-icon" data-product-id="<?php echo $row['productid']; ?>"><i class="far fa-heart"></i></a>
+									</div>
 
-                    <div class="addtocart-btn-wrapper">
-                        <a href="" class="text-decoration-none addtocart-btn" title="Add to Cart">
-                            <i class="icons icon-bag"></i>
-                        </a>
-                    </div>
+									<p class="price text-5 mb-3">
+										<span class="sale text-color-dark font-weight-semi-bold">₹<?php echo $row['salePrice']; ?></span>
+										<span class="amount">₹<?php echo $row['regularPrice']; ?></span>
+									</p>
+								</div>
+							</div>
+					<?php
+						}
+					} else {
+						echo "0 results";
+					}
 
-                    <a href="" class="quick-view text-uppercase font-weight-semibold text-2">
-                        QUICK VIEW
-                    </a>
-                    <a href="">
-                        <div class="product-thumb-info-image">
-                            <img alt="" class="img-fluid" src="<?php echo $row['image']; ?>">
-                        </div>
-                    </a>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1"><?php echo $row['Category']; ?></a>
-                        <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="#" class="text-color-dark text-color-hover-primary"><?php echo $row['productName']; ?></a></h3>
-                    </div>
-                    <a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
-                </div>
-              
-                <p class="price text-5 mb-3">
-                    <span class="sale text-color-dark font-weight-semi-bold">$<?php echo $row['salePrice']; ?></span>
-                    <span class="amount">$<?php echo $row['regularPrice']; ?></span>
-                </p>
-            </div>
-        </div>
-<?php
-    }
-} else {
-    echo "0 results";
-}
-
-// Close the database connection
-mysqli_close($conn);
-?>
-
-
-		<script>
-			let currentPanel = 1;
-			const panelWidth = 1200; // Width of each panel
-			const totalPanels = 4; // Total number of panels
-			const autoScrollInterval = 3000; // Interval for automatic scrolling in milliseconds (adjust as needed)
-
-			function changePanel(direction) {
-				currentPanel += direction;
-
-				if (currentPanel < 1) {
-					currentPanel = totalPanels;
-				} else if (currentPanel > totalPanels) {
-					currentPanel = 1;
-				}
-
-				updateCarousel();
-			}
-
-			function updateCarousel() {
-				const carousel = document.getElementById('carousel');
-				const panelContainer = document.querySelector('.carousel-container');
-				const translateValue = -panelWidth * (currentPanel - 1);
-				carousel.style.transform = `translateX(${translateValue}px)`;
-				panelContainer.style.width = `${panelWidth}px`;
-			}
-
-			function autoScroll() {
-				changePanel(1); // Automatically move to the next panel
-			}
-
-			// Set up automatic scrolling
-			const autoScrollIntervalId = setInterval(autoScroll, autoScrollInterval);
-
-			// Stop automatic scrolling when user interacts with the carousel
-			document.querySelector('.carousel-container').addEventListener('mouseenter', () => {
-				clearInterval(autoScrollIntervalId);
-			});
-
-			// Resume automatic scrolling when user stops interacting with the carousel
-			document.querySelector('.carousel-container').addEventListener('mouseleave', () => {
-				setInterval(autoScroll, autoScrollInterval);
-			});
-		</script>
-		<style>
-    /* CSS for styling purposes */
-    .chatcontainer {
-    display: none; /* Hide the container by default */
-    position: fixed; /* Make the container fixed */
-    top: 163px;
-    right: 60px;
-    z-index: 1;
-    width: 400px;
-    height: 550px;
-	border-radius: 5px;
-}
-
-.iframe-container {
-    width: 400px;
-    height: 550px;
-    border: none;
-    z-index: 1;
-}
-
-</style>
+					// Close the database connection
+					mysqli_close($conn);
+					?>
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+					<script>
+						$(document).ready(function() {
+							$('.addtocart-btn').click(function(e) {
+								e.preventDefault();
+								var productId = $(this).data('product-id');
+								$.ajax({
+									url: 'insertcart.php',
+									method: 'POST',
+									data: {
+										productId: productId
+									},
+									success: function(response) {
+										alert('Product added to Cart!');
+									},
+									error: function(xhr, status, error) {
+										console.error(xhr.responseText);
+									}
+								});
+							});
+						});
+					</script>
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+					<script>
+						$(document).ready(function() {
+							$('.heart-icon').click(function(e) {
+								e.preventDefault();
+								var productId = $(this).data('product-id');
+								$.ajax({
+									url: 'insertwishlist.php', // URL of the PHP script that handles insertion
+									method: 'POST',
+									data: {
+										productId: productId
+									}, // Data to send in the AJAX request
+									success: function(response) {
+										alert('Product added to wishlist successfully!');
+									},
+									error: function(xhr, status, error) {
+										console.error(xhr.responseText);
+									}
+								});
+							});
+						});
+					</script>
 
 
-		<!-- Vendor -->
-		<script src="vendor/plugins/js/plugins.min.js"></script>
 
-		<!-- Theme Base, Components and Settings -->
-		<script src="js/theme.js"></script>
 
-		<!-- Theme Custom -->
-		<script src="js/custom.js"></script>
 
-		<!-- Theme Initialization Files -->
-		<script src="js/theme.init.js"></script>
-		<!-- Vendor -->
-		<script src="vendor/plugins/js/plugins.min.js"></script>
-		<script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
-		<script src="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
-		<script src="vendor/jquery.countdown/jquery.countdown.min.js"></script>
+					<script>
+						let currentPanel = 1;
+						const panelWidth = 1200; // Width of each panel
+						const totalPanels = 4; // Total number of panels
+						const autoScrollInterval = 3000; // Interval for automatic scrolling in milliseconds (adjust as needed)
 
-		<!-- Theme Base, Components and Settings -->
-		<script src="js/theme.js"></script>
+						function changePanel(direction) {
+							currentPanel += direction;
 
-		<!-- Current Page Vendor and Views -->
-		<script src="js/views/view.shop.js"></script>
+							if (currentPanel < 1) {
+								currentPanel = totalPanels;
+							} else if (currentPanel > totalPanels) {
+								currentPanel = 1;
+							}
 
-		<!-- Theme Custom -->
-		<script src="js/custom.js"></script>
+							updateCarousel();
+						}
 
-		<!-- Theme Initialization Files -->
-		<script src="js/theme.init.js"></script>
+						function updateCarousel() {
+							const carousel = document.getElementById('carousel');
+							const panelContainer = document.querySelector('.carousel-container');
+							const translateValue = -panelWidth * (currentPanel - 1);
+							carousel.style.transform = `translateX(${translateValue}px)`;
+							panelContainer.style.width = `${panelWidth}px`;
+						}
 
-		<script>
-			(function($) {
+						function autoScroll() {
+							changePanel(1); // Automatically move to the next panel
+						}
 
-				'use strict';
+						// Set up automatic scrolling
+						const autoScrollIntervalId = setInterval(autoScroll, autoScrollInterval);
 
-				$('.open-style-switcher').on('mousedown', function(e) {
-					e.preventDefault();
-					$('.style-switcher-open-loader').trigger('click');
-					return false;
-				});
+						// Stop automatic scrolling when user interacts with the carousel
+						document.querySelector('.carousel-container').addEventListener('mouseenter', () => {
+							clearInterval(autoScrollIntervalId);
+						});
 
-			}).apply(this, [jQuery]);
-		</script>
-		<?php include "footer.php"; ?>
+						// Resume automatic scrolling when user stops interacting with the carousel
+						document.querySelector('.carousel-container').addEventListener('mouseleave', () => {
+							setInterval(autoScroll, autoScrollInterval);
+						});
+					</script>
+					<style>
+						/* CSS for styling purposes */
+						.chatcontainer {
+							display: none;
+							/* Hide the container by default */
+							position: fixed;
+							/* Make the container fixed */
+							top: 163px;
+							right: 60px;
+							z-index: 1;
+							width: 400px;
+							height: 550px;
+							border-radius: 5px;
+						}
 
-			
-<div class="chat-icon" onclick="toggleTestBot()">
-    <img src="img/chatbot.gif" alt="Chat Icon" style="height: 75px; width:75px;">
-</div>
+						.iframe-container {
+							width: 400px;
+							height: 550px;
+							border: none;
+							z-index: 1;
+						}
+					</style>
 
-<div class="chatcontainer" id="chatcontainer"></div>
 
-<script>
-    // JavaScript function to toggle the visibility of the chat container
-    function toggleTestBot() {
-        var chatContainer = document.getElementById("chatcontainer");
-        if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
-            // If container is hidden or not set, show it
-            chatContainer.style.display = "block";
-            // Create an iframe element
-            var iframe = document.createElement('iframe');
-            iframe.src = 'test.html';
-            iframe.classList.add('iframe-container');
-            // Append the iframe to the container
-            chatContainer.appendChild(iframe);
-        } else {
-            // If container is visible, hide it
-            chatContainer.style.display = "none";
-            // Clear the content when hiding
-            chatContainer.innerHTML = "";
-        }
-    }
-</script>
+					<!-- Vendor -->
+					<script src="vendor/plugins/js/plugins.min.js"></script>
+
+					<!-- Theme Base, Components and Settings -->
+					<script src="js/theme.js"></script>
+
+					<!-- Theme Custom -->
+					<script src="js/custom.js"></script>
+
+					<!-- Theme Initialization Files -->
+					<script src="js/theme.init.js"></script>
+					<!-- Vendor -->
+					<script src="vendor/plugins/js/plugins.min.js"></script>
+					<script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
+					<script src="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
+					<script src="vendor/jquery.countdown/jquery.countdown.min.js"></script>
+
+					<!-- Theme Base, Components and Settings -->
+					<script src="js/theme.js"></script>
+
+					<!-- Current Page Vendor and Views -->
+					<script src="js/views/view.shop.js"></script>
+
+					<!-- Theme Custom -->
+					<script src="js/custom.js"></script>
+
+					<!-- Theme Initialization Files -->
+					<script src="js/theme.init.js"></script>
+
+					<script>
+						(function($) {
+
+							'use strict';
+
+							$('.open-style-switcher').on('mousedown', function(e) {
+								e.preventDefault();
+								$('.style-switcher-open-loader').trigger('click');
+								return false;
+							});
+
+						}).apply(this, [jQuery]);
+					</script>
+					<?php include "footer.php"; ?>
+
+
+					<div class="chat-icon" onclick="toggleTestBot()">
+						<img src="img/chatbot.gif" alt="Chat Icon" style="height: 75px; width:75px;">
+					</div>
+
+					<div class="chatcontainer" id="chatcontainer"></div>
+
+					<script>
+						// JavaScript function to toggle the visibility of the chat container
+						function toggleTestBot() {
+							var chatContainer = document.getElementById("chatcontainer");
+							if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
+								// If container is hidden or not set, show it
+								chatContainer.style.display = "block";
+								// Create an iframe element
+								var iframe = document.createElement('iframe');
+								iframe.src = 'test.html';
+								iframe.classList.add('iframe-container');
+								// Append the iframe to the container
+								chatContainer.appendChild(iframe);
+							} else {
+								// If container is visible, hide it
+								chatContainer.style.display = "none";
+								// Clear the content when hiding
+								chatContainer.innerHTML = "";
+							}
+						}
+					</script>
 </body>
 
 </html>

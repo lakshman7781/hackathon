@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 	<!-- Basic -->
@@ -20,18 +21,18 @@
 
 	<!-- Vendor CSS -->
 	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
-		<link rel="stylesheet" href="vendor/animate/animate.compat.css">
-		<link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
-		<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
-		<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
-		<link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
-		<link rel="stylesheet" href="vendor/bootstrap-star-rating/css/star-rating.min.css">
-		<link rel="stylesheet" href="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.css">
+	<link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
+	<link rel="stylesheet" href="vendor/animate/animate.compat.css">
+	<link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
+	<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
+	<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
+	<link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
+	<link rel="stylesheet" href="vendor/bootstrap-star-rating/css/star-rating.min.css">
+	<link rel="stylesheet" href="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.css">
 
 
 
-	
+
 	<link rel="stylesheet" href="css/theme.css">
 	<link rel="stylesheet" href="css/theme-elements.css">
 	<link rel="stylesheet" href="css/theme-blog.css">
@@ -49,19 +50,19 @@
 	<!-- Bootstrap Icons CSS link -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.17.0/font/bootstrap-icons.css" rel="stylesheet">
 
-		<!-- latest css -->
-		<link rel="stylesheet" href="css/latest.css">
+	<!-- latest css -->
+	<link rel="stylesheet" href="css/latest.css">
 </head>
 
 <body data-plugin-page-transition style="background-color:#f2f2f4 !important;">
-<div class="body">
-			<header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': false, 'stickyEnableOnMobile': false, 'stickyStartAt': 70, 'stickyChangeLogo': false, 'stickyHeaderContainerHeight': 70}">
-				<div class="header-body border-top-0 box-shadow-none">
-					<div class="header-container header-container-md container">
-						<div class="header-row">
-							<div class="header-column">
-								<div class="header-row">
-									<div class="header-logo">
+	<div class="body">
+		<header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': false, 'stickyEnableOnMobile': false, 'stickyStartAt': 70, 'stickyChangeLogo': false, 'stickyHeaderContainerHeight': 70}">
+			<div class="header-body border-top-0 box-shadow-none">
+				<div class="header-container header-container-md container">
+					<div class="header-row">
+						<div class="header-column">
+							<div class="header-row">
+								<div class="header-logo">
 									<a href="index.php">
 										<img alt="Porto" width="120" height="120" data-sticky-width="82" data-sticky-height="40" data-sticky-top="25" src="img/Campus.png">
 									</a>
@@ -72,19 +73,33 @@
 							<div class="header-row pt-3">
 								<nav class="header-nav-top">
 									<ul class="nav nav-pills">
-									 
-									<li class="nav-item nav-item-anim-icon d-none d-md-block">
+										<script>
+											function goBack() {
+												window.history.back(); // This will take the user back to the previous page
+											}
+										</script>
+
+										<li class="nav-item nav-item-anim-icon d-none d-md-block">
+
+											<a class="nav-link ps-0" onclick="goBack()"><i class="fas fa-angle-right"></i>Back</a>
+										</li>
+										<li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-sm-show">
 
 											<a class="nav-link ps-0" href="index.php"><i class="fas fa-angle-right"></i> Home</a>
 										</li>
-										<li class="nav-item nav-item-anim-icon d-none d-md-block">
+										<li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-sm-show">
 											<a class="nav-link ps-0" href="about-us.html"><i class="fas fa-angle-right"></i> About Us</a>
 										</li>
 
 
 										<li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-sm-show">
-											<span class="ws-nowrap"><i class="fas fa-phone"></i>Help</span>
+											<span class="nav-link ps-0"><i class="fas fa-phone"></i>Help</span>
 										</li>
+
+										<li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-sm-show">
+											<a class="nav-link ps-0" href="logout.php"><i class="fas fa-phone"></i>Logout</a>
+										</li>
+
 									</ul>
 								</nav>
 
@@ -101,7 +116,7 @@
 												</svg>
 											</label>
 											<div class="border"></div>
-                                        </div>
+										</div>
 										&nbsp;&nbsp;
 										<nav class="collapse">
 											<ul class="nav nav-pills" id="mainNav">
@@ -128,20 +143,20 @@
 
 												<li class="">
 													<a href="cart.php">
-													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
-  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-  
-  <!-- Count Badge -->
-  <circle cx="11.5" cy="3.5" r="4" fill="red" class="circle-badge"/>
-  <text x="11" y="4" font-size="8" fill="white" text-anchor="middle" alignment-baseline="middle" class="count-badge">1</text>
-</svg>
- &nbsp; Cart
+														<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+															<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+
+															<!-- Count Badge -->
+															<circle cx="11.5" cy="3.5" r="4" fill="red" class="circle-badge" />
+															<text x="11" y="4" font-size="8" fill="white" text-anchor="middle" alignment-baseline="middle" class="count-badge">1</text>
+														</svg>
+														&nbsp; Cart
 													</a>
 
 												</li>
 
 
-											
+
 												<li class="">
 													<a class="dropdown-item dropdown-toggle" href="becomeseller.php">
 														<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
@@ -162,7 +177,7 @@
 				</div>
 			</div>
 		</header>
-</div>
+	</div>
 </body>
 
 </html>

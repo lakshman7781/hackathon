@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start(); ?>
 
 <head>
 
     <!-- Basic -->
     <meta charset="utf-8">
-    
+
 
     <title>Cart | Porto - Multipurpose Website Template</title>
 
@@ -170,127 +171,127 @@
             /* Added !important */
         }
 
-                    .form-group {
-                        display: flex;
-                        flex-direction: column;
-                        margin-bottom: 15px;
-                    }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
 
-                    .form-labell {
-                        margin-bottom: 5px;
-                        text-align: left;
-                        font-weight: bold;
-                    }
+        .form-labell {
+            margin-bottom: 5px;
+            text-align: left;
+            font-weight: bold;
+        }
 
-                    .form-control-container {
-                        position: relative;
-                        width: 70%;
-                        /* Reduced width */
-                    }
+        .form-control-container {
+            position: relative;
+            width: 70%;
+            /* Reduced width */
+        }
 
-                    .form-control {
-                        width: 100%;
-                        padding: 8px;
-                        box-sizing: border-box;
-                    }
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
 
-                    .edit-save-text {
-                        position: absolute;
-                        top: -20px;
-                        /* Adjust as needed */
-                        right: 5px;
-                        font-size: 12px;
-                        color: #007bff;
-                        cursor: pointer;
-                    }
+        .edit-save-text {
+            position: absolute;
+            top: -20px;
+            /* Adjust as needed */
+            right: 5px;
+            font-size: 12px;
+            color: #007bff;
+            cursor: pointer;
+        }
 
-                    .accordion {
-                        display: flex;
-                        flex-direction: column;
-                        width: 600px;
-                    }
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            width: 600px;
+        }
 
-                    .question {
-                        border-radius: 5px;
-                        padding: 10px;
-                        margin: 10px;
-                        cursor: pointer;
-                        border: 1px solid #ddd;
-                        text-align: left;
-                    }
+        .question {
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
 
-                    .answer {
-                        display: none;
-                        padding: 10px;
-                        text-align: start;
+        .answer {
+            display: none;
+            padding: 10px;
+            text-align: start;
 
-                    }
+        }
 
-                    .question.active {
-                        background-color: #ddd;
-                    }
+        .question.active {
+            background-color: #ddd;
+        }
 
-                    .answer.active {
-                        display: block;
-                    }
+        .answer.active {
+            display: block;
+        }
 
-                    /* Button Container */
-                    .button-container {
-                        text-align: center;
-                        justify-content: space-evenly;
-                        text-align: center;
-                        /* Center buttons horizontally within the container */
-                    }
+        /* Button Container */
+        .button-container {
+            text-align: center;
+            justify-content: space-evenly;
+            text-align: center;
+            /* Center buttons horizontally within the container */
+        }
 
-                    /* Save Changes Button */
-                    .custom-btn.primary-btn {
-                        background-color: #007bff;
-                        color: #fff;
-                        border: 1px solid #007bff;
-                        /* Adjusted padding for reduced width */
-                        border-radius: 5px;
-                        cursor: pointer;
-                        transition: background-color 0.3s;
-                        width: 120px;
-                        /* Set desired width */
-                        height: 40px;
-                        /* Set desired height */
-                        display: inline-block;
-                        /* Ensure inline-block to apply width and height */
-                        line-height: 40px;
-                        text-align: center;
-                        /* Center text vertically */
-                    }
+        /* Save Changes Button */
+        .custom-btn.primary-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: 1px solid #007bff;
+            /* Adjusted padding for reduced width */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 120px;
+            /* Set desired width */
+            height: 40px;
+            /* Set desired height */
+            display: inline-block;
+            /* Ensure inline-block to apply width and height */
+            line-height: 40px;
+            text-align: center;
+            /* Center text vertically */
+        }
 
-                    .custom-btn.primary-btn:hover {
-                        background-color: #0056b3;
-                        color: #fff;
-                    }
+        .custom-btn.primary-btn:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
 
-                    /* Cancel Button */
-                    .custom-btn.default-btn {
-                        background-color: #fff;
-                        color: #007bff;
-                        border: 1px solid #007bff;
-                        /* Adjusted padding for reduced width */
-                        border-radius: 5px;
-                        cursor: pointer;
-                        transition: background-color 0.3s, color 0.3s;
-                        width: 120px;
-                        /* Set desired width */
-                        height: 40px;
-                        /* Set desired height */
-                        display: inline-block;
-                        /* Ensure inline-block to apply width and height */
-                        line-height: 40px;
-                        /* Center text vertically */
-                    }
+        /* Cancel Button */
+        .custom-btn.default-btn {
+            background-color: #fff;
+            color: #007bff;
+            border: 1px solid #007bff;
+            /* Adjusted padding for reduced width */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            width: 120px;
+            /* Set desired width */
+            height: 40px;
+            /* Set desired height */
+            display: inline-block;
+            /* Ensure inline-block to apply width and height */
+            line-height: 40px;
+            /* Center text vertically */
+        }
 
-                    .custom-btn.default-btn:hover {
-                        background-color: #f0f0f0;
-                        color: #0056b3;
-                    }
-                </style>
+        .custom-btn.default-btn:hover {
+            background-color: #f0f0f0;
+            color: #0056b3;
+        }
+    </style>
     </style>
 </head>
 
@@ -299,11 +300,52 @@
     <?php include 'header.php'; ?>
     <div class="body">
         <div class="left-section">
-            <div class="left-section-top">
-                <a href="img/12.png"> <img src="img/12.png" alt="12" width="100" height="100"> </a>
-                Hello &nbsp;
-                <h4>Left Top</h4>
-            </div>
+            <?php
+            // Start or resume the session
+
+
+            // Include the file to establish a database connection
+            include 'connect.php';
+
+            // Check if the session variable 'reg_no' is set
+            if (isset($_SESSION['idnum'])) {
+                // Sanitize the session variable to prevent SQL injection
+                $reg_no = mysqli_real_escape_string($conn, $_SESSION['idnum']);
+
+                // Fetch data from the users table based on the session variable 'reg_no'
+                $sql = "SELECT * FROM users WHERE reg_no = '$reg_no'";
+
+                // Execute the query
+                $result = mysqli_query($conn, $sql);
+
+                // Check if there are any results
+                if (mysqli_num_rows($result) > 0) {
+                    // Output data of the user
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        // Extract the first name from the user's name
+                        $fullName = explode(" ", $row['firstname']);
+                        $firstName = $fullName[0];
+            ?>
+                        <div class="left-section-top">
+                            <a href="img/12.png"> <img src="img/12.png" alt="12" width="100" height="100"> </a>
+                            Hello&nbsp;
+                            <h4> <?php echo $firstName; ?></h4>
+                        </div>
+            <?php
+                    }
+                } else {
+                    // If there are no results, display a message or take any other appropriate action
+                    echo "No user found.";
+                }
+            } else {
+                // If the session variable 'reg_no' is not set, display a message or redirect to login page
+                echo "Session variable 'reg_no' not set.";
+            }
+
+            // Close the database connection
+            mysqli_close($conn);
+            ?>
+
             <div class="left-section-bottom">
                 <ul class="profile-menu">
 
@@ -318,12 +360,12 @@
                         </a>
                     </li>
                     <li class="">
-                    <a href="#" id="changePasswordLink">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
-        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-    </svg>
-    &nbsp; Change Password
-</a>
+                        <a href="#" id="changePasswordLink">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                            </svg>
+                            &nbsp; Change Password
+                        </a>
 
                     </li>
 
@@ -368,7 +410,7 @@
 
             <div role="main" class="main shop pb-4">
 
-               
+
 
                 <script>
                     function toggleEditSave(inputId, action) {
@@ -387,84 +429,149 @@
                     }
                 </script>
 
-                <div class="#">
-                    <h2 style="text-align: left;">Personal Information</h2>
-                    <div class="form-group">
-                        <label class="form-labell">Name</label>
-                        <div class="form-control-container">
-                            <span id="usernameInput-edit-save" class="edit-save-text" onclick="toggleEditSave('usernameInput', 'edit')">Edit</span>
-                            <input id="usernameInput" type="text" class="form-control mb-1" value="nmaxwell" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-labell">Registration Number</label>
-                        <div class="form-control-container">
-                            <span id="nameInput-edit-save" class="edit-save-text" onclick="toggleEditSave('nameInput', 'edit')">Edit</span>
-                            <input id="nameInput" type="text" class="form-control" value="Nelle Maxwell" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-labell">E-mail</label>
-                        <div class="form-control-container">
-                            <span id="emailInput-edit-save" class="edit-save-text" onclick="toggleEditSave('emailInput', 'edit')">Edit</span>
-                            <input id="emailInput" type="text" class="form-control mb-1" value="nmaxwell@mail.com" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-labell">Phone</label>
-                        <div class="form-control-container">
-                            <span id="phoneInput-edit-save" class="edit-save-text" onclick="toggleEditSave('phoneInput', 'edit')">Edit</span>
-                            <input id="phoneInput" type="text" class="form-control" value="+0 (123) 456 7891" disabled>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <h2 style="text-align: left;">F A Q ' S </h2>
+                <?php
+                // Start or resume the session
 
 
-                <div class="accordion">
-                    <ul>
+                // Include the file to establish a database connection
+                include 'connect.php';
 
-                        <li>
-                            <div class="question" onclick="toggleAnswer('answer2')">Is there a customer support team available for assistance?</div>
-                            <div class="answer" id="answer2">Yes, we have a dedicated customer support team available to assist you.</div>
-                        </li>
-                        <li>
-                            <div class="question" onclick="toggleAnswer('answer1')"> How is my personal information protected on the website ?</div>
-                            <div class="answer" id="answer1">Your personal information is protected through advanced encryption protocols & secure server practices.</div>
-                        </li>
-                        <!-- Add more questions and answers as needed -->
-                    </ul>
+                // Check if the session variable 'reg_no' is set
+                if (isset($_SESSION['idnum'])) {
+                    // Sanitize the session variable to prevent SQL injection
+                    $reg_no = mysqli_real_escape_string($conn, $_SESSION['idnum']);
 
-                    <!-- Add more questions and answers as needed -->
+                    // Fetch data from the users table based on the session variable 'reg_no'
+                    $sql = "SELECT * FROM users WHERE reg_no = '$reg_no'";
 
-                </div>
+                    // Execute the query
+                    $result = mysqli_query($conn, $sql);
 
-
+                    // Check if there are any results
+                    if (mysqli_num_rows($result) > 0) {
+                        // Output data of the user
+                        while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+                            <form action=" " method="post">
+                                <div class="form-group">
+                                    <label class="form-labell">Name</label>
+                                    <div class="form-control-container">
+                                        <span id="usernameInput-edit-save" class="edit-save-text" onclick="toggleEditSave('usernameInput', 'edit')">Edit</span>
+                                        <input id="usernameInput" type="text" name="firstname" class="form-control mb-1" value="<?php echo $row['firstname']; ?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-labell">Registration Number</label>
+                                    <div class="form-control-container">
+                                        <span id="nameInput-edit-save" class="edit-save-text" onclick="toggleEditSave('nameInput', 'edit')">Edit</span>
+                                        <input id="nameInput" type="text" class="form-control" value="<?php echo $row['reg_no']; ?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-labell">E-mail</label>
+                                    <div class="form-control-container">
+                                        <span id="emailInput-edit-save" class="edit-save-text" onclick="toggleEditSave('emailInput', 'edit')">Edit</span>
+                                        <input id="emailInput" type="text"  class="form-control mb-1" value="<?php echo $row['email']; ?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-labell">Phone</label>
+                                    <div class="form-control-container">
+                                        <span id="phoneInput-edit-save" class="edit-save-text" onclick="toggleEditSave('phoneInput', 'edit')">Edit</span>
+                                        <input id="phoneInput" type="text" name="phonenumber" class="form-control" value="<?php echo $row['phonenumber']; ?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" name="update" value="Update Profile" class="btn btn-primary">
+                                </div>
+                            </form>
             </div>
-
-            <script>
-                function toggleAnswer(answerId) {
-                    var answer = document.getElementById(answerId);
-                    answer.classList.toggle('active');
+<?php
+                        }
+                    } else {
+                        // If there are no results, display a message or take any other appropriate action
+                        echo "No user found.";
+                    }
+                } else {
+                    // If the session variable 'reg_no' is not set, display a message or redirect to login page
+                    echo "Session variable 'reg_no' not set.";
                 }
-            </script>
-           
+
+                // Close the database connection
+                mysqli_close($conn);
+?>
+<?php
+include 'connect.php';
+
+// Check if the form is submitted
+if (isset($_POST['update'])) {
+    // Sanitize form inputs to prevent SQL injection
+    $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
+
+    // Update the user's profile information in the database
+    $sql = "UPDATE users SET firstname = '$firstname' WHERE reg_no = '$_SESSION[idnum]'";
+
+    // Execute the query
+    if (mysqli_query($conn, $sql)) {
+        echo "<script>alert('Profile Updated successfully');</script>";
+    } else {
+        echo "Error updating profile: " . mysqli_error($conn);
+    }
+}
+
+// Close the database connection
+mysqli_close($conn);
+?>
+
+
+
+<br>
+<h2 style="text-align: left;">F A Q ' S </h2>
+
+
+<div class="accordion">
+    <ul>
+
+        <li>
+            <div class="question" onclick="toggleAnswer('answer2')">Is there a customer support team available for assistance?</div>
+            <div class="answer" id="answer2">Yes, we have a dedicated customer support team available to assist you.</div>
+        </li>
+        <li>
+            <div class="question" onclick="toggleAnswer('answer1')"> How is my personal information protected on the website ?</div>
+            <div class="answer" id="answer1">Your personal information is protected through advanced encryption protocols & secure server practices.</div>
+        </li>
+        <!-- Add more questions and answers as needed -->
+    </ul>
+
+    <!-- Add more questions and answers as needed -->
+
+</div>
+
+
         </div>
+
+        <script>
+            function toggleAnswer(answerId) {
+                var answer = document.getElementById(answerId);
+                answer.classList.toggle('active');
+            }
+        </script>
+
+    </div>
     </div>
 
     </div>
 
 
     <script>
-    // Store the original content when the page loads
-    var originalContent = document.querySelector('.right-section-inner').innerHTML;
+        // Store the original content when the page loads
+        var originalContent = document.querySelector('.right-section-inner').innerHTML;
 
-    document.getElementById('changePasswordLink').addEventListener('click', function () {
-        var rightSectionInner = document.querySelector('.right-section-inner');
+        document.getElementById('changePasswordLink').addEventListener('click', function() {
+            var rightSectionInner = document.querySelector('.right-section-inner');
 
-        // Modify the content dynamically using insertAdjacentHTML
-        rightSectionInner.innerHTML = `
+            // Modify the content dynamically using insertAdjacentHTML
+            rightSectionInner.innerHTML = `
             <h2 style="text-align: left;">Change Password</h2>
             <div class="form-group">
                 <label class="form-labell">Current password</label>
@@ -484,15 +591,15 @@
             </div>
             
         `;
-    });
+        });
 
-    document.getElementById('generalLink').addEventListener('click', function () {
-        var rightSectionInner = document.querySelector('.right-section-inner');
+        document.getElementById('generalLink').addEventListener('click', function() {
+            var rightSectionInner = document.querySelector('.right-section-inner');
 
-        // Restore the original content
-        rightSectionInner.innerHTML = originalContent;
-    });
-</script>
+            // Restore the original content
+            rightSectionInner.innerHTML = originalContent;
+        });
+    </script>
 
 
 
