@@ -72,12 +72,21 @@
 							<div class="header-row pt-3">
 								<nav class="header-nav-top">
 									<ul class="nav nav-pills">
-									 
+									<script>
+        function goBack() {
+            window.history.back(); // This will take the user back to the previous page
+        }
+    </script>
+
 									<li class="nav-item nav-item-anim-icon d-none d-md-block">
+
+											<a class="nav-link ps-0" onclick="goBack()"><i class="fas fa-angle-right"></i>Back</a>
+										</li>
+										<li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-sm-show">
 
 											<a class="nav-link ps-0" href="index.php"><i class="fas fa-angle-right"></i> Home</a>
 										</li>
-										<li class="nav-item nav-item-anim-icon d-none d-md-block">
+										<li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-sm-show">
 											<a class="nav-link ps-0" href="about-us.html"><i class="fas fa-angle-right"></i> About Us</a>
 										</li>
 
