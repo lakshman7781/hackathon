@@ -218,7 +218,8 @@
   .poll-result:after {
     inset: 1px;
     border-radius: calc(0.5rem - 1px);
-    background: lightblue background-size: calc(100% - 2px) 100%;
+    background: lightblue;
+    background-size: calc(100% - 2px) 100%;
     opacity: 1;
     z-index: 1;
     mix-blend-mode: unset;
@@ -451,15 +452,15 @@
         <div class="domain" style=" border-radius:10px; margin-top:10px; margin-right:10px; text-align: center;">
 
           <div>
-          <a href="campusupdates.php">
-            <p style="font-size: 20px; font-weight: bold; background-color: white; padding:10px; border-radius: 15px; width: 300px;">Clubs</p>
-          </a>
+            <a href="campusupdates.php">
+              <p style="font-size: 20px; font-weight: bold; background-color: white; padding:10px; border-radius: 15px; width: 300px;">Clubs</p>
+            </a>
           </div>
           <div>
-          <p style="font-size: 20px; font-weight: bold; background-color: white; padding:10px; border-radius: 15px; width: 300px;">Campus Chat</p>
+            <p style="font-size: 20px; font-weight: bold; background-color: white; padding:10px; border-radius: 15px; width: 300px;">Campus Chat</p>
           </div>
           <div>
-          <p style="font-size: 20px; font-weight: bold; background-color: white; padding:10px; border-radius: 15px; width: 300px;">Internships</p>
+            <p style="font-size: 20px; font-weight: bold; background-color: white; padding:10px; border-radius: 15px; width: 300px;">Internships</p>
           </div>
         </div>
       </div>
@@ -656,7 +657,24 @@
         <h2 style="left: 0% !important; margin-left:-799px;">Latest Updates</h2>
 
 
-        <div class="row align-items-center">
+        <?php
+					// Include the file to establish a database connection
+					include 'connect.php';
+
+					// Write your SQL query
+					$sql = "SELECT * FROM event";
+
+					// Execute the query
+					$result = mysqli_query($conn, $sql);
+
+					// Check if there are any results
+					if (mysqli_num_rows($result) > 0) {
+						// Output data of each row
+						while ($row = mysqli_fetch_assoc($result)) {
+							// Output the HTML structure with product details
+					?>
+
+        <div class="row align-items-left" style="margin-left: -500px;">
           <div class="col-sm-5 mb-4 mb-sm-0">
             <div class="product mb-0">
               <div class="product-thumb-info border-0 mb-0">
@@ -667,7 +685,7 @@
                 </div>
                 <a href="">
                   <div class=" ">
-                    <img alt="" class="img-fluid" src="img/products/product-grey-1.jpg" style="height: 200px; width: 200px;">
+                    <img alt="" class="img-fluid" src="<?php echo $row['image']; ?>" style="height: 200px; width: 200px; ">
 
                   </div>
                 </a>
@@ -677,7 +695,7 @@
           <div class="col-sm-7">
             <div class="summary entry-summary">
 
-              <h2 class="mb-0 font-weight-bold text-7"><a href="shop-product-sidebar-left.html" class="text-color-dark text-color-hover-primary text-decoration-none">Porto Headphone</a></h2>
+              <h2 class="mb-0 font-weight-bold text-7"><a href="shop-product-sidebar-left.html" class="text-color-dark text-color-hover-primary text-decoration-none"><?php echo $row['eventname']; ?></a></h2>
 
 
 
@@ -686,87 +704,40 @@
               </div>
 
 
-              <h4>Default</h4>
 
               <div data-plugin-readmore data-plugin-options="{
               'buttonOpenLabel': 'Read More <i class=\'fas fa-chevron-down text-2 ms-1\'></i>',
               'buttonCloseLabel': 'Read Less <i class=\'fas fa-chevron-up text-2 ms-1\'></i>'
                }">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing, elit. Totam placeat dolores, minima voluptas quo eos, repellat delectus inventore velit. Nulla placeat eius in, alias architecto magnam aliquid debitis adipisci voluptate. Lorem ipsum, dolor, sit amet consectetur adipisicing elit. Voluptate, aut. Aspernatur sapiente ad quod perspiciatis pariatur necessitatibus, omnis, labore dolore minus expedita, suscipit rerum vitae repellendus quia at aperiam laborum!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis iusto odit quidem commodi voluptates vitae dolores temporibus itaque labore cumque nobis animi facilis, quod, nisi laboriosam sit. Veritatis tenetur, commodi.</p>
+               <?php echo $row['eventdescription']; ?></p>
                 <div class="readmore-button-wrapper d-none">
                   <a href="#" class="text-decoration-none">
                     Read More
                     <i class="fas fa-chevron-down"></i>
                   </a>
                 </div>
+                <p>Starting Date: <?php echo $row['startdate']; ?></p>
+                <p>Ending Date: <?php echo $row['enddate']; ?></p>
               </div>
 
 
             </div>
           </div>
-          
+
 
         </div>
         <br>
-        <div class="divider divider-large">
-                <hr class="bg-color-grey-400">
-              </div>
 
+        <?php
+						}
+					} else {
+						echo "0 results";
+					}
 
-        <div class="row align-items-center">
-          <div class="col-sm-5 mb-4 mb-sm-0">
-            <div class="product mb-0">
-              <div class="product-thumb-info border-0 mb-0">
-
-                <div class="product-thumb-info-badges-wrapper">
-                  <span class="badge badge-ecommerce text-bg-success">NEW</span>
-
-                </div>
-                <a href="">
-                  <div class=" ">
-                    <img alt="" class="img-fluid" src="img/products/product-grey-1.jpg" style="height: 200px; width: 200px;">
-
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-7">
-            <div class="summary entry-summary">
-
-              <h2 class="mb-0 font-weight-bold text-7"><a href="shop-product-sidebar-left.html" class="text-color-dark text-color-hover-primary text-decoration-none">Porto Headphone</a></h2>
-
-
-
-              <div class="divider divider-small">
-                <hr class="bg-color-grey-400">
-              </div>
-
-
-              <h4>Default</h4>
-
-              <div data-plugin-readmore data-plugin-options="{
-              'buttonOpenLabel': 'Read More <i class=\'fas fa-chevron-down text-2 ms-1\'></i>',
-              'buttonCloseLabel': 'Read Less <i class=\'fas fa-chevron-up text-2 ms-1\'></i>'
-               }">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing, elit. Totam placeat dolores, minima voluptas quo eos, repellat delectus inventore velit. Nulla placeat eius in, alias architecto magnam aliquid debitis adipisci voluptate. Lorem ipsum, dolor, sit amet consectetur adipisicing elit. Voluptate, aut. Aspernatur sapiente ad quod perspiciatis pariatur necessitatibus, omnis, labore dolore minus expedita, suscipit rerum vitae repellendus quia at aperiam laborum!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis iusto odit quidem commodi voluptates vitae dolores temporibus itaque labore cumque nobis animi facilis, quod, nisi laboriosam sit. Veritatis tenetur, commodi.</p>
-                <div class="readmore-button-wrapper d-none">
-                  <a href="#" class="text-decoration-none">
-                    Read More
-                    <i class="fas fa-chevron-down"></i>
-                  </a>
-                </div>
-              </div>
-
-
-            </div>
-          </div>
-          
-
-        </div>
-<br>
+					// Close the database connection
+					mysqli_close($conn);
+					?>
+        <br>
 
 
         <!-- Bootstrap Bundle with Popper -->
