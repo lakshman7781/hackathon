@@ -75,7 +75,7 @@
 		</div>
 
 		<div class="categorry">
-			<a href="campusupdates.php">
+			<a href="eventshome.php">
 				<img src="img/2.svg" style="height: 150px; width: 575px;">
 			</a>
 		</div>
@@ -220,7 +220,7 @@
 												<i class="icons icon-bag"></i>
 											</a>
 										</div>
-										<a href="" class="quick-view text-uppercase font-weight-semibold text-2">
+										<a href="product.php?productid=<?php echo $row['productid']; ?>" class=" text-uppercase font-weight-semibold text-2">
 											QUICK VIEW
 										</a>
 										<a href="">

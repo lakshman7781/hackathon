@@ -170,6 +170,35 @@
         }
     </style>
 </head>
+<?php
+$productid = $_GET['productid'];
+// Include your connect.php file
+include('connect.php');
+
+// Assuming $row is fetched from the seller table
+$query = "SELECT seller.*, users.phonenumber
+          FROM seller
+          INNER JOIN users ON seller.reg_no = users.reg_no
+          WHERE seller.productid = '$productid'";
+
+$result = $conn->query($query);
+$row = $result->fetch_assoc();
+
+// Assuming these fields exist in the result
+$productName = $row['productName'];
+$productDescription = $row['productDescription'];
+$regularPrice = $row['regularPrice'];
+$image = $row['image'];
+$salePrice = $row['salePrice'];
+$Category = $row['Category'];
+$stockStatus = $row['stockStatus'];
+$size = $row['size'];
+$colour = $row['colour'];
+$phoneNumber = '91' . $row['phonenumber']; // Get phone number from the joined result
+
+$conn->close();
+?>
+
 
 <body data-plugin-page-transition>
 
@@ -204,34 +233,28 @@
 
                     <div class="container">
                         <div class="thumb-gallery-wrapper">
-                          <img alt="" class="" src="img/1.png" data-zoom-image="img/1.png" style="height: 200px; width:200px">
-                        </div>
+                        <img alt="" class="" src="<?php echo $image; ?>" data-zoom-image="img/1.png"
+                                        style="height: 300px; width:300px">                        </div>
 
                         <div class="summary entry-summary position-relative">
 
-                <h1 class="mb-0 font-weight-bold text-7">Porto Headphone</h1>
+                <h1 class="mb-0 font-weight-bold text-7"><?php echo $row['productName']; ?></h1>
 
-                <div class="pb-0 clearfix d-flex align-items-center">
-                    <div title="Rated 3 out of 5" class="float-start">
-                        <input type="text" class="d-none" value="3" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'primary', 'size':'xs'}">
-                    </div>
-
-                    
-                </div>
+               
 
                 <div class="divider divider-small">
                     <hr class="bg-color-grey-400">
                 </div>
-
+              
                 <p class="price mb-3">
-                    <span class="sale text-color-dark">$15,00</span>
-                    <span class="amount">$22,00</span>
+                    <span class="sale text-color-dark"><?php echo $row['regularPrice']; ?></span>
+                    <span class="amount"><?php echo $row['salePrice']; ?></span>
                 </p>
 
-                <p class="text-3-5 mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus nibh sed elimttis adipiscing. Fusce in hendrerit purus. Lorem ipsum dolor sit amet.</p>
+                <p class="text-3-5 mb-3"><?php echo $row['productDescription']; ?></p>
 
                 <ul class="list list-unstyled text-2">
-                    <li class="mb-0">AVAILABILITY: <strong class="text-color-dark">AVAILABLE</strong></li>
+                    <li class="mb-0">AVAILABILITY: <strong class="text-color-dark"><?php echo $row['stockStatus']; ?></strong></li>
                     <!-- <li class="mb-0">SKU: <strong class="text-color-dark"></strong></li> -->
                 </ul>
 
@@ -242,12 +265,7 @@
                                 <td class="align-middle text-2 px-0 py-2">SIZE:</td>
                                 <td class="px-0 py-2">
                                     <div class="custom-select-1">
-                                        <select name="size" class="form-control form-select text-1 h-auto py-2">
-                                            <option value="">PLEASE CHOOSE</option>
-                                            <option value="blue">Small</option>
-                                            <option value="red">Normal</option>
-                                            <option value="green">Big</option>
-                                        </select>
+                                       <h6><?php echo $row['size']; ?></h6>
                                     </div>
                                 </td>
                             </tr>
@@ -255,12 +273,8 @@
                                 <td class="align-middle text-2 px-0 py-2">COLOR:</td>
                                 <td class="px-0 py-2">
                                     <div class="custom-select-1">
-                                        <select name="color" class="form-control form-select text-1 h-auto py-2">
-                                            <option value="">PLEASE CHOOSE</option>
-                                            <option value="blue">Blue</option>
-                                            <option value="red">Red</option>
-                                            <option value="green">Green</option>
-                                        </select>
+                                    <h6><?php echo $row['colour']; ?></h6>
+
                                     </div>
                                 </td>
                             </tr>
@@ -276,7 +290,7 @@
                 </form>
 
                 <div class="d-flex align-items-center" >
-                   <a href="https://api.whatsapp.com/send?phone=919494410554">
+                   <a href="https://api.whatsapp.com/send?phone=<?php echo $row['phonenumber']; ?>">
                 <div type="submit" class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary" style="margin-right: 10px; background-color: #28a745 !important;" >Whatsapp</div>
                 </a>
                 <a href="tel:+918712131582">
