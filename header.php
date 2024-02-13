@@ -92,7 +92,11 @@
 
 
 										<li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-sm-show">
-											<span class="ws-nowrap"><i class="fas fa-phone"></i>Help</span>
+											<span class="nav-link ps-0"><i class="fas fa-phone"></i>Help</span>
+										</li>
+
+										<li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-sm-show">
+											<span class="nav-link ps-0" href="dumbindex.php"><i class="fas fa-phone"></i>Logout</span>
 										</li>
 									</ul>
 								</nav>
