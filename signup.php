@@ -23,8 +23,8 @@ function sendOTP($mobileNumber, $otp)
 
     // Twilio account credentials
     $sid = "AC2015e1f29a63bf5ea7005c4e3de06089"; // Your Twilio SID
-    $token = "4ce701b5d6f1cbf41647d7b72b99c42d"; // Your Twilio Auth Token
-    $twilioNumber = "+13416675439"; // Your Twilio phone number
+    $token = "8d57d73e8a8f68d40c0796b954caaee7"; // Your Twilio Auth Token
+    $twilioNumber = "+13416675439";  // Your Twilio phone number
 
     // Prepend "91" to the mobile number
     $mobileNumber = "+91" . $mobileNumber;
