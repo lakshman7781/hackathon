@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php session_start(); ?>
+
 <head>
 
 	<!-- Basic -->
@@ -188,15 +189,60 @@
 							<h4 class="font-weight-bold text-uppercase text-4 mb-3">Cart Totals</h4>
 							<table class="shop_table cart-totals mb-4">
 								<tbody>
+									<?php
+									// Assuming you have already established a database connection
+									include 'connect.php';
+
+									// Assuming $_SESSION['idnum'] contains the registration number
+									$idnum = $_SESSION['idnum'];
+
+									// Initialize total sale price
+									$totalSalePrice = 0;
+
+									// Prepare and execute the SQL query to retrieve product name and sale price
+									$sql = "SELECT seller.productName, seller.salePrice 
+            FROM seller 
+            INNER JOIN cart ON seller.productid = cart.productid 
+            WHERE cart.reg_no = '$idnum'";
+									$result = $conn->query($sql);
+
+									// Check if there are any results
+									if ($result->num_rows > 0) {
+										// Output data of each row
+										while ($row = $result->fetch_assoc()) {
+											// Output product name and sale price in HTML table row
+											echo '<tr>';
+											echo '<td>' . htmlspecialchars($row['productName']) . '</td>';
+											echo '<td>₹' . htmlspecialchars($row['salePrice']) . '</td>';
+											echo '</tr>';
+
+											// Accumulate sale price to calculate total
+											$totalSalePrice += $row['salePrice'];
+										}
+									} else {
+										// Output if no results found
+										echo '<tr><td colspan="2">No products found</td></tr>';
+									}
+
+									// Close the database connection
+									$conn->close();
+
+									// Print total sale price row
+									echo '<tr class="total">';
+									echo '<td><strong class="text-color-dark text-3-5">Total</strong></td>';
+									echo '<td class="text-end"><strong class="text-color-dark">';
+									echo '<span class="amount text-color-dark text-5">₹' . number_format($totalSalePrice, 2) . '</span></strong></td>';
+									echo '</tr>';
+									?>
 									<tr class="cart-subtotal">
 										<td class="border-top-0">
-											<strong class="text-color-dark">Subtotal</strong>
+											<strong class="text-color-dark"></strong>
 										</td>
-										<td class="border-top-0 text-end">
+										<!-- <td class="border-top-0 text-end">
 											<strong><span class="amount font-weight-medium">$431</span></strong>
-										</td>
+										</td> -->
 									</tr>
-									<tr class="shipping">
+									<!-- <tr class="shipping">
 										<td colspan="2">
 											<strong class="d-block text-color-dark mb-2">Shipping</strong>
 
@@ -215,18 +261,21 @@
 												</label>
 											</div>
 										</td>
-									</tr>
-									<tr class="total">
+									</tr> -->
+									<!-- <tr class="total">
 										<td>
 											<strong class="text-color-dark text-3-5">Total</strong>
 										</td>
 										<td class="text-end">
 											<strong class="text-color-dark"><span class="amount text-color-dark text-5">$431</span></strong>
 										</td>
-									</tr>
+									</tr> -->
 								</tbody>
 							</table>
-							<a href="checkout.php" class="btn btn-dark btn-modern w-100 text-uppercase bg-color-hover-primary border-color-hover-primary border-radius-0 text-3 py-3">Proceed to Checkout <i class="fas fa-arrow-right ms-2"></i></a>
+							<a href="checkout.php?totalSalePrice=<?php echo $totalSalePrice; ?>" class="btn btn-dark btn-modern w-100 text-uppercase bg-color-hover-primary border-color-hover-primary border-radius-0 text-3 py-3">
+								Proceed to Checkout <i class="fas fa-arrow-right ms-2"></i>
+							</a>
+
 						</div>
 					</div>
 				</div>
