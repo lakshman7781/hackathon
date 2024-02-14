@@ -338,7 +338,7 @@
 												while ($row = mysqli_fetch_assoc($result)) {
 													// Output the HTML structure with product details
 											?>
-													<tr class="cart_table_item">
+													 <tr class="cart_table_item product-thumbnail-wrapperr">
 														<td class="product-thumbnail" style="height: 100px; width: 100px !important;">
 															<div class="product-thumbnail-wrapper" style="height: 100px; width: 100px !important;">
 																<a href="#" class="product-thumbnail-remove" title="Remove Product">
@@ -763,6 +763,24 @@ const selectedProductCount = 1;
 // Update the count badge text
 document.querySelector('.count-badge').textContent = selectedProductCount.toString(); -->
 			<?php include 'footer.php'; ?>
+
+<script>
+     //Get all elements with the class 'product-thumbnail-remove'
+    var removeButtons = document.querySelectorAll('.product-thumbnail-remove');
+
+// Loop through each remove button and attach a click event listener
+    removeButtons.forEach(function(button) {
+	button.addEventListener('click', function(event) {
+		event.preventDefault(); // Prevent the default behavior of the anchor tag
+
+		// Get the parent element of the remove button (the product thumbnail wrapper)
+		var productThumbnailWrapper = button.closest('.product-thumbnail-wrapperr');
+
+		// Remove the product thumbnail wrapper from the DOM
+		productThumbnailWrapper.remove();
+	});
+});
+</script>
 </body>
 
 </html>
