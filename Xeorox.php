@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+
+use Twilio\TwiML\Voice\Number;
+
+ session_start(); ?>
 
 <head>
 
@@ -229,40 +234,124 @@
 <body data-plugin-page-transition>
 
     <?php include 'header.php'; ?>
-    <?php include 'connect.php'; ?>
     <div class="body">
-        <div class="left-section">
-
-            <div class="left-section-bottom">
-
-                <aside class="sidebar">
-
-                    <h5 class="font-weight-semi-bold pt-3" style="width: 100%;">Categories</h5>
-                    <ul class="nav nav-list flex-column">
-                        <li class="nav-item"><a class="nav-link" href="textbooks.php">Books</a></li>
-                        <li class="nav-item"><a class="nav-link" href="electronics.php">accessories</a></li>
-                        <li class="nav-item"><a class="nav-link" href="stationary.php">Stationary</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Food</a></li>
-                        <li class="nav-item"><a class="nav-link" href="Xeorox.php">Xerox</a></li>
-                    </ul>
-
-            </div>
-
-        </div>
-    </div>
-    </div>
-    </div>
+    <?php
+                // Start or resume the session
 
 
+                // Include the file to establish a database connection
+                include 'connect.php';
+
+                // Check if the session variable 'reg_no' is set
+                if (isset($_SESSION['idnum'])) {
+                    // Sanitize the session variable to prevent SQL injection
+                    $reg_no = mysqli_real_escape_string($conn, $_SESSION['idnum']);
+
+                    // Fetch data from the users table based on the session variable 'reg_no'
+                    $sql = "SELECT * FROM xeorx WHERE reg_no = '$reg_no'";
+
+                    // Execute the query
+                    $result = mysqli_query($conn, $sql);
+
+                    // Check if there are any results
+                    if (mysqli_num_rows($result) > 0) {
+                        // Output data of the user
+                        while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+    <div class="left-section">
+			<div class="left-section-top">
+				<a href="img/12.png"> <img src="img/12.png" alt="12" width="100" height="100"> </a>
+				Hello &nbsp;
+				<h4>Left Top</h4>
+			</div>
+			<div class="left-section-bottom">
+				<div class="col-lg-4 position-relative">
+					<div class="card border-width-3 border-radius-0 border-color-hover-dark" style="min-height: 450px; width: 300px;">
+						<div class="card-body">
+							<h4 class="font-weight-bold text-uppercase text-4 mb-3">Cart Totals</h4>
+							<table class="shop_table cart-totals mb-4">
+								<tbody>
+                                <tr class="cart-subtotal">
+										<td class="border-top-0">
+											<strong class="text-color-dark">File Name</strong>
+										</td>
+                                         <td class="border-top-0 text-end">
+											<strong><span class="amount font-weight-medium"><?php echo $row['file']; ?></span></strong>
+										</td>
+									</tr>
+									
+									<tr class="cart-subtotal">
+										<td class="border-top-0">
+											<strong class="text-color-dark">Number of Pages</strong>
+										</td>
+                                         <td class="border-top-0 text-end">
+											<strong><span class="amount font-weight-medium"><?php echo $row['pages']; ?></span></strong>
+										</td>
+									</tr>
+                                    <tr class="cart-subtotal">
+										<td class="border-top-0">
+											<strong class="text-color-dark">Category</strong>
+										</td>
+                                         <td class="border-top-0 text-end">
+											<strong><span class="amount font-weight-medium"><?php echo $row['category']; ?></span></strong>
+										</td>
+									</tr>
+                                    <tr class="cart-subtotal">
+										<td class="border-top-0">
+											<strong class="text-color-dark">Printingsides</strong>
+										</td>
+                                         <td class="border-top-0 text-end">
+											<strong><span class="amount font-weight-medium"><?php echo $row['category1']; ?></span></strong>
+										</td>
+									</tr>
+                                    <tr class="cart-subtotal">
+										<td class="border-top-0">
+											<strong class="text-color-dark">Cover</strong>
+										</td>
+                                         <td class="border-top-0 text-end">
+											<strong><span class="amount font-weight-medium"><?php echo $row['category2']; ?></span></strong>
+										</td>
+									</tr>
+                                    <tr class="cart-subtotal">
+										<td class="border-top-0">
+                                        <h2><span class="amount font-weight-medium">Total</span></h2>										</td>
+                                         <td class="border-top-0 text-end">
+											<h2><span class="amount font-weight-medium">₹<?php echo $row['total']; ?></span></h2>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							
+                            <a class ="btn btn-primary   text-uppercase border-radius-0 w-100 text-3 py-3 buynow">Buy Now</a>
+
+                            <?php
+                             }
+                    } else {
+                        // If there are no results, display a message or take any other appropriate action
+                        echo "No user found.";
+                    }
+                } else {
+                    // If the session variable 'reg_no' is not set, display a message or redirect to login page
+                    echo "Session variable 'reg_no' not set.";
+                }
+
+                // Close the database connection
+                mysqli_close($conn);
+?>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+    <?php include 'connect.php'; ?>
 
     <div class="right-section">
         <div class="right-section-inner">
             <div role="main" class="main shop pb-4">
                 <div class="poster1"></div>
-                <div class="alert alert-warning alert-dismissible" role="alert" style="margin-top: 10px;">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    <strong>Alert!</strong> You need additional authentication to become a seller.
-                </div>
+                
                 <td colspan="2" class="border-top-0">
                     <strong class="text-color-dark">
                         <p id="page-count-info"></p>
@@ -350,9 +439,9 @@
                                                     $category1 = $row['category1'];
                                                     $category2 = $row['category2'];
                                                     $finalamount = $row['total'];
+                                                    
                                                 }
                                                 ?>
-                                                <a class ="btn btn-primary buynow">Buy Now</a>
 
                                             </div>
 
@@ -424,6 +513,9 @@ const selectedProductCount = 1;
 // Update the count badge text
 document.querySelector('.count-badge').textContent = selectedProductCount.toString(); -->
     <?php include 'footer.php'; ?>
+
+
+           
     <?php
     include('connect.php');
     include 'connect.php';
@@ -458,6 +550,9 @@ document.querySelector('.count-badge').textContent = selectedProductCount.toStri
             }
         }
     }
+    if (isset($_SESSION['idnum'])) {
+        // Sanitize the session variable to prevent SQL injection
+        $reg_no = mysqli_real_escape_string($conn, $_SESSION['idnum']);
 
     if (isset($_POST['submit'])) {
         // Check if file was uploaded without errors
@@ -482,6 +577,8 @@ document.querySelector('.count-badge').textContent = selectedProductCount.toStri
             $colour = $category;
             $spiral = $category2;
 
+            
+
             if ($colour == "Color" && $spiral == "Spiral Binding") {
                 $total = $pages * $colourprice + $spiralprice;
             } else if ($colour == "Color" && $spiral == "Stick File") {
@@ -499,7 +596,7 @@ document.querySelector('.count-badge').textContent = selectedProductCount.toStri
             }
 
             // Insert data into the database
-            $sql = "INSERT INTO xeorx (file, category, category1, category2,total) VALUES ('$file_name', '$category', '$category1', '$category2', '$total')";
+            $sql = "INSERT INTO xeorx (file,pages, category, category1, category2,total,reg_no) VALUES ('$file_name','$pages', '$category', '$category1', '$category2', '$total','$reg_no')";
             $result = mysqli_query($conn, $sql);
 
             if ($result) {
@@ -514,6 +611,7 @@ document.querySelector('.count-badge').textContent = selectedProductCount.toStri
             echo "File upload error.";
         }
     }
+}
 
 
     ?>
