@@ -24,7 +24,9 @@ session_start();
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
 
 	<!-- Web Fonts  -->
-	<link id="googleFonts" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap" rel="stylesheet" type="text/css">
+	<link id="googleFonts"
+		href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
+		rel="stylesheet" type="text/css">
 
 	<!-- Vendor CSS -->
 	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -193,74 +195,78 @@ $totalSalePrice = $_GET['totalSalePrice'];
 			</div>
 			<div class="left-section-bottom">
 				<div class="col-lg-4 position-relative">
-					<div class="card border-width-3 border-radius-0 border-color-hover-dark" style="min-height: 450px; min-width: 410px;">
+					<div class="card border-width-3 border-radius-0 border-color-hover-dark"
+						style="min-height: 450px; min-width: 410px;">
 
 						<div class="card-body">
 							<h4 class="font-weight-bold text-uppercase text-4 mb-3">Your Order</h4>
 							<table class="shop_table cart-totals mb-3">
 								<tbody>
 									<!-- <tr>
-                                        <td colspan="2" class="border-top-0">
-                                            <strong class="text-color-dark">Product</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">Black Porto Smartwatch <span class="product-qty">x1</span></strong>
-                                            <span class="text-1">COLOR BLACK</span>
-                                        </td>
-                                        <td class="text-end align-top">
-                                            <span class="amount font-weight-medium text-color-grey">$15</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="border-top-0 pt-0">
-                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">Black Porto Smartwatch <span class="product-qty">x1</span></strong>
-                                            <span class="text-1">COLOR BLACK</span>
-                                        </td>
-                                        <td class="border-top-0 text-end align-top pt-0">
-                                            <span class="amount font-weight-medium text-color-grey">$15</span>
-                                        </td>
-                                    </tr>
-                                    <tr class="cart-subtotal">
-                                        <td class="border-top-0">
-                                            <strong class="text-color-dark">Subtotal</strong>
-                                        </td>
-                                        <td class="border-top-0 text-end">
-                                            <strong><span class="amount font-weight-medium">$431</span></strong>
-                                        </td>
-                                    </tr> -->
+										<td colspan="2" class="border-top-0">
+											<strong class="text-color-dark">Product</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong class="d-block text-color-dark line-height-1 font-weight-semibold">Black Porto Smartwatch <span class="product-qty">x1</span></strong>
+											<span class="text-1">COLOR BLACK</span>
+										</td>
+										<td class="text-end align-top">
+											<span class="amount font-weight-medium text-color-grey">$15</span>
+										</td>
+									</tr>
+									<tr>
+										<td class="border-top-0 pt-0">
+											<strong class="d-block text-color-dark line-height-1 font-weight-semibold">Black Porto Smartwatch <span class="product-qty">x1</span></strong>
+											<span class="text-1">COLOR BLACK</span>
+										</td>
+										<td class="border-top-0 text-end align-top pt-0">
+											<span class="amount font-weight-medium text-color-grey">$15</span>
+										</td>
+									</tr>
+									<tr class="cart-subtotal">
+										<td class="border-top-0">
+											<strong class="text-color-dark">Subtotal</strong>
+										</td>
+										<td class="border-top-0 text-end">
+											<strong><span class="amount font-weight-medium">$431</span></strong>
+										</td>
+									</tr> -->
 									<!-- <tr class="shipping">
-                                        <td colspan="2">
-                                            <strong class="d-block text-color-dark mb-2">Shipping</strong>
+										<td colspan="2">
+											<strong class="d-block text-color-dark mb-2">Shipping</strong>
 
-                                            <div class="d-flex flex-column">
-                                                <label class="d-flex align-items-center text-color-grey mb-0" for="shipping_method1">
-                                                    <input id="shipping_method1" type="radio" class="me-2" name="shipping_method" value="free" checked />
-                                                    Free Shipping
-                                                </label>
-                                                <label class="d-flex align-items-center text-color-grey mb-0" for="shipping_method2">
-                                                    <input id="shipping_method2" type="radio" class="me-2" name="shipping_method" value="local-pickup" />
-                                                    Local Pickup
-                                                </label>
-                                                <label class="d-flex align-items-center text-color-grey mb-0" for="shipping_method3">
-                                                    <input id="shipping_method3" type="radio" class="me-2" name="shipping_method" value="flat-rate" />
-                                                    Flat Rate: $5.00
-                                                </label>
-                                            </div>
-                                        </td>
-                                    </tr> -->
+											<div class="d-flex flex-column">
+												<label class="d-flex align-items-center text-color-grey mb-0" for="shipping_method1">
+													<input id="shipping_method1" type="radio" class="me-2" name="shipping_method" value="free" checked />
+													Free Shipping
+												</label>
+												<label class="d-flex align-items-center text-color-grey mb-0" for="shipping_method2">
+													<input id="shipping_method2" type="radio" class="me-2" name="shipping_method" value="local-pickup" />
+													Local Pickup
+												</label>
+												<label class="d-flex align-items-center text-color-grey mb-0" for="shipping_method3">
+													<input id="shipping_method3" type="radio" class="me-2" name="shipping_method" value="flat-rate" />
+													Flat Rate: $5.00
+												</label>
+											</div>
+										</td>
+									</tr> -->
 
 									<tr class="total">
 										<td>
 											<strong class="text-color-dark text-3-5">Total</strong>
 										</td>
 										<td class="text-end">
-											<strong class="text-color-dark"><span class="amount text-color-dark text-5">₹<?php echo $totalSalePrice; ?></span></strong>
+											<strong class="text-color-dark"><span
+													class="amount text-color-dark text-5">₹
+													<?php echo $totalSalePrice; ?>
+												</span></strong>
 										</td>
 
 									</tr>
-									<tr class="payment-methods">
+									<!-- <tr class="payment-methods">
 										<td colspan="2">
 											<strong class="d-block text-color-dark mb-2">Payment Methods</strong>
 
@@ -275,15 +281,19 @@ $totalSalePrice = $_GET['totalSalePrice'];
 												</label>
 											</div>
 										</td>
-									</tr>
+									</tr> -->
 									<tr>
 										<td colspan="2">
-											Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.
+											Your personal data will be used to process your order, support your
+											experience throughout this website, and for other purposes described in our
+											privacy policy.
 										</td>
 									</tr>
 								</tbody>
 							</table>
-							<a href="ordercomplete.php" class="btn btn-dark btn-modern w-100 text-uppercase bg-color-hover-primary border-color-hover-primary border-radius-0 text-3 py-3">Place Order <i class="fas fa-arrow-right ms-2"></i></a>
+							<a <?php $total = $totalSalePrice; ?>
+								class="btn btn-dark btn-modern w-100 text-uppercase bg-color-hover-primary border-color-hover-primary border-radius-0 text-3 py-3 paynow">Place
+								Order <i class="fas fa-arrow-right ms-2"></i></a>
 						</div>
 					</div>
 				</div>
@@ -311,7 +321,7 @@ $totalSalePrice = $_GET['totalSalePrice'];
 		$reg_no = $row['reg_no'];
 		$email = $row['email'];
 		$phonenumber = $row['phonenumber']; // Get phone number from the joined result
-
+		
 		$conn->close();
 		?>
 
@@ -329,32 +339,41 @@ $totalSalePrice = $_GET['totalSalePrice'];
 								<h2 class="text-color-dark font-weight-bold text-5-5 mb-3">Billing Details</h2>
 								<div class="row">
 									<div class="form-group col-md-6">
-										<label class="form-label" style="text-align: left !important;">First Name <span class="text-color-danger">*</span></label>
-										<input type="text" class="form-control h-auto py-2" name="firstName" value="<?php echo $firstname; ?>" readonly />
+										<label class="form-label" style="text-align: left !important;">First Name <span
+												class="text-color-danger">*</span></label>
+										<input type="text" class="form-control h-auto py-2" name="firstName"
+											value="<?php echo $firstname; ?>" readonly />
 									</div>
 									<div class="form-group col-md-6">
-										<label class="form-label">Last Name <span class="text-color-danger">*</span></label>
-										<input type="text" class="form-control h-auto py-2" name="lastName" value="<?php echo $lastname; ?>" readonly />
+										<label class="form-label">Last Name <span
+												class="text-color-danger">*</span></label>
+										<input type="text" class="form-control h-auto py-2" name="lastName"
+											value="<?php echo $lastname; ?>" readonly />
 									</div>
 								</div>
 
 								<div class="row">
 									<div class="form-group col">
-										<label class="form-label">Registration number<span class="text-color-danger">*</span></label>
-										<input type="text" class="form-control h-auto py-2" name="companyName" value="<?php echo $reg_no; ?>" readonly />
+										<label class="form-label">Registration number<span
+												class="text-color-danger">*</span></label>
+										<input type="text" class="form-control h-auto py-2" name="companyName"
+											value="<?php echo $reg_no; ?>" readonly />
 									</div>
 								</div>
 
 								<div class="row">
 									<div class="form-group col">
 										<label class="form-label">Phone <span class="text-color-danger">*</span></label>
-										<input type="number" class="form-control h-auto py-2" name="phone" value="<?php echo $phonenumber; ?>" readonly />
+										<input type="number" class="form-control h-auto py-2" name="phone"
+											value="<?php echo $phonenumber; ?>" readonly />
 									</div>
 								</div>
 								<div class="row">
 									<div class="form-group col">
-										<label class="form-label">Email Address <span class="text-color-danger">*</span></label>
-										<input type="email" class="form-control h-auto py-2" name="email" value="<?php echo $email; ?>" readonly />
+										<label class="form-label">Email Address <span
+												class="text-color-danger">*</span></label>
+										<input type="email" class="form-control h-auto py-2" name="email"
+											value="<?php echo $email; ?>" readonly />
 									</div>
 								</div>
 							</div>
@@ -374,7 +393,8 @@ $totalSalePrice = $_GET['totalSalePrice'];
 			<hr class="mt-0">
 			<div class="products row">
 				<div class="col">
-					<div class="owl-carousel owl-theme nav-style-1 nav-outside nav-outside nav-dark mb-0" data-plugin-options="{'loop': false, 'autoplay': false, 'items': 4, 'nav': true, 'dots': false, 'margin': 20, 'autoplayHoverPause': true, 'autoHeight': true, 'stagePadding': '75', 'navVerticalOffset': '50px'}">
+					<div class="owl-carousel owl-theme nav-style-1 nav-outside nav-outside nav-dark mb-0"
+						data-plugin-options="{'loop': false, 'autoplay': false, 'items': 4, 'nav': true, 'dots': false, 'margin': 20, 'autoplayHoverPause': true, 'autoHeight': true, 'stagePadding': '75', 'navVerticalOffset': '50px'}">
 
 						<div class="product mb-0">
 							<div class="product-thumb-info border-0 mb-3">
@@ -385,12 +405,14 @@ $totalSalePrice = $_GET['totalSalePrice'];
 								</div>
 
 								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
+									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
+										title="Add to Cart">
 										<i class="icons icon-bag"></i>
 									</a>
 								</div>
 
-								<a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
+								<a href="ajax/shop-product-quick-view.html"
+									class="quick-view text-uppercase font-weight-semibold text-2">
 									QUICK VIEW
 								</a>
 								<a href="shop-product-sidebar-left.html">
@@ -402,13 +424,20 @@ $totalSalePrice = $_GET['totalSalePrice'];
 							</div>
 							<div class="d-flex justify-content-between">
 								<div>
-									<a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">electronics</a>
-									<h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Photo Camera</a></h3>
+									<a href="#"
+										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">electronics</a>
+									<h3
+										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
+										<a href="shop-product-sidebar-right.html"
+											class="text-color-dark text-color-hover-primary">Photo Camera</a></h3>
 								</div>
-								<a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
+								<a href="#"
+									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
+										class="far fa-heart"></i></a>
 							</div>
 							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
+								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
+									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
 							</div>
 							<p class="price text-5 mb-3">
 								<span class="sale text-color-dark font-weight-semi-bold">$69,00</span>
@@ -425,12 +454,14 @@ $totalSalePrice = $_GET['totalSalePrice'];
 								</div>
 
 								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
+									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
+										title="Add to Cart">
 										<i class="icons icon-bag"></i>
 									</a>
 								</div>
 
-								<a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
+								<a href="ajax/shop-product-quick-view.html"
+									class="quick-view text-uppercase font-weight-semibold text-2">
 									QUICK VIEW
 								</a>
 								<a href="shop-product-sidebar-left.html">
@@ -444,13 +475,20 @@ $totalSalePrice = $_GET['totalSalePrice'];
 							</div>
 							<div class="d-flex justify-content-between">
 								<div>
-									<a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">accessories</a>
-									<h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Porto Headphone</a></h3>
+									<a href="#"
+										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">accessories</a>
+									<h3
+										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
+										<a href="shop-product-sidebar-right.html"
+											class="text-color-dark text-color-hover-primary">Porto Headphone</a></h3>
 								</div>
-								<a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
+								<a href="#"
+									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
+										class="far fa-heart"></i></a>
 							</div>
 							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
+								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
+									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
 							</div>
 							<p class="price text-5 mb-3">
 								<span class="sale text-color-dark font-weight-semi-bold">$199,00</span>
@@ -462,12 +500,14 @@ $totalSalePrice = $_GET['totalSalePrice'];
 							<div class="product-thumb-info border-0 mb-3">
 
 								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
+									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
+										title="Add to Cart">
 										<i class="icons icon-bag"></i>
 									</a>
 								</div>
 
-								<a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
+								<a href="ajax/shop-product-quick-view.html"
+									class="quick-view text-uppercase font-weight-semibold text-2">
 									QUICK VIEW
 								</a>
 								<a href="shop-product-sidebar-left.html">
@@ -479,13 +519,20 @@ $totalSalePrice = $_GET['totalSalePrice'];
 							</div>
 							<div class="d-flex justify-content-between">
 								<div>
-									<a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">sports</a>
-									<h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Golf Bag</a></h3>
+									<a href="#"
+										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">sports</a>
+									<h3
+										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
+										<a href="shop-product-sidebar-right.html"
+											class="text-color-dark text-color-hover-primary">Golf Bag</a></h3>
 								</div>
-								<a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
+								<a href="#"
+									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
+										class="far fa-heart"></i></a>
 							</div>
 							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
+								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
+									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
 							</div>
 							<p class="price text-5 mb-3">
 								<span class="sale text-color-dark font-weight-semi-bold">$29,00</span>
@@ -502,16 +549,20 @@ $totalSalePrice = $_GET['totalSalePrice'];
 								</div>
 
 								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
+									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
+										title="Add to Cart">
 										<i class="icons icon-bag"></i>
 									</a>
 								</div>
 
 								<div class="countdown-offer-wrapper">
-									<div class="text-color-light text-2" data-plugin-countdown data-plugin-options="{'textDay': 'DAYS', 'textHour': 'HRS', 'textMin': 'MIN', 'textSec': 'SEC', 'date': '2025/01/01 12:00:00', 'numberClass': 'text-color-light', 'wrapperClass': 'text-color-light', 'insertHTMLbefore': '<span>OFFER ENDS IN </span>', 'textDay': 'DAYS', 'textHour': ':', 'textMin': ':', 'textSec': '', 'uppercase': true}"></div>
+									<div class="text-color-light text-2" data-plugin-countdown
+										data-plugin-options="{'textDay': 'DAYS', 'textHour': 'HRS', 'textMin': 'MIN', 'textSec': 'SEC', 'date': '2025/01/01 12:00:00', 'numberClass': 'text-color-light', 'wrapperClass': 'text-color-light', 'insertHTMLbefore': '<span>OFFER ENDS IN </span>', 'textDay': 'DAYS', 'textHour': ':', 'textMin': ':', 'textSec': '', 'uppercase': true}">
+									</div>
 								</div>
 
-								<a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
+								<a href="ajax/shop-product-quick-view.html"
+									class="quick-view text-uppercase font-weight-semibold text-2">
 									QUICK VIEW
 								</a>
 								<a href="shop-product-sidebar-left.html">
@@ -523,13 +574,20 @@ $totalSalePrice = $_GET['totalSalePrice'];
 							</div>
 							<div class="d-flex justify-content-between">
 								<div>
-									<a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">sports</a>
-									<h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Workout</a></h3>
+									<a href="#"
+										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">sports</a>
+									<h3
+										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
+										<a href="shop-product-sidebar-right.html"
+											class="text-color-dark text-color-hover-primary">Workout</a></h3>
 								</div>
-								<a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
+								<a href="#"
+									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
+										class="far fa-heart"></i></a>
 							</div>
 							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
+								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
+									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
 							</div>
 							<p class="price text-5 mb-3">
 								<span class="sale text-color-dark font-weight-semi-bold">$40,00</span>
@@ -541,12 +599,14 @@ $totalSalePrice = $_GET['totalSalePrice'];
 							<div class="product-thumb-info border-0 mb-3">
 
 								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
+									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
+										title="Add to Cart">
 										<i class="icons icon-bag"></i>
 									</a>
 								</div>
 
-								<a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
+								<a href="ajax/shop-product-quick-view.html"
+									class="quick-view text-uppercase font-weight-semibold text-2">
 									QUICK VIEW
 								</a>
 								<a href="shop-product-sidebar-left.html">
@@ -558,13 +618,20 @@ $totalSalePrice = $_GET['totalSalePrice'];
 							</div>
 							<div class="d-flex justify-content-between">
 								<div>
-									<a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">accessories</a>
-									<h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Luxury Bag</a></h3>
+									<a href="#"
+										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">accessories</a>
+									<h3
+										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
+										<a href="shop-product-sidebar-right.html"
+											class="text-color-dark text-color-hover-primary">Luxury Bag</a></h3>
 								</div>
-								<a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
+								<a href="#"
+									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
+										class="far fa-heart"></i></a>
 							</div>
 							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
+								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
+									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
 							</div>
 							<p class="price text-5 mb-3">
 								<span class="sale text-color-dark font-weight-semi-bold">$99,00</span>
@@ -576,12 +643,14 @@ $totalSalePrice = $_GET['totalSalePrice'];
 							<div class="product-thumb-info border-0 mb-3">
 
 								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
+									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
+										title="Add to Cart">
 										<i class="icons icon-bag"></i>
 									</a>
 								</div>
 
-								<a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
+								<a href="ajax/shop-product-quick-view.html"
+									class="quick-view text-uppercase font-weight-semibold text-2">
 									QUICK VIEW
 								</a>
 								<a href="shop-product-sidebar-left.html">
@@ -593,13 +662,20 @@ $totalSalePrice = $_GET['totalSalePrice'];
 							</div>
 							<div class="d-flex justify-content-between">
 								<div>
-									<a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">accessories</a>
-									<h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Styled Bag</a></h3>
+									<a href="#"
+										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">accessories</a>
+									<h3
+										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
+										<a href="shop-product-sidebar-right.html"
+											class="text-color-dark text-color-hover-primary">Styled Bag</a></h3>
 								</div>
-								<a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
+								<a href="#"
+									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
+										class="far fa-heart"></i></a>
 							</div>
 							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
+								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
+									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
 							</div>
 							<p class="price text-5 mb-3">
 								<span class="sale text-color-dark font-weight-semi-bold">$199,00</span>
@@ -611,12 +687,14 @@ $totalSalePrice = $_GET['totalSalePrice'];
 							<div class="product-thumb-info border-0 mb-3">
 
 								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
+									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
+										title="Add to Cart">
 										<i class="icons icon-bag"></i>
 									</a>
 								</div>
 
-								<a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
+								<a href="ajax/shop-product-quick-view.html"
+									class="quick-view text-uppercase font-weight-semibold text-2">
 									QUICK VIEW
 								</a>
 								<a href="shop-product-sidebar-left.html">
@@ -628,13 +706,20 @@ $totalSalePrice = $_GET['totalSalePrice'];
 							</div>
 							<div class="d-flex justify-content-between">
 								<div>
-									<a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">hat</a>
-									<h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Blue Hat</a></h3>
+									<a href="#"
+										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">hat</a>
+									<h3
+										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
+										<a href="shop-product-sidebar-right.html"
+											class="text-color-dark text-color-hover-primary">Blue Hat</a></h3>
 								</div>
-								<a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
+								<a href="#"
+									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
+										class="far fa-heart"></i></a>
 							</div>
 							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
+								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
+									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
 							</div>
 							<p class="price text-5 mb-3">
 								<span class="sale text-color-dark font-weight-semi-bold">$299,00</span>
@@ -646,12 +731,14 @@ $totalSalePrice = $_GET['totalSalePrice'];
 							<div class="product-thumb-info border-0 mb-3">
 
 								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
+									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
+										title="Add to Cart">
 										<i class="icons icon-bag"></i>
 									</a>
 								</div>
 
-								<a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
+								<a href="ajax/shop-product-quick-view.html"
+									class="quick-view text-uppercase font-weight-semibold text-2">
 									QUICK VIEW
 								</a>
 								<a href="shop-product-sidebar-left.html">
@@ -663,13 +750,20 @@ $totalSalePrice = $_GET['totalSalePrice'];
 							</div>
 							<div class="d-flex justify-content-between">
 								<div>
-									<a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">accessories</a>
-									<h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Adventurer Bag</a></h3>
+									<a href="#"
+										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">accessories</a>
+									<h3
+										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
+										<a href="shop-product-sidebar-right.html"
+											class="text-color-dark text-color-hover-primary">Adventurer Bag</a></h3>
 								</div>
-								<a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
+								<a href="#"
+									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
+										class="far fa-heart"></i></a>
 							</div>
 							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
+								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
+									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
 							</div>
 							<p class="price text-5 mb-3">
 								<span class="sale text-color-dark font-weight-semi-bold">$99,00</span>
@@ -681,12 +775,14 @@ $totalSalePrice = $_GET['totalSalePrice'];
 							<div class="product-thumb-info border-0 mb-3">
 
 								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
+									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
+										title="Add to Cart">
 										<i class="icons icon-bag"></i>
 									</a>
 								</div>
 
-								<a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
+								<a href="ajax/shop-product-quick-view.html"
+									class="quick-view text-uppercase font-weight-semibold text-2">
 									QUICK VIEW
 								</a>
 								<a href="shop-product-sidebar-left.html">
@@ -698,13 +794,20 @@ $totalSalePrice = $_GET['totalSalePrice'];
 							</div>
 							<div class="d-flex justify-content-between">
 								<div>
-									<a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">sports</a>
-									<h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Baseball Ball</a></h3>
+									<a href="#"
+										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">sports</a>
+									<h3
+										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
+										<a href="shop-product-sidebar-right.html"
+											class="text-color-dark text-color-hover-primary">Baseball Ball</a></h3>
 								</div>
-								<a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
+								<a href="#"
+									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
+										class="far fa-heart"></i></a>
 							</div>
 							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
+								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
+									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
 							</div>
 							<p class="price text-5 mb-3">
 								<span class="sale text-color-dark font-weight-semi-bold">$399,00</span>
@@ -734,6 +837,46 @@ $totalSalePrice = $_GET['totalSalePrice'];
 
 			<!-- Theme Initialization Files -->
 			<script src="js/theme.init.js"></script>
+
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+			<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+			<script>
+				$(document).ready(function () {
+					$(".paynow").click(function (e) {
+						e.preventDefault(); // Prevent default behavior of anchor tag click
+						var amount = <?php echo $total; ?>;
+						var productname = "campus Ecommerce";// Assuming this variable is defined elsewhere in your code
+						var options = {
+							"key": "rzp_live_2D4bAGktbYxm16",
+							"amount": amount * 100,
+							"name": "Campus Online",
+							"description": productname,
+							"image": "http://localhost/hackathon/img/Campus.png",
+							"handler": function (response) {
+								var paymentid = response.razorpay_payment_id;
+								$.ajax({
+									url: "payment-process.php",
+									type: "POST",
+									data: { product_id: 'your_product_id', payment_id: paymentid }, // Replace 'your_product_id' with the actual product ID
+									success: function (finalresponse) {
+										if (finalresponse == 'done') {
+											window.location.href = "http://localhost/hackathon/success.php";
+										} else {
+											alert('Please check console.log to find error');
+											console.log(finalresponse);
+										}
+									}
+								});
+							},
+							"theme": {
+								"color": "#3399cc"
+							}
+						};
+						var rzp1 = new Razorpay(options);
+						rzp1.open();
+					});
+				});
+			</script>
 			<!-- 
 					// Assuming you have a variable selectedProductCount that represents the count
 const selectedProductCount = 1;
