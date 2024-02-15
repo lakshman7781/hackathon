@@ -331,7 +331,8 @@ session_start(); ?>
                     }
                 } else {
                     // If the session variable 'reg_no' is not set, display a message or redirect to login page
-                    echo "Session variable 'reg_no' not set.";
+                    echo "<script type='text/javascript'> 
+                    window.location.href = 'login.php';</script>";
                 }
 
                 // Close the database connection
@@ -586,17 +587,9 @@ document.querySelector('.count-badge').textContent = selectedProductCount.toStri
                     $total = 10;
                 }
 
-                // Insert data into the database
-                $sql = "UPDATE xeorx
-                SET file = '$file_name',
-                pages = '$pages',
-                category = '$category',
-                category1 = '$category1',
-                category2 = '$category2',
-                total = '$total'
-                WHERE reg_no = '$reg_no';
-                 ";
-                $result = mysqli_query($conn, $sql);
+            // Insert data into the database
+            $sql = "INSERT INTO xeorx (file,pages, category, category1, category2,total,reg_no) VALUES ('$file_name','$pages', '$category', '$category1', '$category2', '$total','$reg_no')";
+            $result = mysqli_query($conn, $sql);
 
                 if ($result) {
                     echo "<script>alert('Pdf Uploaded successfully!');</script>";
