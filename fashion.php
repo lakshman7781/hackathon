@@ -297,6 +297,29 @@
 							});
 						});
 					</script>
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+					<script>
+						$(document).ready(function() {
+							$('.heart-icon').click(function(e) {
+								e.preventDefault();
+								var productId = $(this).data('product-id');
+								$.ajax({
+									url: 'insertwishlist.php', // URL of the PHP script that handles insertion
+									method: 'POST',
+									data: {
+										productId: productId
+									}, // Data to send in the AJAX request
+									success: function(response) {
+										alert('Product added to wishlist successfully!');
+									},
+									error: function(xhr, status, error) {
+										console.error(xhr.responseText);
+									}
+								});
+							});
+						});
+					</script>
+
 					</div>
 					<div class="row mt-4">
 						<div class="col">
