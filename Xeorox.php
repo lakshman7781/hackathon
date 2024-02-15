@@ -331,7 +331,8 @@ session_start(); ?>
                     }
                 } else {
                     // If the session variable 'reg_no' is not set, display a message or redirect to login page
-                    echo "Session variable 'reg_no' not set.";
+                    echo "<script type='text/javascript'> 
+                    window.location.href = 'login.php';</script>";
                 }
 
                 // Close the database connection
