@@ -1,19 +1,9 @@
 <?php
 session_start();
 
-// Establish database connection (replace with your own credentials)
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "campusonline";
+include 'connect.php';
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+// Include database connection  
 $registration_number = $_SESSION['regNumber'];
 // echo "hello";
 // Process form submission
