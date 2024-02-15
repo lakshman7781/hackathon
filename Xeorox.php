@@ -596,7 +596,15 @@ document.querySelector('.count-badge').textContent = selectedProductCount.toStri
             }
 
             // Insert data into the database
-            $sql = "INSERT INTO xeorx (file,pages, category, category1, category2,total,reg_no) VALUES ('$file_name','$pages', '$category', '$category1', '$category2', '$total','$reg_no')";
+            $sql = "UPDATE xeorx
+            SET file = '$file_name',
+            pages = '$pages',
+            category = '$category',
+            category1 = '$category1',
+            category2 = '$category2',
+            total = '$total'
+            WHERE reg_no = '$reg_no';
+             ";
             $result = mysqli_query($conn, $sql);
 
             if ($result) {
