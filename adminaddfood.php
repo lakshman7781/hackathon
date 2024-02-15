@@ -1,144 +1,4 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <html lang="en">
 <?php session_start(); ?>
 
@@ -699,20 +559,20 @@
                                     <div class="row">
                                         <div class="col-lg-2-5 col-xl-1-5">
                                             <i class="card-big-info-icon bx bx-box"></i>
-                                            <h2 class="card-big-info-title">Event Info</h2>
-                                            <p class="card-big-info-desc">Add here the Event description with all details and necessary information.</p>
+                                            <h2 class="card-big-info-title">Food Info</h2>
+                                            <p class="card-big-info-desc">Add here the food description with all details and necessary information.</p>
                                         </div>
                                         <div class="col-lg-3-5 col-xl-4-5">
                                             <div class="form-group row align-items-center pb-3">
-                                                <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Event Name</label>
+                                                <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">food Name</label>
                                                 <div class="col-lg-7 col-xl-6">
-                                                    <input type="text" class="form-control form-control-modern" name="eventName" value="" required />
+                                                    <input type="text" class="form-control form-control-modern" name="foodName" value="" required />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-lg-5 col-xl-3 control-label text-lg-end pt-2 mt-1 mb-0">Event Description</label>
+                                                <label class="col-lg-5 col-xl-3 control-label text-lg-end pt-2 mt-1 mb-0">food Description</label>
                                                 <div class="col-lg-7 col-xl-6">
-                                                    <textarea class="form-control form-control-modern" name="eventDescription" rows="6" required></textarea>
+                                                    <textarea class="form-control form-control-modern" name="foodDescription" rows="6" required></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -728,8 +588,8 @@
                                     <div class="row">
                                         <div class="col-lg-2-5 col-xl-1-5">
                                             <i class="card-big-info-icon bx bx-camera"></i>
-                                            <h2 class="card-big-info-title">Event Image</h2>
-                                            <p class="card-big-info-desc">Upload your Event image. You can add multiple images</p>
+                                            <h2 class="card-big-info-title">Food Image</h2>
+                                            <p class="card-big-info-desc">Upload your Food image. You can add multiple images</p>
                                         </div>
                                         <div class="col-lg-3-5 col-xl-4-5">
                                             <div class="form-group row align-items-center">
@@ -737,9 +597,9 @@
                                                     <div id="dropzone-form-image" class="dropzone-modern dz-square">
                                                         <span class="dropzone-upload-message text-center">
                                                             <i class="bx bxs-cloud-upload"></i>
-                                                            <label for="file-upload" class="text-color-primary"><b class="text-color-primary">Drag/Upload</b> your images here.<b>
-200x200 Size</label>
-                                                            <input type="file" id="file-upload" name="eventimage" class="text-color-primary" required onchange="previewImage(event)" />
+                                                            <label for="file-upload" class="text-color-primary"><b class="text-color-primary">Upload</b> your images here.<b>
+                                                                    200x200 Size</label>
+                                                            <input type="file" id="file-upload" name="foodimage" class="text-color-primary" required onchange="previewImage(event)" />
                                                         </span>
                                                         <div id="image-preview" class="text-center mt-3">
                                                             <img id="preview" src="#" alt="Image Preview" style="max-width: 100%; max-height: 200px;" />
@@ -760,74 +620,52 @@
                                     <div class="tabs-modern row">
                                         <div class="col-lg-2-5 col-xl-1-5" style="background-color:none">
                                             <div class="nav flex-column tabs" id="tab" role="tablist" aria-orientation="vertical">
-                                                <a class="nav-link active" id="inventory-tab" data-bs-toggle="pill" data-bs-target="#inventory" role="tab" aria-controls="inventory" aria-selected="false">Inventory</a>
-                                                <a class="nav-link " id="price-tab" data-bs-toggle="pill" data-bs-target="#price" role="tab" aria-controls="price" aria-selected="true">Date</a>
-
-                                                <!-- <a class="nav-link" id="attributes-tab" data-bs-toggle="pill" data-bs-target="#attributes" role="tab" aria-controls="attributes">Attributes</a> -->
+                                                <a class="nav-link active" id="inventory-tab" data-bs-toggle="pill" data-bs-target="#inventory" role="tab" aria-controls="inventory" aria-selected="false">Price</a>
+                                                <a class="nav-link " id="price-tab" data-bs-toggle="pill" data-bs-target="#price" role="tab" aria-controls="price" aria-selected="true">Inventory</a>
                                             </div>
                                         </div>
                                         <div class="col-lg-3-5 col-xl-4-5">
                                             <div class="tab-content" id="tabContent">
                                                 <div class="tab-pane fade " id="price" role="tabpanel" aria-labelledby="price-tab">
                                                     <div class="form-group row align-items-center pb-3">
-                                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Starting Date</label>
+                                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Availability</label>
                                                         <div class="col-lg-7 col-xl-6">
-                                                            <input type="text" class="form-control form-control-modern" name="startdate" value="" required />
+                                                            <select class="form-control form-control-modern" name="Category">
+                                                                <option value="Tommrrow" selected>Tommrrow</option>
+                                                                <option value="Today">Today</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row align-items-center">
-                                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Ending Date</label>
+                                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Type</label>
                                                         <div class="col-lg-7 col-xl-6">
-                                                            <input type="text" class="form-control form-control-modern" name="enddate" value="" required />
+                                                            <select class="form-control form-control-modern" name="type">
+                                                                <option value="VEG" selected>VEG</option>
+                                                                <option value="NON-VEG">NON-VEG</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
+
+
                                                 <div class="tab-pane fade show active" id="inventory" role="tabpanel" aria-labelledby="inventory-tab">
                                                     <div class="form-group row align-items-center pb-3">
-                                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Category</label>
+                                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">RegularPrice</label>
                                                         <div class="col-lg-7 col-xl-6">
-                                                            <select class="form-control form-control-modern" name="Category">
-                                                                <option value="Internships" selected>Internships</option>
-                                                                <option value="IEI">IEI</option>
-
-                                                                <option value="ACE">ACE</option>
-                                                                <option value="EOC">EOC</option>
-                                                            </select>
+                                                            <input type="text" class="form-control form-control-modern" name="regularprice" value="" required />
                                                         </div>
                                                     </div>
-                                                    <!-- <div class="form-group row align-items-center pb-3">
-                                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Stock Status</label>
+                                                    <div class="form-group row align-items-center">
+                                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Sale Price</label>
                                                         <div class="col-lg-7 col-xl-6">
-                                                            <select class="form-control form-control-modern" name="stockStatus">
-                                                                <option value="in-stock" selected>In Stock</option>
-                                                                <option value="out-of-stock">Out of Stock</option>
-                                                                <option value="on-backorder">On Backorder</option>
-                                                            </select>
+                                                            <input type="text" class="form-control form-control-modern" name="saleprice" value="" required />
                                                         </div>
-                                                    </div> -->
+                                                    </div>
+
 
                                                 </div>
 
-                                                <!-- <div class="tab-pane fade" id="attributes" role="tabpanel" aria-labelledby="attributes-tab">
-                                                    <div class="ecommerce-attributes-wrapper">
-                                                        <div class="form-group row justify-content-center ecommerce-attribute-row pb-3">
 
-                                                            <div class="col-xl-6">
-
-                                                                <label class="control-label">Size</label>
-                                                                <textarea class="form-control form-control-modern" name="size" rows="4" placeholder="None|Blue|Red|Green"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row justify-content-center ecommerce-attribute-row">
-                                                            <div class="col-xl-6">
-
-                                                                <label class="control-label">Colour</label>
-                                                                <textarea class="form-control form-control-modern" name="colour" rows="4" placeholder="None|Blue|Red|Green"></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div> -->
 
                                             </div>
                                         </div>
@@ -840,7 +678,7 @@
                             <div class="row action-buttons d-flex justify-content-between">
                                 <div class="col-12 col-md-auto">
                                     <button name="save" class="submitt-button btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">
-                                        <i class="bx bx-save text-4 me-2"></i> Add Event
+                                        <i class="bx bx-save text-4 me-2"></i> Add Food
                                     </button>
                                 </div>
                                 <br>
@@ -896,35 +734,39 @@ document.querySelector('.count-badge').textContent = selectedProductCount.toStri
 include 'connect.php';
 
 if (isset($_POST['save'])) {
-    if (!empty($_POST['eventName']) && !empty($_POST['eventDescription']) && !empty($_POST['startdate']) && !empty($_POST['enddate']) && !empty($_POST['Category']) && !empty($_FILES['eventimage']['name'])) {
+    if (!empty($_POST['foodName']) && !empty($_POST['foodDescription']) && !empty($_POST['regularprice']) && !empty($_POST['saleprice']) && !empty($_POST['Category']) && !empty($_POST['availablity']) && !empty($_FILES['eventimage']['name']) && !empty($_FILES['type']) ) {
 
-        $eventName = $_POST["eventName"];
+        $foodName = $_POST["foodName"];
+        $foodDescription = $_POST["foodDescription"];
+        $regularprice = $_POST["regularprice"];
+        $saleprice = $_POST["saleprice"];
         $Category = $_POST["Category"];
-        $eventDescription = $_POST["eventDescription"];
+        $availablity = $_POST["availablity"];
+        $type = $_POST["type"];
 
-        $startdate = date('Y-m-d', strtotime($_POST['startdate']));
-        $enddate = date('Y-m-d', strtotime($_POST['enddate']));
 
         // Sanitize inputs
-        $eventName = mysqli_real_escape_string($conn, $eventName);
+        $foodName = mysqli_real_escape_string($conn, $foodName);
+        $foodDescription = mysqli_real_escape_string($conn, $foodDescription);
+        $regularprice = mysqli_real_escape_string($conn, $regularprice);
+        $saleprice = mysqli_real_escape_string($conn, $saleprice);
         $Category = mysqli_real_escape_string($conn, $Category);
-        $eventDescription = mysqli_real_escape_string($conn, $eventDescription);
-        $startdate = mysqli_real_escape_string($conn, $startdate);
-        $enddate = mysqli_real_escape_string($conn, $enddate);
+        $availablity = mysqli_real_escape_string($conn, $availablity);
+        $type = mysqli_real_escape_string($conn, $type);
 
         // File upload handling
-        $targetDirectory = "eventuploads/";
-        $targetFile = $targetDirectory . basename($_FILES["eventimage"]["name"]);
+        $targetDirectory = "fooduploads/";
+        $targetFile = $targetDirectory . basename($_FILES["foodimage"]["name"]);
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
         // Check file size, format, etc. (as you already did)
 
         if ($uploadOk == 1) {
-            if (move_uploaded_file($_FILES["eventimage"]["tmp_name"], $targetFile)) {
+            if (move_uploaded_file($_FILES["foodimage"]["tmp_name"], $targetFile)) {
                 $image = $targetFile;
 
-                $insertQuery = "INSERT INTO event (eventname, eventdescription, image, Category, startdate, enddate) VALUES ('$eventName', '$eventDescription', '$image', '$Category', '$startdate', '$enddate')";
+                $insertQuery = "INSERT INTO food (foodName, foodDescription, image, Category, regularprice, saleprice,availablity,type) VALUES ('$foodName', '$foodDescription', '$image', '$Category', '$regularprice', '$saleprice', '$availablity', '$type')";
 
                 if ($conn->query($insertQuery) === TRUE) {
                     echo "<script>alert('Event added successfully!');</script>";
