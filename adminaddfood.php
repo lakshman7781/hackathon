@@ -1,3 +1,60 @@
+<?php
+include 'connect.php';
+
+if (isset($_POST['save'])) {
+    if (!empty($_POST['foodName']) && !empty($_POST['foodDescription']) && !empty($_POST['regularprice']) && !empty($_POST['saleprice']) && !empty($_POST['Category'])&& !empty($_FILES['foodimage']['name']) && !empty($_POST['type'])) {
+
+        $foodName = $_POST["foodName"];
+        $foodDescription = $_POST["foodDescription"];
+        $regularprice = $_POST["regularprice"];
+        $saleprice = $_POST["saleprice"];
+        $Category = $_POST["Category"];
+        $type = $_POST["type"];
+
+        // Sanitize inputs
+        $foodName = mysqli_real_escape_string($conn, $foodName);
+        $foodDescription = mysqli_real_escape_string($conn, $foodDescription);
+        $regularprice = mysqli_real_escape_string($conn, $regularprice);
+        $saleprice = mysqli_real_escape_string($conn, $saleprice);
+        $Category = mysqli_real_escape_string($conn, $Category);
+        $type = mysqli_real_escape_string($conn, $type);
+
+        // File upload handling
+        $targetDirectory = "fooduploads/";
+        $targetFile = $targetDirectory . basename($_FILES["foodimage"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+        // Check file upload errors
+        if ($_FILES['foodimage']['error'] !== UPLOAD_ERR_OK) {
+            echo "File upload failed with error code: " . $_FILES['foodimage']['error'];
+            exit();
+        }
+
+        // Check file size, format, etc. (as you already did)
+
+        if ($uploadOk == 1) {
+            if (move_uploaded_file($_FILES["foodimage"]["tmp_name"], $targetFile)) {
+                $image = $targetFile;
+
+                $insertQuery = "INSERT INTO food (foodName, foodDescription, image, Category, regularprice, saleprice, type) VALUES ('$foodName', '$foodDescription', '$image', '$Category', '$regularprice', '$saleprice','$type')";
+
+                if ($conn->query($insertQuery) === TRUE) {
+                    echo "<script>alert('Food added successfully!');</script>";
+                    // Redirect or display success message
+                } else {
+                    echo "Error: " . $insertQuery . "<br>" . $conn->error;
+                }
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
+        }
+    } else {
+        echo "All fields are required";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php session_start(); ?>
@@ -680,6 +737,7 @@
                                     <button name="save" class="submitt-button btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">
                                         <i class="bx bx-save text-4 me-2"></i> Add Food
                                     </button>
+                                    
                                 </div>
                                 <br>
 
@@ -730,59 +788,6 @@ document.querySelector('.count-badge').textContent = selectedProductCount.toStri
     }
 </script>
 </body>
-<?php
-include 'connect.php';
-
-if (isset($_POST['save'])) {
-    if (!empty($_POST['foodName']) && !empty($_POST['foodDescription']) && !empty($_POST['regularprice']) && !empty($_POST['saleprice']) && !empty($_POST['Category']) && !empty($_POST['availablity']) && !empty($_FILES['eventimage']['name']) && !empty($_FILES['type']) ) {
-
-        $foodName = $_POST["foodName"];
-        $foodDescription = $_POST["foodDescription"];
-        $regularprice = $_POST["regularprice"];
-        $saleprice = $_POST["saleprice"];
-        $Category = $_POST["Category"];
-        $availablity = $_POST["availablity"];
-        $type = $_POST["type"];
-
-
-        // Sanitize inputs
-        $foodName = mysqli_real_escape_string($conn, $foodName);
-        $foodDescription = mysqli_real_escape_string($conn, $foodDescription);
-        $regularprice = mysqli_real_escape_string($conn, $regularprice);
-        $saleprice = mysqli_real_escape_string($conn, $saleprice);
-        $Category = mysqli_real_escape_string($conn, $Category);
-        $availablity = mysqli_real_escape_string($conn, $availablity);
-        $type = mysqli_real_escape_string($conn, $type);
-
-        // File upload handling
-        $targetDirectory = "fooduploads/";
-        $targetFile = $targetDirectory . basename($_FILES["foodimage"]["name"]);
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-
-        // Check file size, format, etc. (as you already did)
-
-        if ($uploadOk == 1) {
-            if (move_uploaded_file($_FILES["foodimage"]["tmp_name"], $targetFile)) {
-                $image = $targetFile;
-
-                $insertQuery = "INSERT INTO food (foodName, foodDescription, image, Category, regularprice, saleprice,availablity,type) VALUES ('$foodName', '$foodDescription', '$image', '$Category', '$regularprice', '$saleprice', '$availablity', '$type')";
-
-                if ($conn->query($insertQuery) === TRUE) {
-                    echo "<script>alert('Event added successfully!');</script>";
-                    // Redirect or display success message
-                } else {
-                    echo "Error: " . $insertQuery . "<br>" . $conn->error;
-                }
-            } else {
-                echo "Sorry, there was an error uploading your file.";
-            }
-        }
-    } else {
-        echo "All fields are required";
-    }
-}
-?>
 
 
 </html>

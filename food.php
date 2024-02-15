@@ -294,13 +294,31 @@
             <div role="main" class="main shop pb-4">
 <br>
                 <div class="row">
+
+                <?php
+					// Include the file to establish a database connection
+					include 'connect.php';
+
+					// Write your SQL query
+					$sql = "SELECT * FROM food";
+
+					// Execute the query
+					$result = mysqli_query($conn, $sql);
+
+					// Check if there are any results
+					if (mysqli_num_rows($result) > 0) {
+						// Output data of each row
+						while ($row = mysqli_fetch_assoc($result)) {
+							// Output the HTML structure with product details
+					?>
+
                     <div class="col-sm-4 mb-4 mb-sm-0">
                         <div class="product mb-0">
                             <div class="product-thumb-info border-0 mb-0">
 
                                 <div class="product-thumb-info-badges-wrapper">
-                                    <span class="badge badge-ecommerce text-bg-success">VEG</span>
-                                    <span class="badge badge-ecommerce text-bg-danger">27% OFF</span>
+                                    <span class="badge badge-ecommerce text-bg-success"><?php echo $row['type']; ?></span>
+                                    <span class="badge badge-ecommerce text-bg-danger">15% OFF</span>
                                 </div>
 
                                 <div class="addtocart-btn-wrapper">
@@ -312,11 +330,11 @@
                                 <a class=" text-uppercase font-weight-semibold text-2">
                                     QUICK VIEW
                                 </a>
-                                <a href="shop-product-sidebar-left.html">
+                                <a href="">
                                     <div class="product-thumb-info-image product-thumb-info-image-effect">
-                                        <img alt="" class="img-fluid" src="img/products/product-grey-7.jpg">
+                                       
 
-                                        <img alt="" class="img-fluid" src="img/products/product-grey-7-2.jpg">
+                                        <img alt="" class="img-fluid" src="<?php echo $row['image']; ?>">
 
                                     </div>
                                 </a>
@@ -328,13 +346,11 @@
 
 
                             <div class="pb-0 clearfix d-flex align-items-center">
-                                <div title="Rated 3 out of 5" class="float-start">
-                                    <input type="text" class="d-none" value="3" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'primary', 'size':'xs'}">
-                                </div>
+                               
 
                                 <div class="review-num">
                                     <a href="shop-product-sidebar-left.html#description" class="text-decoration-none text-color-default text-color-hover-primary" data-hash data-hash-offset="0" data-hash-offset-lg="75" data-hash-trigger-click=".nav-link-reviews" data-hash-trigger-click-delay="1000">
-                                        <h2 class="mb-0 font-weight-bold text-7"><a class="text-color-dark text-color-hover-primary text-decoration-none" style="">Porto Headphone</a></h2>
+                                        <h2 class="mb-0 font-weight-bold text-7"><a class="text-color-dark text-color-hover-primary text-decoration-none" style=""><?php echo $row['foodname']; ?></a></h2>
                                     </a>
                                 </div>
                             </div>
@@ -344,14 +360,14 @@
                             </div>
 
                             <p class="price mb-3">
-                                <span class="sale text-color-dark">$15,00</span>
-                                <span class="amount">$22,00</span>
+                                <span class="sale text-color-dark">₹<?php echo $row['saleprice']; ?></span>
+                                <span class="amount">₹<?php echo $row['regularprice']; ?></span>
                             </p>
 
-                            <p class="text-3-5 mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus nibh sed elimttis adipiscing. Fusce in hendrerit purus. Lorem ipsum dolor sit amet.</p>
+                            <p class="text-3-5 mb-3"><?php echo $row['foodDescription']; ?></p>
 
                             <ul class="list list-unstyled text-2" style="margin-left: -400px;">
-                                <li class="mb-0">AVAILABILITY: <strong class="text-color-dark">AVAILABLE</strong></li>
+                                <li class="mb-0">AVAILABILITY: <strong class="text-color-dark"><?php echo $row['Category']; ?></strong></li>
                             </ul>
                         </div>
                     </div>
@@ -359,6 +375,16 @@
                         <hr class="my-5">
                     </div>
                 </div>
+                </div>
+					<?php
+						}
+					} else {
+						echo "0 results";
+					}
+
+					// Close the database connection
+					mysqli_close($conn);
+					?>
 
                 <div class="row">
                     <div class="col">
