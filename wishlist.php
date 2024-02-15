@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php session_start(); ?>
+
 <head>
 
 	<!-- Basic -->
@@ -180,11 +181,51 @@
 	<?php include 'header.php'; ?>
 	<div class="body">
 		<div class="left-section">
-			<div class="left-section-top">
-				<a href="img/12.png"> <img src="img/12.png" alt="12" width="100" height="100"> </a>
-				Hello &nbsp;
-				<h4>Left Top</h4>
-			</div>
+			<?php
+			// Start or resume the session
+
+
+			// Include the file to establish a database connection
+			include 'connect.php';
+
+			// Check if the session variable 'reg_no' is set
+			if (isset($_SESSION['idnum'])) {
+				// Sanitize the session variable to prevent SQL injection
+				$reg_no = mysqli_real_escape_string($conn, $_SESSION['idnum']);
+
+				// Fetch data from the users table based on the session variable 'reg_no'
+				$sql = "SELECT * FROM users WHERE reg_no = '$reg_no'";
+
+				// Execute the query
+				$result = mysqli_query($conn, $sql);
+
+				// Check if there are any results
+				if (mysqli_num_rows($result) > 0) {
+					// Output data of the user
+					while ($row = mysqli_fetch_assoc($result)) {
+						// Extract the first name from the user's name
+						$fullName = explode(" ", $row['firstname']);
+						$firstName = $fullName[0];
+			?>
+						<div class="left-section-top">
+							<a href="img/12.png"> <img src="img/12.png" alt="12" width="100" height="100"> </a>
+							Hello&nbsp;
+							<h4> <?php echo $firstName; ?></h4>
+						</div>
+			<?php
+					}
+				} else {
+					// If there are no results, display a message or take any other appropriate action
+					echo "No user found.";
+				}
+			} else {
+				// If the session variable 'reg_no' is not set, display a message or redirect to login page
+				echo "Session variable 'reg_no' not set.";
+			}
+
+			// Close the database connection
+			mysqli_close($conn);
+			?>
 			<div class="left-section-bottom">
 				<ul class="profile-menu">
 
@@ -266,12 +307,14 @@
 												<th class="product-price text-uppercase" width="15%">
 													Price
 												</th>
-												<th class="product-quantity text-uppercase" width="20%">
-													Quantity
-												</th>
+
 												<th class="product-subtotal text-uppercase text-end" width="20%">
 													Subtotal
 												</th>
+												<th class="product-remove text-uppercase text-end" width="20%">
+													Remove
+												</th>
+
 
 											</tr>
 										</thead>
@@ -282,7 +325,7 @@
 											include 'connect.php';
 
 											// Fetch data from the seller table based on matches with the wishlist table
-											$sql = "SELECT seller.productName,seller.image, seller.salePrice
+											$sql = "SELECT seller.productid, seller.productName,seller.image, seller.salePrice
                                             FROM seller
                                               JOIN wishlist ON seller.productid = wishlist.productid where wishlist.reg_no = '$_SESSION[idnum]'";
 
@@ -298,9 +341,7 @@
 													<tr class="cart_table_item">
 														<td class="product-thumbnail" style="height: 100px; width: 100px !important;">
 															<div class="product-thumbnail-wrapper" style="height: 100px; width: 100px !important;">
-																<a href="#" class="product-thumbnail-remove" title="Remove Product">
-																	<i class="fas fa-times"></i>
-																</a>
+																
 																<a href="shop-product-sidebar-right.html" class="product-thumbnail-image" title="<?php echo $row['productName']; ?>">
 																	<img width="250" height="250" alt="<?php echo $row['productName']; ?>" class="img-fluid" src="<?php echo $row['image']; ?>">
 																</a>
@@ -312,15 +353,14 @@
 														<td class="product-price">
 															<span class="amount font-weight-medium text-color-grey">₹<?php echo $row['salePrice']; ?></span>
 														</td>
-														<td class="product-quantity">
-															<div class="quantity float-none m-0">
-																<input type="button" class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="-">
-																<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-																<input type="button" class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="+">
-															</div>
-														</td>
+
 														<td class="product-subtotal text-end">
 															<span class="amount text-color-dark font-weight-bold text-4">₹<?php echo $row['salePrice']; ?></span>
+														</td>
+														<td class="product-remove text-end">
+															<a href="#" class="dustbin-button" title="Delete Product" data-product-id="<?php echo $row['productid']; ?>">
+																<i class="fas fa-trash"></i>
+															</a>
 														</td>
 													</tr>
 											<?php
@@ -333,6 +373,40 @@
 											// Close the database connection
 											mysqli_close($conn);
 											?>
+											<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+											<script>
+												$(document).ready(function() {
+													$('.dustbin-button').click(function(e) {
+														e.preventDefault();
+														var productId = $(this).data('product-id');
+														$.ajax({
+															url: 'removewishlist.php',
+															method: 'POST',
+															data: {
+																productId: productId
+															},
+															success: function(response) {
+
+
+																// Check if the page has been reloaded already
+																if (!sessionStorage.getItem('reloaded')) {
+																	// Set the flag in sessionStorage to indicate that the page has been reloaded
+																	sessionStorage.setItem('reloaded', 'true');
+																	// Reload the page
+																	window.location.reload();
+																} else {
+																	// Remove the 'reloaded' flag from sessionStorage
+																	sessionStorage.removeItem('reloaded');
+																}
+
+															},
+															error: function(xhr, status, error) {
+																console.error(xhr.responseText);
+															}
+														});
+													});
+												});
+											</script>
 
 
 
