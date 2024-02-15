@@ -146,7 +146,7 @@ if (!isset($_SESSION['idnum'])) {
 			</a>
 		</div>
 		<div class="category">
-			<a href="#">
+			<a href="food.php">
 				<img src="img/2.png">
 				<h6>Food</h6>
 			</a>

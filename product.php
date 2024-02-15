@@ -214,8 +214,8 @@ $conn->close();
 
                     <h5 class="font-weight-semi-bold pt-3" style="width: 100%;">Categories</h5>
                     <ul class="nav nav-list flex-column">
-                        <li class="nav-item"><a class="nav-link" href="textbooks.php">Books</a></li>
-                        <li class="nav-item"><a class="nav-link" href="electronics.php">accessories</a></li>
+                        <li class="nav-item"><a class="nav-link" href="textbooks.php">Books/Records</a></li>
+                        <li class="nav-item"><a class="nav-link" href="electronics.php">Electronics</a></li>
                         <li class="nav-item"><a class="nav-link" href="stationary.php">Stationary</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Food</a></li>
                         <li class="nav-item"><a class="nav-link" href="Xeorox.php">Xerox</a></li>
