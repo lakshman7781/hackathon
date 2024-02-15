@@ -133,6 +133,8 @@ session_start();
 			border-radius: 5px;
 
 			margin-bottom: 20px;
+			min-height: 565px;
+
 		}
 
 		.profile-menu {
@@ -384,438 +386,74 @@ $totalSalePrice = $_GET['totalSalePrice'];
 			</div>
 		</div>
 	</div>
-	<h1 style="color: #f2f2f4;">m</h1>
-	<h1 style="color: #f2f2f4;">m</h1>
 
-	<div class="row">
-		<div class="col" style="background-color: white; padding:10px">
+
+	<div class="row" >
+		<div class="col" style="background-color: white; padding:10px; margin:35px; margin-top:-5px;">
 			<h4 class="font-weight-semibold text-4 mb-3" style="margin-left: 30px;">PEOPLE ALSO BOUGHT</h4>
 			<hr class="mt-0">
 			<div class="products row">
 				<div class="col">
-					<div class="owl-carousel owl-theme nav-style-1 nav-outside nav-outside nav-dark mb-0"
-						data-plugin-options="{'loop': false, 'autoplay': false, 'items': 4, 'nav': true, 'dots': false, 'margin': 20, 'autoplayHoverPause': true, 'autoHeight': true, 'stagePadding': '75', 'navVerticalOffset': '50px'}">
+				<div class="row products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
 
-						<div class="product mb-0">
-							<div class="product-thumb-info border-0 mb-3">
+<?php
+// Include the file to establish a database connection
+include 'connect.php';
 
-								<div class="product-thumb-info-badges-wrapper">
-									<span class="badge badge-ecommerce text-bg-success">NEW</span>
+// Write your SQL query
+$sql = "SELECT * FROM seller";
 
-								</div>
+// Execute the query
+$result = mysqli_query($conn, $sql);
 
-								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
-										title="Add to Cart">
-										<i class="icons icon-bag"></i>
-									</a>
-								</div>
-
-								<a href="ajax/shop-product-quick-view.html"
-									class="quick-view text-uppercase font-weight-semibold text-2">
-									QUICK VIEW
-								</a>
-								<a href="shop-product-sidebar-left.html">
-									<div class="product-thumb-info-image">
-										<img alt="" class="img-fluid" src="img/products/product-grey-1.jpg">
-
-									</div>
-								</a>
-							</div>
-							<div class="d-flex justify-content-between">
-								<div>
-									<a href="#"
-										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">electronics</a>
-									<h3
-										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
-										<a href="shop-product-sidebar-right.html"
-											class="text-color-dark text-color-hover-primary">Photo Camera</a></h3>
-								</div>
-								<a href="#"
-									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
-										class="far fa-heart"></i></a>
-							</div>
-							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
-									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-							</div>
-							<p class="price text-5 mb-3">
-								<span class="sale text-color-dark font-weight-semi-bold">$69,00</span>
-								<span class="amount">$59,00</span>
-							</p>
-						</div>
-
-						<div class="product mb-0">
-							<div class="product-thumb-info border-0 mb-3">
-
-								<div class="product-thumb-info-badges-wrapper">
-									<span class="badge badge-ecommerce text-bg-success">NEW</span>
-									<span class="badge badge-ecommerce text-bg-danger">27% OFF</span>
-								</div>
-
-								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
-										title="Add to Cart">
-										<i class="icons icon-bag"></i>
-									</a>
-								</div>
-
-								<a href="ajax/shop-product-quick-view.html"
-									class="quick-view text-uppercase font-weight-semibold text-2">
-									QUICK VIEW
-								</a>
-								<a href="shop-product-sidebar-left.html">
-									<div class="product-thumb-info-image product-thumb-info-image-effect">
-										<img alt="" class="img-fluid" src="img/products/product-grey-7.jpg">
-
-										<img alt="" class="img-fluid" src="img/products/product-grey-7-2.jpg">
-
-									</div>
-								</a>
-							</div>
-							<div class="d-flex justify-content-between">
-								<div>
-									<a href="#"
-										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">accessories</a>
-									<h3
-										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
-										<a href="shop-product-sidebar-right.html"
-											class="text-color-dark text-color-hover-primary">Porto Headphone</a></h3>
-								</div>
-								<a href="#"
-									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
-										class="far fa-heart"></i></a>
-							</div>
-							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
-									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-							</div>
-							<p class="price text-5 mb-3">
-								<span class="sale text-color-dark font-weight-semi-bold">$199,00</span>
-								<span class="amount">$99,00</span>
-							</p>
-						</div>
-
-						<div class="product mb-0">
-							<div class="product-thumb-info border-0 mb-3">
-
-								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
-										title="Add to Cart">
-										<i class="icons icon-bag"></i>
-									</a>
-								</div>
-
-								<a href="ajax/shop-product-quick-view.html"
-									class="quick-view text-uppercase font-weight-semibold text-2">
-									QUICK VIEW
-								</a>
-								<a href="shop-product-sidebar-left.html">
-									<div class="product-thumb-info-image">
-										<img alt="" class="img-fluid" src="img/products/product-grey-2.jpg">
-
-									</div>
-								</a>
-							</div>
-							<div class="d-flex justify-content-between">
-								<div>
-									<a href="#"
-										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">sports</a>
-									<h3
-										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
-										<a href="shop-product-sidebar-right.html"
-											class="text-color-dark text-color-hover-primary">Golf Bag</a></h3>
-								</div>
-								<a href="#"
-									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
-										class="far fa-heart"></i></a>
-							</div>
-							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
-									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-							</div>
-							<p class="price text-5 mb-3">
-								<span class="sale text-color-dark font-weight-semi-bold">$29,00</span>
-								<span class="amount">$19,00</span>
-							</p>
-						</div>
-
-						<div class="product mb-0">
-							<div class="product-thumb-info border-0 mb-3">
-
-								<div class="product-thumb-info-badges-wrapper">
-
-									<span class="badge badge-ecommerce text-bg-danger">27% OFF</span>
-								</div>
-
-								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
-										title="Add to Cart">
-										<i class="icons icon-bag"></i>
-									</a>
-								</div>
-
-								<div class="countdown-offer-wrapper">
-									<div class="text-color-light text-2" data-plugin-countdown
-										data-plugin-options="{'textDay': 'DAYS', 'textHour': 'HRS', 'textMin': 'MIN', 'textSec': 'SEC', 'date': '2025/01/01 12:00:00', 'numberClass': 'text-color-light', 'wrapperClass': 'text-color-light', 'insertHTMLbefore': '<span>OFFER ENDS IN </span>', 'textDay': 'DAYS', 'textHour': ':', 'textMin': ':', 'textSec': '', 'uppercase': true}">
-									</div>
-								</div>
-
-								<a href="ajax/shop-product-quick-view.html"
-									class="quick-view text-uppercase font-weight-semibold text-2">
-									QUICK VIEW
-								</a>
-								<a href="shop-product-sidebar-left.html">
-									<div class="product-thumb-info-image">
-										<img alt="" class="img-fluid" src="img/products/product-grey-3.jpg">
-
-									</div>
-								</a>
-							</div>
-							<div class="d-flex justify-content-between">
-								<div>
-									<a href="#"
-										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">sports</a>
-									<h3
-										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
-										<a href="shop-product-sidebar-right.html"
-											class="text-color-dark text-color-hover-primary">Workout</a></h3>
-								</div>
-								<a href="#"
-									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
-										class="far fa-heart"></i></a>
-							</div>
-							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
-									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-							</div>
-							<p class="price text-5 mb-3">
-								<span class="sale text-color-dark font-weight-semi-bold">$40,00</span>
-								<span class="amount">$30,00</span>
-							</p>
-						</div>
-
-						<div class="product mb-0">
-							<div class="product-thumb-info border-0 mb-3">
-
-								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
-										title="Add to Cart">
-										<i class="icons icon-bag"></i>
-									</a>
-								</div>
-
-								<a href="ajax/shop-product-quick-view.html"
-									class="quick-view text-uppercase font-weight-semibold text-2">
-									QUICK VIEW
-								</a>
-								<a href="shop-product-sidebar-left.html">
-									<div class="product-thumb-info-image">
-										<img alt="" class="img-fluid" src="img/products/product-grey-4.jpg">
-
-									</div>
-								</a>
-							</div>
-							<div class="d-flex justify-content-between">
-								<div>
-									<a href="#"
-										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">accessories</a>
-									<h3
-										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
-										<a href="shop-product-sidebar-right.html"
-											class="text-color-dark text-color-hover-primary">Luxury Bag</a></h3>
-								</div>
-								<a href="#"
-									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
-										class="far fa-heart"></i></a>
-							</div>
-							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
-									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-							</div>
-							<p class="price text-5 mb-3">
-								<span class="sale text-color-dark font-weight-semi-bold">$99,00</span>
-								<span class="amount">$79,00</span>
-							</p>
-						</div>
-
-						<div class="product mb-0">
-							<div class="product-thumb-info border-0 mb-3">
-
-								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
-										title="Add to Cart">
-										<i class="icons icon-bag"></i>
-									</a>
-								</div>
-
-								<a href="ajax/shop-product-quick-view.html"
-									class="quick-view text-uppercase font-weight-semibold text-2">
-									QUICK VIEW
-								</a>
-								<a href="shop-product-sidebar-left.html">
-									<div class="product-thumb-info-image">
-										<img alt="" class="img-fluid" src="img/products/product-grey-5.jpg">
-
-									</div>
-								</a>
-							</div>
-							<div class="d-flex justify-content-between">
-								<div>
-									<a href="#"
-										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">accessories</a>
-									<h3
-										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
-										<a href="shop-product-sidebar-right.html"
-											class="text-color-dark text-color-hover-primary">Styled Bag</a></h3>
-								</div>
-								<a href="#"
-									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
-										class="far fa-heart"></i></a>
-							</div>
-							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
-									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-							</div>
-							<p class="price text-5 mb-3">
-								<span class="sale text-color-dark font-weight-semi-bold">$199,00</span>
-								<span class="amount">$119,00</span>
-							</p>
-						</div>
-
-						<div class="product mb-0">
-							<div class="product-thumb-info border-0 mb-3">
-
-								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
-										title="Add to Cart">
-										<i class="icons icon-bag"></i>
-									</a>
-								</div>
-
-								<a href="ajax/shop-product-quick-view.html"
-									class="quick-view text-uppercase font-weight-semibold text-2">
-									QUICK VIEW
-								</a>
-								<a href="shop-product-sidebar-left.html">
-									<div class="product-thumb-info-image">
-										<img alt="" class="img-fluid" src="img/products/product-grey-6.jpg">
-
-									</div>
-								</a>
-							</div>
-							<div class="d-flex justify-content-between">
-								<div>
-									<a href="#"
-										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">hat</a>
-									<h3
-										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
-										<a href="shop-product-sidebar-right.html"
-											class="text-color-dark text-color-hover-primary">Blue Hat</a></h3>
-								</div>
-								<a href="#"
-									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
-										class="far fa-heart"></i></a>
-							</div>
-							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
-									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-							</div>
-							<p class="price text-5 mb-3">
-								<span class="sale text-color-dark font-weight-semi-bold">$299,00</span>
-								<span class="amount">$289,00</span>
-							</p>
-						</div>
-
-						<div class="product mb-0">
-							<div class="product-thumb-info border-0 mb-3">
-
-								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
-										title="Add to Cart">
-										<i class="icons icon-bag"></i>
-									</a>
-								</div>
-
-								<a href="ajax/shop-product-quick-view.html"
-									class="quick-view text-uppercase font-weight-semibold text-2">
-									QUICK VIEW
-								</a>
-								<a href="shop-product-sidebar-left.html">
-									<div class="product-thumb-info-image">
-										<img alt="" class="img-fluid" src="img/products/product-grey-8.jpg">
-
-									</div>
-								</a>
-							</div>
-							<div class="d-flex justify-content-between">
-								<div>
-									<a href="#"
-										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">accessories</a>
-									<h3
-										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
-										<a href="shop-product-sidebar-right.html"
-											class="text-color-dark text-color-hover-primary">Adventurer Bag</a></h3>
-								</div>
-								<a href="#"
-									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
-										class="far fa-heart"></i></a>
-							</div>
-							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
-									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-							</div>
-							<p class="price text-5 mb-3">
-								<span class="sale text-color-dark font-weight-semi-bold">$99,00</span>
-								<span class="amount">$79,00</span>
-							</p>
-						</div>
-
-						<div class="product mb-0">
-							<div class="product-thumb-info border-0 mb-3">
-
-								<div class="addtocart-btn-wrapper">
-									<a href="shop-cart.html" class="text-decoration-none addtocart-btn"
-										title="Add to Cart">
-										<i class="icons icon-bag"></i>
-									</a>
-								</div>
-
-								<a href="ajax/shop-product-quick-view.html"
-									class="quick-view text-uppercase font-weight-semibold text-2">
-									QUICK VIEW
-								</a>
-								<a href="shop-product-sidebar-left.html">
-									<div class="product-thumb-info-image">
-										<img alt="" class="img-fluid" src="img/products/product-grey-9.jpg">
-
-									</div>
-								</a>
-							</div>
-							<div class="d-flex justify-content-between">
-								<div>
-									<a href="#"
-										class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">sports</a>
-									<h3
-										class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
-										<a href="shop-product-sidebar-right.html"
-											class="text-color-dark text-color-hover-primary">Baseball Ball</a></h3>
-								</div>
-								<a href="#"
-									class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
-										class="far fa-heart"></i></a>
-							</div>
-							<div title="Rated 5 out of 5">
-								<input type="text" class="d-none" value="5" title="" data-plugin-star-rating
-									data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-							</div>
-							<p class="price text-5 mb-3">
-								<span class="sale text-color-dark font-weight-semi-bold">$399,00</span>
-								<span class="amount">$299,00</span>
-							</p>
-						</div>
-
+// Check if there are any results
+if (mysqli_num_rows($result) > 0) {
+	// Output data of each row
+	while ($row = mysqli_fetch_assoc($result)) {
+		// Output the HTML structure with product details
+?>
+		<div class="col-12 col-sm-6 col-lg-3">
+			<br>
+			<div class="product mb-0">
+				<div class="product-thumb-info border-0 mb-3">
+					<div class="addtocart-btn-wrapper">
+						<a href="#" class="text-decoration-none addtocart-btn" title="Add to Cart" data-product-id="<?php echo $row['productid']; ?>">
+							<i class="icons icon-bag"></i>
+						</a>
 					</div>
+					
+					<a href="product.php?productid=<?php echo $row['productid']; ?>">
+						<div class="product-thumb-info-image">
+							<img alt="" class="img-fluid" src="<?php echo $row['image']; ?>">
+						</div>
+					</a>
+					<a href="product.php?productid=<?php echo $row['productid']; ?>" class=" text-uppercase font-weight-semibold text-2">
+						QUICK VIEW
+					</a>
+				</div>
+				<div class="d-flex justify-content-between">
+					<div>
+						<a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1"><?php echo $row['Category']; ?></a>
+						<h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="#" class="text-color-dark text-color-hover-primary"><?php echo $row['productName']; ?></a></h3>
+					</div>
+					<a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4 heart-icon" data-product-id="<?php echo $row['productid']; ?>"><i class="far fa-heart"></i></a>
+				</div>
+
+				<p class="price text-5 mb-3">
+					<span class="sale text-color-dark font-weight-semi-bold">₹<?php echo $row['salePrice']; ?></span>
+					<span class="amount">₹<?php echo $row['regularPrice']; ?></span>
+				</p>
+			</div>
+		</div>
+<?php
+	}
+} else {
+	echo "0 results";
+}
+
+// Close the database connection
+mysqli_close($conn);
+?>
 				</div>
 			</div>
 
@@ -883,7 +521,9 @@ const selectedProductCount = 1;
 
 // Update the count badge text
 document.querySelector('.count-badge').textContent = selectedProductCount.toString(); -->
-			<?php include 'footer.php'; ?>
+			</div>			
+</div>			
+<?php include 'footer.php'; ?>
 </body>
 
 </html>

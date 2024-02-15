@@ -105,7 +105,7 @@
             text-align: center;
             padding: 20px;
             margin: 5px;
-            min-height: 450px;
+            min-height: 630px;
             border-radius: 5px;
             margin-left: 30px;
         }
@@ -456,33 +456,31 @@
                                 <div class="form-group">
                                     <label class="form-labell">Name</label>
                                     <div class="form-control-container">
-                                        <span id="usernameInput-edit-save" class="edit-save-text" onclick="toggleEditSave('usernameInput', 'edit')">Edit</span>
+                                        <span id="usernameInput-edit" class="edit-save-text" onclick="toggleEditSave('usernameInput', 'edit')">Edit</span>
                                         <input id="usernameInput" type="text" name="firstname" class="form-control mb-1" value="<?php echo $row['firstname']; ?>" disabled>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-labell">Registration Number</label>
                                     <div class="form-control-container">
-                                        <span id="nameInput-edit-save" class="edit-save-text" onclick="toggleEditSave('nameInput', 'edit')">Edit</span>
                                         <input id="nameInput" type="text" class="form-control" value="<?php echo $row['reg_no']; ?>"  readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-labell">E-mail</label>
                                     <div class="form-control-container">
-                                        <span id="emailInput-edit-save" class="edit-save-text" onclick="toggleEditSave('emailInput', 'edit')">Edit</span>
-                                        <input id="emailInput" type="text"  class="form-control mb-1" value="<?php echo $row['email']; ?>" readonly>
+                                        <span id="emailInput-edit" class="edit-save-text" onclick="toggleEditSave('emailInput', 'edit')">Edit</span>
+                                        <input id="emailInput" type="text"  class="form-control mb-1" value="<?php echo $row['email']; ?>" disabled>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-labell">Phone</label>
                                     <div class="form-control-container">
-                                        <span id="phoneInput-edit-save" class="edit-save-text" onclick="toggleEditSave('phoneInput', 'edit')">Edit</span>
                                         <input id="phoneInput" type="text" name="phonenumber" class="form-control" value="<?php echo $row['phonenumber']; ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" name="update" value="Update Profile" class="btn btn-primary">
+                                    <input type="submit" name="update" value="Update Profile" class="btn btn-primary" style="width: 130px;">
                                 </div>
                             </form>
             </div>
@@ -513,7 +511,18 @@ if (isset($_POST['update'])) {
 
     // Execute the query
     if (mysqli_query($conn, $sql)) {
-        echo "<script>alert('Profile Updated successfully');</script>";
+        echo "<script>
+        // Check if the page has been reloaded already
+        if (!sessionStorage.getItem('reloaded')) {
+            // Set the flag in sessionStorage to indicate that the page has been reloaded
+            sessionStorage.setItem('reloaded', 'true');
+            // Reload the page
+            window.location.reload();
+        } else {
+            // Remove the 'reloaded' flag from sessionStorage
+            sessionStorage.removeItem('reloaded');
+        }
+    </script>";
     } else {
         echo "Error updating profile: " . mysqli_error($conn);
     }
