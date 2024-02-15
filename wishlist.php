@@ -113,6 +113,8 @@
 			width: 70%;
 			/* Takes up 2/3 of the available space */
 			box-sizing: border-box;
+			min-height: 570px;
+
 		}
 
 		.right-section-inner {
@@ -128,6 +130,8 @@
 			border-radius: 5px;
 			margin-right: 40px;
 			margin-bottom: 20px;
+			min-height: 570px;
+
 		}
 
 		.profile-menu {

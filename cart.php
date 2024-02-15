@@ -114,6 +114,8 @@
 			width: 70%;
 			/* Takes up 2/3 of the available space */
 			box-sizing: border-box;
+			min-height: 570px;
+
 		}
 
 		.right-section-inner {
@@ -129,6 +131,8 @@
 			border-radius: 5px;
 			margin-right: 40px;
 			margin-bottom: 20px;
+			min-height: 570px;
+
 		}
 
 		.profile-menu {
@@ -360,10 +364,10 @@
 															<span class="amount text-color-dark font-weight-bold text-4">₹<?php echo $row['salePrice']; ?></span>
 														</td>
 														<td class="product-remove text-end">
-														<a href="#" class="dustbin-button" title="Delete Product" data-product-id="<?php echo $row['productid']; ?>">
-															<i class="fas fa-trash"></i>
-															     </a>
-															</td>
+															<a href="#" class="dustbin-button" title="Delete Product" data-product-id="<?php echo $row['productid']; ?>">
+																<i class="fas fa-trash"></i>
+															</a>
+														</td>
 													</tr>
 											<?php
 												}
@@ -388,7 +392,19 @@
 																productId: productId
 															},
 															success: function(response) {
-																alert('Product Removed From Cart!');
+																
+
+																// Check if the page has been reloaded already
+																if (!sessionStorage.getItem('reloaded')) {
+																	// Set the flag in sessionStorage to indicate that the page has been reloaded
+																	sessionStorage.setItem('reloaded', 'true');
+																	// Reload the page
+																	window.location.reload();
+																} else {
+																	// Remove the 'reloaded' flag from sessionStorage
+																	sessionStorage.removeItem('reloaded');
+																}
+
 															},
 															error: function(xhr, status, error) {
 																console.error(xhr.responseText);
