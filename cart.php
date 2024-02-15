@@ -309,12 +309,14 @@
 												<th class="product-price text-uppercase" width="15%">
 													Price
 												</th>
-												<th class="product-quantity text-uppercase" width="20%">
-													Quantity
-												</th>
+
 												<th class="product-subtotal text-uppercase text-end" width="20%">
 													Subtotal
 												</th>
+												<th class="product-remove text-uppercase text-end" width="20%">
+													Remove
+												</th>
+
 
 											</tr>
 										</thead>
@@ -325,7 +327,7 @@
 											include 'connect.php';
 
 											// Fetch data from the seller table based on matches with the cart table
-											$sql = "SELECT seller.productName, seller.image, seller.salePrice
+											$sql = "SELECT  seller.productid,seller.productName, seller.image, seller.salePrice
                                             FROM seller
                                             INNER JOIN cart ON seller.productid = cart.productid WHERE cart.reg_no = '$_SESSION[idnum]'";
 
@@ -338,12 +340,10 @@
 												while ($row = mysqli_fetch_assoc($result)) {
 													// Output the HTML structure with product details
 											?>
-													 <tr class="cart_table_item product-thumbnail-wrapperr">
+													<tr class="cart_table_item product-thumbnail-wrapperr">
 														<td class="product-thumbnail" style="height: 100px; width: 100px !important;">
 															<div class="product-thumbnail-wrapper" style="height: 100px; width: 100px !important;">
-																<a href="#" class="product-thumbnail-remove" title="Remove Product">
-																	<i class="fas fa-times"></i>
-																</a>
+
 																<a href="shop-product-sidebar-right.html" class="product-thumbnail-image" title="<?php echo $row['productName']; ?>">
 																	<img width="250" height="250" alt="<?php echo $row['productName']; ?>" class="img-fluid" src="<?php echo $row['image']; ?>">
 																</a>
@@ -355,16 +355,15 @@
 														<td class="product-price">
 															<span class="amount font-weight-medium text-color-grey">₹<?php echo $row['salePrice']; ?></span>
 														</td>
-														<td class="product-quantity">
-															<div class="quantity float-none m-0">
-																<input type="button" class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="-">
-																<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-																<input type="button" class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="+">
-															</div>
-														</td>
+
 														<td class="product-subtotal text-end">
 															<span class="amount text-color-dark font-weight-bold text-4">₹<?php echo $row['salePrice']; ?></span>
 														</td>
+														<td class="product-remove text-end">
+														<a href="#" class="dustbin-button" title="Delete Product" data-product-id="<?php echo $row['productid']; ?>">
+															<i class="fas fa-trash"></i>
+															     </a>
+															</td>
 													</tr>
 											<?php
 												}
@@ -376,6 +375,28 @@
 											// Close the database connection
 											mysqli_close($conn);
 											?>
+											<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+											<script>
+												$(document).ready(function() {
+													$('.dustbin-button').click(function(e) {
+														e.preventDefault();
+														var productId = $(this).data('product-id');
+														$.ajax({
+															url: 'removecart.php',
+															method: 'POST',
+															data: {
+																productId: productId
+															},
+															success: function(response) {
+																alert('Product Removed From Cart!');
+															},
+															error: function(xhr, status, error) {
+																console.error(xhr.responseText);
+															}
+														});
+													});
+												});
+											</script>
 
 
 
@@ -737,52 +758,52 @@
 					</div>
 				</div>
 			</div> -->
-            <div>
-			<?php include 'footer.php'; ?>
-			</div>	
-							
+	<div>
+		<?php include 'footer.php'; ?>
+	</div>
 
-			<!-- Vendor -->
-			<script src="vendor/plugins/js/plugins.min.js"></script>
-			<script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
-			<script src="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
-			<script src="vendor/jquery.countdown/jquery.countdown.min.js"></script>
 
-			<!-- Theme Base, Components and Settings -->
-			<script src="js/theme.js"></script>
+	<!-- Vendor -->
+	<script src="vendor/plugins/js/plugins.min.js"></script>
+	<script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
+	<script src="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
+	<script src="vendor/jquery.countdown/jquery.countdown.min.js"></script>
 
-			<!-- Current Page Vendor and Views -->
-			<script src="js/views/view.shop.js"></script>
+	<!-- Theme Base, Components and Settings -->
+	<script src="js/theme.js"></script>
 
-			<!-- Theme Custom -->
-			<script src="js/custom.js"></script>
+	<!-- Current Page Vendor and Views -->
+	<script src="js/views/view.shop.js"></script>
 
-			<!-- Theme Initialization Files -->
-			<script src="js/theme.init.js"></script>
-			<!-- 
+	<!-- Theme Custom -->
+	<script src="js/custom.js"></script>
+
+	<!-- Theme Initialization Files -->
+	<script src="js/theme.init.js"></script>
+	<!-- 
 					// Assuming you have a variable selectedProductCount that represents the count
 const selectedProductCount = 1;
 
 // Update the count badge text
 document.querySelector('.count-badge').textContent = selectedProductCount.toString(); -->
 
-<script>
-     //Get all elements with the class 'product-thumbnail-remove'
-    var removeButtons = document.querySelectorAll('.product-thumbnail-remove');
+	<script>
+		//Get all elements with the class 'product-thumbnail-remove'
+		var removeButtons = document.querySelectorAll('.product-thumbnail-remove');
 
-// Loop through each remove button and attach a click event listener
-    removeButtons.forEach(function(button) {
-	button.addEventListener('click', function(event) {
-		event.preventDefault(); // Prevent the default behavior of the anchor tag
+		// Loop through each remove button and attach a click event listener
+		removeButtons.forEach(function(button) {
+			button.addEventListener('click', function(event) {
+				event.preventDefault(); // Prevent the default behavior of the anchor tag
 
-		// Get the parent element of the remove button (the product thumbnail wrapper)
-		var productThumbnailWrapper = button.closest('.product-thumbnail-wrapperr');
+				// Get the parent element of the remove button (the product thumbnail wrapper)
+				var productThumbnailWrapper = button.closest('.product-thumbnail-wrapperr');
 
-		// Remove the product thumbnail wrapper from the DOM
-		productThumbnailWrapper.remove();
-	});
-});
-</script>
+				// Remove the product thumbnail wrapper from the DOM
+				productThumbnailWrapper.remove();
+			});
+		});
+	</script>
 </body>
 
 </html>
