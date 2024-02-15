@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // Execute a query to retrieve mobile number based on registration number
             $query = "SELECT mobile FROM verification WHERE registration = ?";
-            if ($stmt = $connection->prepare($query)) {
+            if ($stmt = $conn->prepare($query)) {
                 $stmt->bind_param("s", $regNumber);
                 if ($stmt->execute()) {
                     $stmt->bind_result($mobileNumber);
@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Close connection
-$connection->close();
+$conn->close();
 ?>
 
 <!DOCTYPE html>

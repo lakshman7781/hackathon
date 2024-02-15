@@ -298,156 +298,124 @@
 
     <?php include 'header.php'; ?>
     <div class="body">
-        <div class="left-section">
-                        <div class="left-section-top">
-                            <a href="img/12.png"> <img src="img/12.png" alt="12" width="100" height="100"> </a>
-                            Hello&nbsp;
-                            <h4>Admin</h4>
-                        </div>
-            
-
-            <div class="left-section-bottom">
-                <ul class="profile-menu">
-
-
-
-                <li class="">
-            <a href="#" id="generalLink">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                    <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4m9.886-3.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382zM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0" />
-                </svg>
-                &nbsp;Ecommerce
-            </a>
-            <ul class="submenu" id="submenu1">
-                <li><a href="#">Verify Product</a></li>
-                <li><a href="adminstdetails.php">Students Details</a></li>
-            </ul>
-        </li>
-
-        <li class="">
-            <a href="#" id="changePasswordLink">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
-                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-                </svg>
-                &nbsp; Events
-            </a>
-            <ul class="submenu" id="submenu2">
-                <li><a href="adminaddevents.php">Add Events</a></li>
-                <li><a href="#">Add Poll</a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="adminxeorx.php">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
-                </svg>
-                &nbsp; Xerox
-            </a>
-           
-        </li>
-
-        <li class="">
-            <a href="adminaddfood.php">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-heart-fill" viewBox="0 0 16 16">
-                    <path d="M11.5 4v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m0 6.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132" />
-                </svg>
-                &nbsp; Food
-            </a>
-           
-        </li>
-
-                </ul>
-
-            </div>
-        </div>
+        
     </div>
-<script>
- // JavaScript to handle dropdown menu functionality
+    <script>
+        // JavaScript to handle dropdown menu functionality
 
-// Function to toggle the visibility of the submenu when its corresponding link is clicked
-function toggleSubMenu(submenuId, linkId) {
-    var submenu = document.getElementById(submenuId);
-    submenu.classList.toggle("show");
+        // Function to toggle the visibility of the submenu when its corresponding link is clicked
+        function toggleSubMenu(submenuId, linkId) {
+            var submenu = document.getElementById(submenuId);
+            submenu.classList.toggle("show");
 
-    // Get the height of the submenu
-    var submenuHeight = submenu.clientHeight;
+            // Get the height of the submenu
+            var submenuHeight = submenu.clientHeight;
 
-    // Get the elements below the dropdown
-    var elementsBelow = document.querySelectorAll(".move-down");
+            // Get the elements below the dropdown
+            var elementsBelow = document.querySelectorAll(".move-down");
 
-    // Adjust the position of each element below the dropdown
-    elementsBelow.forEach(function(element) {
-        element.style.marginTop = submenu.classList.contains("show") ? submenuHeight + "px" : "0";
-    });
-}
+            // Adjust the position of each element below the dropdown
+            elementsBelow.forEach(function(element) {
+                element.style.marginTop = submenu.classList.contains("show") ? submenuHeight + "px" : "0";
+            });
+        }
 
-// Function to close the submenu when clicking outside of it
-function closeSubMenu(submenuId, linkId) {
-    var submenu = document.getElementById(submenuId);
-    var link = document.getElementById(linkId);
-    if (!submenu.contains(event.target) && !link.contains(event.target)) {
-        submenu.classList.remove("show");
+        // Function to close the submenu when clicking outside of it
+        function closeSubMenu(submenuId, linkId) {
+            var submenu = document.getElementById(submenuId);
+            var link = document.getElementById(linkId);
+            if (!submenu.contains(event.target) && !link.contains(event.target)) {
+                submenu.classList.remove("show");
 
-        // Reset the position of the elements below the dropdown
-        var elementsBelow = document.querySelectorAll(".move-down");
-        elementsBelow.forEach(function(element) {
-            element.style.marginTop = "0";
+                // Reset the position of the elements below the dropdown
+                var elementsBelow = document.querySelectorAll(".move-down");
+                elementsBelow.forEach(function(element) {
+                    element.style.marginTop = "0";
+                });
+            }
+        }
+
+        // Add event listeners to handle the dropdown menus
+        document.getElementById("generalLink").addEventListener("click", function(e) {
+            e.preventDefault();
+            toggleSubMenu("submenu1", "generalLink");
         });
-    }
+
+        document.getElementById("changePasswordLink").addEventListener("click", function(e) {
+            e.preventDefault();
+            toggleSubMenu("submenu2", "changePasswordLink");
+        });
+
+        // Add event listener to close the submenu when clicking outside of it
+        document.addEventListener("click", function(e) {
+            closeSubMenu("submenu1", "generalLink");
+            closeSubMenu("submenu2", "changePasswordLink");
+        });
+    </script>
+    <style>
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            z-index: 1;
+            min-width: 150px;
+            /* Adjust as needed */
+            text-align: left;
+        }
+
+        .submenu.show {
+            display: block;
+        }
+
+        .submenu li {
+            display: block;
+        }
+
+        .submenu li a {
+            padding: 8px 16px;
+            color: #333;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .submenu li a:hover {
+            background-color: #0088cc;
+        }
+        table {
+  width: 90%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
 }
 
-// Add event listeners to handle the dropdown menus
-document.getElementById("generalLink").addEventListener("click", function(e) {
-    e.preventDefault();
-    toggleSubMenu("submenu1", "generalLink");
-});
-
-document.getElementById("changePasswordLink").addEventListener("click", function(e) {
-    e.preventDefault();
-    toggleSubMenu("submenu2", "changePasswordLink");
-});
-
-// Add event listener to close the submenu when clicking outside of it
-document.addEventListener("click", function(e) {
-    closeSubMenu("submenu1", "generalLink");
-    closeSubMenu("submenu2", "changePasswordLink");
-});
-
-</script>
-<style>
-
-.submenu {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    z-index: 1;
-    min-width: 150px; /* Adjust as needed */
-    text-align: left;
+/* CSS for table header */
+th {
+  background-color: #f2f2f2;
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  
 }
 
-.submenu.show {
-    display: block;
+/* CSS for table body */
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
 }
 
-.submenu li {
-    display: block;
+/* Alternating row colors */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
-.submenu li a {
-    padding: 8px 16px;
-    color: #333;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.3s ease;
-}
-
-.submenu li a:hover {
-    background-color: #0088cc;
+/* Hover effect */
+tr:hover {
+  background-color: #f2f2f2;
 }
     </style>
 
@@ -456,84 +424,93 @@ document.addEventListener("click", function(e) {
         <div class="right-section-inner">
 
             <div role="main" class="main shop pb-4">
-            <div class="container">
-          
 
 
-					<section class="card card-admin">
-						<header class="card-header">
-							<div class="card-actions">
-								<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
-								<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
-							</div>
 
-							<h4 style="color: #0088cc;" class="card-title">Students Details</h4 style="color: #0088cc;">
-						</header>
-						<div class="card-body">
-							<div class="row">
-								<div class="col-sm-6">
-									<!-- <div class="mb-3">
-										<button id="addToTable" class="btn btn-primary">Add <i class="fas fa-plus"></i></button>
-									</div> -->
-								</div>
-							</div>
-							<table class="table table-bordered table-striped mb-0" id="datatable-editable">
-								<thead>
-									<tr>
-										<th>Registration Number</th>
-										<th>Name</th>
-										<th>Phone Number</th>
-                                        <th>Email</th>
-										<th>Actions</th>
-									</tr>
-								</thead>
-								<tbody>
+
+                <section class="card card-admin">
+                    <header class="card-header">
+                        <h4 style="color: #0088cc;" class="card-title">Xeorox Orders</h4 style="color: #0088cc;">
+                    </header>
+                    <div class="card-body">
+                        <div class="row">
+
+                        </div>
+                        <table >
+                            <thead style=" width: 500px !important;">
+                                <tr>
+                                    <th> S.No</th>
+                                    <th>Time & Date</th>
+                                    <th> File Name</th>
+                                    <th>Category</th>
+                                    <th>Printing Sides</th>
+                                    <th>Cover</th>
+                                    <th>No.of pages</th>
+                                    <th>Amount Paid</th>
+                                    <th>Phone Number</th>
+                                    <th>Download</th>
+
+                                </tr>
+                            </thead>
+                            <tbody >
                                 <?php
-					// Include the file to establish a database connection
-					include 'connect.php';
+                                // Include the file to establish a database connection
+                                include 'connect.php';
 
-					// Write your SQL query
-					$sql = "SELECT * FROM users";
+                                // Write your SQL query
+                                // Write your SQL query
+                                $sql = "SELECT *, users.phonenumber 
+                                 FROM xeorx
+                                 INNER JOIN users ON xeorx.reg_no = users.reg_no";
+                                // Execute the query
+                                $result = mysqli_query($conn, $sql);
 
-					// Execute the query
-					$result = mysqli_query($conn, $sql);
+                                // Check if there are any results
+                                if (mysqli_num_rows($result) > 0) {
+                                    // Output data of each row
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        // Output the HTML structure with product details
+                                ?>
+                                        <tr data-item-id="1">
+                                            <td><?php echo $row['id']; ?></td>
+                                            <td><?php echo $row['time']; ?></td>
+                                            <td><?php echo $row['file']; ?></td>
+                                            <td><?php echo $row['category']; ?></td>
+                                            <td><?php echo $row['category1']; ?></td>
+                                            <td><?php echo $row['category2']; ?></td>
+                                            <td><?php echo $row['pages']; ?></td>
+                                            <td><?php echo $row['total']; ?></td>
+                                            <td><?php echo $row['phonenumber']; ?></td>
+                                            <td><a href="uploads/<?php echo $row['file']; ?>" download>Download</a></td>
 
-					// Check if there are any results
-					if (mysqli_num_rows($result) > 0) {
-						// Output data of each row
-						while ($row = mysqli_fetch_assoc($result)) {
-							// Output the HTML structure with product details
-					?>
-									<tr data-item-id="1">
-										<td><?php echo $row['reg_no']; ?></td>
-										<td><?php echo $row['firstname']; ?></td>
-										<td><?php echo $row['phonenumber']; ?></td>
-                                        <td><?php echo $row['email']; ?></td>
 
-										<td class="actions">
-											<a href="#" class="on-default edit-row"><i class="fas fa-pencil-alt"></i></a>
-										</td>
-									</tr>
-									
-								</tbody>
-                                <?php
-						}
-					} else {
-						echo "0 results";
-					}
 
-					// Close the database connection
-					mysqli_close($conn);
-					?>
 
-							</table>
-						</div>
-					</section>
-				</div>            </div>
+                                            <td class="actions">
+                                                <a href="#" class="on-default edit-row"><i class="fas fa-pencil-alt"></i></a>
+                                            </td>
+                                        </tr>
+
+                            </tbody>
+                    <?php
+                                    }
+                                } else {
+                                    echo "0 results";
+                                }
+
+                                // Close the database connection
+                                mysqli_close($conn);
+                    ?>
+
+                        </table>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
+    <?php include 'footer.php'; ?>
 
-               
+
 
 
 
