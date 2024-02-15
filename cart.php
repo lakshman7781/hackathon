@@ -390,7 +390,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col" style="background-color: white; padding:10px">
 			<h4 class="font-weight-semibold text-4 mb-3" style="margin-left: 30px;">PEOPLE ALSO BOUGHT</h4>
 			<hr class="mt-0">
@@ -736,8 +736,11 @@
 
 					</div>
 				</div>
-			</div>
-
+			</div> -->
+            <div>
+			<?php include 'footer.php'; ?>
+			</div>	
+							
 
 			<!-- Vendor -->
 			<script src="vendor/plugins/js/plugins.min.js"></script>
@@ -762,7 +765,6 @@ const selectedProductCount = 1;
 
 // Update the count badge text
 document.querySelector('.count-badge').textContent = selectedProductCount.toString(); -->
-			<?php include 'footer.php'; ?>
 
 <script>
      //Get all elements with the class 'product-thumbnail-remove'

@@ -230,13 +230,14 @@ if (!isset($_SESSION['idnum'])) {
 												<i class="icons icon-bag"></i>
 											</a>
 										</div>
-										<a href="product.php?productid=<?php echo $row['productid']; ?>" class=" text-uppercase font-weight-semibold text-2">
-											QUICK VIEW
-										</a>
-										<a href="">
+										
+										<a href="product.php?productid=<?php echo $row['productid']; ?>">
 											<div class="product-thumb-info-image">
 												<img alt="" class="img-fluid" src="<?php echo $row['image']; ?>">
 											</div>
+										</a>
+										<a href="product.php?productid=<?php echo $row['productid']; ?>" class=" text-uppercase font-weight-semibold text-2">
+											QUICK VIEW
 										</a>
 									</div>
 									<div class="d-flex justify-content-between">

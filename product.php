@@ -21,7 +21,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
 
     <!-- Web Fonts  -->
-    <link id="googleFonts" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap" rel="stylesheet" type="text/css">
+    <link id="googleFonts"
+        href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
+        rel="stylesheet" type="text/css">
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -233,84 +235,121 @@ $conn->close();
 
                     <div class="container">
                         <div class="thumb-gallery-wrapper">
-                        <img alt="" class="" src="<?php echo $image; ?>" data-zoom-image="img/1.png"
-                                        style="height: 300px; width:300px">                        </div>
+                            <img alt="" class="" src="<?php echo $image; ?>" data-zoom-image="img/1.png"
+                                style="height: 300px; width:300px">
+                        </div>
 
                         <div class="summary entry-summary position-relative">
 
-                <h1 class="mb-0 font-weight-bold text-7"><?php echo $row['productName']; ?></h1>
+                            <h1 class="mb-0 font-weight-bold text-7">
+                                <?php echo $row['productName']; ?>
+                            </h1>
 
-               
 
-                <div class="divider divider-small">
-                    <hr class="bg-color-grey-400">
-                </div>
-              
-                <p class="price mb-3">
-                    <span class="sale text-color-dark"><?php echo $row['regularPrice']; ?></span>
-                    <span class="amount"><?php echo $row['salePrice']; ?></span>
-                </p>
 
-                <p class="text-3-5 mb-3"><?php echo $row['productDescription']; ?></p>
+                            <div class="divider divider-small">
+                                <hr class="bg-color-grey-400">
+                            </div>
 
-                <ul class="list list-unstyled text-2">
-                    <li class="mb-0">AVAILABILITY: <strong class="text-color-dark"><?php echo $row['stockStatus']; ?></strong></li>
-                    <!-- <li class="mb-0">SKU: <strong class="text-color-dark"></strong></li> -->
-                </ul>
+                            <p class="price mb-3">
+                                <span class="sale text-color-dark">
+                                    <?php echo $row['regularPrice']; ?>
+                                </span>
+                                <span class="amount">
+                                    <?php echo $row['salePrice']; ?>
+                                </span>
+                            </p>
 
-                <form enctype="multipart/form-data" method="post" class="cart" action="shop-cart.html">
-                    <table class="table table-borderless" style="max-width: 300px;">
-                        <tbody>
-                            <tr>
-                                <td class="align-middle text-2 px-0 py-2">SIZE:</td>
-                                <td class="px-0 py-2">
-                                    <div class="custom-select-1">
-                                       <h6><?php echo $row['size']; ?></h6>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="align-middle text-2 px-0 py-2">COLOR:</td>
-                                <td class="px-0 py-2">
-                                    <div class="custom-select-1">
-                                    <h6><?php echo $row['colour']; ?></h6>
+                            <p class="text-3-5 mb-3">
+                                <?php echo $row['productDescription']; ?>
+                            </p>
 
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <hr>
-                    <div class="quantity quantity-lg">
-                        <input type="button" class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="-">
-                        <input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-                        <input type="button" class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="+">
+                            <ul class="list list-unstyled text-2">
+                                <li class="mb-0">AVAILABILITY: <strong class="text-color-dark">
+                                        <?php echo $row['stockStatus']; ?>
+                                    </strong></li>
+                                <!-- <li class="mb-0">SKU: <strong class="text-color-dark"></strong></li> -->
+                            </ul>
+
+                            <form enctype="multipart/form-data" method="post" class="cart" action="shop-cart.html">
+                                <table class="table table-borderless" style="max-width: 300px;">
+                                    <tbody>
+                                        <tr>
+                                            <td class="align-middle text-2 px-0 py-2">SIZE:</td>
+                                            <td class="px-0 py-2">
+                                                <div class="custom-select-1">
+                                                    <h6>
+                                                        <?php echo $row['size']; ?>
+                                                    </h6>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-middle text-2 px-0 py-2">COLOR:</td>
+                                            <td class="px-0 py-2">
+                                                <div class="custom-select-1">
+                                                    <h6>
+                                                        <?php echo $row['colour']; ?>
+                                                    </h6>
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <hr>
+                                <div class="quantity quantity-lg">
+                                    <input type="button"
+                                        class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary"
+                                        value="-">
+                                    <input type="text" class="input-text qty text" title="Qty" value="1" name="quantity"
+                                        min="1" step="1">
+                                    <input type="button"
+                                        class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary"
+                                        value="+">
+                                </div>
+                                <br>
+                                <hr>
+                            </form>
+
+                            <div class="d-flex align-items-center">
+                                <a href="https://api.whatsapp.com/send?phone=<?php echo $row['phonenumber']; ?>">
+                                    <div type="submit"
+                                        class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary"
+                                        style="margin-right: 10px; background-color: #28a745 !important;">Whatsapp</div>
+                                </a>
+                                <a href="tel:<?php echo $row['phonenumber']; ?>">
+                                    <div type="submit"
+                                        class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary"
+                                        style="margin-right: 10px; background-color: rgb(5, 142, 255) !important;">
+                                        Contact</div>
+                                </a>
+
+                                <!-- <div type="submit"
+                                    class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary">
+                                    Add to cart
+                                </div> -->
+                                <div type="submit"
+                                class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary"
+                                        style="margin-right: 10px; background-color: rgb(5, 142, 255) !important;">
+                                    <a href="#" class="text-decoration-none addtocart-btn" title="Add to Cart"
+                                        data-product-id="<?php echo $row['productid']; ?>">
+                                        Add to Cart
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <br>                    <hr>
-                </form>
 
-                <div class="d-flex align-items-center" >
-                   <a href="https://api.whatsapp.com/send?phone=<?php echo $row['phonenumber']; ?>">
-                <div type="submit" class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary" style="margin-right: 10px; background-color: #28a745 !important;" >Whatsapp</div>
-                </a>
-                <a href="tel:+918712131582">
-                <div type="submit" class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary" style="margin-right: 10px; background-color: rgb(5, 142, 255) !important;" >Contact</div>  
-                </a> 
-                <div type="submit" class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary">Add to cart</div>
-    
-            </div>
-                    </div>
 
                 </div>
-
-
             </div>
         </div>
     </div>
     </div>
-    </div>
 
-    <div class="row">
+    <!-- <div class="row">
         <div class="col" style="background-color: white; padding:10px">
             <h4 class="font-weight-semibold text-4 mb-3" style="margin-left: 30px;">PEOPLE ALSO BOUGHT</h4>
             <hr class="mt-0">
@@ -656,33 +695,56 @@ $conn->close();
 
                     </div>
                 </div>
-            </div>
+            </div> -->
 
 
-            <!-- Vendor -->
-            <script src="vendor/plugins/js/plugins.min.js"></script>
-            <script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
-            <script src="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
-            <script src="vendor/jquery.countdown/jquery.countdown.min.js"></script>
+    <!-- Vendor -->
+    <script src="vendor/plugins/js/plugins.min.js"></script>
+    <script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
+    <script src="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
+    <script src="vendor/jquery.countdown/jquery.countdown.min.js"></script>
 
-            <!-- Theme Base, Components and Settings -->
-            <script src="js/theme.js"></script>
+    <!-- Theme Base, Components and Settings -->
+    <script src="js/theme.js"></script>
 
-            <!-- Current Page Vendor and Views -->
-            <script src="js/views/view.shop.js"></script>
+    <!-- Current Page Vendor and Views -->
+    <script src="js/views/view.shop.js"></script>
 
-            <!-- Theme Custom -->
-            <script src="js/custom.js"></script>
+    <!-- Theme Custom -->
+    <script src="js/custom.js"></script>
 
-            <!-- Theme Initialization Files -->
-            <script src="js/theme.init.js"></script>
-            <!-- 
-					// Assuming you have a variable selectedProductCount that represents the count
+    <!-- Theme Initialization Files -->
+    <script src="js/theme.init.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.addtocart-btn').click(function (e) {
+                e.preventDefault();
+                var productId = $(this).data('product-id');
+                $.ajax({
+                    url: 'insertcart.php',
+                    method: 'POST',
+                    data: {
+                        productId: productId
+                    },
+                    success: function (response) {
+                        alert('Product added to Cart!');
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- 
+                    // Assuming you have a variable selectedProductCount that represents the count
 const selectedProductCount = 1;
 
 // Update the count badge text
 document.querySelector('.count-badge').textContent = selectedProductCount.toString(); -->
-            <?php include 'footer.php'; ?>
+    <?php include 'footer.php'; ?>
 </body>
 
 </html>
