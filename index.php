@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['idnum'])) {
+    // If not, redirect to another page
+    header('Location: dumbindex.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

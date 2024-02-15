@@ -4,7 +4,7 @@
 
 use Twilio\TwiML\Voice\Number;
 
- session_start(); ?>
+session_start(); ?>
 
 <head>
 
@@ -26,9 +26,7 @@ use Twilio\TwiML\Voice\Number;
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
 
     <!-- Web Fonts  -->
-    <link id="googleFonts"
-        href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
-        rel="stylesheet" type="text/css">
+    <link id="googleFonts" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap" rel="stylesheet" type="text/css">
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -235,123 +233,125 @@ use Twilio\TwiML\Voice\Number;
 
     <?php include 'header.php'; ?>
     <div class="body">
-    <?php
-                // Start or resume the session
+        <?php
+        // Start or resume the session
 
 
-                // Include the file to establish a database connection
-                include 'connect.php';
+        // Include the file to establish a database connection
+        include 'connect.php';
 
-                // Check if the session variable 'reg_no' is set
-                if (isset($_SESSION['idnum'])) {
-                    // Sanitize the session variable to prevent SQL injection
-                    $reg_no = mysqli_real_escape_string($conn, $_SESSION['idnum']);
+        // Check if the session variable 'reg_no' is set
+        if (isset($_SESSION['idnum'])) {
+            // Sanitize the session variable to prevent SQL injection
+            $reg_no = mysqli_real_escape_string($conn, $_SESSION['idnum']);
 
-                    // Fetch data from the users table based on the session variable 'reg_no'
-                    $sql = "SELECT * FROM xeorx WHERE reg_no = '$reg_no'";
+            // Fetch data from the users table based on the session variable 'reg_no'
+            $sql = "SELECT * FROM xeorx WHERE reg_no = '$reg_no'";
 
-                    // Execute the query
-                    $result = mysqli_query($conn, $sql);
+            // Execute the query
+            $result = mysqli_query($conn, $sql);
 
-                    // Check if there are any results
-                    if (mysqli_num_rows($result) > 0) {
-                        // Output data of the user
-                        while ($row = mysqli_fetch_assoc($result)) {
-                ?>
-    <div class="left-section">
-			<div class="left-section-top">
-				<a href="img/12.png"> <img src="img/12.png" alt="12" width="100" height="100"> </a>
-				Hello &nbsp;
-				<h4>Left Top</h4>
-			</div>
-			<div class="left-section-bottom">
-				<div class="col-lg-4 position-relative">
-					<div class="card border-width-3 border-radius-0 border-color-hover-dark" style="min-height: 450px; width: 300px;">
-						<div class="card-body">
-							<h4 class="font-weight-bold text-uppercase text-4 mb-3">Cart Totals</h4>
-							<table class="shop_table cart-totals mb-4">
-								<tbody>
-                                <tr class="cart-subtotal">
-										<td class="border-top-0">
-											<strong class="text-color-dark">File Name</strong>
-										</td>
-                                         <td class="border-top-0 text-end">
-											<strong><span class="amount font-weight-medium"><?php echo $row['file']; ?></span></strong>
-										</td>
-									</tr>
-									
-									<tr class="cart-subtotal">
-										<td class="border-top-0">
-											<strong class="text-color-dark">Number of Pages</strong>
-										</td>
-                                         <td class="border-top-0 text-end">
-											<strong><span class="amount font-weight-medium"><?php echo $row['pages']; ?></span></strong>
-										</td>
-									</tr>
-                                    <tr class="cart-subtotal">
-										<td class="border-top-0">
-											<strong class="text-color-dark">Category</strong>
-										</td>
-                                         <td class="border-top-0 text-end">
-											<strong><span class="amount font-weight-medium"><?php echo $row['category']; ?></span></strong>
-										</td>
-									</tr>
-                                    <tr class="cart-subtotal">
-										<td class="border-top-0">
-											<strong class="text-color-dark">Printingsides</strong>
-										</td>
-                                         <td class="border-top-0 text-end">
-											<strong><span class="amount font-weight-medium"><?php echo $row['category1']; ?></span></strong>
-										</td>
-									</tr>
-                                    <tr class="cart-subtotal">
-										<td class="border-top-0">
-											<strong class="text-color-dark">Cover</strong>
-										</td>
-                                         <td class="border-top-0 text-end">
-											<strong><span class="amount font-weight-medium"><?php echo $row['category2']; ?></span></strong>
-										</td>
-									</tr>
-                                    <tr class="cart-subtotal">
-										<td class="border-top-0">
-                                        <h2><span class="amount font-weight-medium">Total</span></h2>										</td>
-                                         <td class="border-top-0 text-end">
-											<h2><span class="amount font-weight-medium">₹<?php echo $row['total']; ?></span></h2>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-							
-                            <a class ="btn btn-primary   text-uppercase border-radius-0 w-100 text-3 py-3 buynow">Buy Now</a>
+            // Check if there are any results
+            if (mysqli_num_rows($result) > 0) {
+                // Output data of the user
+                while ($row = mysqli_fetch_assoc($result)) {
+        ?>
+                    <div class="left-section">
+                        <div class="left-section-top">
+                            <a href="img/12.png"> <img src="img/12.png" alt="12" width="100" height="100"> </a>
+                            Hello &nbsp;
+                            <h4>Left Top</h4>
+                        </div>
+                        <div class="left-section-bottom">
+                            <div class="col-lg-4 position-relative">
+                                <div class="card border-width-3 border-radius-0 border-color-hover-dark" style="min-height: 450px; width: 300px;">
+                                    <div class="card-body">
+                                        <h4 class="font-weight-bold text-uppercase text-4 mb-3">Cart Totals</h4>
+                                        <table class="shop_table cart-totals mb-4">
+                                            <tbody>
+                                                <tr class="cart-subtotal">
+                                                    <td class="border-top-0">
+                                                        <strong class="text-color-dark">File Name</strong>
+                                                    </td>
+                                                    <td class="border-top-0 text-end">
+                                                        <strong><span class="amount font-weight-medium"><?php echo $row['file']; ?></span></strong>
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="cart-subtotal">
+                                                    <td class="border-top-0">
+                                                        <strong class="text-color-dark">Number of Pages</strong>
+                                                    </td>
+                                                    <td class="border-top-0 text-end">
+                                                        <strong><span class="amount font-weight-medium"><?php echo $row['pages']; ?></span></strong>
+                                                    </td>
+                                                </tr>
+                                                <tr class="cart-subtotal">
+                                                    <td class="border-top-0">
+                                                        <strong class="text-color-dark">Category</strong>
+                                                    </td>
+                                                    <td class="border-top-0 text-end">
+                                                        <strong><span class="amount font-weight-medium"><?php echo $row['category']; ?></span></strong>
+                                                    </td>
+                                                </tr>
+                                                <tr class="cart-subtotal">
+                                                    <td class="border-top-0">
+                                                        <strong class="text-color-dark">Printingsides</strong>
+                                                    </td>
+                                                    <td class="border-top-0 text-end">
+                                                        <strong><span class="amount font-weight-medium"><?php echo $row['category1']; ?></span></strong>
+                                                    </td>
+                                                </tr>
+                                                <tr class="cart-subtotal">
+                                                    <td class="border-top-0">
+                                                        <strong class="text-color-dark">Cover</strong>
+                                                    </td>
+                                                    <td class="border-top-0 text-end">
+                                                        <strong><span class="amount font-weight-medium"><?php echo $row['category2']; ?></span></strong>
+                                                    </td>
+                                                </tr>
+                                                <tr class="cart-subtotal">
+                                                    <td class="border-top-0">
+                                                        <h2><span class="amount font-weight-medium">Total</span></h2>
+                                                    </td>
+                                                    <td class="border-top-0 text-end">
+                                                        <h2><span class="amount font-weight-medium">₹<?php echo $row['total']; ?></span></h2>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <a class="btn btn-primary   text-uppercase border-radius-0 w-100 text-3 py-3 buynow">Buy Now</a>
 
                             <?php
-                             }
+                        }
                     } else {
                         // If there are no results, display a message or take any other appropriate action
                         echo "No user found.";
                     }
                 } else {
                     // If the session variable 'reg_no' is not set, display a message or redirect to login page
-                    echo "Session variable 'reg_no' not set.";
+                    echo "<script type='text/javascript'> 
+                    window.location.href = 'login.php';</script>";
                 }
 
                 // Close the database connection
                 mysqli_close($conn);
-?>
-						</div>
-					</div>
-				</div>
+                            ?>
+                                    </div>
+                                </div>
+                            </div>
 
-			</div>
-		</div>
-	</div>
+                        </div>
+                    </div>
+    </div>
     <?php include 'connect.php'; ?>
 
     <div class="right-section">
         <div class="right-section-inner">
             <div role="main" class="main shop pb-4">
                 <div class="poster1"></div>
-                
+
                 <td colspan="2" class="border-top-0">
                     <strong class="text-color-dark">
                         <p id="page-count-info"></p>
@@ -369,32 +369,27 @@ use Twilio\TwiML\Voice\Number;
                                             <br>
                                             <h3 class="card-big-info-title">Upload Your Files</h3>
                                         </div>
-                                        <div class="col-lg-3-5 col-xl-4-5"
-                                            style="border: 2px dashed #666; background-color: #f2f4f4;">
+                                        <div class="col-lg-3-5 col-xl-4-5" style="border: 2px dashed #666; background-color: #f2f4f4;">
                                             <div class="form-group row align-items-center">
                                                 <div class="col">
                                                     <div id="dropzone-form-image" class="dropzone-modern dz-square">
-                                                        <span class="dropzone-upload-message text-center"
-                                                            style="border-color: #007bff;">
+                                                        <span class="dropzone-upload-message text-center" style="border-color: #007bff;">
                                                             <i class="bx bxs-cloud-upload"></i>
                                                             <br>
                                                             <label for="file-upload" class="custom-file-upload">
                                                                 <span id="file-name"></span>
                                                             </label>
-                                                            <input type="file" id="file" name="file" required
-                                                                onchange="handleFileUpload(this.files)" />
+                                                            <input type="file" id="file" name="file" required onchange="handleFileUpload(this.files)" />
                                                         </span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div><br>
-                                    <div aria-labelledby="inventory-tab"
-                                        style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); padding: 10px; border-radius: 5px;">
+                                    <div aria-labelledby="inventory-tab" style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); padding: 10px; border-radius: 5px;">
                                         <br>
                                         <div class="form-group row align-items-center pb-3">
-                                            <label
-                                                class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Category</label>
+                                            <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Category</label>
                                             <div class="col-lg-7 col-xl-6">
                                                 <select class="form-control form-control-modern" name="category">
                                                     <option value="Color" selected>Color</option>
@@ -414,8 +409,7 @@ use Twilio\TwiML\Voice\Number;
                                             </div>
                                         </div>
                                         <div class="form-group row align-items-center pb-3">
-                                            <label
-                                                class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Cover</label>
+                                            <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Cover</label>
                                             <div class="col-lg-7 col-xl-6">
                                                 <select class="form-control form-control-modern" name="category2">
                                                     <option value="Spiral Binding" selected>Spiral Binding</option>
@@ -427,8 +421,7 @@ use Twilio\TwiML\Voice\Number;
                                         <div class="form-group row align-items-center pb-3">
                                             <p id="page-count-info"></p>
                                             <div class="col-lg-7 col-xl-6">
-                                                <button type="submit" name="submit" class="btn btn-primary"
-                                                    style="left: 300px; width: 120px; margin-bottom: 10px;">Submit</button>
+                                                <button type="submit" name="submit" class="btn btn-primary" style="left: 300px; width: 120px; margin-bottom: 10px;">Submit</button>
                                                 <?php
                                                 $query = "SELECT * FROM xeorx";
                                                 $result = mysqli_query($conn, $query);
@@ -439,7 +432,6 @@ use Twilio\TwiML\Voice\Number;
                                                     $category1 = $row['category1'];
                                                     $category2 = $row['category2'];
                                                     $finalamount = $row['total'];
-                                                    
                                                 }
                                                 ?>
 
@@ -515,7 +507,7 @@ document.querySelector('.count-badge').textContent = selectedProductCount.toStri
     <?php include 'footer.php'; ?>
 
 
-           
+
     <?php
     include('connect.php');
     include 'connect.php';
@@ -554,72 +546,64 @@ document.querySelector('.count-badge').textContent = selectedProductCount.toStri
         // Sanitize the session variable to prevent SQL injection
         $reg_no = mysqli_real_escape_string($conn, $_SESSION['idnum']);
 
-    if (isset($_POST['submit'])) {
-        // Check if file was uploaded without errors
-        if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
-            $file_name = $_FILES['file']['name'];
-            $file_tmp = $_FILES['file']['tmp_name'];
+        if (isset($_POST['submit'])) {
+            // Check if file was uploaded without errors
+            if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+                $file_name = $_FILES['file']['name'];
+                $file_tmp = $_FILES['file']['tmp_name'];
 
-            // Move the uploaded file to a specified directory
-            $upload_dir = 'uploads/'; // Change this to your desired upload directory
-            move_uploaded_file($file_tmp, $upload_dir . $file_name);
+                // Move the uploaded file to a specified directory
+                $upload_dir = 'uploads/'; // Change this to your desired upload directory
+                move_uploaded_file($file_tmp, $upload_dir . $file_name);
 
-            // Retrieve other form data
-            $category = $_POST['category'];
-            $category1 = $_POST['category1'];
-            $category2 = $_POST['category2'];
-            $colourprice = 5;
-            $bwprice = 2;
-            $spiralprice = 30;
-            $stickprice = 20;
-            $pages = $numpages;
+                // Retrieve other form data
+                $category = $_POST['category'];
+                $category1 = $_POST['category1'];
+                $category2 = $_POST['category2'];
+                $colourprice = 5;
+                $bwprice = 2;
+                $spiralprice = 30;
+                $stickprice = 20;
+                $pages = $numpages;
 
-            $colour = $category;
-            $spiral = $category2;
+                $colour = $category;
+                $spiral = $category2;
 
-            
 
-            if ($colour == "Color" && $spiral == "Spiral Binding") {
-                $total = $pages * $colourprice + $spiralprice;
-            } else if ($colour == "Color" && $spiral == "Stick File") {
-                $total = $pages * $colourprice + $stickprice;
-            } else if ($colour == "Black & White" && $spiral == "Spiral Binding") {
-                $total = $pages * $bwprice + $spiralprice;
-            } else if ($colour == "Black & White" && $spiral == "Stick File") {
-                $total = $pages * $bwprice + $stickprice;
-            } else if ($colour == "Black & White" && $spiral == "None") {
-                $total = $pages * $bwprice;
-            } else if ($colour == "Color" && $spiral == "None") {
-                $total = $pages * $colourprice;
-            } else {
-                $total = 10;
-            }
+
+                if ($colour == "Color" && $spiral == "Spiral Binding") {
+                    $total = $pages * $colourprice + $spiralprice;
+                } else if ($colour == "Color" && $spiral == "Stick File") {
+                    $total = $pages * $colourprice + $stickprice;
+                } else if ($colour == "Black & White" && $spiral == "Spiral Binding") {
+                    $total = $pages * $bwprice + $spiralprice;
+                } else if ($colour == "Black & White" && $spiral == "Stick File") {
+                    $total = $pages * $bwprice + $stickprice;
+                } else if ($colour == "Black & White" && $spiral == "None") {
+                    $total = $pages * $bwprice;
+                } else if ($colour == "Color" && $spiral == "None") {
+                    $total = $pages * $colourprice;
+                } else {
+                    $total = 10;
+                }
 
             // Insert data into the database
-            $sql = "UPDATE xeorx
-            SET file = '$file_name',
-            pages = '$pages',
-            category = '$category',
-            category1 = '$category1',
-            category2 = '$category2',
-            total = '$total'
-            WHERE reg_no = '$reg_no';
-             ";
+            $sql = "INSERT INTO xeorx (file,pages, category, category1, category2,total,reg_no) VALUES ('$file_name','$pages', '$category', '$category1', '$category2', '$total','$reg_no')";
             $result = mysqli_query($conn, $sql);
 
-            if ($result) {
-                echo "<script>alert('Pdf Uploaded successfully!');</script>";
-            } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-            }
+                if ($result) {
+                    echo "<script>alert('Pdf Uploaded successfully!');</script>";
+                } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                }
 
-            // Close the database connection
-            mysqli_close($conn);
-        } else {
-            echo "File upload error.";
+                // Close the database connection
+                mysqli_close($conn);
+            } else {
+                echo "File upload error.";
+            }
         }
     }
-}
 
 
     ?>
@@ -630,7 +614,7 @@ document.querySelector('.count-badge').textContent = selectedProductCount.toStri
     <script>
         function previewImage(event) {
             var reader = new FileReader();
-            reader.onload = function () {
+            reader.onload = function() {
                 var preview = document.getElementById('preview');
                 preview.src = reader.result;
             }
@@ -639,41 +623,44 @@ document.querySelector('.count-badge').textContent = selectedProductCount.toStri
     </script>
 </body>
 <script>
-$(document).ready(function() {
-    $(".buynow").click(function(e) {
-        e.preventDefault(); // Prevent default behavior of anchor tag click
-        var amount = <?php echo $finalamount; ?>;
-        var productname = "Xerox"; // Assuming this variable is defined elsewhere in your code
-        var options = {
-            "key": "rzp_live_2D4bAGktbYxm16",
-            "amount": amount * 100,
-            "name": "Campus Online",
-            "description": productname,
-            "image": "http://localhost/hackathon/img/Campus.png",
-            "handler": function(response) {
-                var paymentid = response.razorpay_payment_id;
-                $.ajax({
-                    url: "payment-process.php",
-                    type: "POST",
-                    data: { product_id: 'your_product_id', payment_id: paymentid }, // Replace 'your_product_id' with the actual product ID
-                    success: function(finalresponse) {
-                        if (finalresponse == 'done') {
-                            window.location.href = "http://localhost/hackathon/success.php";
-                        } else {
-                            alert('Please check console.log to find error');
-                            console.log(finalresponse);
+    $(document).ready(function() {
+        $(".buynow").click(function(e) {
+            e.preventDefault(); // Prevent default behavior of anchor tag click
+            var amount = <?php echo $finalamount; ?>;
+            var productname = "Xerox"; // Assuming this variable is defined elsewhere in your code
+            var options = {
+                "key": "rzp_live_2D4bAGktbYxm16",
+                "amount": amount * 100,
+                "name": "Campus Online",
+                "description": productname,
+                "image": "http://localhost/hackathon/img/Campus.png",
+                "handler": function(response) {
+                    var paymentid = response.razorpay_payment_id;
+                    $.ajax({
+                        url: "payment-process.php",
+                        type: "POST",
+                        data: {
+                            product_id: 'your_product_id',
+                            payment_id: paymentid
+                        }, // Replace 'your_product_id' with the actual product ID
+                        success: function(finalresponse) {
+                            if (finalresponse == 'done') {
+                                window.location.href = "http://localhost/hackathon/success.php";
+                            } else {
+                                alert('Please check console.log to find error');
+                                console.log(finalresponse);
+                            }
                         }
-                    }
-                });
-            },
-            "theme": {
-                "color": "#3399cc"
-            }
-        };
-        var rzp1 = new Razorpay(options);
-        rzp1.open();
+                    });
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        });
     });
-});
 </script>
 
 </html>
