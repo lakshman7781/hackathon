@@ -253,10 +253,10 @@ $conn->close();
 
                             <p class="price mb-3">
                                 <span class="sale text-color-dark">
-                                    <?php echo $row['regularPrice']; ?>
+                                ₹<?php echo $row['salePrice']; ?>
                                 </span>
                                 <span class="amount">
-                                    <?php echo $row['salePrice']; ?>
+                                ₹<?php echo $row['regularPrice']; ?>
                                 </span>
                             </p>
 
