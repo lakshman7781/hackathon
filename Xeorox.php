@@ -233,7 +233,21 @@ session_start(); ?>
 
     <?php include 'header.php'; ?>
     <div class="body">
-        <?php
+       
+                    <div class="left-section">
+                        <div class="left-section-top">
+                            <a href="img/12.png"> <img src="img/12.png" alt="12" width="100" height="100"> </a>
+                            Hello &nbsp;
+                            <h4>Left Top</h4>
+                        </div>
+                        <div class="left-section-bottom">
+                            <div class="col-lg-4 position-relative">
+                                <div class="card border-width-3 border-radius-0 border-color-hover-dark" style="min-height: 450px; width: 300px;">
+                                    <div class="card-body">
+                                        <h4 class="font-weight-bold text-uppercase text-4 mb-3">Cart Totals</h4>
+                                        <table class="shop_table cart-totals mb-4">
+                                            <tbody>
+                                            <?php
         // Start or resume the session
 
 
@@ -256,19 +270,6 @@ session_start(); ?>
                 // Output data of the user
                 while ($row = mysqli_fetch_assoc($result)) {
         ?>
-                    <div class="left-section">
-                        <div class="left-section-top">
-                            <a href="img/12.png"> <img src="img/12.png" alt="12" width="100" height="100"> </a>
-                            Hello &nbsp;
-                            <h4>Left Top</h4>
-                        </div>
-                        <div class="left-section-bottom">
-                            <div class="col-lg-4 position-relative">
-                                <div class="card border-width-3 border-radius-0 border-color-hover-dark" style="min-height: 450px; width: 300px;">
-                                    <div class="card-body">
-                                        <h4 class="font-weight-bold text-uppercase text-4 mb-3">Cart Totals</h4>
-                                        <table class="shop_table cart-totals mb-4">
-                                            <tbody>
                                                 <tr class="cart-subtotal">
                                                     <td class="border-top-0">
                                                         <strong class="text-color-dark">File Name</strong>
@@ -318,12 +319,7 @@ session_start(); ?>
                                                         <h2><span class="amount font-weight-medium">₹<?php echo $row['total']; ?></span></h2>
                                                     </td>
                                                 </tr>
-                                            </tbody>
-                                        </table>
-
-                                        <a class="btn btn-primary   text-uppercase border-radius-0 w-100 text-3 py-3 buynow">Buy Now</a>
-
-                            <?php
+                                                <?php
                         }
                     } else {
                         // If there are no results, display a message or take any other appropriate action
@@ -338,6 +334,12 @@ session_start(); ?>
                 // Close the database connection
                 mysqli_close($conn);
                             ?>
+                                            </tbody>
+                                        </table>
+
+                                        <a class="btn btn-primary   text-uppercase border-radius-0 w-100 text-3 py-3 buynow">Buy Now</a>
+
+                           
                                     </div>
                                 </div>
                             </div>
@@ -451,6 +453,7 @@ session_start(); ?>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.12.313/pdf.min.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
             </div>
+           
         </div>
     </div>
     </div>
@@ -509,104 +512,126 @@ document.querySelector('.count-badge').textContent = selectedProductCount.toStri
 
 
     <?php
-    include('connect.php');
-    include 'connect.php';
+include('connect.php');
+include 'connect.php';
 
-    require_once('vendor/autoload.php');
+require_once('vendor/autoload.php');
 
-    use setasign\Fpdi\Fpdi;
+use setasign\Fpdi\Fpdi;
 
-    function count_pdf_pages($pdf_path)
-    {
-        try {
-            $pdf = new Fpdi();
-            $num_pages = $pdf->setSourceFile($pdf_path);
-            return $num_pages;
-        } catch (Exception $e) {
-            return "Error: " . $e->getMessage();
-        }
+function count_pdf_pages($pdf_path)
+{
+    try {
+        $pdf = new Fpdi();
+        $num_pages = $pdf->setSourceFile($pdf_path);
+        return $num_pages;
+    } catch (Exception $e) {
+        return "Error: " . $e->getMessage();
     }
+}
 
-    // Check if form is submitted and file is uploaded
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
-        // Check for errors during file upload
-        if ($_FILES['file']['error'] !== UPLOAD_ERR_OK) {
-            echo "Error uploading file.";
+// Check if form is submitted and file is uploaded
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
+    // Check for errors during file upload
+    if ($_FILES['file']['error'] !== UPLOAD_ERR_OK) {
+        echo "Error uploading file.";
+    } else {
+        $temp_file = $_FILES['file']['tmp_name'];
+        $page_count = count_pdf_pages($temp_file);
+        if (is_numeric($page_count)) {
+            $numpages = $page_count;
         } else {
-            $temp_file = $_FILES['file']['tmp_name'];
-            $page_count = count_pdf_pages($temp_file);
-            if (is_numeric($page_count)) {
-                $numpages = $page_count;
-            } else {
-                echo $page_count;
-            }
+            echo $page_count;
         }
     }
-    if (isset($_SESSION['idnum'])) {
-        // Sanitize the session variable to prevent SQL injection
-        $reg_no = mysqli_real_escape_string($conn, $_SESSION['idnum']);
+}
+if (isset($_SESSION['idnum'])) {
+    // Sanitize the session variable to prevent SQL injection
+    $reg_no = mysqli_real_escape_string($conn, $_SESSION['idnum']);
 
-        if (isset($_POST['submit'])) {
-            // Check if file was uploaded without errors
-            if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
-                $file_name = $_FILES['file']['name'];
-                $file_tmp = $_FILES['file']['tmp_name'];
+    if (isset($_POST['submit'])) {
+        // Check if file was uploaded without errors
+        if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+            $file_name = $_FILES['file']['name'];
+            $file_tmp = $_FILES['file']['tmp_name'];
 
-                // Move the uploaded file to a specified directory
-                $upload_dir = 'uploads/'; // Change this to your desired upload directory
-                move_uploaded_file($file_tmp, $upload_dir . $file_name);
+            // Move the uploaded file to a specified directory
+            $upload_dir = 'uploads/'; // Change this to your desired upload directory
+            move_uploaded_file($file_tmp, $upload_dir . $file_name);
 
-                // Retrieve other form data
-                $category = $_POST['category'];
-                $category1 = $_POST['category1'];
-                $category2 = $_POST['category2'];
-                $colourprice = 5;
-                $bwprice = 2;
-                $spiralprice = 30;
-                $stickprice = 20;
-                $pages = $numpages;
+            // Retrieve other form data
+            $category = $_POST['category'];
+            $category1 = $_POST['category1'];
+            $category2 = $_POST['category2'];
+            $colourprice = 5;
+            $bwprice = 2;
+            $spiralprice = 30;
+            $stickprice = 20;
+            $pages = $numpages;
 
-                $colour = $category;
-                $spiral = $category2;
+            $colour = $category;
+            $spiral = $category2;
 
-
-
-                if ($colour == "Color" && $spiral == "Spiral Binding") {
-                    $total = $pages * $colourprice + $spiralprice;
-                } else if ($colour == "Color" && $spiral == "Stick File") {
-                    $total = $pages * $colourprice + $stickprice;
-                } else if ($colour == "Black & White" && $spiral == "Spiral Binding") {
-                    $total = $pages * $bwprice + $spiralprice;
-                } else if ($colour == "Black & White" && $spiral == "Stick File") {
-                    $total = $pages * $bwprice + $stickprice;
-                } else if ($colour == "Black & White" && $spiral == "None") {
-                    $total = $pages * $bwprice;
-                } else if ($colour == "Color" && $spiral == "None") {
-                    $total = $pages * $colourprice;
-                } else {
-                    $total = 10;
-                }
-
-            // Insert data into the database
-            $sql = "INSERT INTO xeorx (file,pages, category, category1, category2,total,reg_no) VALUES ('$file_name','$pages', '$category', '$category1', '$category2', '$total','$reg_no')";
-            $result = mysqli_query($conn, $sql);
-
-                if ($result) {
-                    echo "<script>alert('Pdf Uploaded successfully!');</script>";
-                } else {
-                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                }
-
-                // Close the database connection
-                mysqli_close($conn);
+            if ($colour == "Color" && $spiral == "Spiral Binding") {
+                $total = $pages * $colourprice + $spiralprice;
+            } else if ($colour == "Color" && $spiral == "Stick File") {
+                $total = $pages * $colourprice + $stickprice;
+            } else if ($colour == "Black & White" && $spiral == "Spiral Binding") {
+                $total = $pages * $bwprice + $spiralprice;
+            } else if ($colour == "Black & White" && $spiral == "Stick File") {
+                $total = $pages * $bwprice + $stickprice;
+            } else if ($colour == "Black & White" && $spiral == "None") {
+                $total = $pages * $bwprice;
+            } else if ($colour == "Color" && $spiral == "None") {
+                $total = $pages * $colourprice;
             } else {
-                echo "File upload error.";
+                $total = 10;
             }
+
+            // Check if a record with the given reg_no already exists
+            $checkQuery = "SELECT COUNT(*) AS count FROM xeorx WHERE reg_no = ?";
+            $stmt = $conn->prepare($checkQuery);
+            $stmt->bind_param("s", $reg_no);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            $count = $row['count'];
+            $stmt->close();
+
+            // If a record exists, update it; otherwise, insert a new record
+            if ($count > 0) {
+                $sql = "UPDATE xeorx SET file=?, pages=?, category=?, category1=?, category2=?, total=? WHERE reg_no=?";
+            } else {
+                $sql = "INSERT INTO xeorx (file, pages, category, category1, category2, total, reg_no) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            }
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sssssss", $file_name, $pages, $category, $category1, $category2, $total, $reg_no);
+            $stmt->execute();
+            $stmt->close();
+            echo "<script>
+            // Check if the page has been reloaded already
+            if (!sessionStorage.getItem('reloaded')) {
+                // Set the flag in sessionStorage to indicate that the page has been reloaded
+                sessionStorage.setItem('reloaded', 'true');
+                // Reload the page
+                window.location.reload();
+            } else {
+                // Remove the 'reloaded' flag from sessionStorage
+                sessionStorage.removeItem('reloaded');
+            }
+        </script>";
+        
+        } else {
+            echo "File upload error.";
         }
     }
+}
 
+// Close the database connection
+mysqli_close($conn);
+?>
 
-    ?>
 
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
