@@ -464,21 +464,21 @@
                                     <label class="form-labell">Registration Number</label>
                                     <div class="form-control-container">
                                         <span id="nameInput-edit-save" class="edit-save-text" onclick="toggleEditSave('nameInput', 'edit')">Edit</span>
-                                        <input id="nameInput" type="text" class="form-control" value="<?php echo $row['reg_no']; ?>" disabled>
+                                        <input id="nameInput" type="text" class="form-control" value="<?php echo $row['reg_no']; ?>"  readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-labell">E-mail</label>
                                     <div class="form-control-container">
                                         <span id="emailInput-edit-save" class="edit-save-text" onclick="toggleEditSave('emailInput', 'edit')">Edit</span>
-                                        <input id="emailInput" type="text"  class="form-control mb-1" value="<?php echo $row['email']; ?>" disabled>
+                                        <input id="emailInput" type="text"  class="form-control mb-1" value="<?php echo $row['email']; ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-labell">Phone</label>
                                     <div class="form-control-container">
                                         <span id="phoneInput-edit-save" class="edit-save-text" onclick="toggleEditSave('phoneInput', 'edit')">Edit</span>
-                                        <input id="phoneInput" type="text" name="phonenumber" class="form-control" value="<?php echo $row['phonenumber']; ?>" disabled>
+                                        <input id="phoneInput" type="text" name="phonenumber" class="form-control" value="<?php echo $row['phonenumber']; ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
