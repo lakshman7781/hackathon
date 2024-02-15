@@ -1,21 +1,3 @@
-<?php
-session_start();
-
-// Check if the registration number is set in the session
-if (isset($_GET['regNumber'])) {
-    $regNumber = $_GET['regNumber'];
-
-
-    // Now you can use $regNumber variable to display or process the registration number
-} else {
-    // If the registration number is not set in the session, handle the situation accordingly
-
-}
-
-// Don't forget to unset the session variable if it's no longer needed
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,6 +46,54 @@ if (isset($_GET['regNumber'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
+<?php
+include 'connect.php';
+
+// Check if form is submitted
+if (isset($_POST['submit'])) {
+    // Check if all required fields are filled
+    if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email']) && !empty($_POST['phonenumber']) && !empty($_POST['year']) && !empty($_POST['password'])) {
+        
+        // Set parameters
+        $firstName = $_POST["firstname"];
+        $lastName = $_POST["lastname"];
+        $email = $_POST["email"];
+        $phoneNumber = $_POST["phonenumber"];
+        $academicYear = $_POST["year"];
+        $password = $_POST["password"];
+
+        // Retrieve registration number from verification table where mobile number matches
+        $verificationQuery = "SELECT registration FROM verification WHERE mobile = '$phoneNumber'";
+        $verificationResult = $conn->query($verificationQuery);
+
+        // Check if the registration number exists in the verification table
+        if ($verificationResult->num_rows > 0) {
+            // Fetch registration number from the verification table
+            $row = $verificationResult->fetch_assoc();
+            $registrationNumber = $row["registration"];
+
+            // Insert data into database table
+            $insertQuery = "INSERT INTO users (firstname, lastname, email, phonenumber, year, password, reg_no) VALUES ('$firstName', '$lastName', '$email', '$phoneNumber', '$academicYear', '$password', '$registrationNumber')";
+            
+        
+
+            if ($conn->query($insertQuery) === TRUE) {
+                echo "<script>alert('Registration successful!');</script>";
+                header("Location: login.php");
+              
+
+
+            } else {
+                echo "Error: " . $insertQuery . "<br>" . $conn->error;
+            }
+        } else {
+            echo "Invalid registration number";
+        }
+    } else {
+        echo "All fields are required";
+    }
+}
+?>
 
 <body>
     <!-- Check that 'header.php' is properly formatted -->
@@ -101,7 +131,7 @@ if (isset($_GET['regNumber'])) {
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault04">Academic Year</label>
                                 <select class="form-select form-control" id="validationDefault04" name="year" required>
-                                    <option value="">1 Year</option>
+                                    <option value="1">1 Year</option>
                                     <option>2 Year</option>
                                     <option>3 Year</option>
                                     <option>4 Year</option>
@@ -111,20 +141,11 @@ if (isset($_GET['regNumber'])) {
                                 <label for="validationDefault03">Set Password</label>
                                 <input type="text" class="form-control" id="validationDefault05" name="password" required>
                             </div>
-                            <!-- Display the registration number directly -->
-
-
-                            <!-- Display the registration number directly -->
-                            <!-- <div class="col-md-6 mb-3">
-                                <label for="validationDefault03">RegistrationNumber</label>
-                                <input type="text" class="form-control" id="validationDefault04" readonly value="<?php echo isset($_SESSION['regNumber']) ? htmlspecialchars($_SESSION['regNumber']) : ''; ?>">
-                            </div> -->
-
+                          
 
                         </div>
 
 
-                </div>
                 <div class="form-group">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
@@ -143,52 +164,5 @@ if (isset($_GET['regNumber'])) {
     </div>
 
 </body>
-<?php
-include 'connect.php';
 
-// Check if form is submitted
-if (isset($_POST['submit'])) {
-    // Check if all required fields are filled
-    if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email']) && !empty($_POST['phonenumber']) && !empty($_POST['year']) && !empty($_POST['password'])) {
-        
-        // Set parameters
-        $firstName = $_POST["firstname"];
-        $lastName = $_POST["lastname"];
-        $email = $_POST["email"];
-        $phoneNumber = $_POST["phonenumber"];
-        $academicYear = $_POST["year"];
-        $password = $_POST["password"];
-
-        // Retrieve registration number from verification table where mobile number matches
-        $verificationQuery = "SELECT registration FROM verification WHERE mobile = '$phoneNumber'";
-        $verificationResult = $conn->query($verificationQuery);
-
-        // Check if the registration number exists in the verification table
-        if ($verificationResult->num_rows > 0) {
-            // Fetch registration number from the verification table
-            $row = $verificationResult->fetch_assoc();
-            $registrationNumber = $row["registration"];
-
-            // Insert data into database table
-            $insertQuery = "INSERT INTO users (firstname, lastname, email, phonenumber, year, password, reg_no) VALUES ('$firstName', '$lastName', '$email', '$phoneNumber', '$academicYear', '$password', '$registrationNumber')";
-            
-        
-
-            if ($conn->query($insertQuery) === TRUE) {
-                echo "<script>alert('Registration successful!');</script>";
-                header("Location: index.php");
-                exit(); 
-
-
-            } else {
-                echo "Error: " . $insertQuery . "<br>" . $conn->error;
-            }
-        } else {
-            echo "Invalid registration number";
-        }
-    } else {
-        echo "All fields are required";
-    }
-}
-?>
 </html>

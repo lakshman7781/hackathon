@@ -597,7 +597,8 @@
                                                     <div id="dropzone-form-image" class="dropzone-modern dz-square">
                                                         <span class="dropzone-upload-message text-center">
                                                             <i class="bx bxs-cloud-upload"></i>
-                                                            <label for="file-upload" class="text-color-primary"><b class="text-color-primary">Drag/Upload</b> your images here.</label>
+                                                            <label for="file-upload" class="text-color-primary"><b class="text-color-primary">Drag/Upload</b> your images here.<b>
+200x200 Size</label>
                                                             <input type="file" id="file-upload" name="eventimage" class="text-color-primary" required onchange="previewImage(event)" />
                                                         </span>
                                                         <div id="image-preview" class="text-center mt-3">
