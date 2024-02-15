@@ -245,11 +245,13 @@
                                 <tbody>
                                     <tr>
                                         <td colspan="2" class="border-top-0">
-                                            <strong class="text-color-dark"> <p id="page-count-info"></p></strong>
-                                           
+                                            <strong class="text-color-dark">
+                                                <p id="page-count-info"></p>
+                                            </strong>
+
                                         </td>
                                     </tr>
-                    
+
                                     <tr class="total">
                                         <td>
                                             <strong class="text-color-dark text-3-5">Total</strong>
@@ -290,12 +292,77 @@
         <div class="right-section-inner">
 
             <div role="main" class="main shop pb-4">
-              
+<br>
+                <div class="row">
+                    <div class="col-sm-4 mb-4 mb-sm-0">
+                        <div class="product mb-0">
+                            <div class="product-thumb-info border-0 mb-0">
 
-               
+                                <div class="product-thumb-info-badges-wrapper">
+                                    <span class="badge badge-ecommerce text-bg-success">VEG</span>
+                                    <span class="badge badge-ecommerce text-bg-danger">27% OFF</span>
+                                </div>
+
+                                <div class="addtocart-btn-wrapper">
+                                    <a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
+                                        <i class="icons icon-bag"></i>
+                                    </a>
+                                </div>
+
+                                <a class=" text-uppercase font-weight-semibold text-2">
+                                    QUICK VIEW
+                                </a>
+                                <a href="shop-product-sidebar-left.html">
+                                    <div class="product-thumb-info-image product-thumb-info-image-effect">
+                                        <img alt="" class="img-fluid" src="img/products/product-grey-7.jpg">
+
+                                        <img alt="" class="img-fluid" src="img/products/product-grey-7-2.jpg">
+
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="summary entry-summary">
+
+
+                            <div class="pb-0 clearfix d-flex align-items-center">
+                                <div title="Rated 3 out of 5" class="float-start">
+                                    <input type="text" class="d-none" value="3" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'primary', 'size':'xs'}">
+                                </div>
+
+                                <div class="review-num">
+                                    <a href="shop-product-sidebar-left.html#description" class="text-decoration-none text-color-default text-color-hover-primary" data-hash data-hash-offset="0" data-hash-offset-lg="75" data-hash-trigger-click=".nav-link-reviews" data-hash-trigger-click-delay="1000">
+                                        <h2 class="mb-0 font-weight-bold text-7"><a class="text-color-dark text-color-hover-primary text-decoration-none" style="">Porto Headphone</a></h2>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="divider divider-small">
+                                <hr class="bg-color-grey-400">
+                            </div>
+
+                            <p class="price mb-3">
+                                <span class="sale text-color-dark">$15,00</span>
+                                <span class="amount">$22,00</span>
+                            </p>
+
+                            <p class="text-3-5 mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus nibh sed elimttis adipiscing. Fusce in hendrerit purus. Lorem ipsum dolor sit amet.</p>
+
+                            <ul class="list list-unstyled text-2" style="margin-left: -400px;">
+                                <li class="mb-0">AVAILABILITY: <strong class="text-color-dark">AVAILABLE</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <hr class="my-5">
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col">
-                        
+
                     </div>
                 </div>
 
@@ -316,7 +383,7 @@
     </div>
 
 
-    
+
 
 
     <!-- Vendor -->
@@ -336,10 +403,10 @@
 
     <!-- Theme Initialization Files -->
     <script src="js/theme.init.js"></script>
-    
+
     <?php include 'footer.php'; ?>
 
-  
+
 </body>
 
 
