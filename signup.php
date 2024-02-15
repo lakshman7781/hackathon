@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Close connection
-$connection->close();
+$conn->close();
 ?>
 
 <!DOCTYPE html>
