@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
                 $stmt->close();
             } else {
-                $error = "Error preparing statement: " . $connection->error;
+                $error = "Error preparing statement: " . $conn->error;
             }
         }
     }
