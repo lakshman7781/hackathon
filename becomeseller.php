@@ -231,51 +231,11 @@
 	<?php include  'connect.php'; ?>
 	<div class="body">
 		<div class="left-section">
-		<?php
-			// Start or resume the session
-
-
-			// Include the file to establish a database connection
-			include 'connect.php';
-
-			// Check if the session variable 'reg_no' is set
-			if (isset($_SESSION['idnum'])) {
-				// Sanitize the session variable to prevent SQL injection
-				$reg_no = mysqli_real_escape_string($conn, $_SESSION['idnum']);
-
-				// Fetch data from the users table based on the session variable 'reg_no'
-				$sql = "SELECT * FROM users WHERE reg_no = '$reg_no'";
-
-				// Execute the query
-				$result = mysqli_query($conn, $sql);
-
-				// Check if there are any results
-				if (mysqli_num_rows($result) > 0) {
-					// Output data of the user
-					while ($row = mysqli_fetch_assoc($result)) {
-						// Extract the first name from the user's name
-						$fullName = explode(" ", $row['firstname']);
-						$firstName = $fullName[0];
-			?>
-						<div class="left-section-top">
-							<a href="img/12.png"> <img src="img/12.png" alt="12" width="100" height="100"> </a>
-							Hello&nbsp;
-							<h4> <?php echo $firstName; ?></h4>
-						</div>
-			<?php
-					}
-				} else {
-					// If there are no results, display a message or take any other appropriate action
-					echo "No user found.";
-				}
-			} else {
-				// If the session variable 'reg_no' is not set, display a message or redirect to login page
-				echo "Session variable 'reg_no' not set.";
-			}
-
-			// Close the database connection
-			mysqli_close($conn);
-			?>
+			<div class="left-section-top">
+				<a href="img/12.png"> <img src="img/12.png" alt="12" width="100" height="100"> </a>
+				Hello &nbsp;
+				<h4>Left Top</h4>
+			</div>
 			<div class="left-section-bottom">
 				<ul class="profile-menu">
 
@@ -1240,63 +1200,68 @@ include 'connect.php';
 // Check if form is submitted
 if (isset($_POST['save'])) {
 
-    // Check if all required fields are filled
-    if (!empty($_POST['productName']) && !empty($_POST['productDescription']) && !empty($_POST['regularPrice']) && !empty($_POST['salePrice']) && !empty($_POST['Category']) && !empty($_POST['stockStatus']) && !empty($_POST['size']) && !empty($_POST['colour']) && !empty($_FILES['productimage']['name'])) {
+	// Check if all required fields are filled
+	if (!empty($_POST['productName']) && !empty($_POST['productDescription']) && !empty($_POST['regularPrice']) && !empty($_POST['salePrice']) && !empty($_POST['Category']) && !empty($_POST['stockStatus']) && !empty($_POST['size']) && !empty($_POST['colour']) && !empty($_FILES['productimage']['name'])) {
 
-        // Set parameters
-        $productName = $_POST["productName"];
-        $productDescription = $_POST["productDescription"];
-        $regularPrice = $_POST["regularPrice"];
-        $salePrice = $_POST["salePrice"];
-        $Category = $_POST["Category"];
-        $stockStatus = $_POST["stockStatus"];
-        $size = $_POST["size"];
-        $colour = $_POST["colour"];
-        $reg_no = $_SESSION['idnum'];
+		// Set parameters
+		$productName = $_POST["productName"];
+		$productDescription = $_POST["productDescription"];
+		$regularPrice = $_POST["regularPrice"];
+		$salePrice = $_POST["salePrice"];
+		$Category = $_POST["Category"];
+		$stockStatus = $_POST["stockStatus"];
+		$size = $_POST["size"];
+		$colour = $_POST["colour"];
+		$reg_no = $_SESSION['idnum'];
 
-        // File upload handling
-        $targetDirectory = "uploads/";
-        $targetFile = $targetDirectory . basename($_FILES["productimage"]["name"]);
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+		// File upload handling
+		$targetDirectory = "uploads/";
+		$targetFile = $targetDirectory . basename($_FILES["productimage"]["name"]);
+		$uploadOk = 1;
+		$imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
-        // Check file size
-        if ($_FILES["productimage"]["size"] > 5000000) {
-            echo "Sorry, your file is too large.";
-            $uploadOk = 0;
-        }
+		// Check file size
+		if ($_FILES["productimage"]["size"] > 5000000) {
+			echo "Sorry, your file is too large.";
+			$uploadOk = 0;
+		}
 
-        // Check file format
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-            $uploadOk = 0;
-        }
+		// Check if file already exists
+		if (file_exists($targetFile)) {
+			echo "Sorry, file already exists.";
+			$uploadOk = 0;
+		}
 
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
-        } else {
-            // If everything is ok, try to upload file
-            if (move_uploaded_file($_FILES["productimage"]["tmp_name"], $targetFile)) {
-                // File uploaded successfully, now insert data into database
-                $image = $targetFile;
+		// Check file format
+		if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+			echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+			$uploadOk = 0;
+		}
 
-                $insertQuery = "INSERT INTO seller (productName, productDescription, image, regularPrice, salePrice, Category, stockStatus, size, colour,reg_no) VALUES ('$productName', '$productDescription', '$image', '$regularPrice', '$salePrice', '$Category', '$stockStatus', '$size', '$colour','$reg_no')";
+		// Check if $uploadOk is set to 0 by an error
+		if ($uploadOk == 0) {
+			echo "Sorry, your file was not uploaded.";
+		} else {
+			// If everything is ok, try to upload file
+			if (move_uploaded_file($_FILES["productimage"]["tmp_name"], $targetFile)) {
+				// File uploaded successfully, now insert data into database
+				$image = $targetFile;
+				
+				$insertQuery = "INSERT INTO seller (productName, productDescription, image, regularPrice, salePrice, Category, stockStatus, size, colour,reg_no) VALUES ('$productName', '$productDescription', '$image', '$regularPrice', '$salePrice', '$Category', '$stockStatus', '$size', '$colour','$reg_no')";
 
-                if ($conn->query($insertQuery) === TRUE) {
-                    echo "<script>alert('Product added successfully!');</script>";
-                } else {
-                    echo "Error: " . $insertQuery . "<br>" . $conn->error;
-                }
-            } else {
-                echo "Sorry, there was an error uploading your file.";
-            }
-        }
-    } else {
-        echo "All fields are required";
-    }
+				if ($conn->query($insertQuery) === TRUE) {
+					echo "<script>alert('Product added successfully!');</script>";
+				} else {
+					echo "Error: " . $insertQuery . "<br>" . $conn->error;
+				}
+			} else {
+				echo "Sorry, there was an error uploading your file.";
+			}
+		}
+	} else {
+		echo "All fields are required";
+	}
 }
 ?>
-
 
 </html>

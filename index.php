@@ -146,7 +146,7 @@ if (!isset($_SESSION['idnum'])) {
 			</a>
 		</div>
 		<div class="category">
-			<a href="food.php">
+			<a href="#">
 				<img src="img/2.png">
 				<h6>Food</h6>
 			</a>
@@ -276,6 +276,7 @@ if (!isset($_SESSION['idnum'])) {
 										productId: productId
 									},
 									success: function(response) {
+										alert('Product added to Cart!');
 									},
 									error: function(xhr, status, error) {
 										console.error(xhr.responseText);
@@ -284,9 +285,6 @@ if (!isset($_SESSION['idnum'])) {
 							});
 						});
 					</script>
-					<style>
-						
-						</style>
 					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 					<script>
 						$(document).ready(function() {

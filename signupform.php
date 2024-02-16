@@ -96,10 +96,9 @@ if (isset($_POST['submit'])) {
 ?>
 
 <body>
-    <?php include 'dumbheader.php'; ?>
     <!-- Check that 'header.php' is properly formatted -->
 
-    <div class="row justify-content-md-center" style="margin-top:-130px !important; margin-bottom:-30px">
+    <div class="row justify-content-md-center" style="margin-top:-30px !important;">
         <div class="#" style="width: 600px; margin-top:150px !important;">
             <div class="featured-box featured-box-primary text-start mt-0">
                 <div class="box-content">
@@ -163,8 +162,7 @@ if (isset($_POST['submit'])) {
         </div>
     </div>
     </div>
-<?php include 'footer.php'; ?>
-   
+
 </body>
 
 </html>
