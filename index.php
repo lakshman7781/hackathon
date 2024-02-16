@@ -276,8 +276,18 @@ if (!isset($_SESSION['idnum'])) {
 										productId: productId
 									},
 									success: function(response) {
-										alert('Product added to Cart!');
-									},
+                    // Create a success message element
+                    var successMessage = $('<div/>', {
+                        text: 'Product added to Cart successfully!',
+                        class: 'success-message'
+                    });
+                    // Append the success message to the body
+                    $('body').append(successMessage);
+                    // Fade out the success message after a certain duration
+                    setTimeout(function() {
+                        successMessage.fadeOut('slow');
+                    }, 2000);
+                },
 									error: function(xhr, status, error) {
 										console.error(xhr.responseText);
 									}
@@ -287,26 +297,48 @@ if (!isset($_SESSION['idnum'])) {
 					</script>
 					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 					<script>
-						$(document).ready(function() {
-							$('.heart-icon').click(function(e) {
-								e.preventDefault();
-								var productId = $(this).data('product-id');
-								$.ajax({
-									url: 'insertwishlist.php', // URL of the PHP script that handles insertion
-									method: 'POST',
-									data: {
-										productId: productId
-									}, // Data to send in the AJAX request
-									success: function(response) {
-										alert('Product added to wishlist successfully!');
-									},
-									error: function(xhr, status, error) {
-										console.error(xhr.responseText);
-									}
-								});
-							});
-						});
-					</script>
+    $(document).ready(function() {
+        $('.heart-icon').click(function(e) {
+            e.preventDefault();
+            var productId = $(this).data('product-id');
+            $.ajax({
+                url: 'insertwishlist.php', // URL of the PHP script that handles insertion
+                method: 'POST',
+                data: {
+                    productId: productId
+                }, // Data to send in the AJAX request
+                success: function(response) {
+                    // Create a success message element
+                    var successMessage = $('<div/>', {
+                        text: 'Product added to wishlist successfully!',
+                        class: 'success-message'
+                    });
+                    // Append the success message to the body
+                    $('body').append(successMessage);
+                    // Fade out the success message after a certain duration
+                    setTimeout(function() {
+                        successMessage.fadeOut('slow');
+                    }, 2000);
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+<style>
+    .success-message {
+        position: fixed;
+        top: 90px;
+        right: 20px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        z-index: 9999;
+    }
+</style>
 
 
 

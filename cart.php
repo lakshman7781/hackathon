@@ -244,7 +244,7 @@
 									$totalSalePrice = 0;
 
 									// Prepare and execute the SQL query to retrieve product name and sale price
-									$sql = "SELECT seller.productName, seller.salePrice 
+									$sql = "SELECT seller.productid, seller.productName, seller.salePrice 
             FROM seller 
             INNER JOIN cart ON seller.productid = cart.productid 
             WHERE cart.reg_no = '$idnum'";
@@ -262,6 +262,7 @@
 
 											// Accumulate sale price to calculate total
 											$totalSalePrice += $row['salePrice'];
+											$productid= $row['productid'];
 										}
 									} else {
 										// Output if no results found
@@ -316,9 +317,10 @@
 									</tr> -->
 								</tbody>
 							</table>
-							<a href="checkout.php?totalSalePrice=<?php echo $totalSalePrice; ?>" class="btn btn-dark btn-modern w-100 text-uppercase bg-color-hover-primary border-color-hover-primary border-radius-0 text-3 py-3">
-								Proceed to Checkout <i class="fas fa-arrow-right ms-2"></i>
-							</a>
+							<a href="checkout.php?productid=<?php echo $productid; ?>&totalSalePrice=<?php echo $totalSalePrice; ?>" class="btn btn-dark btn-modern w-100 text-uppercase bg-color-hover-primary border-color-hover-primary border-radius-0 text-3 py-3">
+                              Proceed to Checkout <i class="fas fa-arrow-right ms-2"></i>
+                            </a>
+
 
 						</div>
 					</div>

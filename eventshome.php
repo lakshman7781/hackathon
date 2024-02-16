@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start(); ?>
 
 <head>
 
@@ -474,84 +475,149 @@
         <div class="post">
 
           <h3>Campus Buzz</h3>
-          <!-- <h1>Poll with Animation</h1> -->
-          <p class="text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, quas itaque! Aliquam laboriosam mollitia quod nulla nostrum possimus?
-          </p>
+          <?php
+          // Include the file to establish a database connection
+          include 'connect.php';
 
-          <section class="poll">
-            <p class="poll-details">
-              Poll • Ends in 22h
-            </p>
-            <ul class="poll-choices">
-              <li class="poll-choice choice-1">
-                <label for="choice-1">
-                  <div class="poll-result">
-                    <div class="star">
-                      <div></div>
-                    </div>
-                  </div>
-                  <div class="poll-label">
-                    <div class="radio"><input type=radio id="choice-1" name="poll" /></div>
-                    <div class="answer">Dolor</div>
-                  </div>
-                  <p class="poll-percent">
-                    0%
-                  </p>
-                </label>
-              </li>
-              <li class="poll-choice choice-2">
-                <label for="choice-2">
-                  <div class="poll-result">
-                    <div class="star">
-                      <div></div>
-                    </div>
-                  </div>
-                  <div class="poll-label">
-                    <div class="radio"><input type=radio id="choice-2" name="poll" /></div>
-                    <div class="answer">Lorem</div>
-                  </div>
-                  <p class="poll-percent">
-                    0%
-                  </p>
-                </label>
-              </li>
-              <li class="poll-choice choice-3">
-                <label for="choice-3">
-                  <div class="poll-result">
-                    <div class="star">
-                      <div></div>
-                    </div>
-                  </div>
-                  <div class="poll-label">
-                    <div class="radio"><input type=radio id="choice-3" name="poll" /></div>
-                    <div class="answer">Assumenda, quas itaque! Aliquam laboriosam mollitia quod nulla nostrum possimus</div>
-                  </div>
-                  <p class="poll-percent">
-                    0%
-                  </p>
-                </label>
-              </li>
-              <li class="poll-choice choice-4">
-                <label for="choice-4">
-                  <div class="poll-result">
-                    <div class="star">
-                      <div></div>
-                    </div>
-                  </div>
-                  <div class="poll-label">
-                    <div class="radio"><input type=radio id="choice-4" name="poll" /></div>
-                    <div class="answer">IDC, just wanna creep</div>
-                  </div>
-                  <p class="poll-percent">
-                    0%
-                  </p>
-                </label>
-              </li>
-            </ul>
-          </section>
+          // Write your SQL query
+          $sql = "SELECT * FROM poll_admin";
+
+          // Execute the query
+          $result = mysqli_query($conn, $sql);
+
+          // Check if there are any results
+          if (mysqli_num_rows($result) > 0) {
+            // Output data of each row
+            while ($row = mysqli_fetch_assoc($result)) {
+              // Output the HTML structure with product details
+          ?>
+
+              <p class="text">
+                <?php echo $row['question']; ?>
+              </p>
+
+              <section class="poll">
+                <p class="poll-details">
+                  Poll • Ends in 22h
+                </p>
+                <form id="poll-form" action=" " method="post">
+                  <ul class="poll-choices">
+                    <li class="poll-choice choice-1">
+                      <label for="choice-1">
+                        <div class="poll-result">
+                          <div class="star">
+                            <div></div>
+                          </div>
+                        </div>
+                        <div class="poll-label">
+                          <div class="radio"><input type="radio" id="choice-1" name="poll_option" value="<?php echo $row['option1']; ?>" /></div>
+                          <div class="answer"><?php echo $row['option1']; ?></div>
+                        </div>
+                        <p class="poll-percent">
+                          0%
+                        </p>
+                      </label>
+                    </li>
+                    <li class="poll-choice choice-2">
+                      <label for="choice-2">
+                        <div class="poll-result">
+                          <div class="star">
+                            <div></div>
+                          </div>
+                        </div>
+                        <div class="poll-label">
+                          <div class="radio"><input type="radio" id="choice-2" name="poll_option" value="<?php echo $row['option2']; ?>" /></div>
+                          <div class="answer"><?php echo $row['option2']; ?></div>
+                        </div>
+                        <p class="poll-percent">
+                          0%
+                        </p>
+                      </label>
+                    </li>
+                    <li class="poll-choice choice-3">
+                      <label for="choice-3">
+                        <div class="poll-result">
+                          <div class="star">
+                            <div></div>
+                          </div>
+                        </div>
+                        <div class="poll-label">
+                          <div class="radio"><input type="radio" id="choice-3" name="poll_option" value="<?php echo $row['option3']; ?>" /></div>
+                          <div class="answer"><?php echo $row['option3']; ?></div>
+                        </div>
+                        <p class="poll-percent">
+                          0%
+                        </p>
+                      </label>
+                    </li>
+                    <li class="poll-choice choice-4">
+                      <label for="choice-4">
+                        <div class="poll-result">
+                          <div class="star">
+                            <div></div>
+                          </div>
+                        </div>
+                        <div class="poll-label">
+                          <div class="radio"><input type="radio" id="choice-4" name="poll_option" value="<?php echo $row['option4']; ?>" /></div>
+                          <div class="answer"><?php echo $row['option4']; ?></div>
+                        </div>
+                        <p class="poll-percent">
+                          0%
+                        </p>
+                      </label>
+                    </li>
+                  </ul>
+
+                  <button type="submit" name="submit" id="submit-btn" style="top:885px; height:30px; left:140px; border-radius:10px;">Submit</button>
+                </form>
+                <?php
+                if (isset($_POST['submit'])) {
+                  $poll_option = $_POST['poll_option'];
+                  $reg_no = $_SESSION['idnum'];
+                  $sql_insert = "INSERT INTO poll_results (reg_no, option) VALUES ('$reg_no', '$poll_option')";
+                  try {
+                    if (mysqli_query($conn, $sql_insert)) {
+                      echo "New record created successfully";
+                    } else {
+                      $error_message = mysqli_error($conn);
+                      if (strpos($error_message, 'Duplicate entry') !== false) {
+                        echo "You have already voted.";
+                      } else {
+                        echo "Error: " . $error_message;
+                      }
+                    }
+                  } catch (mysqli_sql_exception $e) {
+                    echo "Error: " . $e->getMessage();
+                  }
+                }
+
+                // Assuming this is the code for fetching data from the database
+                // Modify this section based on your actual implementation
+                $sql_fetch = "SELECT * FROM your_table_name WHERE your_conditions";
+                $result = mysqli_query($conn, $sql_fetch);
+                if ($result) {
+                  while ($row = mysqli_fetch_assoc($result)) {
+                    // Process fetched data here
+                  }
+                } else {
+                  echo "Error: " . mysqli_error($conn);
+                }
+                ?>
+
+
+              </section>
+
         </div>
 
+    <?php
+            }
+          } else {
+            echo "0 results";
+          }
+
+          // Close the database connection
+          mysqli_close($conn);
+    ?>
 
       </main>
       <script>
@@ -560,87 +626,28 @@
         const increaseNumber = (node, value) => {
           node.innerText = "0%";
           node.innerText = value + "%";
-          animateNumber(0, value, 1200, easeQuad, function(v) {
-            node.innerText = Math.ceil(v) + "%";
-          })
-        }
-
-        const reset = () => {
-          choices.forEach((c, i) => {
-            const pollChoice = c.closest(".poll-choice");
-            const result = pollChoice.querySelector(".poll-result");
-            c.closest(".poll").classList.remove("answered");
-            pollChoice.classList.remove("winner");
-            result.style.setProperty("--percent", 0 + "%");
-            pollChoice.querySelector(".poll-percent").innerText = "0%";
-          })
         }
 
         const handleChange = event => {
           const choice = event.target;
-          const choiceIndex = [...choices].indexOf(choice);
-          let total = 100;
-          let remaining = total;
-          let values = [];
-          choices.forEach((c, i) => {
-            let r = Math.ceil(Math.random() * remaining);
-            remaining -= r;
-            values[i] = r;
-          });
-          values[values.length - 1] = values[values.length - 1] + remaining;
-          choices.forEach((c, i) => {
-            const pollChoice = c.closest(".poll-choice");
-            const result = pollChoice.querySelector(".poll-result");
-            pollChoice.classList.remove("winner");
-            if (values[i] === Math.max(...values)) {
-              pollChoice.classList.add("winner");
-            }
-            result.style.setProperty("--percent", values[i] + "%");
-            increaseNumber(pollChoice.querySelector(".poll-percent"), values[i]);
+          const selectedOption = choice.value;
 
-          });
-          choice.closest(".poll").classList.add("answered");
+          // AJAX request to insert data into the database
+          const xhr = new XMLHttpRequest();
+          xhr.open('POST', 'this_script.php'); // Change 'this_script.php' to the filename of this script
+          xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+          xhr.onload = function() {
+            if (xhr.status === 200) {
+              // Do something if the insertion is successful
+              console.log(xhr.responseText);
+            }
+          }
+          xhr.send('option=' + selectedOption);
         }
 
         choices.forEach(choice => {
           choice.addEventListener('change', handleChange);
         });
-
-        // ----
-
-        document.querySelector("button").addEventListener('click', reset);
-
-
-
-
-
-        function easeQuad(t) {
-          return t * t / (2 * (t * t - t) + 1)
-        }
-
-        function animateNumber(
-          start,
-          end,
-          duration,
-          easingFunction,
-          callback
-        ) {
-          const startTime = Date.now();
-          const endTime = startTime + duration;
-          const change = end - start;
-          const tick = () => {
-            const now = Date.now();
-            if (now >= endTime) {
-              callback(end);
-            } else {
-              const elapsed = now - startTime;
-              const value = easingFunction(elapsed / duration) * change + start;
-              callback(value);
-              requestAnimationFrame(tick);
-            }
-          };
-          tick();
-        }
       </script>
     </div>
 
@@ -658,85 +665,85 @@
 
 
         <?php
-					// Include the file to establish a database connection
-					include 'connect.php';
+        // Include the file to establish a database connection
+        include 'connect.php';
 
-					// Write your SQL query
-					$sql = "SELECT * FROM event";
+        // Write your SQL query
+        $sql = "SELECT * FROM event";
 
-					// Execute the query
-					$result = mysqli_query($conn, $sql);
+        // Execute the query
+        $result = mysqli_query($conn, $sql);
 
-					// Check if there are any results
-					if (mysqli_num_rows($result) > 0) {
-						// Output data of each row
-						while ($row = mysqli_fetch_assoc($result)) {
-							// Output the HTML structure with product details
-					?>
+        // Check if there are any results
+        if (mysqli_num_rows($result) > 0) {
+          // Output data of each row
+          while ($row = mysqli_fetch_assoc($result)) {
+            // Output the HTML structure with product details
+        ?>
 
-        <div class="row align-items-left" style="margin-left: -500px;">
-          <div class="col-sm-5 mb-4 mb-sm-0">
-            <div class="product mb-0">
-              <div class="product-thumb-info border-0 mb-0">
+            <div class="row align-items-left" style="margin-left: -500px;">
+              <div class="col-sm-5 mb-4 mb-sm-0">
+                <div class="product mb-0">
+                  <div class="product-thumb-info border-0 mb-0">
 
-                <div class="product-thumb-info-badges-wrapper">
-                  <span class="badge badge-ecommerce text-bg-success">NEW</span>
+                    <div class="product-thumb-info-badges-wrapper">
+                      <span class="badge badge-ecommerce text-bg-success">NEW</span>
 
-                </div>
-                <a href="">
-                  <div class=" ">
-                    <img alt="" class="img-fluid" src="<?php echo $row['image']; ?>" style="height: 200px; width: 200px; ">
+                    </div>
+                    <a href="">
+                      <div class=" ">
+                        <img alt="" class="img-fluid" src="<?php echo $row['image']; ?>" style="height: 200px; width: 200px; ">
 
+                      </div>
+                    </a>
                   </div>
-                </a>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="col-sm-7">
-            <div class="summary entry-summary">
+              <div class="col-sm-7">
+                <div class="summary entry-summary">
 
-              <h2 class="mb-0 font-weight-bold text-7"><a href="shop-product-sidebar-left.html" class="text-color-dark text-color-hover-primary text-decoration-none"><?php echo $row['eventname']; ?></a></h2>
+                  <h2 class="mb-0 font-weight-bold text-7"><a href="shop-product-sidebar-left.html" class="text-color-dark text-color-hover-primary text-decoration-none"><?php echo $row['eventname']; ?></a></h2>
 
 
 
-              <div class="divider divider-small">
-                <hr class="bg-color-grey-400">
-              </div>
+                  <div class="divider divider-small">
+                    <hr class="bg-color-grey-400">
+                  </div>
 
 
 
-              <div data-plugin-readmore data-plugin-options="{
+                  <div data-plugin-readmore data-plugin-options="{
               'buttonOpenLabel': 'Read More <i class=\'fas fa-chevron-down text-2 ms-1\'></i>',
               'buttonCloseLabel': 'Read Less <i class=\'fas fa-chevron-up text-2 ms-1\'></i>'
                }">
-               <?php echo $row['eventdescription']; ?></p>
-                <div class="readmore-button-wrapper d-none">
-                  <a href="#" class="text-decoration-none">
-                    Read More
-                    <i class="fas fa-chevron-down"></i>
-                  </a>
+                    <?php echo $row['eventdescription']; ?></p>
+                    <div class="readmore-button-wrapper d-none">
+                      <a href="#" class="text-decoration-none">
+                        Read More
+                        <i class="fas fa-chevron-down"></i>
+                      </a>
+                    </div>
+                    <p>Starting Date: <?php echo $row['startdate']; ?></p>
+                    <p>Ending Date: <?php echo $row['enddate']; ?></p>
+                  </div>
+
+
                 </div>
-                <p>Starting Date: <?php echo $row['startdate']; ?></p>
-                <p>Ending Date: <?php echo $row['enddate']; ?></p>
               </div>
 
 
             </div>
-          </div>
-
-
-        </div>
-        <br>
+            <br>
 
         <?php
-						}
-					} else {
-						echo "0 results";
-					}
+          }
+        } else {
+          echo "0 results";
+        }
 
-					// Close the database connection
-					mysqli_close($conn);
-					?>
+        // Close the database connection
+        mysqli_close($conn);
+        ?>
         <br>
 
 

@@ -9,9 +9,9 @@ function sendOTP($mobileNumber, $otp)
     require_once 'Twilio/autoload.php';
 
     // Twilio account credentials
-    $sid = "AC5c473de347005dcc885efd5affed455b"; // Your Twilio SID
-    $token = "3ee3c93b2b755575f21e3b94e4bafbe2"; // Your Twilio Auth Token
-    $twilioNumber = "+16598883893"; // Your Twilio phone number
+    $sid = "AC2015e1f29a63bf5ea7005c4e3de06089"; // Your Twilio SID
+    $token = "7e60ef33e4e04c5552b74a47012292e9"; // Your Twilio Auth Token
+    $twilioNumber = "+13416675439"; // Your Twilio phone number
 
     // Prepend "91" to the mobile number
     $mobileNumber = "+91" . $mobileNumber;
@@ -32,14 +32,9 @@ function sendOTP($mobileNumber, $otp)
     );
 }
 
-$regNumber = "";
-
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // If OTP verification is requested
-    $regNumber = $_POST['regNumber'];
-    $_SESSION['regNumber'] = $regNumber;
-    // echo  $_SESSION['regNumber'];
     if (isset($_POST['verify'])) {
         $user_otp = $_POST['otp'];
         $stored_otp = $_SESSION['otp'];
@@ -49,10 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // If OTP matches, display a success message
             $successMessage = "Login Successful";
 
-            // Store registration number in session for further use
-            // After processing registration number successfully, redirect to forgot_password.php
+            // Redirect to forgotform.php for password change
             header("Location: forgotform.php");
-            exit(); // Terminate script execution after redirection);
+            exit(); // Terminate script execution after redirection
         } else {
             // If OTP does not match, display an error message
             $error = "Wrong OTP";
@@ -65,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // Execute a query to retrieve mobile number based on registration number
             $query = "SELECT mobile FROM verification WHERE registration = ?";
-            if ($stmt = $connection->prepare($query)) {
+            if ($stmt = $conn->prepare($query)) {
                 $stmt->bind_param("s", $regNumber);
                 if ($stmt->execute()) {
                     $stmt->bind_result($mobileNumber);
@@ -79,12 +73,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         // Store OTP in session for verification
                         $_SESSION['otp'] = $otp;
 
-                        // // Store registration number in session for verification
-                        // $_SESSION['regNumber'] = $regNumber;
-                        // header("Location: forgotform.php?regNumber=" . urlencode($regNumber));
                         // Display OTP entry form
                         $showOTPForm = true;
-        
                     } else {
                         $error = "No mobile number found for the provided registration number.";
                     }
@@ -93,17 +83,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
                 $stmt->close();
             } else {
-                $error = "Error preparing statement: " . $connection->error;
+                $error = "Error preparing statement: " . $conn->error;
             }
         }
     }
-    // $_SESSION['regNumber'] = $regNumber;
-    // header("Location: forgotform.php?regNumber=" . urlencode($regNumber));
-    // exit();
-    unset($_SESSION['regNumber']);
 }
-$connection->close();
-// ?>
+$conn->close();
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
