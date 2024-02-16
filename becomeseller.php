@@ -172,7 +172,7 @@
 		}
 
 		.poster1 {
-			background-image: url('img/2.svg');
+			background-image: url('img/1.svg');
 			background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
