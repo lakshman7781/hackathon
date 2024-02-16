@@ -283,38 +283,9 @@
 										<td class="border-top-0">
 											<strong class="text-color-dark"></strong>
 										</td>
-										<!-- <td class="border-top-0 text-end">
-											<strong><span class="amount font-weight-medium">$431</span></strong>
-										</td> -->
+										
 									</tr>
-									<!-- <tr class="shipping">
-										<td colspan="2">
-											<strong class="d-block text-color-dark mb-2">Shipping</strong>
-
-											<div class="d-flex flex-column">
-												<label class="d-flex align-items-center text-color-grey mb-0" for="shipping_method1">
-													<input id="shipping_method1" type="radio" class="me-2" name="shipping_method" value="free" checked />
-													Free Shipping
-												</label>
-												<label class="d-flex align-items-center text-color-grey mb-0" for="shipping_method2">
-													<input id="shipping_method2" type="radio" class="me-2" name="shipping_method" value="local-pickup" />
-													Local Pickup
-												</label>
-												<label class="d-flex align-items-center text-color-grey mb-0" for="shipping_method3">
-													<input id="shipping_method3" type="radio" class="me-2" name="shipping_method" value="flat-rate" />
-													Flat Rate: $5.00
-												</label>
-											</div>
-										</td>
-									</tr> -->
-									<!-- <tr class="total">
-										<td>
-											<strong class="text-color-dark text-3-5">Total</strong>
-										</td>
-										<td class="text-end">
-											<strong class="text-color-dark"><span class="amount text-color-dark text-5">$431</span></strong>
-										</td>
-									</tr> -->
+									
 								</tbody>
 							</table>
 							<a href="checkout.php?productid=<?php echo $productid; ?>&totalSalePrice=<?php echo $totalSalePrice; ?>" class="btn btn-dark btn-modern w-100 text-uppercase bg-color-hover-primary border-color-hover-primary border-radius-0 text-3 py-3">
