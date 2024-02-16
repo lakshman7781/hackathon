@@ -431,31 +431,32 @@ h1 {
                         </a>
                         </div>
                         <div>
+                        <a href="iei.php">
                             <img alt="" class="img-fluid rounded" src="clublogos/2.png" style="height: 100px; width: 100px;">
                         </div>
                         <div>
+                        <a href="eoc.php">
                             <img alt="" class="img-fluid rounded" src="clublogos/3.png" style="height: 100px; width: 100px;">
                         </div>
                         <div>
+                        <a href="ieee.php">
                             <img alt="" class="img-fluid rounded" src="clublogos/4.png" style="height: 100px; width: 100px;">
                         </div>
                         <div>
+                        <a href="gdsc.php">
                             <img alt="" class="img-fluid rounded" src="clublogos/5.png" style="height: 100px; width: 100px;">
                         </div>
                         <div>
+                        <a href="cine.php">
                             <img alt="" class="img-fluid rounded" src="clublogos/6.png" style="height: 100px; width: 100px;">
                         </div>
                         <div>
+                        <a href="coding.php">
                             <img alt="" class="img-fluid rounded" src="clublogos/7.png" style="height: 100px; width: 100px;">
                         </div>
                         <div>
-                            <img alt="" class="img-fluid rounded" src="clublogos/1.png" style="height: 100px; width: 100px;">
-                        </div>
-                        <div>
-                            <img alt="" class="img-fluid rounded" src="clublogos/2.png" style="height: 100px; width: 100px;">
-                        </div>
-                        <div>
-                            <img alt="" class="img-fluid rounded" src="clublogos/3.png" style="height: 100px; width: 100px;">
+                        <a href="startup.php">
+                            <img alt="" class="img-fluid rounded" src="clublogos/8.png" style="height: 100px; width: 100px;">
                         </div>
                     </div>
                 </div>

@@ -190,11 +190,13 @@
 
                     <h5 class="font-weight-semi-bold pt-3" style="width: 100%">Clubs</h5>
                     <ul class="nav nav-list flex-column">
-                        <li class="nav-item"><a class="nav-link" href="#">IEI</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">ACE</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">ECO</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">GDSC</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Others</a></li>
+                    <li class="nav-item"><a class="nav-link" href="iei.php">IEI</a></li>
+                        <li class="nav-item"><a class="nav-link" href="clubs.php">ACE</a></li>
+                        <li class="nav-item"><a class="nav-link" href="eoc.php">EOC</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gdsc.php">GDSC</a></li>
+                        <li class="nav-item"><a class="nav-link" href="cine.php">CINE</a></li>
+                        <li class="nav-item"><a class="nav-link" href="coding.php">CODING</a></li>
+                        <li class="nav-item"><a class="nav-link" href="startup.php">STARTUP</a></li>
 
                     </ul>
 

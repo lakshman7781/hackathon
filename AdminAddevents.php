@@ -656,6 +656,7 @@
                                                                 <option value="GDSC">GDSC</option>
                                                                 <option value="CINE">CINE</option>
                                                                 <option value="CODING">CODING</option>
+                                                                <option value = "STARTUP">STARTUP</option>
                                                                 
                                                             </select>
                                                         </div>
