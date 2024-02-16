@@ -161,19 +161,21 @@ $conn->close();
 </head>
 
 <body>
+<?php include "dumbheader.php"; ?>
+
     <!-- Check that 'header.php' is properly formatted -->
 
-    <div class="row justify-content-md-center" style="margin-top:50px !important;">
+    <div class="row justify-content-md-center" style="margin-top:-80px !important; margin-bottom:-600px !important;">
         <div class="#" style="width: 600px; margin:45px;margin-top:150px; height:900px !important;">
             <div class="featured-box featured-box-primary text-start mt-0">
                 <div class="box-content">
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Registering An Account</h4>
+                            <h4 class="color-primary font-weight-semibold text-5 text-uppercase mb-3">Signup</h4>
                         </div>
                         <div class="col-md-6 mb-3">
                             <a href="login.php" style="text-decoration: none; ">
-                                <h4 class="font-weight-semibold text-4 text-uppercase mb-3" style="color: green; margin-left:-35px;"> Login ?</h4>
+                                <p class="font-weight-semibold" style="color: red; margin-left:-185px; margin-top:5px;"> Already have Account ?</p>
                             </a>
 
 
@@ -317,6 +319,7 @@ $conn->close();
         </div>
     </div>
     </div>
+    <?php include "footer.php"; ?>
 </body>
 
 </html>
