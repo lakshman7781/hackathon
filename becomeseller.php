@@ -1249,21 +1249,6 @@ if (isset($_POST['save'])) {
 				
 				$insertQuery = "INSERT INTO seller (productName, productDescription, image, regularPrice, salePrice, Category, stockStatus, size, colour,reg_no) VALUES ('$productName', '$productDescription', '$image', '$regularPrice', '$salePrice', '$Category', '$stockStatus', '$size', '$colour','$reg_no')";
 
-<<<<<<< HEAD
-                if ($conn->query($insertQuery) === TRUE) {
-                    // Product added successfully, display success message
-                    echo "<div class='success-message'>Product added successfully!</div>";
-                } else {
-                    echo "Error: " . $insertQuery . "<br>" . $conn->error;
-                }
-            } else {
-                echo "Sorry, there was an error uploading your file.";
-            }
-        }
-    } else {
-        echo "All fields are required";
-    }
-=======
 				if ($conn->query($insertQuery) === TRUE) {
 					echo "<script>alert('Product added successfully!');</script>";
 				} else {
@@ -1276,7 +1261,6 @@ if (isset($_POST['save'])) {
 	} else {
 		echo "All fields are required";
 	}
->>>>>>> eeec437beef4b37bafb476c8402e2a5359702562
 }
 ?>
 <style>
