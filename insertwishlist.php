@@ -13,15 +13,15 @@ if(isset($_POST['productId'])) {
 
     // Execute the query
     if (mysqli_query($conn, $sql)) {
-        // If insertion is successful, echo a success message
-        echo "Product added to wishlist successfully!";
+        // If insertion is successful, echo a success message with a custom class
+        echo "<div class='alert alert-success'>Product added to wishlist successfully!</div>";
     } else {
         // If there's an error with the query, echo the error message
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "<div class='alert alert-danger'>Error: " . $sql . "<br>" . mysqli_error($conn) . "</div>";
     }
 } else {
     // If the product ID is not received, echo an error message
-    echo "Error: Product ID not received!";
+    echo "<div class='alert alert-danger'>Error: Product ID not received!</div>";
 }
 
 // Close the database connection

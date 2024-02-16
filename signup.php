@@ -83,6 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         // Display OTP entry form
                         $showOTPForm = true;
+
+                        
                     } else {
                         $error = "No mobile number found for the provided registration number.";
                     }

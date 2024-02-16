@@ -1284,7 +1284,8 @@ if (isset($_POST['save'])) {
                 $insertQuery = "INSERT INTO seller (productName, productDescription, image, regularPrice, salePrice, Category, stockStatus, size, colour,reg_no) VALUES ('$productName', '$productDescription', '$image', '$regularPrice', '$salePrice', '$Category', '$stockStatus', '$size', '$colour','$reg_no')";
 
                 if ($conn->query($insertQuery) === TRUE) {
-                    echo "<script>alert('Product added successfully!');</script>";
+                    // Product added successfully, display success message
+                    echo "<div class='success-message'>Product added successfully!</div>";
                 } else {
                     echo "Error: " . $insertQuery . "<br>" . $conn->error;
                 }
@@ -1297,6 +1298,20 @@ if (isset($_POST['save'])) {
     }
 }
 ?>
+<style>
+    .success-message {
+		position: fixed;
+        top: 90px;
+        right: 20px;
+        background-color: #dff0d8; /* Light green background color */
+        color: #3c763d; /* Dark green text color */
+        padding: 10px;
+        margin: 20px 0;
+        border: 1px solid #d6e9c6; /* Border color */
+        border-radius: 4px;
+    }
+</style>
+
 
 
 </html>

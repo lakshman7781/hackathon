@@ -1,9 +1,6 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start(); ?>
 
 <head>
 
@@ -475,90 +472,160 @@ session_start();
 
       <main id="app">
 
-      <div class="poll-container">
-            <?php
-            include "connect.php";
+        <div class="post">
 
-            if (isset($_SESSION['idnum'])) {
-                // Check if the user has already voted
-                if (isset($_SESSION['voted'])) {
-                    echo "You have already voted. Thank you!";
-                } else {
-                    $reg_no = mysqli_real_escape_string($conn, $_SESSION['idnum']);
-                    $sql = "SELECT * FROM poll_admin";
-                    $result = mysqli_query($conn, $sql);
-                    $row = mysqli_fetch_assoc($result);
+          <h3>Campus Buzz</h3>
+        	<?php
+					// Include the file to establish a database connection
+					include 'connect.php';
 
-                    $question = $row['question'];
-                    $options = array($row['option1'], $row['option2'], $row['option3'], $row['option4']);
+					// Write your SQL query
+					$sql = "SELECT * FROM poll_admin";
 
-                    // Fetch poll results from the database
-                    $sql_poll_results = "SELECT option, COUNT(*) as votes FROM poll_results GROUP BY option";
-                    $result_poll_results = mysqli_query($conn, $sql_poll_results);
-                    $poll_results = array();
-                    if ($result_poll_results) {
-                        while ($row_poll_results = mysqli_fetch_assoc($result_poll_results)) {
-                            $poll_results[$row_poll_results['option']] = $row_poll_results['votes'];
-                        }
-                    }
+					// Execute the query
+					$result = mysqli_query($conn, $sql);
 
-                    // Calculate total votes
-                    $total_votes = array_sum($poll_results);
+					// Check if there are any results
+					if (mysqli_num_rows($result) > 0) {
+						// Output data of each row
+						while ($row = mysqli_fetch_assoc($result)) {
+							// Output the HTML structure with product details
+					?>
 
-                    // Display the poll options
-                    ?>
-                    <h2 class="poll-question"><?php echo $question; ?></h2>
-                    <ul class="poll-choices">
-                        <?php foreach ($options as $index => $option): ?>
-                            <li class="poll-choice">
-                                <button class="poll-option" data-option="<?php echo $option; ?>">
-                                    <?php echo $option; ?>
-                                    <span class="poll-percent">
-                                        <?php
-                                        // Calculate and display percentage
-                                        if ($total_votes > 0 && isset($poll_results[$option])) {
-                                            echo round(($poll_results[$option] / $total_votes) * 100) . '%';
-                                        } else {
-                                            echo '0%';
-                                        }
-                                        ?>
-                                    </span>
-                                </button>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                    <?php
-                }
-            } else {
-                echo "You need to be logged in to vote.";
-            }
-            ?>
+<p class="text">
+    <?php echo $row['question']; ?>
+</p>
 
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script>
-                $(document).ready(function () {
-                    $(".poll-option").click(function () {
-                        // Check if the user has already voted
-                        if ("<?php echo isset($_SESSION['voted']) ? $_SESSION['voted'] : '' ?>" !== '1') {
-                            var option = $(this).data("option");
-                            $.ajax({
-                                url: "vote.php",
-                                method: "POST",
-                                data: { option: option },
-                                success: function (data) {
-                                    location.reload();
-                                }
-                            });
-                            // Set the session variable indicating that the user has voted
-                            <?php $_SESSION['voted'] = '1'; ?>;
-                        }
-                    });
-                });
-            </script>
+<section class="poll">
+    <p class="poll-details">
+        Poll • Ends in 22h
+    </p>
+    <form id="poll-form" action= " " method="post">
+        <ul class="poll-choices">
+            <li class="poll-choice choice-1">
+                <label for="choice-1">
+                    <div class="poll-result">
+                        <div class="star">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="poll-label">
+                        <div class="radio"><input type="radio" id="choice-1" name="poll_option" value="<?php echo $row['option1']; ?>" /></div>
+                        <div class="answer"><?php echo $row['option1']; ?></div>
+                    </div>
+                    <p class="poll-percent">
+                        0%
+                    </p>
+                </label>
+            </li>
+            <li class="poll-choice choice-2">
+                <label for="choice-2">
+                    <div class="poll-result">
+                        <div class="star">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="poll-label">
+                        <div class="radio"><input type="radio" id="choice-2" name="poll_option" value="<?php echo $row['option2']; ?>" /></div>
+                        <div class="answer"><?php echo $row['option2']; ?></div>
+                    </div>
+                    <p class="poll-percent">
+                        0%
+                    </p>
+                </label>
+            </li>
+            <li class="poll-choice choice-3">
+                <label for="choice-3">
+                    <div class="poll-result">
+                        <div class="star">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="poll-label">
+                        <div class="radio"><input type="radio" id="choice-3" name="poll_option" value="<?php echo $row['option3']; ?>" /></div>
+                        <div class="answer"><?php echo $row['option3']; ?></div>
+                    </div>
+                    <p class="poll-percent">
+                        0%
+                    </p>
+                </label>
+            </li>
+            <li class="poll-choice choice-4">
+                <label for="choice-4">
+                    <div class="poll-result">
+                        <div class="star">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="poll-label">
+                        <div class="radio"><input type="radio" id="choice-4" name="poll_option" value="<?php echo $row['option4']; ?>" /></div>
+                        <div class="answer"><?php echo $row['option4']; ?></div>
+                    </div>
+                    <p class="poll-percent">
+                        0%
+                    </p>
+                </label>
+            </li>
+        </ul>
+     
+        <button type="submit" name="submit" id="submit-btn" style="top:885px; height:30px; left:140px; border-radius:10px;">Submit</button>
+    </form>
+    <?php 
+    if(isset($_POST['submit'])){
+        $poll_option = $_POST['poll_option'];
+        $reg_no = $_SESSION['idnum'];
+        $sql = "INSERT INTO poll_results (reg_no, option) VALUES ('$reg_no', '$poll_option')";
+        if (mysqli_query($conn, $sql)) {
+            echo "New record created successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    }
+    ?>
+</section>
+
         </div>
 
+        <?php
+						}
+					} else {
+						echo "0 results";
+					}
+
+					// Close the database connection
+					mysqli_close($conn);
+					?>
+
       </main>
-      
+    <script>
+const choices = document.querySelectorAll('input[name=poll]');
+
+const increaseNumber = (node, value) => {
+    node.innerText = "0%";
+    node.innerText = value + "%";
+}
+
+const handleChange = event => {
+    const choice = event.target;
+    const selectedOption = choice.value;
+
+    // AJAX request to insert data into the database
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'this_script.php'); // Change 'this_script.php' to the filename of this script
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Do something if the insertion is successful
+            console.log(xhr.responseText);
+        }
+    }
+    xhr.send('option=' + selectedOption);
+}
+
+choices.forEach(choice => {
+    choice.addEventListener('change', handleChange);
+});
+</script>
     </div>
 
 
