@@ -667,251 +667,262 @@ if (isset($_SESSION['idnum'])) {
 
         // Write your SQL query
         $sql = "SELECT * FROM event";
+   // Execute the query
+   $result = mysqli_query($conn, $sql);
 
-        // Execute the query
-        $result = mysqli_query($conn, $sql);
-
-        // Check if there are any results
-        if (mysqli_num_rows($result) > 0) {
-          // Output data of each row
-          while ($row = mysqli_fetch_assoc($result)) {
-            // Output the HTML structure with product details
-        ?>
-
-            <div class="row align-items-left">
-              <div class="col-sm-5 mb-4 mb-sm-0">
-                <div class="product mb-0">
-                  <div class="product-thumb-info border-0 mb-0">
-
-                    <div class="product-thumb-info-badges-wrapper">
-                      <span class="badge badge-ecommerce text-bg-success">NEW</span>
-
-                    </div>
-                    <a href="">
-                      <div class=" ">
-                        <img alt="" class="img-fluid" src="<?php echo $row['image']; ?>" style="height: 200px; width: 200px; ">
-
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-7">
-                <div class="summary entry-summary">
-
-                  <h2 class="mb-0 font-weight-bold text-7"><a href="shop-product-sidebar-left.html" class="text-color-dark text-color-hover-primary text-decoration-none"><?php echo $row['eventname']; ?></a></h2>
+   // Check if there are any results
+   if (mysqli_num_rows($result) > 0) {
+     // Output data of each row
+     while ($row = mysqli_fetch_assoc($result)) {
+       // Output the HTML structure with product details
+   ?>
 
 
+       <div class="row align-items-center" style="left: 0% !important;  ">
+         <div class="col-sm-5 mb-4 mb-sm-0">
+           <div class="product mb-0">
+             <div class="product-thumb-info border-0 mb-0">
 
-                  <div class="divider divider-small">
-                    <hr class="bg-color-grey-400">
-                  </div>
+               <div class="product-thumb-info-badges-wrapper">
+                 <span class="badge badge-ecommerce text-bg-success">NEW</span>
+
+               </div>
+               <a href="">
+                 <div class=" ">
+                   <img alt="" class="img-fluid" src=" <?php echo $row['image']; ?>" style="height: 200px; width: 200px;">
+
+                 </div>
+               </a>
+             </div>
+           </div>
+         </div>
+         <div class="col-sm-7">
+           <div class="summary entry-summary">
+
+             <h2 class="mb-0 font-weight-bold text-7"><a href="shop-product-sidebar-left.html" class="text-color-dark text-color-hover-primary text-decoration-none"> <?php echo $row['eventname']; ?></a></h2>
 
 
 
-                  <div data-plugin-readmore data-plugin-options="{
-              'buttonOpenLabel': 'Read More <i class=\'fas fa-chevron-down text-2 ms-1\'></i>',
-              'buttonCloseLabel': 'Read Less <i class=\'fas fa-chevron-up text-2 ms-1\'></i>'
-               }">
-                    <?php echo $row['eventdescription']; ?></p>
-                    <div class="readmore-button-wrapper d-none">
-                      <a href="#" class="text-decoration-none">
-                        Read More
-                        <i class="fas fa-chevron-down"></i>
-                      </a>
-                    </div>
-                    <p>Starting Date: <?php echo $row['startdate']; ?></p>
-                    <p>Ending Date: <?php echo $row['enddate']; ?></p>
-                  </div>
+             <div class="divider divider-small">
+               <hr class="bg-color-grey-400">
+             </div>
 
 
-                </div>
-              </div>
+
+             <div data-plugin-readmore data-plugin-options="{
+   'buttonOpenLabel': 'Read More <i class=\'fas fa-chevron-down text-2 ms-1\'></i>',
+   'buttonCloseLabel': 'Read Less <i class=\'fas fa-chevron-up text-2 ms-1\'></i>'
+    }">
+               <p> <?php echo $row['eventdescription']; ?></p>
+               <p> Start Date :<?php echo $row['startdate']; ?><br>
+                 End Date :<?php echo $row['enddate']; ?>
+               </p>
+               <div class="readmore-button-wrapper d-none">
+                 <a href="#" class="text-decoration-none">
+                   Read More
+                   <i class="fas fa-chevron-down"></i>
+                 </a>
+               </div>
+             </div>
+
+             <br>
+       <br>
+           </div>
+         </div>
+         
 
 
-            </div>
-            <br>
+     <?php
+     }
+   } else {
+     echo "0 results";
+   }
 
-        <?php
-          }
-        } else {
-          echo "0 results";
-        }
-
-        // Close the database connection
-        mysqli_close($conn);
-        ?>
-        <br>
-
-
-        <!-- Bootstrap Bundle with Popper -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-
-        <script>
-          document.addEventListener("DOMContentLoaded", function() {
-            // Get all elements with the class '.read-more'
-            const readMoreButtons = document.querySelectorAll('.read-more');
-
-            // Loop through each read more button
-            readMoreButtons.forEach(function(readMoreButton) {
-              // Get the corresponding collapse element
-              const collapseElement = document.querySelector(readMoreButton.getAttribute('data-bs-target'));
-
-              // Add event listener to the "show.bs.collapse" event of the collapse element
-              collapseElement.addEventListener('show.bs.collapse', function() {
-                // Change button text to "Minimize" and change icon
-                readMoreButton.innerHTML = 'Minimize <i class="fas fa-angle-up"></i>';
-              });
-
-              // Add event listener to the "hide.bs.collapse" event of the collapse element
-              collapseElement.addEventListener('hide.bs.collapse', function() {
-                // Change button text to "Read More" and change icon
-                readMoreButton.innerHTML = 'Read More <i class="fas fa-angle-down"></i>';
-              });
-
-              // Add event listener to the "Read More" button
-              readMoreButton.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent default anchor click behavior
-
-                // Toggle the collapse state of the collapse element
-                const isCollapsed = collapseElement.classList.contains('show');
-                if (isCollapsed) {
-                  collapseElement.classList.remove('show');
-                } else {
-                  collapseElement.classList.add('show');
-                }
-              });
-            });
-          });
-        </script>
-
-
-      </div>
-    </div>
+   // Close the database connection
+   mysqli_close($conn);
+     ?>
+     <br>
 
 
 
 
 
+       </div>
+ </div>
 
-  </div>
-  </div>
+
+</div>
+<br>
 
 
-  <!-- Bootstrap Bundle with Popper and Bootstrap JS -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-  <!-- jQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
-  <script>
-    // JavaScript to toggle collapse state
-    $(document).ready(function() {
-      $(".read-more").click(function() {
-        $(this).toggleClass('active');
-      });
-    });
-  </script>
-  <script>
-    $(document).ready(function() {
-      $('.read-more').click(function(e) {
-        e.preventDefault();
-        var target = $(this).data('bs-target');
-        var $target = $(target);
-        if ($target.hasClass('show')) {
-          $target.collapse('hide');
-        } else {
-          $target.collapse('show');
-        }
-      });
-    });
-  </script>
+<script>
+ document.addEventListener("DOMContentLoaded", function() {
+   // Get all elements with the class '.read-more'
+   const readMoreButtons = document.querySelectorAll('.read-more');
 
-  <script src="vendor/plugins/js/plugins.min.js"></script>
+   // Loop through each read more button
+   readMoreButtons.forEach(function(readMoreButton) {
+     // Get the corresponding collapse element
+     const collapseElement = document.querySelector(readMoreButton.getAttribute('data-bs-target'));
 
-  <!-- Theme Base, Components and Settings -->
-  <script src="js/theme.js"></script>
+     // Add event listener to the "show.bs.collapse" event of the collapse element
+     collapseElement.addEventListener('show.bs.collapse', function() {
+       // Change button text to "Minimize" and change icon
+       readMoreButton.innerHTML = 'Minimize <i class="fas fa-angle-up"></i>';
+     });
 
-  <!-- Theme Custom -->
-  <script src="js/custom.js"></script>
+     // Add event listener to the "hide.bs.collapse" event of the collapse element
+     collapseElement.addEventListener('hide.bs.collapse', function() {
+       // Change button text to "Read More" and change icon
+       readMoreButton.innerHTML = 'Read More <i class="fas fa-angle-down"></i>';
+     });
 
-  <!-- Theme Initialization Files -->
-  <script src="js/theme.init.js"></script>
-  <!-- Vendor -->
-  <script src="vendor/plugins/js/plugins.min.js"></script>
-  <script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
-  <script src="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
-  <script src="vendor/jquery.countdown/jquery.countdown.min.js"></script>
+     // Add event listener to the "Read More" button
+     readMoreButton.addEventListener('click', function(event) {
+       event.preventDefault(); // Prevent default anchor click behavior
 
-  <!-- Theme Base, Components and Settings -->
-  <script src="js/theme.js"></script>
+       // Toggle the collapse state of the collapse element
+       const isCollapsed = collapseElement.classList.contains('show');
+       if (isCollapsed) {
+         collapseElement.classList.remove('show');
+       } else {
+         collapseElement.classList.add('show');
+       }
+     });
+   });
+ });
+</script>
 
-  <!-- Current Page Vendor and Views -->
-  <script src="js/views/view.shop.js"></script>
 
-  <!-- Theme Custom -->
-  <script src="js/custom.js"></script>
+</div>
+</div>
 
-  <!-- Theme Initialization Files -->
-  <script src="js/theme.init.js"></script>
-  <script>
-    let currentPanel = 1;
-    const panelWidth = 1200; // Width of each panel
-    const totalPanels = 4; // Total number of panels
-    const autoScrollInterval = 3000; // Interval for automatic scrolling in milliseconds (adjust as needed)
 
-    function changePanel(direction) {
-      currentPanel += direction;
 
-      if (currentPanel < 1) {
-        currentPanel = totalPanels;
-      } else if (currentPanel > totalPanels) {
-        currentPanel = 1;
-      }
 
-      updateCarousel();
-    }
 
-    function updateCarousel() {
-      const carousel = document.getElementById('carousel');
-      const panelContainer = document.querySelector('.carousel-container');
-      const translateValue = -panelWidth * (currentPanel - 1);
-      carousel.style.transform = translateX(${translateValue}px);
-      panelContainer.style.width = ${panelWidth}px;
-    }
 
-    function autoScroll() {
-      changePanel(1); // Automatically move to the next panel
-    }
+</div>
+</div>
 
-    // Set up automatic scrolling
-    const autoScrollIntervalId = setInterval(autoScroll, autoScrollInterval);
 
-    // Stop automatic scrolling when user interacts with the carousel
-    document.querySelector('.carousel-container').addEventListener('mouseenter', () => {
-      clearInterval(autoScrollIntervalId);
-    });
+<!-- Bootstrap Bundle with Popper and Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    // Resume automatic scrolling when user stops interacting with the carousel
-    document.querySelector('.carousel-container').addEventListener('mouseleave', () => {
-      setInterval(autoScroll, autoScrollInterval);
-    });
-  </script>
+<script>
+// JavaScript to toggle collapse state
+$(document).ready(function() {
+ $(".read-more").click(function() {
+   $(this).toggleClass('active');
+ });
+});
+</script>
+<script>
+$(document).ready(function() {
+ $('.read-more').click(function(e) {
+   e.preventDefault();
+   var target = $(this).data('bs-target');
+   var $target = $(target);
+   if ($target.hasClass('show')) {
+     $target.collapse('hide');
+   } else {
+     $target.collapse('show');
+   }
+ });
+});
+</script>
 
-  <script>
-    (function($) {
+<script src="vendor/plugins/js/plugins.min.js"></script>
 
-      'use strict';
+<!-- Theme Base, Components and Settings -->
+<script src="js/theme.js"></script>
 
-      $('.open-style-switcher').on('mousedown', function(e) {
-        e.preventDefault();
-        $('.style-switcher-open-loader').trigger('click');
-        return false;
-      });
+<!-- Theme Custom -->
+<script src="js/custom.js"></script>
 
-    }).apply(this, [jQuery]);
-  </script>
-  </div>
-  <?php include "footer.php"; ?>
+<!-- Theme Initialization Files -->
+<script src="js/theme.init.js"></script>
+<!-- Vendor -->
+<script src="vendor/plugins/js/plugins.min.js"></script>
+<script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
+<script src="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
+<script src="vendor/jquery.countdown/jquery.countdown.min.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="js/theme.js"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="js/views/view.shop.js"></script>
+
+<!-- Theme Custom -->
+<script src="js/custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="js/theme.init.js"></script>
+<script>
+let currentPanel = 1;
+const panelWidth = 1200; // Width of each panel
+const totalPanels = 4; // Total number of panels
+const autoScrollInterval = 3000; // Interval for automatic scrolling in milliseconds (adjust as needed)
+
+function changePanel(direction) {
+ currentPanel += direction;
+
+ if (currentPanel < 1) {
+   currentPanel = totalPanels;
+ } else if (currentPanel > totalPanels) {
+   currentPanel = 1;
+ }
+
+ updateCarousel();
+}
+
+function updateCarousel() {
+ const carousel = document.getElementById('carousel');
+ const panelContainer = document.querySelector('.carousel-container');
+ const translateValue = -panelWidth * (currentPanel - 1);
+ carousel.style.transform = `translateX(${translateValue}px)`;
+ panelContainer.style.width = `${panelWidth}px`;
+}
+
+function autoScroll() {
+ changePanel(1); // Automatically move to the next panel
+}
+
+// Set up automatic scrolling
+const autoScrollIntervalId = setInterval(autoScroll, autoScrollInterval);
+
+// Stop automatic scrolling when user interacts with the carousel
+document.querySelector('.carousel-container').addEventListener('mouseenter', () => {
+ clearInterval(autoScrollIntervalId);
+});
+
+// Resume automatic scrolling when user stops interacting with the carousel
+document.querySelector('.carousel-container').addEventListener('mouseleave', () => {
+ setInterval(autoScroll, autoScrollInterval);
+});
+</script>
+
+<script>
+(function($) {
+
+ 'use strict';
+
+ $('.open-style-switcher').on('mousedown', function(e) {
+   e.preventDefault();
+   $('.style-switcher-open-loader').trigger('click');
+   return false;
+ });
+
+}).apply(this, [jQuery]);
+</script>
+</div>
+<?php include "footer.php"; ?>
 </body>
 
 </html>
