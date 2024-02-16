@@ -191,9 +191,9 @@
 					<h5 class="font-weight-semi-bold pt-3" style="width: 100%;">Categories</h5>
 					<ul class="nav nav-list flex-column">
 						<li class="nav-item"><a class="nav-link" href="textbooks.php">Books</a></li>
-						<li class="nav-item"><a class="nav-link" href="electronics.php">accessories</a></li>
+						<li class="nav-item"><a class="nav-link" href="electronics.php">Electronics/Mobile</a></li>
 						<li class="nav-item"><a class="nav-link" href="stationary.php">Stationary</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Food</a></li>
+						<li class="nav-item"><a class="nav-link" href="food.php">Food</a></li>
 						<li class="nav-item"><a class="nav-link" href="Xeorox.php">Xerox</a></li>
 					</ul>
 
@@ -221,7 +221,6 @@
 
 						// Write your SQL query
 						$sql = "SELECT * FROM seller where Category='Books/Records'";
-
 						// Execute the query
 						$result = mysqli_query($conn, $sql);
 
@@ -241,9 +240,9 @@
 												</a>
 											</div>
 
-											<a href="" class="quick-view text-uppercase font-weight-semibold text-2">
-												QUICK VIEW
-											</a>
+											<a href="product.php?productid=<?php echo $row['productid']; ?>" class=" text-uppercase font-weight-semibold text-2">
+											QUICK VIEW
+										</a>
 											<a href="">
 												<div class="product-thumb-info-image">
 													<img alt="" class="img-fluid" src="<?php echo $row['image']; ?>">

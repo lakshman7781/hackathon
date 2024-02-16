@@ -48,7 +48,7 @@
             },
             "time": "2019-12-08T10:32:10+00:00"
         },
-        {   
+        {
             "name": "setasign/fpdi",
             "version": "v2.6.0",
             "source": {

@@ -181,7 +181,7 @@
 	<?php include 'header.php'; ?>
 	<div class="body">
 		<div class="left-section">
-		<?php
+			<?php
 			// Start or resume the session
 
 
@@ -244,7 +244,7 @@
 									$totalSalePrice = 0;
 
 									// Prepare and execute the SQL query to retrieve product name and sale price
-									$sql = "SELECT seller.productName, seller.salePrice 
+									$sql = "SELECT seller.productid, seller.productName, seller.salePrice 
             FROM seller 
             INNER JOIN cart ON seller.productid = cart.productid 
             WHERE cart.reg_no = '$idnum'";
@@ -262,6 +262,7 @@
 
 											// Accumulate sale price to calculate total
 											$totalSalePrice += $row['salePrice'];
+											$productid = $row['productid'];
 										}
 									} else {
 										// Output if no results found
@@ -316,9 +317,10 @@
 									</tr> -->
 								</tbody>
 							</table>
-							<a href="checkout.php?totalSalePrice=<?php echo $totalSalePrice; ?>" class="btn btn-dark btn-modern w-100 text-uppercase bg-color-hover-primary border-color-hover-primary border-radius-0 text-3 py-3">
+							<a href="checkout.php?productid=<?php echo $productid; ?>&totalSalePrice=<?php echo $totalSalePrice; ?>" class="btn btn-dark btn-modern w-100 text-uppercase bg-color-hover-primary border-color-hover-primary border-radius-0 text-3 py-3">
 								Proceed to Checkout <i class="fas fa-arrow-right ms-2"></i>
 							</a>
+
 
 						</div>
 					</div>
@@ -350,15 +352,14 @@
 												<th class="product-name text-uppercase" width="30%">
 													Product
 												</th>
-												<th class="product-price text-uppercase" width="15%">
-													Price
-												</th>
+
 
 												<th class="product-subtotal text-uppercase text-end" width="20%">
 													Subtotal
 												</th>
+
 												<th class="product-remove text-uppercase text-end" width="20%">
-													Remove
+													Quantity
 												</th>
 
 
@@ -371,9 +372,20 @@
 											include 'connect.php';
 
 											// Fetch data from the seller table based on matches with the cart table
-											$sql = "SELECT  seller.productid,seller.productName, seller.image, seller.salePrice
-                                            FROM seller
-                                            INNER JOIN cart ON seller.productid = cart.productid WHERE cart.reg_no = '$_SESSION[idnum]'";
+											$sql = "SELECT  
+            seller.productid,
+            seller.productName,
+            seller.image,
+            seller.salePrice,
+            cart.cart_quantity,
+			seller.productid 
+        FROM 
+            seller
+        INNER JOIN 
+            cart ON seller.productid = cart.productid 
+        WHERE 
+            cart.reg_no = '$_SESSION[idnum]'";
+
 
 											// Execute the query
 											$result = mysqli_query($conn, $sql);
@@ -396,19 +408,41 @@
 														<td class="product-name">
 															<a href="shop-product-sidebar-right.html" class="font-weight-semi-bold text-color-dark text-color-hover-primary text-decoration-none"><?php echo $row['productName']; ?></a>
 														</td>
-														<td class="product-price">
-															<span class="amount font-weight-medium text-color-grey">₹<?php echo $row['salePrice']; ?></span>
-														</td>
+
 
 														<td class="product-subtotal text-end">
 															<span class="amount text-color-dark font-weight-bold text-4">₹<?php echo $row['salePrice']; ?></span>
 														</td>
+
 														<td class="product-remove text-end">
+
+														<div class="dustbin-button">
 															<a href="#" class="dustbin-button" title="Delete Product" data-product-id="<?php echo $row['productid']; ?>">
-																<i class="fas fa-trash"></i>
+																<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-minus-fill" viewBox="0 0 16 16">
+																	<path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M6 7.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1 0-1" />
+																</svg>
 															</a>
+														</div>
+
+															<h2><?php echo $row['cart_quantity']; ?></h2>
+
+
+															<div class="addtocart-btn">
+																<a href="#" class="text-decoration-none addtocart-btn" title="Add to Cart" data-product-id="<?php echo $row['productid']; ?>">
+																	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-plus-fill" viewBox="0 0 16 16">
+																		<path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0" />
+																	</svg>
+																</a>
+															</div>
 														</td>
 													</tr>
+
+
+
+
+
+
+
 											<?php
 												}
 											} else {
@@ -419,6 +453,7 @@
 											// Close the database connection
 											mysqli_close($conn);
 											?>
+
 											<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 											<script>
 												$(document).ready(function() {
@@ -432,7 +467,7 @@
 																productId: productId
 															},
 															success: function(response) {
-																
+
 
 																// Check if the page has been reloaded already
 																if (!sessionStorage.getItem('reloaded')) {
@@ -453,8 +488,53 @@
 													});
 												});
 											</script>
+											<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+											<script>
+												$(document).ready(function() {
+													$('.addtocart-btn').click(function(e) {
+														e.preventDefault();
+														var productId = $(this).data('product-id');
+														$.ajax({
+															url: 'insertcart.php',
+															method: 'POST',
+															data: {
+																productId: productId
+															},
+															success: function(response) {
+																// Create a success message element
+																var successMessage = $('<div/>', {
+																	text: response,
+																	class: 'success-message'
+																});
+																// Append the success message to the body
+																$('body').append(successMessage);
+																// Fade out the success message after a certain duration
+																setTimeout(function() {
+																	successMessage.fadeOut('slow');
+																	// Reload the page
+																	location.reload();
+																}, 2000);
+															},
+															error: function(xhr, status, error) {
+																console.error(xhr.responseText);
+															}
+														});
+													});
+												});
+											</script>
 
-
+											<style>
+												.success-message {
+													position: fixed;
+													top: 90px;
+													right: 20px;
+													background-color: #4CAF50;
+													color: white;
+													padding: 15px;
+													border-radius: 5px;
+													z-index: 9999;
+												}
+											</style>
 
 										</tbody>
 									</table>

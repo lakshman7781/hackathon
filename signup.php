@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // Execute a query to retrieve mobile number based on registration number
             $query = "SELECT mobile FROM verification WHERE registration = ?";
-            if ($stmt = $connection->prepare($query)) {
+            if ($stmt = $conn->prepare($query)) {
                 $stmt->bind_param("s", $regNumber);
                 if ($stmt->execute()) {
                     $stmt->bind_result($mobileNumber);
@@ -83,6 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         // Display OTP entry form
                         $showOTPForm = true;
+
+                        
                     } else {
                         $error = "No mobile number found for the provided registration number.";
                     }
@@ -91,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
                 $stmt->close();
             } else {
-                $error = "Error preparing statement: " . $connection->error;
+                $error = "Error preparing statement: " . $conn->error;
             }
         }
     }
@@ -99,8 +101,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     unset($_SESSION['regNumber']);
 }
 
-// Close connection
-$connection->close();
+// C
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -161,10 +163,12 @@ $connection->close();
 </head>
 
 <body>
+<?php include 'dumbheader.php';?>
+
     <!-- Check that 'header.php' is properly formatted -->
 
     <div class="row justify-content-md-center" style="margin-top:50px !important;">
-        <div class="#" style="width: 600px; margin:45px;margin-top:150px; height:900px !important;">
+    <div class="#" style="width: 600px; margin:45px; height:900px !important;margin-bottom:-570px!important; ">
             <div class="featured-box featured-box-primary text-start mt-0">
                 <div class="box-content">
                     <div class="row">
@@ -173,7 +177,7 @@ $connection->close();
                         </div>
                         <div class="col-md-6 mb-3">
                             <a href="login.php" style="text-decoration: none; ">
-                                <h4 class="font-weight-semibold text-4 text-uppercase mb-3" style="color: green; margin-left:-35px;"> Login ?</h4>
+                                <p class="font-weight-semibold  mb-3" style="color: red; margin-left:-45px; margin-top:5px;"> Login ?</p>
                             </a>
 
 
@@ -317,6 +321,7 @@ $connection->close();
         </div>
     </div>
     </div>
+    <?php include 'footer.php';?>
 </body>
 
 </html>

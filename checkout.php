@@ -181,6 +181,9 @@ session_start();
 // Retrieve the total sale price from the form submission
 $totalSalePrice = $_GET['totalSalePrice'];
 
+$productid = $_GET['productid'];
+
+
 // Output the total sale price
 
 ?>
@@ -483,6 +486,7 @@ mysqli_close($conn);
 					$(".paynow").click(function (e) {
 						e.preventDefault(); // Prevent default behavior of anchor tag click
 						var amount = <?php echo $total; ?>;
+						var productid = <?php echo $productid; ?>;
 						var productname = "campus Ecommerce";// Assuming this variable is defined elsewhere in your code
 						var options = {
 							"key": "rzp_live_2D4bAGktbYxm16",
@@ -495,10 +499,10 @@ mysqli_close($conn);
 								$.ajax({
 									url: "payment-process.php",
 									type: "POST",
-									data: { product_id: 'your_product_id', payment_id: paymentid }, // Replace 'your_product_id' with the actual product ID
+									data: { product_id: productid, payment_id: paymentid }, // Replace 'your_product_id' with the actual product ID
 									success: function (finalresponse) {
 										if (finalresponse == 'done') {
-											window.location.href = "http://localhost/hackathon/ordercomplete.php";
+											window.location.href = "http://localhost/hackathon/cartbill.php";
 										} else {
 											alert('Please check console.log to find error');
 											console.log(finalresponse);
