@@ -231,11 +231,51 @@
 	<?php include  'connect.php'; ?>
 	<div class="body">
 		<div class="left-section">
-			<div class="left-section-top">
-				<a href="img/12.png"> <img src="img/12.png" alt="12" width="100" height="100"> </a>
-				Hello &nbsp;
-				<h4>Left Top</h4>
-			</div>
+			<?php
+			// Start or resume the session
+
+
+			// Include the file to establish a database connection
+			include 'connect.php';
+
+			// Check if the session variable 'reg_no' is set
+			if (isset($_SESSION['idnum'])) {
+				// Sanitize the session variable to prevent SQL injection
+				$reg_no = mysqli_real_escape_string($conn, $_SESSION['idnum']);
+
+				// Fetch data from the users table based on the session variable 'reg_no'
+				$sql = "SELECT * FROM users WHERE reg_no = '$reg_no'";
+
+				// Execute the query
+				$result = mysqli_query($conn, $sql);
+
+				// Check if there are any results
+				if (mysqli_num_rows($result) > 0) {
+					// Output data of the user
+					while ($row = mysqli_fetch_assoc($result)) {
+						// Extract the first name from the user's name
+						$fullName = explode(" ", $row['firstname']);
+						$firstName = $fullName[0];
+			?>
+						<div class="left-section-top">
+							<a href="img/12.png"> <img src="img/12.png" alt="12" width="100" height="100"> </a>
+							Hello&nbsp;
+							<h4> <?php echo $firstName; ?></h4>
+						</div>
+			<?php
+					}
+				} else {
+					// If there are no results, display a message or take any other appropriate action
+					echo "No user found.";
+				}
+			} else {
+				// If the session variable 'reg_no' is not set, display a message or redirect to login page
+				echo "Session variable 'reg_no' not set.";
+			}
+
+			// Close the database connection
+			mysqli_close($conn);
+			?>
 			<div class="left-section-bottom">
 				<ul class="profile-menu">
 
@@ -258,14 +298,14 @@
 						</a>
 					</li>
 
-					<li class="">
+<!-- 					<li class="">
 						<a href="#" id="sellerorder">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
 								<path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
 							</svg>
 							&nbsp; SellerOrders
 						</a>
-					</li>
+					</li> -->
 
 
 				</ul>
