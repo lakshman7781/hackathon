@@ -131,7 +131,7 @@ $conn->close();
             <input type="password" id="new_password" name="new_password" required>
             <label for="confirm_password">Confirm Password</label>
             <input type="password" id="confirm_password" name="confirm_password" required>
-            <button type="submit">Reset Password</button>
+            <button type="submit" onclick=update()>Reset Password</button>
         </form>
         <p>Remembered? <a href="login.php">Sign In!</a></p>
       
@@ -142,8 +142,18 @@ $conn->close();
     }
     ?>
     </div>
+
+ <script>
+    function update()
+    {
+        alert("Password Updated Succesfully");
+    }
+
+
+</script>
 </body>
 </html>
+
 
 
 		
