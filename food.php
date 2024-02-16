@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php session_start();?>
+
 <head>
 
     <!-- Basic -->
@@ -230,51 +230,11 @@
     <?php include  'connect.php'; ?>
     <div class="body">
         <div class="left-section">
-        <?php
-			// Start or resume the session
-
-
-			// Include the file to establish a database connection
-			include 'connect.php';
-
-			// Check if the session variable 'reg_no' is set
-			if (isset($_SESSION['idnum'])) {
-				// Sanitize the session variable to prevent SQL injection
-				$reg_no = mysqli_real_escape_string($conn, $_SESSION['idnum']);
-
-				// Fetch data from the users table based on the session variable 'reg_no'
-				$sql = "SELECT * FROM users WHERE reg_no = '$reg_no'";
-
-				// Execute the query
-				$result = mysqli_query($conn, $sql);
-
-				// Check if there are any results
-				if (mysqli_num_rows($result) > 0) {
-					// Output data of the user
-					while ($row = mysqli_fetch_assoc($result)) {
-						// Extract the first name from the user's name
-						$fullName = explode(" ", $row['firstname']);
-						$firstName = $fullName[0];
-			?>
-						<div class="left-section-top">
-							<a href="img/12.png"> <img src="img/12.png" alt="12" width="100" height="100"> </a>
-							Hello&nbsp;
-							<h4> <?php echo $firstName; ?></h4>
-						</div>
-			<?php
-					}
-				} else {
-					// If there are no results, display a message or take any other appropriate action
-					echo "No user found.";
-				}
-			} else {
-				// If the session variable 'reg_no' is not set, display a message or redirect to login page
-				echo "Session variable 'reg_no' not set.";
-			}
-
-			// Close the database connection
-			mysqli_close($conn);
-			?>
+            <div class="left-section-top">
+                <a href="img/12.png"> <img src="img/12.png" alt="12" width="100" height="100"> </a>
+                Hello &nbsp;
+                <h4>Left Top</h4>
+            </div>
             <div class="left-section-bottom">
                 <div class="col-lg-4 position-relative">
                     <div class="card border-width-3 border-radius-0 border-color-hover-dark" style="min-height: 450px; min-width: 310px; margin-left:-10px;">
@@ -283,52 +243,14 @@
                             <h4 class="font-weight-bold text-uppercase text-4 mb-3">Your Order Details</h4>
                             <table class="shop_table cart-totals mb-3">
                                 <tbody>
-                                <?php
-									// Assuming you have already established a database connection
-									include 'connect.php';
+                                    <tr>
+                                        <td colspan="2" class="border-top-0">
+                                            <strong class="text-color-dark">
+                                                <p id="page-count-info"></p>
+                                            </strong>
 
-									// Assuming $_SESSION['idnum'] contains the registration number
-									$idnum = $_SESSION['idnum'];
-
-									// Initialize total sale price
-									$totalSalePrice = 0;
-
-									// Prepare and execute the SQL query to retrieve product name and sale price
-									$sql = "SELECT  seller.productid,seller.productName, seller.salePrice 
-            FROM seller 
-            INNER JOIN cart ON seller.productid = cart.productid 
-            WHERE cart.reg_no = '$idnum'";
-									$result = $conn->query($sql);
-
-									// Check if there are any results
-									if ($result->num_rows > 0) {
-										// Output data of each row
-										while ($row = $result->fetch_assoc()) {
-											// Output product name and sale price in HTML table row
-											echo '<tr>';
-											echo '<td>' . htmlspecialchars($row['productName']) . '</td>';
-											echo '<td>₹' . htmlspecialchars($row['salePrice']) . '</td>';
-											echo '</tr>';
-
-											// Accumulate sale price to calculate total
-											$totalSalePrice += $row['salePrice'];
-											$productid = $row['productid'];
-										}
-									} else {
-										// Output if no results found
-										echo '<tr><td colspan="2">No products found</td></tr>';
-									}
-
-									// Close the database connection
-									$conn->close();
-
-									// Print total sale price row
-									echo '<tr class="total">';
-									echo '<td><strong class="text-color-dark text-3-5">Total</strong></td>';
-									echo '<td class="text-end"><strong class="text-color-dark">';
-									echo '<span class="amount text-color-dark text-5">₹' . number_format($totalSalePrice, 2) . '</span></strong></td>';
-									echo '</tr>';
-									?>
+                                        </td>
+                                    </tr>
 
                                     <tr class="total">
                                         <td>
@@ -343,7 +265,10 @@
                                             <strong class="d-block text-color-dark mb-2">Payment Methods</strong>
 
                                             <div class="d-flex flex-column">
-                                                
+                                                <label class="d-flex align-items-center text-color-grey mb-0" for="payment_method1">
+                                                    <input id="payment_method1" type="radio" class="me-2" name="payment_method" value="cash-on-delivery" checked />
+                                                    Cash On Delivery
+                                                </label>
                                                 <label class="d-flex align-items-center text-color-grey mb-0" for="payment_method2">
                                                     <input id="payment_method2" type="radio" class="me-2" name="payment_method" value="paypal" />
                                                     PayPal

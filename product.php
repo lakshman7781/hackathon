@@ -175,7 +175,7 @@
 <?php
 $productid = $_GET['productid'];
 // Include your connect.php file
-include('connect.php');
+include 'connect.php';
 
 // Assuming $row is fetched from the seller table
 $query = "SELECT seller.*, users.phonenumber
@@ -204,7 +204,7 @@ $conn->close();
 
 <body data-plugin-page-transition>
 
-    <?php include 'header.php'; ?>
+    <?php include 'header.php';?>
     <div class="body">
         <div class="left-section">
 
@@ -214,8 +214,8 @@ $conn->close();
 
                     <h5 class="font-weight-semi-bold pt-3" style="width: 100%;">Categories</h5>
                     <ul class="nav nav-list flex-column">
-                        <li class="nav-item"><a class="nav-link" href="textbooks.php">Books/Records</a></li>
-                        <li class="nav-item"><a class="nav-link" href="electronics.php">Electronics</a></li>
+                        <li class="nav-item"><a class="nav-link" href="textbooks.php">Books</a></li>
+                        <li class="nav-item"><a class="nav-link" href="electronics.php">accessories</a></li>
                         <li class="nav-item"><a class="nav-link" href="stationary.php">Stationary</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Food</a></li>
                         <li class="nav-item"><a class="nav-link" href="Xeorox.php">Xerox</a></li>
@@ -253,10 +253,10 @@ $conn->close();
 
                             <p class="price mb-3">
                                 <span class="sale text-color-dark">
-                                ₹<?php echo $row['salePrice']; ?>
+                                    <?php echo $row['regularPrice']; ?>
                                 </span>
                                 <span class="amount">
-                                ₹<?php echo $row['regularPrice']; ?>
+                                    <?php echo $row['salePrice']; ?>
                                 </span>
                             </p>
 
@@ -330,13 +330,17 @@ $conn->close();
                                     Add to cart
                                 </div> -->
                                 <div type="submit"
-                                class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary"
-                                        style="margin-right: 10px; background-color: rgb(5, 142, 255) !important;">
-                                    <a href="#" class="text-decoration-none addtocart-btn" title="Add to Cart"
-                                        data-product-id="<?php echo $row['productid']; ?>">
-                                        Add to Cart
-                                    </a>
-                                </div>
+    class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary"
+    style="margin-right: 10px; background-color: black !important;">
+    <a href="#" class="text-decoration-none addtocart-btn" title="Add to Cart"
+        data-product-id="<?php echo $row['productid']; ?>"
+        style="color: white;">
+        Add to Cart
+    </a>
+</div>
+
+
+
                             </div>
                         </div>
 
@@ -738,13 +742,13 @@ $conn->close();
             });
         });
     </script>
-    <!-- 
+    <!--
                     // Assuming you have a variable selectedProductCount that represents the count
 const selectedProductCount = 1;
 
 // Update the count badge text
 document.querySelector('.count-badge').textContent = selectedProductCount.toString(); -->
-    <?php include 'footer.php'; ?>
+    <?php include 'footer.php';?>
 </body>
 
 </html>

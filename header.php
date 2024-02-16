@@ -64,7 +64,7 @@
 							<div class="header-row">
 								<div class="header-logo">
 									<a href="index.php">
-										<img alt="Porto" width="220" height="120" data-sticky-width="82" data-sticky-height="40" data-sticky-top="25" src="img/campus.svg">
+										<img alt="Porto" width="120" height="120" data-sticky-width="82" data-sticky-height="40" data-sticky-top="25" src="img/Campus.png">
 									</a>
 								</div>
 							</div>

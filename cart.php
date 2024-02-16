@@ -181,7 +181,7 @@
 	<?php include 'header.php'; ?>
 	<div class="body">
 		<div class="left-section">
-			<?php
+		<?php
 			// Start or resume the session
 
 
@@ -244,7 +244,7 @@
 									$totalSalePrice = 0;
 
 									// Prepare and execute the SQL query to retrieve product name and sale price
-									$sql = "SELECT  seller.productid,seller.productName, seller.salePrice 
+									$sql = "SELECT seller.productName, seller.salePrice 
             FROM seller 
             INNER JOIN cart ON seller.productid = cart.productid 
             WHERE cart.reg_no = '$idnum'";
@@ -262,7 +262,6 @@
 
 											// Accumulate sale price to calculate total
 											$totalSalePrice += $row['salePrice'];
-											$productid = $row['productid'];
 										}
 									} else {
 										// Output if no results found
@@ -317,7 +316,7 @@
 									</tr> -->
 								</tbody>
 							</table>
-							<a href="checkout.php?totalSalePrice=<?php echo $totalSalePrice; ?>&productid=<?php echo $productid; ?>" class="btn btn-dark btn-modern w-100 text-uppercase bg-color-hover-primary border-color-hover-primary border-radius-0 text-3 py-3">
+							<a href="checkout.php?totalSalePrice=<?php echo $totalSalePrice; ?>" class="btn btn-dark btn-modern w-100 text-uppercase bg-color-hover-primary border-color-hover-primary border-radius-0 text-3 py-3">
 								Proceed to Checkout <i class="fas fa-arrow-right ms-2"></i>
 							</a>
 
@@ -433,7 +432,7 @@
 																productId: productId
 															},
 															success: function(response) {
-
+																
 
 																// Check if the page has been reloaded already
 																if (!sessionStorage.getItem('reloaded')) {
