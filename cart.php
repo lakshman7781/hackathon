@@ -243,11 +243,10 @@
 									// Initialize total sale price
 									$totalSalePrice = 0;
 
-									// Prepare and execute the SQL query to retrieve product name and sale price
-									$sql = "SELECT seller.productid, seller.productName, seller.salePrice 
-            FROM seller 
-            INNER JOIN cart ON seller.productid = cart.productid 
-            WHERE cart.reg_no = '$idnum'";
+									$sql = "SELECT seller.productid, seller.productName, seller.salePrice, cart.cart_quantity 
+									FROM seller 
+									INNER JOIN cart ON seller.productid = cart.productid 
+									WHERE cart.reg_no = '$idnum'";
 									$result = $conn->query($sql);
 
 									// Check if there are any results
@@ -258,10 +257,11 @@
 											echo '<tr>';
 											echo '<td>' . htmlspecialchars($row['productName']) . '</td>';
 											echo '<td>₹' . htmlspecialchars($row['salePrice']) . '</td>';
+											echo '<td>x ' . htmlspecialchars($row['cart_quantity']) . '</td>';
 											echo '</tr>';
 
 											// Accumulate sale price to calculate total
-											$totalSalePrice += $row['salePrice'];
+											$totalSalePrice += $row['salePrice']* $row['cart_quantity'];
 											$productid = $row['productid'];
 										}
 									} else {
