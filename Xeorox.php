@@ -615,7 +615,7 @@ if (isset($_SESSION['idnum'])) {
                 // Set the flag in sessionStorage to indicate that the page has been reloaded
                 sessionStorage.setItem('reloaded', 'true');
                 // Reload the page
-                window.location.reload();
+                window.location.reload();   
             } else {
                 // Remove the 'reloaded' flag from sessionStorage
                 sessionStorage.removeItem('reloaded');
