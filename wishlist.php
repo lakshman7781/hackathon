@@ -180,7 +180,8 @@
 
 	<?php include 'header.php'; ?>
 	<div class="body">
-		<?php
+		<div class="left-section">
+			<?php
 			// Start or resume the session
 
 
@@ -313,9 +314,6 @@
 												<th class="product-remove text-uppercase text-end" width="20%">
 													Remove
 												</th>
-												<th class="product-add text-uppercase text-end" width="60%">
-													Add.Cart
-												</th>
 
 
 											</tr>
@@ -364,13 +362,6 @@
 																<i class="fas fa-trash"></i>
 															</a>
 														</td>
-														<td class="product-add-to-cart text-end">
-															<a href="#" class="cart-button" title="Add to Cart" data-product-id="<?php echo $row['productid']; ?>">
-																<i class="fas fa-cart-plus"></i>
-															</a>
-														</td>
-
-
 													</tr>
 											<?php
 												}

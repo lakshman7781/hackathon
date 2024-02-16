@@ -4,7 +4,9 @@
 
 use Twilio\TwiML\Voice\Number;
 
-session_start(); ?>
+session_start(); 
+$idnum = $_SESSION['idnum'];
+?>
 
 <head>
 
@@ -662,15 +664,14 @@ mysqli_close($conn);
                 "handler": function(response) {
                     var paymentid = response.razorpay_payment_id;
                     $.ajax({
-                        url: "payment-process.php",
+                        url: "payment_xprocess.php",
                         type: "POST",
                         data: {
-                            product_id: 'your_product_id',
                             payment_id: paymentid
                         }, // Replace 'your_product_id' with the actual product ID
                         success: function(finalresponse) {
                             if (finalresponse == 'done') {
-                                window.location.href = "http://localhost/hackathon/ordercomplete.php";
+                                window.location.href = "http://localhost/hackathon/xeroxbill.php";
                             } else {
                                 alert('Please check console.log to find error');
                                 console.log(finalresponse);
