@@ -7,7 +7,7 @@
     <meta charset="utf-8">
 
 
-    <title>Cart | Porto - Multipurpose Website Template</title>
+    <title>Campus Online</title>
 
     <meta name="keywords" content="WebSite Template" />
     <meta name="description" content="Porto - Multipurpose Website Template">
