@@ -331,13 +331,14 @@ $conn->close();
                                 </div> -->
                                 <div type="submit"
     class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary"
-    style="margin-right: 10px; background-color: rgb(75, 0, 130) !important;">
+    style="margin-right: 10px; background-color: black !important;">
     <a href="#" class="text-decoration-none addtocart-btn" title="Add to Cart"
         data-product-id="<?php echo $row['productid']; ?>"
         style="color: white;">
         Add to Cart
     </a>
 </div>
+
 
 
                             </div>
