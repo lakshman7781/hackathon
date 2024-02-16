@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -471,177 +475,90 @@
 
       <main id="app">
 
-        <div class="post">
+      <div class="poll-container">
+            <?php
+            include "connect.php";
 
-          <h3>Campus Buzz</h3>
-          <!-- <h1>Poll with Animation</h1> -->
-          <p class="text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, quas itaque! Aliquam laboriosam mollitia quod nulla nostrum possimus?
-          </p>
+            if (isset($_SESSION['idnum'])) {
+                // Check if the user has already voted
+                if (isset($_SESSION['voted'])) {
+                    echo "You have already voted. Thank you!";
+                } else {
+                    $reg_no = mysqli_real_escape_string($conn, $_SESSION['idnum']);
+                    $sql = "SELECT * FROM poll_admin";
+                    $result = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_assoc($result);
 
-          <section class="poll">
-            <p class="poll-details">
-              Poll • Ends in 22h
-            </p>
-            <ul class="poll-choices">
-              <li class="poll-choice choice-1">
-                <label for="choice-1">
-                  <div class="poll-result">
-                    <div class="star">
-                      <div></div>
-                    </div>
-                  </div>
-                  <div class="poll-label">
-                    <div class="radio"><input type=radio id="choice-1" name="poll" /></div>
-                    <div class="answer">Dolor</div>
-                  </div>
-                  <p class="poll-percent">
-                    0%
-                  </p>
-                </label>
-              </li>
-              <li class="poll-choice choice-2">
-                <label for="choice-2">
-                  <div class="poll-result">
-                    <div class="star">
-                      <div></div>
-                    </div>
-                  </div>
-                  <div class="poll-label">
-                    <div class="radio"><input type=radio id="choice-2" name="poll" /></div>
-                    <div class="answer">Lorem</div>
-                  </div>
-                  <p class="poll-percent">
-                    0%
-                  </p>
-                </label>
-              </li>
-              <li class="poll-choice choice-3">
-                <label for="choice-3">
-                  <div class="poll-result">
-                    <div class="star">
-                      <div></div>
-                    </div>
-                  </div>
-                  <div class="poll-label">
-                    <div class="radio"><input type=radio id="choice-3" name="poll" /></div>
-                    <div class="answer">Assumenda, quas itaque! Aliquam laboriosam mollitia quod nulla nostrum possimus</div>
-                  </div>
-                  <p class="poll-percent">
-                    0%
-                  </p>
-                </label>
-              </li>
-              <li class="poll-choice choice-4">
-                <label for="choice-4">
-                  <div class="poll-result">
-                    <div class="star">
-                      <div></div>
-                    </div>
-                  </div>
-                  <div class="poll-label">
-                    <div class="radio"><input type=radio id="choice-4" name="poll" /></div>
-                    <div class="answer">IDC, just wanna creep</div>
-                  </div>
-                  <p class="poll-percent">
-                    0%
-                  </p>
-                </label>
-              </li>
-            </ul>
-          </section>
+                    $question = $row['question'];
+                    $options = array($row['option1'], $row['option2'], $row['option3'], $row['option4']);
+
+                    // Fetch poll results from the database
+                    $sql_poll_results = "SELECT option, COUNT(*) as votes FROM poll_results GROUP BY option";
+                    $result_poll_results = mysqli_query($conn, $sql_poll_results);
+                    $poll_results = array();
+                    if ($result_poll_results) {
+                        while ($row_poll_results = mysqli_fetch_assoc($result_poll_results)) {
+                            $poll_results[$row_poll_results['option']] = $row_poll_results['votes'];
+                        }
+                    }
+
+                    // Calculate total votes
+                    $total_votes = array_sum($poll_results);
+
+                    // Display the poll options
+                    ?>
+                    <h2 class="poll-question"><?php echo $question; ?></h2>
+                    <ul class="poll-choices">
+                        <?php foreach ($options as $index => $option): ?>
+                            <li class="poll-choice">
+                                <button class="poll-option" data-option="<?php echo $option; ?>">
+                                    <?php echo $option; ?>
+                                    <span class="poll-percent">
+                                        <?php
+                                        // Calculate and display percentage
+                                        if ($total_votes > 0 && isset($poll_results[$option])) {
+                                            echo round(($poll_results[$option] / $total_votes) * 100) . '%';
+                                        } else {
+                                            echo '0%';
+                                        }
+                                        ?>
+                                    </span>
+                                </button>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <?php
+                }
+            } else {
+                echo "You need to be logged in to vote.";
+            }
+            ?>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $(".poll-option").click(function () {
+                        // Check if the user has already voted
+                        if ("<?php echo isset($_SESSION['voted']) ? $_SESSION['voted'] : '' ?>" !== '1') {
+                            var option = $(this).data("option");
+                            $.ajax({
+                                url: "vote.php",
+                                method: "POST",
+                                data: { option: option },
+                                success: function (data) {
+                                    location.reload();
+                                }
+                            });
+                            // Set the session variable indicating that the user has voted
+                            <?php $_SESSION['voted'] = '1'; ?>;
+                        }
+                    });
+                });
+            </script>
         </div>
 
-
       </main>
-      <script>
-        const choices = document.querySelectorAll('input[name=poll]');
-
-        const increaseNumber = (node, value) => {
-          node.innerText = "0%";
-          node.innerText = value + "%";
-          animateNumber(0, value, 1200, easeQuad, function(v) {
-            node.innerText = Math.ceil(v) + "%";
-          })
-        }
-
-        const reset = () => {
-          choices.forEach((c, i) => {
-            const pollChoice = c.closest(".poll-choice");
-            const result = pollChoice.querySelector(".poll-result");
-            c.closest(".poll").classList.remove("answered");
-            pollChoice.classList.remove("winner");
-            result.style.setProperty("--percent", 0 + "%");
-            pollChoice.querySelector(".poll-percent").innerText = "0%";
-          })
-        }
-
-        const handleChange = event => {
-          const choice = event.target;
-          const choiceIndex = [...choices].indexOf(choice);
-          let total = 100;
-          let remaining = total;
-          let values = [];
-          choices.forEach((c, i) => {
-            let r = Math.ceil(Math.random() * remaining);
-            remaining -= r;
-            values[i] = r;
-          });
-          values[values.length - 1] = values[values.length - 1] + remaining;
-          choices.forEach((c, i) => {
-            const pollChoice = c.closest(".poll-choice");
-            const result = pollChoice.querySelector(".poll-result");
-            pollChoice.classList.remove("winner");
-            if (values[i] === Math.max(...values)) {
-              pollChoice.classList.add("winner");
-            }
-            result.style.setProperty("--percent", values[i] + "%");
-            increaseNumber(pollChoice.querySelector(".poll-percent"), values[i]);
-
-          });
-          choice.closest(".poll").classList.add("answered");
-        }
-
-        choices.forEach(choice => {
-          choice.addEventListener('change', handleChange);
-        });
-
-        // ----
-
-        document.querySelector("button").addEventListener('click', reset);
-
-
-
-
-
-        function easeQuad(t) {
-          return t * t / (2 * (t * t - t) + 1)
-        }
-
-        function animateNumber(
-          start,
-          end,
-          duration,
-          easingFunction,
-          callback
-        ) {
-          const startTime = Date.now();
-          const endTime = startTime + duration;
-          const change = end - start;
-          const tick = () => {
-            const now = Date.now();
-            if (now >= endTime) {
-              callback(end);
-            } else {
-              const elapsed = now - startTime;
-              const value = easingFunction(elapsed / duration) * change + start;
-              callback(value);
-              requestAnimationFrame(tick);
-            }
-          };
-          tick();
-        }
-      </script>
+      
     </div>
 
 
