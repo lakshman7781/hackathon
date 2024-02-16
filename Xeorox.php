@@ -670,7 +670,7 @@ mysqli_close($conn);
                         }, // Replace 'your_product_id' with the actual product ID
                         success: function(finalresponse) {
                             if (finalresponse == 'done') {
-                                window.location.href = "http://localhost/hackathon/success.php";
+                                window.location.href = "http://localhost/hackathon/ordercomplete.php";
                             } else {
                                 alert('Please check console.log to find error');
                                 console.log(finalresponse);
