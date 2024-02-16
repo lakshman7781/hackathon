@@ -1,16 +1,12 @@
 <?php
-session_start();
+session_start(); // Start the session
 
 include 'connect.php';
 
-// Include database connection  
-$registration_number = $_SESSION['regNumber'];
-// echo "hello";
 // Process form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve registration number from session
-    // $registration_number = $_SESSION['regNumber'];
-   
+    $registration_number = $_SESSION['attempted_username']; // Assuming username is stored in $_SESSION['idnum']
 
     $new_password = $_POST["new_password"];
     $confirm_password = $_POST["confirm_password"];
@@ -20,18 +16,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error_message = "Passwords do not match.";
     } else {
         // Prepare SQL statement to update password
-        $sql = "UPDATE users SET password='$new_password' WHERE reg_no='$registration_number'";
+        $sql = "UPDATE users SET password=? WHERE reg_no=?";
 
-        if ($conn->query($sql) === TRUE) {
-            $success_message = "Password updated successfully.";
+        // Prepare and bind parameters
+        if ($stmt = $conn->prepare($sql)) {
+            $stmt->bind_param("ss", $new_password, $registration_number);
+
+            // Execute the statement
+            if ($stmt->execute()) {
+                header("Location: login.php");
+            } else {
+                $error_message = "Error updating password: " . $conn->error;
+            }
+
+            // Close statement
+            $stmt->close();
         } else {
-            $error_message = "Error updating password: " . $conn->error;
+            $error_message = "Error preparing statement: " . $conn->error;
         }
     }
 }
 // Close connection
 $conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
