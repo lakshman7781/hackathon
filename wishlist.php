@@ -313,6 +313,9 @@
 												<th class="product-remove text-uppercase text-end" width="20%">
 													Remove
 												</th>
+												<th class="product-add text-uppercase text-end" width="60%">
+													Add.Cart
+												</th>
 
 
 											</tr>
@@ -340,7 +343,7 @@
 													<tr class="cart_table_item">
 														<td class="product-thumbnail" style="height: 100px; width: 100px !important;">
 															<div class="product-thumbnail-wrapper" style="height: 100px; width: 100px !important;">
-																
+
 																<a href="shop-product-sidebar-right.html" class="product-thumbnail-image" title="<?php echo $row['productName']; ?>">
 																	<img width="250" height="250" alt="<?php echo $row['productName']; ?>" class="img-fluid" src="<?php echo $row['image']; ?>">
 																</a>
@@ -361,6 +364,13 @@
 																<i class="fas fa-trash"></i>
 															</a>
 														</td>
+														<td class="product-add-to-cart text-end">
+															<a href="#" class="cart-button" title="Add to Cart" data-product-id="<?php echo $row['productid']; ?>">
+																<i class="fas fa-cart-plus"></i>
+															</a>
+														</td>
+
+
 													</tr>
 											<?php
 												}
@@ -369,9 +379,46 @@
 												echo "0 results";
 											}
 
+
+
 											// Close the database connection
 											mysqli_close($conn);
 											?>
+                                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+											<script>
+												$(document).ready(function() {
+													$('.cart-button').click(function(e) {
+														e.preventDefault();
+														var productId = $(this).data('product-id');
+														$.ajax({
+															url: 'insertcart.php',
+															method: 'POST',
+															data: {
+																productId: productId
+															},
+															success: function(response) {
+
+
+																// Check if the page has been reloaded already
+																if (!sessionStorage.getItem('reloaded')) {
+																	// Set the flag in sessionStorage to indicate that the page has been reloaded
+																	sessionStorage.setItem('reloaded', 'true');
+																	// Reload the page
+																	window.location.reload();
+																} else {
+																	// Remove the 'reloaded' flag from sessionStorage
+																	sessionStorage.removeItem('reloaded');
+																}
+
+															},
+															error: function(xhr, status, error) {
+																console.error(xhr.responseText);
+															}
+														});
+													});
+												});
+											</script>
+											
 											<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 											<script>
 												$(document).ready(function() {
