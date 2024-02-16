@@ -163,10 +163,12 @@ $conn->close();
 </head>
 
 <body>
+<?php include 'dumbheader.php';?>
+
     <!-- Check that 'header.php' is properly formatted -->
 
     <div class="row justify-content-md-center" style="margin-top:50px !important;">
-        <div class="#" style="width: 600px; margin:45px;margin-top:150px; height:900px !important;">
+    <div class="#" style="width: 600px; margin:45px; height:900px !important;margin-bottom:-570px!important; ">
             <div class="featured-box featured-box-primary text-start mt-0">
                 <div class="box-content">
                     <div class="row">
@@ -175,7 +177,7 @@ $conn->close();
                         </div>
                         <div class="col-md-6 mb-3">
                             <a href="login.php" style="text-decoration: none; ">
-                                <h4 class="font-weight-semibold text-4 text-uppercase mb-3" style="color: green; margin-left:-35px;"> Login ?</h4>
+                                <p class="font-weight-semibold  mb-3" style="color: red; margin-left:-45px; margin-top:5px;"> Login ?</p>
                             </a>
 
 
@@ -319,6 +321,7 @@ $conn->close();
         </div>
     </div>
     </div>
+    <?php include 'footer.php';?>
 </body>
 
 </html>

@@ -117,11 +117,11 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-
+<?php include 'dumbheader.php';?>
 
     <div class="row justify-content-md-center" >
-        <div class="#" style="width: 600px; margin:45px; height:900px !important;">
-            <div class="featured-box featured-box-primary text-start mt-0"style="margin-top:90px !important;">
+        <div class="#" style="width: 600px; margin:45px; height:900px !important;margin-bottom:-450px!important; ">
+            <div class="featured-box featured-box-primary text-start mt-0"style="margin-top:10px !important; ">
 
                 <div class="box-content">
                     <div class="row">
@@ -130,7 +130,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="col-md-6 mb-3">
                             <a href="signup.php" style="text-decoration: none; ">
-                                <h4 class="font-weight-semibold text-4 text-uppercase mb-3" style="color: green; margin-left:-160px;"> Register An Account ?</h4>
+                                <p class="font-weight-semibold  mb-3" style="color: red; margin-left:-160px; margin-top:5px;"> Register An Account ?</p>
                             </a>
 
 
@@ -145,7 +145,7 @@ if (isset($_POST['submit'])) {
     </div>
     <div class="row">
         <label class="form-label" for="password">Password</label>
-        <input type="password" id="password" name="password" class="form-control form-control-lg" required>
+        <input style="margin-bottom: 10px;" type="password" id="password" name="password" class="form-control form-control-lg" required>
     </div>
 
     <!-- Error message for incorrect credentials -->
@@ -163,8 +163,8 @@ if (isset($_POST['submit'])) {
     <button type="submit" name="submit" class="btn btn-primary btn-modern float-endy" style="width: 150px; margin-top: 170px;">Login</button>
 
     <!-- Forgot Password link -->
-    <div class="forgot-password-link">
-        <a href="forgotverify.php">Forgot Password?</a>
+    <div class="forgot-password-link" style="margin-top: 5px;">
+        <a href="forgotverify.php" >Forgot Password?</a>
     </div>
 </form>
 
@@ -181,7 +181,7 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     </div>
-   
+    <?php include 'footer.php';?>
 </body>
 
 </html>
