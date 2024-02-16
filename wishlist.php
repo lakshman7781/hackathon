@@ -180,8 +180,7 @@
 
 	<?php include 'header.php'; ?>
 	<div class="body">
-		<div class="left-section">
-			<?php
+		<?php
 			// Start or resume the session
 
 
