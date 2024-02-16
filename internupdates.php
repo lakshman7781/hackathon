@@ -223,7 +223,7 @@
         include 'connect.php';
 
         // Write your SQL query
-        $sql = "SELECT * FROM event WHERE Category='internship'";
+        $sql = "SELECT * FROM event WHERE Category='internships'";
 
         // Execute the query
         $result = mysqli_query($conn, $sql);
