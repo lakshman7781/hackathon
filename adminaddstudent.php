@@ -1,59 +1,40 @@
 <?php
-include 'connect.php';
+include 'connect.php'; // Include database connection
 
-if (isset($_POST['save'])) {
-    if (!empty($_POST['foodName']) && !empty($_POST['foodDescription']) && !empty($_POST['regularprice']) && !empty($_POST['saleprice']) && !empty($_POST['Category']) && !empty($_FILES['foodimage']['name']) && !empty($_POST['type'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['reg']) && isset($_POST['num'])) {
+        // Database connection
 
-        $foodName = $_POST["foodName"];
-        $foodDescription = $_POST["foodDescription"];
-        $regularprice = $_POST["regularprice"];
-        $saleprice = $_POST["saleprice"];
-        $Category = $_POST["Category"];
-        $type = $_POST["type"];
+        // Prepare and bind the SQL statement
+        $stmt = $conn->prepare("INSERT INTO verification (registration, mobile) VALUES (?, ?)");
+        $stmt->bind_param("ss", $reg, $num);
 
-        // Sanitize inputs
-        $foodName = mysqli_real_escape_string($conn, $foodName);
-        $foodDescription = mysqli_real_escape_string($conn, $foodDescription);
-        $regularprice = mysqli_real_escape_string($conn, $regularprice);
-        $saleprice = mysqli_real_escape_string($conn, $saleprice);
-        $Category = mysqli_real_escape_string($conn, $Category);
-        $type = mysqli_real_escape_string($conn, $type);
+        // Set parameters and execute
+        $reg = $_POST['reg'];
+        $num = $_POST['num'];
+        $stmt->execute();
 
-        // File upload handling
-        $targetDirectory = "fooduploads/";
-        $targetFile = $targetDirectory . basename($_FILES["foodimage"]["name"]);
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        // Check for errors
+        if ($stmt->errno) {
+            echo "Error: " . $stmt->error;
+        } else {
+            // Close statement
+            $stmt->close();
 
-        // Check file upload errors
-        if ($_FILES['foodimage']['error'] !== UPLOAD_ERR_OK) {
-            echo "File upload failed with error code: " . $_FILES['foodimage']['error'];
+            // Close connection
+            $conn->close();
+
+            // Redirect to a success page or display a success message
+            header("Location: #");
             exit();
         }
-
-        // Check file size, format, etc. (as you already did)
-
-        if ($uploadOk == 1) {
-            if (move_uploaded_file($_FILES["foodimage"]["tmp_name"], $targetFile)) {
-                $image = $targetFile;
-
-                $insertQuery = "INSERT INTO food (foodName, foodDescription, image, Category, regularprice, saleprice, type) VALUES ('$foodName', '$foodDescription', '$image', '$Category', '$regularprice', '$saleprice','$type')";
-
-                if ($conn->query($insertQuery) === TRUE) {
-                    echo "<script>alert('Food added successfully!');</script>";
-                    // Redirect or display success message
-                } else {
-                    echo "Error: " . $insertQuery . "<br>" . $conn->error;
-                }
-            } else {
-                echo "Sorry, there was an error uploading your file.";
-            }
-        }
     } else {
-        echo "All fields are required";
+        // Handle validation errors
+        echo "All fields are required.";
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -313,12 +294,13 @@ if (isset($_POST['save'])) {
                         </ul>
                     </li>
                     <li class="">
-                        <a href="adminaddstudent.php">
+                        <a href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-heart-fill" viewBox="0 0 16 16">
                                 <path d="M11.5 4v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m0 6.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132" />
                             </svg>
                             &nbsp; Add Student
                         </a>
+                    </li>
                     <li class="">
                         <a href="#" id="changePasswordLink">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
@@ -358,58 +340,7 @@ if (isset($_POST['save'])) {
             </div>
         </div>
     </div>
-    <script>
-        // JavaScript to handle dropdown menu functionality
 
-        // Function to toggle the visibility of the submenu when its corresponding link is clicked
-        function toggleSubMenu(submenuId, linkId) {
-            var submenu = document.getElementById(submenuId);
-            submenu.classList.toggle("show");
-
-            // Get the height of the submenu
-            var submenuHeight = submenu.clientHeight;
-
-            // Get the elements below the dropdown
-            var elementsBelow = document.querySelectorAll(".move-down");
-
-            // Adjust the position of each element below the dropdown
-            elementsBelow.forEach(function(element) {
-                element.style.marginTop = submenu.classList.contains("show") ? submenuHeight + "px" : "0";
-            });
-        }
-
-        // Function to close the submenu when clicking outside of it
-        function closeSubMenu(submenuId, linkId) {
-            var submenu = document.getElementById(submenuId);
-            var link = document.getElementById(linkId);
-            if (!submenu.contains(event.target) && !link.contains(event.target)) {
-                submenu.classList.remove("show");
-
-                // Reset the position of the elements below the dropdown
-                var elementsBelow = document.querySelectorAll(".move-down");
-                elementsBelow.forEach(function(element) {
-                    element.style.marginTop = "0";
-                });
-            }
-        }
-
-        // Add event listeners to handle the dropdown menus
-        document.getElementById("generalLink").addEventListener("click", function(e) {
-            e.preventDefault();
-            toggleSubMenu("submenu1", "generalLink");
-        });
-
-        document.getElementById("changePasswordLink").addEventListener("click", function(e) {
-            e.preventDefault();
-            toggleSubMenu("submenu2", "changePasswordLink");
-        });
-
-        // Add event listener to close the submenu when clicking outside of it
-        document.addEventListener("click", function(e) {
-            closeSubMenu("submenu1", "generalLink");
-            closeSubMenu("submenu2", "changePasswordLink");
-        });
-    </script>
     <style>
         .submenu {
             display: none;
@@ -623,21 +554,27 @@ if (isset($_POST['save'])) {
                                     <div class="row">
                                         <div class="col-lg-2-5 col-xl-1-5">
                                             <i class="card-big-info-icon bx bx-box"></i>
-                                            <h2 class="card-big-info-title">Food Info</h2>
-                                            <p class="card-big-info-desc">Add here the food description with all details and necessary information.</p>
+                                            <h2 class="card-big-info-title">Student Info</h2>
+                                            <p class="card-big-info-desc">Add the student details to register.</p>
                                         </div>
                                         <div class="col-lg-3-5 col-xl-4-5">
                                             <div class="form-group row align-items-center pb-3">
-                                                <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">food Name</label>
+                                                <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Student Register Number:</label>
                                                 <div class="col-lg-7 col-xl-6">
-                                                    <input type="text" class="form-control form-control-modern" name="foodName" value="" required />
+                                                    <input type="text" class="form-control form-control-modern" name="  reg" value="" required />
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-5 col-xl-3 control-label text-lg-end pt-2 mt-1 mb-0">food Description</label>
+                                            <div class="form-group row align-items-center pb-3">
+                                                <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Student Mobile Number:</label>
                                                 <div class="col-lg-7 col-xl-6">
-                                                    <textarea class="form-control form-control-modern" name="foodDescription" rows="6" required></textarea>
+                                                    <input type="text" class="form-control form-control-modern" name="num" value="" required />
                                                 </div>
+                                            </div>
+                                            <div class="col-12 col-md-auto" style="    display: flex; justify-content: center; align-items: center;">
+                                                <button name="save" class="submitt-button btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">
+                                                    <i class="bx bx-save text-4 me-2"></i> Add Student
+                                                </button>
+
                                             </div>
                                         </div>
                                     </div>
@@ -645,110 +582,7 @@ if (isset($_POST['save'])) {
                             </section>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <section class="card card-modern card-big-info">
-                                <div class="card-body" style="border: 2px solid #666; border-radius:5px;">
-                                    <div class="row">
-                                        <div class="col-lg-2-5 col-xl-1-5">
-                                            <i class="card-big-info-icon bx bx-camera"></i>
-                                            <h2 class="card-big-info-title">Food Image</h2>
-                                            <p class="card-big-info-desc">Upload your Food image. You can add multiple images</p>
-                                        </div>
-                                        <div class="col-lg-3-5 col-xl-4-5">
-                                            <div class="form-group row align-items-center">
-                                                <div class="col">
-                                                    <div id="dropzone-form-image" class="dropzone-modern dz-square">
-                                                        <span class="dropzone-upload-message text-center">
-                                                            <i class="bx bxs-cloud-upload"></i>
-                                                            <label for="file-upload" class="text-color-primary"><b class="text-color-primary">Upload</b> your images here.<b>
-                                                                    200x200 Size</label>
-                                                            <input type="file" id="file-upload" name="foodimage" class="text-color-primary" required onchange="previewImage(event)" />
-                                                        </span>
-                                                        <div id="image-preview" class="text-center mt-3">
-                                                            <img id="preview" src="#" alt="Image Preview" style="max-width: 100%; max-height: 200px;" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <section class="card card-modern card-big-info">
-                                <div class="card-body" style="border: 2px solid #666; border-radius:5px;">
-                                    <div class="tabs-modern row">
-                                        <div class="col-lg-2-5 col-xl-1-5" style="background-color:none">
-                                            <div class="nav flex-column tabs" id="tab" role="tablist" aria-orientation="vertical">
-                                                <a class="nav-link active" id="inventory-tab" data-bs-toggle="pill" data-bs-target="#inventory" role="tab" aria-controls="inventory" aria-selected="false">Price</a>
-                                                <a class="nav-link " id="price-tab" data-bs-toggle="pill" data-bs-target="#price" role="tab" aria-controls="price" aria-selected="true">Inventory</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3-5 col-xl-4-5">
-                                            <div class="tab-content" id="tabContent">
-                                                <div class="tab-pane fade " id="price" role="tabpanel" aria-labelledby="price-tab">
-                                                    <div class="form-group row align-items-center pb-3">
-                                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Availability</label>
-                                                        <div class="col-lg-7 col-xl-6">
-                                                            <select class="form-control form-control-modern" name="Category">
-                                                                <option value="Tommrrow" selected>Tommrrow</option>
-                                                                <option value="Today">Today</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row align-items-center">
-                                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Type</label>
-                                                        <div class="col-lg-7 col-xl-6">
-                                                            <select class="form-control form-control-modern" name="type">
-                                                                <option value="VEG" selected>VEG</option>
-                                                                <option value="NON-VEG">NON-VEG</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
 
-
-                                                <div class="tab-pane fade show active" id="inventory" role="tabpanel" aria-labelledby="inventory-tab">
-                                                    <div class="form-group row align-items-center pb-3">
-                                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">RegularPrice</label>
-                                                        <div class="col-lg-7 col-xl-6">
-                                                            <input type="text" class="form-control form-control-modern" name="regularprice" value="" required />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row align-items-center">
-                                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Sale Price</label>
-                                                        <div class="col-lg-7 col-xl-6">
-                                                            <input type="text" class="form-control form-control-modern" name="saleprice" value="" required />
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-
-
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </section>
-
-                            <div class="row action-buttons d-flex justify-content-between">
-                                <div class="col-12 col-md-auto">
-                                    <button name="save" class="submitt-button btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">
-                                        <i class="bx bx-save text-4 me-2"></i> Add Food
-                                    </button>
-
-                                </div>
-                                <br>
-
-                            </div>
                 </form>
             </div>
         </div>
@@ -793,6 +627,58 @@ document.querySelector('.count-badge').textContent = selectedProductCount.toStri
         }
         reader.readAsDataURL(event.target.files[0]);
     }
+</script>
+<script>
+    // JavaScript to handle dropdown menu functionality
+
+    // Function to toggle the visibility of the submenu when its corresponding link is clicked
+    function toggleSubMenu(submenuId, linkId) {
+        var submenu = document.getElementById(submenuId);
+        submenu.classList.toggle("show");
+
+        // Get the height of the submenu
+        var submenuHeight = submenu.clientHeight;
+
+        // Get the elements below the dropdown
+        var elementsBelow = document.querySelectorAll(".move-down");
+
+        // Adjust the position of each element below the dropdown
+        elementsBelow.forEach(function(element) {
+            element.style.marginTop = submenu.classList.contains("show") ? submenuHeight + "px" : "0";
+        });
+    }
+
+    // Function to close the submenu when clicking outside of it
+    function closeSubMenu(submenuId, linkId) {
+        var submenu = document.getElementById(submenuId);
+        var link = document.getElementById(linkId);
+        if (!submenu.contains(event.target) && !link.contains(event.target)) {
+            submenu.classList.remove("show");
+
+            // Reset the position of the elements below the dropdown
+            var elementsBelow = document.querySelectorAll(".move-down");
+            elementsBelow.forEach(function(element) {
+                element.style.marginTop = "0";
+            });
+        }
+    }
+
+    // Add event listeners to handle the dropdown menus
+    document.getElementById("generalLink").addEventListener("click", function(e) {
+        e.preventDefault();
+        toggleSubMenu("submenu1", "generalLink");
+    });
+
+    document.getElementById("changePasswordLink").addEventListener("click", function(e) {
+        e.preventDefault();
+        toggleSubMenu("submenu2", "changePasswordLink");
+    });
+
+    // Add event listener to close the submenu when clicking outside of it
+    document.addEventListener("click", function(e) {
+        closeSubMenu("submenu1", "generalLink");
+        closeSubMenu("submenu2", "changePasswordLink");
+    });
 </script>
 </body>
 
