@@ -278,7 +278,7 @@ if (!isset($_SESSION['idnum'])) {
 									success: function(response) {
                     // Create a success message element
                     var successMessage = $('<div/>', {
-                        text: 'Product added to Cart successfully!',
+                        text: response,
                         class: 'success-message'
                     });
                     // Append the success message to the body

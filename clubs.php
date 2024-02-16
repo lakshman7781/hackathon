@@ -194,7 +194,8 @@
                         <li class="nav-item"><a class="nav-link" href="#">ACE</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">ECO</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">GDSC</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Others</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">CINE</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">CODING</a></li>
 
                     </ul>
 

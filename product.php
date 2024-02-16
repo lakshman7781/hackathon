@@ -21,9 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
 
     <!-- Web Fonts  -->
-    <link id="googleFonts"
-        href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
-        rel="stylesheet" type="text/css">
+    <link id="googleFonts" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap" rel="stylesheet" type="text/css">
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -204,7 +202,7 @@ $conn->close();
 
 <body data-plugin-page-transition>
 
-    <?php include 'header.php';?>
+    <?php include 'header.php'; ?>
     <div class="body">
         <div class="left-section">
 
@@ -230,525 +228,306 @@ $conn->close();
         <div class="right-section">
             <div class="right-section-inner">
 
-                <div role="main" class="main shop pb-4">
-                    <h4 style="text-align: left; color:#0088cc">Shopping Cart</h4>
-
-                    <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
                         <div class="thumb-gallery-wrapper">
-                            <img alt="" class="" src="<?php echo $image; ?>" data-zoom-image="img/1.png"
-                                style="height: 300px; width:300px">
+                            <img alt="" class="" src="<?php echo $image; ?>" data-zoom-image="img/1.png" style="height: 300px; width:300px">
                         </div>
+
+                    </div>
+
+                    <div class="col-lg-6">
 
                         <div class="summary entry-summary position-relative">
 
-                            <h1 class="mb-0 font-weight-bold text-7">
-                                <?php echo $row['productName']; ?>
-                            </h1>
+
+
+                            <div class="summary entry-summary position-relative">
+
+                                <h1 class="mb-0 font-weight-bold text-7">
+                                    <?php echo $row['productName']; ?>
+                                </h1>
 
 
 
-                            <div class="divider divider-small">
-                                <hr class="bg-color-grey-400">
-                            </div>
-
-                            <p class="price mb-3">
-                                <span class="sale text-color-dark">
-                                    <?php echo $row['regularPrice']; ?>
-                                </span>
-                                <span class="amount">
-                                    <?php echo $row['salePrice']; ?>
-                                </span>
-                            </p>
-
-                            <p class="text-3-5 mb-3">
-                                <?php echo $row['productDescription']; ?>
-                            </p>
-
-                            <ul class="list list-unstyled text-2">
-                                <li class="mb-0">AVAILABILITY: <strong class="text-color-dark">
-                                        <?php echo $row['stockStatus']; ?>
-                                    </strong></li>
-                                <!-- <li class="mb-0">SKU: <strong class="text-color-dark"></strong></li> -->
-                            </ul>
-
-                            <form enctype="multipart/form-data" method="post" class="cart" action="shop-cart.html">
-                                <table class="table table-borderless" style="max-width: 300px;">
-                                    <tbody>
-                                        <tr>
-                                            <td class="align-middle text-2 px-0 py-2">SIZE:</td>
-                                            <td class="px-0 py-2">
-                                                <div class="custom-select-1">
-                                                    <h6>
-                                                        <?php echo $row['size']; ?>
-                                                    </h6>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="align-middle text-2 px-0 py-2">COLOR:</td>
-                                            <td class="px-0 py-2">
-                                                <div class="custom-select-1">
-                                                    <h6>
-                                                        <?php echo $row['colour']; ?>
-                                                    </h6>
-
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <hr>
-                                <div class="quantity quantity-lg">
-                                    <input type="button"
-                                        class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary"
-                                        value="-">
-                                    <input type="text" class="input-text qty text" title="Qty" value="1" name="quantity"
-                                        min="1" step="1">
-                                    <input type="button"
-                                        class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary"
-                                        value="+">
+                                <div class="divider divider-small">
+                                    <hr class="bg-color-grey-400">
                                 </div>
-                                <br>
-                                <hr>
-                            </form>
 
-                            <div class="d-flex align-items-center">
-                                <a href="https://api.whatsapp.com/send?phone=<?php echo $row['phonenumber']; ?>">
-                                    <div type="submit"
-                                        class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary"
-                                        style="margin-right: 10px; background-color: #28a745 !important;">Whatsapp</div>
-                                </a>
-                                <a href="tel:<?php echo $row['phonenumber']; ?>">
-                                    <div type="submit"
-                                        class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary"
-                                        style="margin-right: 10px; background-color: rgb(5, 142, 255) !important;">
-                                        Contact</div>
-                                </a>
+                                <h2 class="price mb-3">
+                                    <span class="sale text-color-dark">
+                                        <?php echo  '₹.' . $row['salePrice']; ?>
+                                    </span>
+                                    <span class="amount">
+                                        <?php echo  '₹.' . $row['regularPrice']; ?>
+                                    </span>
+                                </h2>
 
-                                <!-- <div type="submit"
-                                    class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary">
-                                    Add to cart
-                                </div> -->
-                                <div type="submit"
-    class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary"
-    style="margin-right: 10px; background-color: black !important;">
-    <a href="#" class="text-decoration-none addtocart-btn" title="Add to Cart"
-        data-product-id="<?php echo $row['productid']; ?>"
-        style="color: white;">
-        Add to Cart
-    </a>
-</div>
+                                <p class="text-3-5 mb-3">
+                                    <?php echo $row['productDescription']; ?>
+                                </p>
+
+                                <ul class="list list-unstyled text-2">
+                                    <li class="mb-0">AVAILABILITY: <strong class="text-color-dark">
+                                            <?php echo $row['stockStatus']; ?>
+                                        </strong></li>
+                                </ul>
+
+                                <form enctype="multipart/form-data" method="post" class="cart" action="shop-cart.html">
+                                    <table class="table table-borderless" style="max-width: 300px;">
+                                        <tbody>
+                                            <tr>
+                                                <td class="align-middle text-2 px-0 py-2">SIZE:</td>
+                                                <td class="px-0 py-2">
+                                                    <div class="custom-select-1">
+                                                        <h6>
+                                                            <?php echo $row['size']; ?>
+                                                        </h6>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="align-middle text-2 px-0 py-2">COLOR:</td>
+                                                <td class="px-0 py-2">
+                                                    <div class="custom-select-1">
+                                                        <h6>
+                                                            <?php echo $row['colour']; ?>
+                                                        </h6>
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </form>
+
+                                <div class="d-flex align-items-center">
+                                    <a href="https://api.whatsapp.com/send?phone=<?php echo $row['phonenumber']; ?>">
+                                        <div type="submit" class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary" style="margin-right: 10px; background-color: #28a745 !important;">Whatsapp</div>
+                                    </a>
+                                    <a href="tel:<?php echo $row['phonenumber']; ?>">
+                                        <div type="submit" class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary" style="margin-right: 10px; background-color: rgb(5, 142, 255) !important;">
+                                            Contact</div>
+                                    </a>
+
+                                    <div type="submit" class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary" style="margin-right: 10px; background-color: black !important;">
+                                        <a href="#" class="text-decoration-none addtocart-btn" title="Add to Cart" data-product-id="<?php echo $row['productid']; ?>" style="color: white;">
+                                            Add to Cart
+                                        </a>
+                                    </div>
 
 
 
+                                </div>
                             </div>
                         </div>
-
                     </div>
-
-
                 </div>
+
             </div>
+
+
         </div>
-    </div>
-    </div>
 
-    <!-- <div class="row">
-        <div class="col" style="background-color: white; padding:10px">
-            <h4 class="font-weight-semibold text-4 mb-3" style="margin-left: 30px;">PEOPLE ALSO BOUGHT</h4>
-            <hr class="mt-0">
-            <div class="products row">
-                <div class="col">
-                    <div class="owl-carousel owl-theme nav-style-1 nav-outside nav-outside nav-dark mb-0" data-plugin-options="{'loop': false, 'autoplay': false, 'items': 4, 'nav': true, 'dots': false, 'margin': 20, 'autoplayHoverPause': true, 'autoHeight': true, 'stagePadding': '75', 'navVerticalOffset': '50px'}">
+    
+                <div class="containner">
+                    <div class="cateegory" style= "text-align: left;" >
 
-                        <div class="product mb-0">
-                            <div class="product-thumb-info border-0 mb-3">
-
-                                <div class="product-thumb-info-badges-wrapper">
-                                    <span class="badge badge-ecommerce text-bg-success">NEW</span>
-
-                                </div>
-
-                                <div class="addtocart-btn-wrapper">
-                                    <a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
-                                        <i class="icons icon-bag"></i>
-                                    </a>
-                                </div>
-
-                                <a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
-                                    QUICK VIEW
-                                </a>
-                                <a href="shop-product-sidebar-left.html">
-                                    <div class="product-thumb-info-image">
-                                        <img alt="" class="img-fluid" src="img/products/product-grey-1.jpg">
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">electronics</a>
-                                    <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Photo Camera</a></h3>
-                                </div>
-                                <a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div title="Rated 5 out of 5">
-                                <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-                            </div>
-                            <p class="price text-5 mb-3">
-                                <span class="sale text-color-dark font-weight-semi-bold">$69,00</span>
-                                <span class="amount">$59,00</span>
-                            </p>
-                        </div>
-
-                        <div class="product mb-0">
-                            <div class="product-thumb-info border-0 mb-3">
-
-                                <div class="product-thumb-info-badges-wrapper">
-                                    <span class="badge badge-ecommerce text-bg-success">NEW</span>
-                                    <span class="badge badge-ecommerce text-bg-danger">27% OFF</span>
-                                </div>
-
-                                <div class="addtocart-btn-wrapper">
-                                    <a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
-                                        <i class="icons icon-bag"></i>
-                                    </a>
-                                </div>
-
-                                <a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
-                                    QUICK VIEW
-                                </a>
-                                <a href="shop-product-sidebar-left.html">
-                                    <div class="product-thumb-info-image product-thumb-info-image-effect">
-                                        <img alt="" class="img-fluid" src="img/products/product-grey-7.jpg">
-
-                                        <img alt="" class="img-fluid" src="img/products/product-grey-7-2.jpg">
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">accessories</a>
-                                    <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Porto Headphone</a></h3>
-                                </div>
-                                <a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div title="Rated 5 out of 5">
-                                <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-                            </div>
-                            <p class="price text-5 mb-3">
-                                <span class="sale text-color-dark font-weight-semi-bold">$199,00</span>
-                                <span class="amount">$99,00</span>
-                            </p>
-                        </div>
-
-                        <div class="product mb-0">
-                            <div class="product-thumb-info border-0 mb-3">
-
-                                <div class="addtocart-btn-wrapper">
-                                    <a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
-                                        <i class="icons icon-bag"></i>
-                                    </a>
-                                </div>
-
-                                <a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
-                                    QUICK VIEW
-                                </a>
-                                <a href="shop-product-sidebar-left.html">
-                                    <div class="product-thumb-info-image">
-                                        <img alt="" class="img-fluid" src="img/products/product-grey-2.jpg">
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">sports</a>
-                                    <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Golf Bag</a></h3>
-                                </div>
-                                <a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div title="Rated 5 out of 5">
-                                <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-                            </div>
-                            <p class="price text-5 mb-3">
-                                <span class="sale text-color-dark font-weight-semi-bold">$29,00</span>
-                                <span class="amount">$19,00</span>
-                            </p>
-                        </div>
-
-                        <div class="product mb-0">
-                            <div class="product-thumb-info border-0 mb-3">
-
-                                <div class="product-thumb-info-badges-wrapper">
-
-                                    <span class="badge badge-ecommerce text-bg-danger">27% OFF</span>
-                                </div>
-
-                                <div class="addtocart-btn-wrapper">
-                                    <a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
-                                        <i class="icons icon-bag"></i>
-                                    </a>
-                                </div>
-
-                                <div class="countdown-offer-wrapper">
-                                    <div class="text-color-light text-2" data-plugin-countdown data-plugin-options="{'textDay': 'DAYS', 'textHour': 'HRS', 'textMin': 'MIN', 'textSec': 'SEC', 'date': '2025/01/01 12:00:00', 'numberClass': 'text-color-light', 'wrapperClass': 'text-color-light', 'insertHTMLbefore': '<span>OFFER ENDS IN </span>', 'textDay': 'DAYS', 'textHour': ':', 'textMin': ':', 'textSec': '', 'uppercase': true}"></div>
-                                </div>
-
-                                <a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
-                                    QUICK VIEW
-                                </a>
-                                <a href="shop-product-sidebar-left.html">
-                                    <div class="product-thumb-info-image">
-                                        <img alt="" class="img-fluid" src="img/products/product-grey-3.jpg">
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">sports</a>
-                                    <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Workout</a></h3>
-                                </div>
-                                <a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div title="Rated 5 out of 5">
-                                <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-                            </div>
-                            <p class="price text-5 mb-3">
-                                <span class="sale text-color-dark font-weight-semi-bold">$40,00</span>
-                                <span class="amount">$30,00</span>
-                            </p>
-                        </div>
-
-                        <div class="product mb-0">
-                            <div class="product-thumb-info border-0 mb-3">
-
-                                <div class="addtocart-btn-wrapper">
-                                    <a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
-                                        <i class="icons icon-bag"></i>
-                                    </a>
-                                </div>
-
-                                <a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
-                                    QUICK VIEW
-                                </a>
-                                <a href="shop-product-sidebar-left.html">
-                                    <div class="product-thumb-info-image">
-                                        <img alt="" class="img-fluid" src="img/products/product-grey-4.jpg">
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">accessories</a>
-                                    <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Luxury Bag</a></h3>
-                                </div>
-                                <a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div title="Rated 5 out of 5">
-                                <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-                            </div>
-                            <p class="price text-5 mb-3">
-                                <span class="sale text-color-dark font-weight-semi-bold">$99,00</span>
-                                <span class="amount">$79,00</span>
-                            </p>
-                        </div>
-
-                        <div class="product mb-0">
-                            <div class="product-thumb-info border-0 mb-3">
-
-                                <div class="addtocart-btn-wrapper">
-                                    <a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
-                                        <i class="icons icon-bag"></i>
-                                    </a>
-                                </div>
-
-                                <a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
-                                    QUICK VIEW
-                                </a>
-                                <a href="shop-product-sidebar-left.html">
-                                    <div class="product-thumb-info-image">
-                                        <img alt="" class="img-fluid" src="img/products/product-grey-5.jpg">
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">accessories</a>
-                                    <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Styled Bag</a></h3>
-                                </div>
-                                <a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div title="Rated 5 out of 5">
-                                <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-                            </div>
-                            <p class="price text-5 mb-3">
-                                <span class="sale text-color-dark font-weight-semi-bold">$199,00</span>
-                                <span class="amount">$119,00</span>
-                            </p>
-                        </div>
-
-                        <div class="product mb-0">
-                            <div class="product-thumb-info border-0 mb-3">
-
-                                <div class="addtocart-btn-wrapper">
-                                    <a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
-                                        <i class="icons icon-bag"></i>
-                                    </a>
-                                </div>
-
-                                <a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
-                                    QUICK VIEW
-                                </a>
-                                <a href="shop-product-sidebar-left.html">
-                                    <div class="product-thumb-info-image">
-                                        <img alt="" class="img-fluid" src="img/products/product-grey-6.jpg">
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">hat</a>
-                                    <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Blue Hat</a></h3>
-                                </div>
-                                <a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div title="Rated 5 out of 5">
-                                <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-                            </div>
-                            <p class="price text-5 mb-3">
-                                <span class="sale text-color-dark font-weight-semi-bold">$299,00</span>
-                                <span class="amount">$289,00</span>
-                            </p>
-                        </div>
-
-                        <div class="product mb-0">
-                            <div class="product-thumb-info border-0 mb-3">
-
-                                <div class="addtocart-btn-wrapper">
-                                    <a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
-                                        <i class="icons icon-bag"></i>
-                                    </a>
-                                </div>
-
-                                <a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
-                                    QUICK VIEW
-                                </a>
-                                <a href="shop-product-sidebar-left.html">
-                                    <div class="product-thumb-info-image">
-                                        <img alt="" class="img-fluid" src="img/products/product-grey-8.jpg">
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">accessories</a>
-                                    <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Adventurer Bag</a></h3>
-                                </div>
-                                <a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div title="Rated 5 out of 5">
-                                <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-                            </div>
-                            <p class="price text-5 mb-3">
-                                <span class="sale text-color-dark font-weight-semi-bold">$99,00</span>
-                                <span class="amount">$79,00</span>
-                            </p>
-                        </div>
-
-                        <div class="product mb-0">
-                            <div class="product-thumb-info border-0 mb-3">
-
-                                <div class="addtocart-btn-wrapper">
-                                    <a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Add to Cart">
-                                        <i class="icons icon-bag"></i>
-                                    </a>
-                                </div>
-
-                                <a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
-                                    QUICK VIEW
-                                </a>
-                                <a href="shop-product-sidebar-left.html">
-                                    <div class="product-thumb-info-image">
-                                        <img alt="" class="img-fluid" src="img/products/product-grey-9.jpg">
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">sports</a>
-                                    <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">Baseball Ball</a></h3>
-                                </div>
-                                <a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div title="Rated 5 out of 5">
-                                <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-                            </div>
-                            <p class="price text-5 mb-3">
-                                <span class="sale text-color-dark font-weight-semi-bold">$399,00</span>
-                                <span class="amount">$299,00</span>
-                            </p>
-                        </div>
-
+                        <h1 class="top-deals-heading" >Top Deals</h1>
+                      
                     </div>
-                </div>
-            </div> -->
 
 
-    <!-- Vendor -->
-    <script src="vendor/plugins/js/plugins.min.js"></script>
-    <script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
-    <script src="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
-    <script src="vendor/jquery.countdown/jquery.countdown.min.js"></script>
+                    <div class="masonry-loader masonry-loader-showing">
+                        <div class="row products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
 
-    <!-- Theme Base, Components and Settings -->
-    <script src="js/theme.js"></script>
+                            <?php
+                            // Include the file to establish a database connection
+                            include 'connect.php';
 
-    <!-- Current Page Vendor and Views -->
-    <script src="js/views/view.shop.js"></script>
+                            // Write your SQL query
+                            $sql = "SELECT * FROM seller";
 
-    <!-- Theme Custom -->
-    <script src="js/custom.js"></script>
+                            // Execute the query
+                            $result = mysqli_query($conn, $sql);
 
-    <!-- Theme Initialization Files -->
-    <script src="js/theme.init.js"></script>
+                            // Check if there are any results
+                            if (mysqli_num_rows($result) > 0) {
+                                // Output data of each row
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    // Output the HTML structure with product details
+                            ?>
+                                    <div class="col-12 col-sm-6 col-lg-3">
+                                        <br>
+                                        <div class="product mb-0">
+                                            <div class="product-thumb-info border-0 mb-3">
+                                                <div class="addtocart-btn-wrapper">
+                                                    <a href="#" class="text-decoration-none addtocart-btn" title="Add to Cart" data-product-id="<?php echo $row['productid']; ?>">
+                                                        <i class="icons icon-bag"></i>
+                                                    </a>
+                                                </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.addtocart-btn').click(function (e) {
-                e.preventDefault();
-                var productId = $(this).data('product-id');
-                $.ajax({
-                    url: 'insertcart.php',
-                    method: 'POST',
-                    data: {
-                        productId: productId
-                    },
-                    success: function (response) {
-                        alert('Product added to Cart!');
-                    },
-                    error: function (xhr, status, error) {
-                        console.error(xhr.responseText);
-                    }
-                });
-            });
-        });
-    </script>
-    <!--
+                                                <a href="product.php?productid=<?php echo $row['productid']; ?>">
+                                                    <div class="product-thumb-info-image">
+                                                        <img alt="" class="img-fluid" src="<?php echo $row['image']; ?>">
+                                                    </div>
+                                                </a>
+                                                <a href="product.php?productid=<?php echo $row['productid']; ?>" class=" text-uppercase font-weight-semibold text-2">
+                                                    QUICK VIEW
+                                                </a>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <div>
+                                                    <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1"><?php echo $row['Category']; ?></a>
+                                                    <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="#" class="text-color-dark text-color-hover-primary"><?php echo $row['productName']; ?></a></h3>
+                                                </div>
+                                                <a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4 heart-icon" data-product-id="<?php echo $row['productid']; ?>"><i class="far fa-heart"></i></a>
+                                            </div>
+
+                                            <p class="price text-5 mb-3">
+                                                <span class="sale text-color-dark font-weight-semi-bold">₹<?php echo $row['salePrice']; ?></span>
+                                                <span class="amount">₹<?php echo $row['regularPrice']; ?></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                            <?php
+                                }
+                            } else {
+                                echo "0 results";
+                            }
+
+                            // Close the database connection
+                            mysqli_close($conn);
+                            ?>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                            <script>
+                                $(document).ready(function() {
+                                    $('.addtocart-btn').click(function(e) {
+                                        e.preventDefault();
+                                        var productId = $(this).data('product-id');
+                                        $.ajax({
+                                            url: 'insertcart.php',
+                                            method: 'POST',
+                                            data: {
+                                                productId: productId
+                                            },
+                                            success: function(response) {
+                                                // Create a success message element
+                                                var successMessage = $('<div/>', {
+                                                    text: 'Product added to Cart successfully!',
+                                                    class: 'success-message'
+                                                });
+                                                // Append the success message to the body
+                                                $('body').append(successMessage);
+                                                // Fade out the success message after a certain duration
+                                                setTimeout(function() {
+                                                    successMessage.fadeOut('slow');
+                                                }, 2000);
+                                            },
+                                            error: function(xhr, status, error) {
+                                                console.error(xhr.responseText);
+                                            }
+                                        });
+                                    });
+                                });
+                            </script>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                            <script>
+                                $(document).ready(function() {
+                                    $('.heart-icon').click(function(e) {
+                                        e.preventDefault();
+                                        var productId = $(this).data('product-id');
+                                        $.ajax({
+                                            url: 'insertwishlist.php', // URL of the PHP script that handles insertion
+                                            method: 'POST',
+                                            data: {
+                                                productId: productId
+                                            }, // Data to send in the AJAX request
+                                            success: function(response) {
+                                                // Create a success message element
+                                                var successMessage = $('<div/>', {
+                                                    text: 'Product added to wishlist successfully!',
+                                                    class: 'success-message'
+                                                });
+                                                // Append the success message to the body
+                                                $('body').append(successMessage);
+                                                // Fade out the success message after a certain duration
+                                                setTimeout(function() {
+                                                    successMessage.fadeOut('slow');
+                                                }, 2000);
+                                            },
+                                            error: function(xhr, status, error) {
+                                                console.error(xhr.responseText);
+                                            }
+                                        });
+                                    });
+                                });
+                            </script>
+                            <style>
+                                .success-message {
+                                    position: fixed;
+                                    top: 90px;
+                                    right: 20px;
+                                    background-color: #4CAF50;
+                                    color: white;
+                                    padding: 15px;
+                                    border-radius: 5px;
+                                    z-index: 9999;
+                                }
+                            </style>
+
+
+
+
+
+                            <!-- Vendor -->
+                            <script src="vendor/plugins/js/plugins.min.js"></script>
+                            <script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
+                            <script src="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
+                            <script src="vendor/jquery.countdown/jquery.countdown.min.js"></script>
+
+                            <!-- Theme Base, Components and Settings -->
+                            <script src="js/theme.js"></script>
+
+                            <!-- Current Page Vendor and Views -->
+                            <script src="js/views/view.shop.js"></script>
+
+                            <!-- Theme Custom -->
+                            <script src="js/custom.js"></script>
+
+                            <!-- Theme Initialization Files -->
+                            <script src="js/theme.init.js"></script>
+
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                            <script>
+                                $(document).ready(function() {
+                                    $('.addtocart-btn').click(function(e) {
+                                        e.preventDefault();
+                                        var productId = $(this).data('product-id');
+                                        $.ajax({
+                                            url: 'insertcart.php',
+                                            method: 'POST',
+                                            data: {
+                                                productId: productId
+                                            },
+                                            success: function(response) {
+                                                alert('Product added to Cart!');
+                                            },
+                                            error: function(xhr, status, error) {
+                                                console.error(xhr.responseText);
+                                            }
+                                        });
+                                    });
+                                });
+                            </script>
+                            <!--
                     // Assuming you have a variable selectedProductCount that represents the count
 const selectedProductCount = 1;
 
 // Update the count badge text
 document.querySelector('.count-badge').textContent = selectedProductCount.toString(); -->
-    <?php include 'footer.php';?>
+                            <?php include 'footer.php'; ?>
 </body>
 
 </html>
