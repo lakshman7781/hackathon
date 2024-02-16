@@ -180,6 +180,8 @@ session_start();
 <?php
 // Retrieve the total sale price from the form submission
 $totalSalePrice = $_GET['totalSalePrice'];
+$productid = $_GET['productid'];
+
 
 // Output the total sale price
 
