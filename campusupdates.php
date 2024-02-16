@@ -8,7 +8,7 @@
 
 
 
-    <title>Style Switcher | Porto - Multipurpose Website Template</title>
+    <title>Campus Online</title>
 
     <meta name="keywords" content="WebSite Template" />
     <meta name="description" content="Porto - Multipurpose Website Template">
@@ -427,45 +427,41 @@ h1 {
                     <div class="owl-carousel owl-theme stage-margin nav-style-1 " data-plugin-options="{'items': 7, 'margin': 20, 'loop': false, 'nav': true, 'dots': false, 'stagePadding': 20}" style="background-color: white; padding:10px; border-radius:10px; margin-top:10px;">
                         <div>
                         <a href="clubs.php">
-                            <img alt="" class="img-fluid rounded" src="img/projects/project-5.jpg" style="height: 100px; width: 100px;">
+                            <img alt="" class="img-fluid rounded" src="clublogos/1.png" style="height: 100px; width: 100px;">
                         </a>
                         </div>
                         <div>
-                            <img alt="" class="img-fluid rounded" src="img/projects/project-6.jpg" style="height: 100px; width: 100px;">
+                            <img alt="" class="img-fluid rounded" src="clublogos/2.png" style="height: 100px; width: 100px;">
                         </div>
                         <div>
-                            <img alt="" class="img-fluid rounded" src="img/projects/project-7.jpg" style="height: 100px; width: 100px;">
+                            <img alt="" class="img-fluid rounded" src="clublogos/3.png" style="height: 100px; width: 100px;">
                         </div>
                         <div>
-                            <img alt="" class="img-fluid rounded" src="img/projects/project-1.jpg" style="height: 100px; width: 100px;">
+                            <img alt="" class="img-fluid rounded" src="clublogos/4.png" style="height: 100px; width: 100px;">
                         </div>
                         <div>
-                            <img alt="" class="img-fluid rounded" src="img/projects/project-2.jpg" style="height: 100px; width: 100px;">
+                            <img alt="" class="img-fluid rounded" src="clublogos/5.png" style="height: 100px; width: 100px;">
                         </div>
                         <div>
-                            <img alt="" class="img-fluid rounded" src="img/projects/project-3.jpg" style="height: 100px; width: 100px;">
+                            <img alt="" class="img-fluid rounded" src="clublogos/6.png" style="height: 100px; width: 100px;">
                         </div>
                         <div>
-                            <img alt="" class="img-fluid rounded" src="img/projects/project-1.jpg" style="height: 100px; width: 100px;">
+                            <img alt="" class="img-fluid rounded" src="clublogos/7.png" style="height: 100px; width: 100px;">
                         </div>
                         <div>
-                            <img alt="" class="img-fluid rounded" src="img/projects/project-2.jpg" style="height: 100px; width: 100px;">
+                            <img alt="" class="img-fluid rounded" src="clublogos/1.png" style="height: 100px; width: 100px;">
                         </div>
                         <div>
-                            <img alt="" class="img-fluid rounded" src="img/projects/project-3.jpg" style="height: 100px; width: 100px;">
+                            <img alt="" class="img-fluid rounded" src="clublogos/2.png" style="height: 100px; width: 100px;">
                         </div>
                         <div>
-                            <img alt="" class="img-fluid rounded" src="img/projects/project-4.jpg" style="height: 100px; width: 100px;">
+                            <img alt="" class="img-fluid rounded" src="clublogos/3.png" style="height: 100px; width: 100px;">
                         </div>
                     </div>
                 </div>
             </div>
 
-           
 
-
-
- 
    
 
 

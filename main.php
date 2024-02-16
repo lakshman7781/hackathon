@@ -1,12 +1,12 @@
 <?php
-session_start();
+// session_start();
 
-// Check if user is logged in
-if (!isset($_SESSION['idnum'])) {
-    // If not, redirect to another page
-    header('Location: dumbindex.php');
-    exit;
-}
+// // Check if user is logged in
+// if (!isset($_SESSION['idnum'])) {
+//     // If not, redirect to another page
+//     header('Location: dumbindex.php');
+//     exit;
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +70,7 @@ if (!isset($_SESSION['idnum'])) {
 
 <body style="background-color:#f2f2f4 !important;">
 
-	<?php include "header.php"; ?>
+	<?php include "mainheader.php"; ?>
 
 
 
@@ -85,7 +85,7 @@ if (!isset($_SESSION['idnum'])) {
 		</div>
 
 		<div class="categorry">
-			<a href="eventshome.php">
+			<a href="#">
 				<img src="img/2.svg" style="height: 150px; width: 575px;">
 			</a>
 		</div>
@@ -140,7 +140,7 @@ if (!isset($_SESSION['idnum'])) {
 
 	<div class="containeer">
 		<div class="category">
-			<a href="stationary.php">
+			<a href="#">
 				<img src="img/1.png">
 				<h6>Stationary</h6>
 			</a>
@@ -153,27 +153,27 @@ if (!isset($_SESSION['idnum'])) {
 		</div>
 		<!-- Add similar blocks for other categories -->
 		<div class="category">
-			<a href="fashion.php">
+			<a href="#">
 				<img src="img/3.png">
 				<h6>Fashion</h6>
 			</a>
 		</div>
 		<div class="category">
-			<a href="electronics.php">
+			<a href="#">
 				<img src="img/4.png">
 
 				<h6>Electronics & Mobile</h6>
 			</a>
 		</div>
 		<div class="category">
-			<a href="textbooks.php">
+			<a href="#">
 				<img src="img/5.png">
 
 				<h6>Notes & Records</h6>
 			</a>
 		</div>
 		<div class="category">
-			<a href="Xeorox.php">
+			<a href="#">
 				<img src="img/xerox.jpg" style="height:80px; width:80px;">
 
 				<h6>Xerox</h6>
@@ -231,12 +231,12 @@ if (!isset($_SESSION['idnum'])) {
 											</a>
 										</div>
 										
-										<a href="product.php?productid=<?php echo $row['productid']; ?>">
+										<!-- <a href="product.php?productid=<?php echo $row['productid']; ?>"> -->
 											<div class="product-thumb-info-image">
 												<img alt="" class="img-fluid" src="<?php echo $row['image']; ?>">
 											</div>
 										</a>
-										<a href="product.php?productid=<?php echo $row['productid']; ?>" class=" text-uppercase font-weight-semibold text-2">
+										 <a  class=" text-uppercase font-weight-semibold text-2"> 
 											QUICK VIEW
 										</a>
 									</div>
@@ -264,7 +264,7 @@ if (!isset($_SESSION['idnum'])) {
 					mysqli_close($conn);
 					?>
 					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-					<script>
+					<!-- <script>
 						$(document).ready(function() {
 							$('.addtocart-btn').click(function(e) {
 								e.preventDefault();
@@ -276,69 +276,37 @@ if (!isset($_SESSION['idnum'])) {
 										productId: productId
 									},
 									success: function(response) {
-                    // Create a success message element
-                    var successMessage = $('<div/>', {
-                        text: 'Product added to Cart successfully!',
-                        class: 'success-message'
-                    });
-                    // Append the success message to the body
-                    $('body').append(successMessage);
-                    // Fade out the success message after a certain duration
-                    setTimeout(function() {
-                        successMessage.fadeOut('slow');
-                    }, 2000);
-                },
+										alert('Product added to Cart!');
+									},
 									error: function(xhr, status, error) {
 										console.error(xhr.responseText);
 									}
 								});
 							});
 						});
-					</script>
+					</script> -->
 					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-					<script>
-    $(document).ready(function() {
-        $('.heart-icon').click(function(e) {
-            e.preventDefault();
-            var productId = $(this).data('product-id');
-            $.ajax({
-                url: 'insertwishlist.php', // URL of the PHP script that handles insertion
-                method: 'POST',
-                data: {
-                    productId: productId
-                }, // Data to send in the AJAX request
-                success: function(response) {
-                    // Create a success message element
-                    var successMessage = $('<div/>', {
-                        text: 'Product added to wishlist successfully!',
-                        class: 'success-message'
-                    });
-                    // Append the success message to the body
-                    $('body').append(successMessage);
-                    // Fade out the success message after a certain duration
-                    setTimeout(function() {
-                        successMessage.fadeOut('slow');
-                    }, 2000);
-                },
-                error: function(xhr, status, error) {
-                    console.error(xhr.responseText);
-                }
-            });
-        });
-    });
-</script>
-<style>
-    .success-message {
-        position: fixed;
-        top: 90px;
-        right: 20px;
-        background-color: #4CAF50;
-        color: white;
-        padding: 15px;
-        border-radius: 5px;
-        z-index: 9999;
-    }
-</style>
+					<!-- <script>
+						$(document).ready(function() {
+							$('.heart-icon').click(function(e) {
+								e.preventDefault();
+								var productId = $(this).data('product-id');
+								$.ajax({
+									url: 'insertwishlist.php', // URL of the PHP script that handles insertion
+									method: 'POST',
+									data: {
+										productId: productId
+									}, // Data to send in the AJAX request
+									success: function(response) {
+										alert('Product added to wishlist successfully!');
+									},
+									error: function(xhr, status, error) {
+										console.error(xhr.responseText);
+									}
+								});
+							});
+						});
+					</script> -->
 
 
 
@@ -456,13 +424,13 @@ if (!isset($_SESSION['idnum'])) {
 					<?php include "footer.php"; ?>
 
 
-					<div class="chat-icon" onclick="toggleTestBot()">
+					<!-- <div class="chat-icon" onclick="toggleTestBot()">
 						<img src="img/chatbot.gif" alt="Chat Icon" style="height: 75px; width:75px;">
-					</div>
+					</div> -->
 
 					<div class="chatcontainer" id="chatcontainer"></div>
 
-					<script>
+					<!-- <script>
 						// JavaScript function to toggle the visibility of the chat container
 						function toggleTestBot() {
 							var chatContainer = document.getElementById("chatcontainer");
@@ -482,7 +450,7 @@ if (!isset($_SESSION['idnum'])) {
 								chatContainer.innerHTML = "";
 							}
 						}
-					</script>
+					</script> -->
 </body>
 
 </html>

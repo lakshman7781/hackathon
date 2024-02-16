@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
 session_start();
 // Include the file for database connection
@@ -20,9 +18,17 @@ if (isset($_POST['submit'])) {
         // Then redirect to another page
         header("Location: index.php");
         exit; // Always exit after a header redirection
-    } 
+    } else {
+        // If username and password do not match, store the attempted username in session
+        $_SESSION['attempted_username'] = $username;
+        // Redirect to the same page to display an error message
+        header("Location: login.php?error=1");
+        exit; // Always exit after a header redirection
+    }
 }
 ?>
+
+
 
 <head>
     <meta charset="UTF-8">
@@ -111,21 +117,20 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-    <?php include "dumbheader.php"; ?>
 
 
     <div class="row justify-content-md-center" >
-        <div class="#" style="width: 600px; margin:45px;margin-top:-75px;margin-bottom:-230px; height:800px !important;">
+        <div class="#" style="width: 600px; margin:45px; height:900px !important;">
             <div class="featured-box featured-box-primary text-start mt-0"style="margin-top:90px !important;">
 
                 <div class="box-content">
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <h1 class="color-primary font-weight-semibold text-5 text-uppercase mb-3">Login Here</h1>
+                            <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Login Here</h4>
                         </div>
                         <div class="col-md-6 mb-3">
                             <a href="signup.php" style="text-decoration: none; ">
-                                <p class="font-weight-semibold" style="color: red; margin-left:-140px; margin-top:10px;"> Register An Account ?</p>
+                                <h4 class="font-weight-semibold text-4 text-uppercase mb-3" style="color: green; margin-left:-160px;"> Register An Account ?</h4>
                             </a>
 
 
@@ -133,25 +138,36 @@ if (isset($_POST['submit'])) {
 
 
                     </div>
-                    <form id="frmSignUp" method="post"  action =" "class="needs-validation">
-                        <div class="row">
-                            <label class="form-label" for="username">Register Number</label>
-                            <input type="text" id="username" name="username" class="form-control form-control-lg" required>
-                        </div>
-                        <div class="row">
-                            <label class="form-label" for="password">Password</label>
-                            <input type="password" id="password" name="password" class="form-control form-control-lg" required>
-                        </div>
-                      
-                        <br>
-                        <div class="g-recaptcha" data-sitekey="6Ldw-2cpAAAAAKCQkKIcOGEgkUBoMTUuRAVE0o_x"></div><br><br>
-                        <button type="submit" name= "submit" class="btn btn-primary btn-modern float-endy" style="width: 150px; margin-top: 170px;">Login</button>
-                        <div class="forgot-password-link">
-                          <a href="forgotverify.php">Forgot Password?</a>
-          </div>
-                    
-                </form>
-                  
+                    <form id="frmSignUp" method="post" action="" class="needs-validation">
+    <div class="row">
+        <label class="form-label" for="username">Register Number</label>
+        <input type="text" id="username" name="username" class="form-control form-control-lg" required>
+    </div>
+    <div class="row">
+        <label class="form-label" for="password">Password</label>
+        <input type="password" id="password" name="password" class="form-control form-control-lg" required>
+    </div>
+
+    <!-- Error message for incorrect credentials -->
+    <?php
+    if (isset($_GET['error']) && $_GET['error'] == 1) {
+        echo '<script>alert("Incorrect username or password!");</script>';
+    }
+    ?>
+
+    <!-- reCAPTCHA -->
+    <div class="g-recaptcha" data-sitekey="6Ldw-2cpAAAAAKCQkKIcOGEgkUBoMTUuRAVE0o_x"></div>
+    <br><br>
+
+    <!-- Submit button -->
+    <button type="submit" name="submit" class="btn btn-primary btn-modern float-endy" style="width: 150px; margin-top: 170px;">Login</button>
+
+    <!-- Forgot Password link -->
+    <div class="forgot-password-link">
+        <a href="forgotverify.php">Forgot Password?</a>
+    </div>
+</form>
+
                     <!-- Replace the variables below. -->
                     <script>
                         function onSubmit(token) {
@@ -165,7 +181,7 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     </div>
-   <?php include "footer.php"; ?>
+   
 </body>
 
 </html>

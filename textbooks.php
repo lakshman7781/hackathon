@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>3 Columns Left Sidebar | Porto - Multipurpose Website Template</title>
+	<title>Campus Online</title>
 
 	<meta name="keywords" content="WebSite Template" />
 	<meta name="description" content="Porto - Multipurpose Website Template">
@@ -191,10 +191,9 @@
 					<h5 class="font-weight-semi-bold pt-3" style="width: 100%;">Categories</h5>
 					<ul class="nav nav-list flex-column">
 						<li class="nav-item"><a class="nav-link" href="textbooks.php">Books</a></li>
-						<li class="nav-item"><a class="nav-link" href="electronics.php">Electronics</a></li>
+						<li class="nav-item"><a class="nav-link" href="electronics.php">accessories</a></li>
 						<li class="nav-item"><a class="nav-link" href="stationary.php">Stationary</a></li>
-						<li class="nav-item"><a class="nav-link" href="fashion.php">Fashion</a></li>
-						<li class="nav-item"><a class="nav-link" href="food.php">Food</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Food</a></li>
 						<li class="nav-item"><a class="nav-link" href="Xeorox.php">Xerox</a></li>
 					</ul>
 
@@ -216,109 +215,64 @@
 					<div class="row products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
 
 
-					<?php
-					// Include the file to establish a database connection
-					include 'connect.php';
+						<?php
+						// Include the file to establish a database connection
+						include 'connect.php';
 
-					// Write your SQL query
-					$sql = "SELECT * FROM seller where Category='Books/Records'";
+						// Write your SQL query
+						$sql = "SELECT * FROM seller where Category='Books/Records'";
 
-					// Execute the query
-					$result = mysqli_query($conn, $sql);
+						// Execute the query
+						$result = mysqli_query($conn, $sql);
 
-					// Check if there are any results
-					if (mysqli_num_rows($result) > 0) {
-						// Output data of each row
-						while ($row = mysqli_fetch_assoc($result)) {
-							// Output the HTML structure with product details
-					?>
-							<div class="col-12 col-sm-6 col-lg-3">
-								<br>
-								<div class="product mb-0">
-									<div class="product-thumb-info border-0 mb-3">
-										<div class="addtocart-btn-wrapper">
-											<a href="#" class="text-decoration-none addtocart-btn" title="Add to Cart" data-product-id="<?php echo $row['productid']; ?>">
-												<i class="icons icon-bag"></i>
+						// Check if there are any results
+						if (mysqli_num_rows($result) > 0) {
+							// Output data of each row
+							while ($row = mysqli_fetch_assoc($result)) {
+								// Output the HTML structure with product details
+						?>
+								<div class="col-12 col-sm-6 col-lg-3">
+									<div class="product mb-0">
+										<div class="product-thumb-info border-0 mb-3">
+
+											<div class="addtocart-btn-wrapper">
+												<a href="" class="text-decoration-none addtocart-btn" title="Add to Cart">
+													<i class="icons icon-bag"></i>
+												</a>
+											</div>
+
+											<a href="" class="quick-view text-uppercase font-weight-semibold text-2">
+												QUICK VIEW
+											</a>
+											<a href="">
+												<div class="product-thumb-info-image">
+													<img alt="" class="img-fluid" src="<?php echo $row['image']; ?>">
+												</div>
 											</a>
 										</div>
-										
-										<a href="product.php?productid=<?php echo $row['productid']; ?>">
-											<div class="product-thumb-info-image">
-												<img alt="" class="img-fluid" src="<?php echo $row['image']; ?>">
+										<div class="d-flex justify-content-between">
+											<div>
+												<a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1"><?php echo $row['Category']; ?></a>
+												<h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="#" class="text-color-dark text-color-hover-primary"><?php echo $row['productName']; ?></a></h3>
 											</div>
-										</a>
-										<a href="product.php?productid=<?php echo $row['productid']; ?>" class=" text-uppercase font-weight-semibold text-2">
-											QUICK VIEW
-										</a>
-									</div>
-									<div class="d-flex justify-content-between">
-										<div>
-											<a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1"><?php echo $row['Category']; ?></a>
-											<h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="#" class="text-color-dark text-color-hover-primary"><?php echo $row['productName']; ?></a></h3>
+											<a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
 										</div>
-										<a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4 heart-icon" data-product-id="<?php echo $row['productid']; ?>"><i class="far fa-heart"></i></a>
+
+										<p class="price text-5 mb-3">
+											<span class="sale text-color-dark font-weight-semi-bold">₹<?php echo $row['salePrice']; ?></span>
+											<span class="amount">₹<?php echo $row['regularPrice']; ?></span>
+										</p>
 									</div>
-
-									<p class="price text-5 mb-3">
-										<span class="sale text-color-dark font-weight-semi-bold">₹<?php echo $row['salePrice']; ?></span>
-										<span class="amount">₹<?php echo $row['regularPrice']; ?></span>
-									</p>
 								</div>
-							</div>
-					<?php
+						<?php
+							}
+						} else {
+							echo "0 results";
 						}
-					} else {
-						echo "0 results";
-					}
 
-					// Close the database connection
-					mysqli_close($conn);
-					?>
-						<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-					<script>
-						$(document).ready(function() {
-							$('.addtocart-btn').click(function(e) {
-								e.preventDefault();
-								var productId = $(this).data('product-id');
-								$.ajax({
-									url: 'insertcart.php',
-									method: 'POST',
-									data: {
-										productId: productId
-									},
-									success: function(response) {
-										alert('Product added to Cart!');
-									},
-									error: function(xhr, status, error) {
-										console.error(xhr.responseText);
-									}
-								});
-							});
-						});
-					</script>
-					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-					<script>
-						$(document).ready(function() {
-							$('.heart-icon').click(function(e) {
-								e.preventDefault();
-								var productId = $(this).data('product-id');
-								$.ajax({
-									url: 'insertwishlist.php', // URL of the PHP script that handles insertion
-									method: 'POST',
-									data: {
-										productId: productId
-									}, // Data to send in the AJAX request
-									success: function(response) {
-										alert('Product added to wishlist successfully!');
-									},
-									error: function(xhr, status, error) {
-										console.error(xhr.responseText);
-									}
-								});
-							});
-						});
-					</script>
-
+						// Close the database connection
+						mysqli_close($conn);
+						?>
 
 					</div>
 					<div class="row mt-4">
