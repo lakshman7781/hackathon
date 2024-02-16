@@ -460,9 +460,12 @@
           <div>
             <p style="font-size: 20px; font-weight: bold; background-color: white; padding:10px; border-radius: 15px; width: 300px;">Campus Chat</p>
           </div>
-          <div>
-            <p style="font-size: 20px; font-weight: bold; background-color: white; padding:10px; border-radius: 15px; width: 300px;">Internships</p>
-          </div>
+          <a href="internupdates.php">
+        <div style="cursor: pointer;">
+        <p style="font-size: 20px; font-weight: bold; background-color: white; padding:10px; border-radius: 15px; width: 300px;">Internships</p>
+       </div>
+      </a>
+
         </div>
       </div>
     </div>
