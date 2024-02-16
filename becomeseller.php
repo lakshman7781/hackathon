@@ -693,6 +693,12 @@
 																	<input type="text" class="form-control form-control-modern" name="salePrice" value="" required />
 																</div>
 															</div>
+															<div class="form-group row align-items-center pb-3">
+																<label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Number Quantites</label>
+																<div class="col-lg-7 col-xl-6">
+																	<input type="text" class="form-control form-control-modern" name="stock_quantity" value="" required />
+																</div>
+															</div>
 											      		</div>
 											      		<div class="tab-pane fade" id="inventory" role="tabpanel" aria-labelledby="inventory-tab">
 														  <div class="form-group row align-items-center pb-3">
@@ -1208,6 +1214,7 @@ if (isset($_POST['save'])) {
 		$productDescription = $_POST["productDescription"];
 		$regularPrice = $_POST["regularPrice"];
 		$salePrice = $_POST["salePrice"];
+		$stock_quantity = $_POST["stock_quantity"];
 		$Category = $_POST["Category"];
 		$stockStatus = $_POST["stockStatus"];
 		$size = $_POST["size"];
@@ -1247,7 +1254,7 @@ if (isset($_POST['save'])) {
 				// File uploaded successfully, now insert data into database
 				$image = $targetFile;
 				
-				$insertQuery = "INSERT INTO seller (productName, productDescription, image, regularPrice, salePrice, Category, stockStatus, size, colour,reg_no) VALUES ('$productName', '$productDescription', '$image', '$regularPrice', '$salePrice', '$Category', '$stockStatus', '$size', '$colour','$reg_no')";
+				$insertQuery = "INSERT INTO seller (productName, productDescription, image, regularPrice, salePrice, Category, stockStatus, size, colour,reg_no,stock_quantity) VALUES ('$productName', '$productDescription', '$image', '$regularPrice', '$salePrice', '$Category', '$stockStatus', '$size', '$colour','$reg_no','$stock_quantity')";
 
 				if ($conn->query($insertQuery) === TRUE) {
 					echo "<script>alert('Product added successfully!');</script>";
