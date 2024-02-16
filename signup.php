@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     unset($_SESSION['regNumber']);
 }
 
-// Close connection
+// C
 $conn->close();
 ?>
 
@@ -163,10 +163,12 @@ $conn->close();
 </head>
 
 <body>
+<?php include 'dumbheader.php';?>
+
     <!-- Check that 'header.php' is properly formatted -->
 
     <div class="row justify-content-md-center" style="margin-top:50px !important;">
-        <div class="#" style="width: 600px; margin:45px;margin-top:150px; height:900px !important;">
+    <div class="#" style="width: 600px; margin:45px; height:900px !important;margin-bottom:-570px!important; ">
             <div class="featured-box featured-box-primary text-start mt-0">
                 <div class="box-content">
                     <div class="row">
@@ -319,6 +321,7 @@ $conn->close();
         </div>
     </div>
     </div>
+    <?php include 'footer.php';?>
 </body>
 
 </html>
