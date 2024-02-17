@@ -461,10 +461,10 @@
             <p style="font-size: 20px; font-weight: bold; background-color: white; padding:10px; border-radius: 15px; width: 300px;">Campus Chat</p>
           </div>
           <a href="internupdates.php">
-        <div style="cursor: pointer;">
-        <p style="font-size: 20px; font-weight: bold; background-color: white; padding:10px; border-radius: 15px; width: 300px;">Internships</p>
-       </div>
-      </a>
+            <div style="cursor: pointer;">
+              <p style="font-size: 20px; font-weight: bold; background-color: white; padding:10px; border-radius: 15px; width: 300px;">Internships</p>
+            </div>
+          </a>
 
         </div>
       </div>
@@ -478,165 +478,174 @@
         <div class="post">
 
           <h3>Campus Buzz</h3>
-        	<?php
-					// Include the file to establish a database connection
-					include 'connect.php';
+          <div class="poll-container">
+          <?php
+include "connect.php";
 
-					// Write your SQL query
-					$sql = "SELECT * FROM poll_admin";
+if (isset($_SESSION['idnum'])) {
+    $reg_no = mysqli_real_escape_string($conn, $_SESSION['idnum']);
 
-					// Execute the query
-					$result = mysqli_query($conn, $sql);
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['vote'])) {
+        $selected_option = mysqli_real_escape_string($conn, $_POST['vote']);
 
-					// Check if there are any results
-					if (mysqli_num_rows($result) > 0) {
-						// Output data of each row
-						while ($row = mysqli_fetch_assoc($result)) {
-							// Output the HTML structure with product details
-					?>
+        // Insert the user's vote into the database
+        $insert_vote_query = "INSERT INTO poll_results (reg_no, option) VALUES ('$reg_no', '$selected_option')";
+        $insert_vote_result = mysqli_query($conn, $insert_vote_query);
 
-<p class="text">
-    <?php echo $row['question']; ?>
-</p>
+        if (!$insert_vote_result) {
+            echo "Error: " . mysqli_error($conn);
+            exit;
+        }
+        header("Location: ".$_SERVER['PHP_SELF']);
+        exit;
+    }
 
-<section class="poll">
-    <p class="poll-details">
-        Poll • Ends in 22h
-    </p>
-    <form id="poll-form" action= " " method="post">
-        <ul class="poll-choices">
-            <li class="poll-choice choice-1">
-                <label for="choice-1">
-                    <div class="poll-result">
-                        <div class="star">
-                            <div></div>
-                        </div>
+    // Check if the user has already voted
+    $check_voted_query = "SELECT * FROM poll_results WHERE reg_no = '$reg_no'";
+    $check_voted_result = mysqli_query($conn, $check_voted_query);
+
+    if (mysqli_num_rows($check_voted_result) > 0) {
+        // User has already voted, display poll results
+        $sql_poll_results = "SELECT option, COUNT(*) as votes FROM poll_results GROUP BY option";
+        $result_poll_results = mysqli_query($conn, $sql_poll_results);
+        $poll_results = array();
+        if ($result_poll_results) {
+            while ($row_poll_results = mysqli_fetch_assoc($result_poll_results)) {
+                $poll_results[$row_poll_results['option']] = $row_poll_results['votes'];
+            }
+        }
+
+        // Calculate total votes
+        $total_votes = array_sum($poll_results);
+
+        // Fetch the poll question
+        $sql_poll_question = "SELECT question FROM poll_admin LIMIT 1";
+        $result_poll_question = mysqli_query($conn, $sql_poll_question);
+        $poll_question = mysqli_fetch_assoc($result_poll_question)['question'];
+
+        ?>
+        <ul class="poll-results">
+            <h4>Poll Question: <?php echo $poll_question; ?></h4>
+            <?php foreach ($poll_results as $option => $votes): ?>
+                <li>
+                    <span><?php echo $option; ?>:</span>
+                    <span><?php echo $votes; ?> votes</span>
+                    <span class="poll-percent"><?php echo round(($votes / $total_votes) * 100) . '%'; ?></span>
+                    <div class="poll-bar">
+                        <div class="poll-fill" style="width: <?php echo round(($votes / $total_votes) * 100); ?>%;"></div>
                     </div>
-                    <div class="poll-label">
-                        <div class="radio"><input type="radio" id="choice-1" name="poll_option" value="<?php echo $row['option1']; ?>" /></div>
-                        <div class="answer"><?php echo $row['option1']; ?></div>
-                    </div>
-                    <p class="poll-percent">
-                        0%
-                    </p>
-                </label>
-            </li>
-            <li class="poll-choice choice-2">
-                <label for="choice-2">
-                    <div class="poll-result">
-                        <div class="star">
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="poll-label">
-                        <div class="radio"><input type="radio" id="choice-2" name="poll_option" value="<?php echo $row['option2']; ?>" /></div>
-                        <div class="answer"><?php echo $row['option2']; ?></div>
-                    </div>
-                    <p class="poll-percent">
-                        0%
-                    </p>
-                </label>
-            </li>
-            <li class="poll-choice choice-3">
-                <label for="choice-3">
-                    <div class="poll-result">
-                        <div class="star">
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="poll-label">
-                        <div class="radio"><input type="radio" id="choice-3" name="poll_option" value="<?php echo $row['option3']; ?>" /></div>
-                        <div class="answer"><?php echo $row['option3']; ?></div>
-                    </div>
-                    <p class="poll-percent">
-                        0%
-                    </p>
-                </label>
-            </li>
-            <li class="poll-choice choice-4">
-                <label for="choice-4">
-                    <div class="poll-result">
-                        <div class="star">
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="poll-label">
-                        <div class="radio"><input type="radio" id="choice-4" name="poll_option" value="<?php echo $row['option4']; ?>" /></div>
-                        <div class="answer"><?php echo $row['option4']; ?></div>
-                    </div>
-                    <p class="poll-percent">
-                        0%
-                    </p>
-                </label>
-            </li>
+                </li>
+            <?php endforeach; ?>
         </ul>
-     
-        <button type="submit" name="submit" id="submit-btn" style="top:885px; height:30px; left:140px; border-radius:10px;">Submit</button>
-    </form>
-   <?php 
-if(isset($_POST['submit'])){
-    $poll_option = $_POST['poll_option'];
-    $reg_no = $_SESSION['idnum'];
-    $sql = "INSERT INTO poll_results (reg_no, option) VALUES ('$reg_no', '$poll_option')";
-    if (mysqli_query($conn, $sql)) {
-        echo "New record created successfully";
+        <?php
     } else {
-        // Check if the error is due to a duplicate entry
-        if (mysqli_errno($conn) == 1062) { // Error number for duplicate entry
-            // Display JavaScript alert
-            echo '<script>alert("You have already voted.");</script>';
+        // User has not voted yet, proceed to display the poll options
+        $sql = "SELECT * FROM poll_admin";
+        $result = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+
+            $question = $row['question'];
+            $options = array($row['option1'], $row['option2'], $row['option3'], $row['option4']);
+
+            ?>
+            <h2 class="poll-question"><?php echo $question; ?></h2>
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <ul class="poll-choices">
+                    <?php foreach ($options as $index => $option) : ?>
+                        <li class="poll-choice">
+                            <label class="poll-option">
+                                <input type="radio" name="vote" value="<?php echo $option; ?>">
+                                <?php echo $option; ?>
+                            </label>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+                <input style="padding: 10px; width: 130px; height:50px ; border-radius: 5px;" type="submit" value="Vote">
+            </form>
+            <?php
         } else {
-            // Display other errors
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            echo "No poll found.";
         }
     }
+} else {
+    echo "You need to be logged in to vote.";
 }
 ?>
 
-</section>
 
-        </div>
+<style>
+    .poll-question {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
 
-        <?php
-						}
-					} else {
-						echo "0 results";
-					}
+    .poll-choices {
+        list-style-type: none;
+        padding: 0;
+    }
 
-					// Close the database connection
-					mysqli_close($conn);
-					?>
+    .poll-choice {
+        margin-bottom: 20px;
+    }
+
+    .poll-option {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+        color: #333;
+        position: relative;
+        transition: background-color 0.3s ease;
+    }
+
+    .poll-option:hover {
+        background-color: #e0e0e0;
+    }
+
+    
+
+    .poll-option label {
+        flex: 1;
+        cursor: pointer;
+    }
+
+    .poll-percent {
+        margin-left: 10px;
+        font-weight: bold;
+        background-color: #4CAF50;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .poll-bar {
+        width: 100%;
+        height: 10px;
+        background-color: #ccc;
+        border-radius: 5px;
+        margin-top: 5px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .poll-fill {
+        height: 100%;
+        background-color: #4CAF50;
+        border-radius: 5px;
+        transition: width 0.3s ease;
+    }
+</style>
+
+
+
 
       </main>
-    <script>
-const choices = document.querySelectorAll('input[name=poll]');
 
-const increaseNumber = (node, value) => {
-    node.innerText = "0%";
-    node.innerText = value + "%";
-}
-
-const handleChange = event => {
-    const choice = event.target;
-    const selectedOption = choice.value;
-
-    // AJAX request to insert data into the database
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'this_script.php'); // Change 'this_script.php' to the filename of this script
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            // Do something if the insertion is successful
-            console.log(xhr.responseText);
-        }
-    }
-    xhr.send('option=' + selectedOption);
-}
-
-choices.forEach(choice => {
-    choice.addEventListener('change', handleChange);
-});
-</script>
     </div>
 
 
@@ -653,256 +662,267 @@ choices.forEach(choice => {
 
 
         <?php
-					// Include the file to establish a database connection
-					include 'connect.php';
+        // Include the file to establish a database connection
+        include 'connect.php';
 
-					// Write your SQL query
-					$sql = "SELECT * FROM event";
+        // Write your SQL query
+        $sql = "SELECT * FROM event";
+   // Execute the query
+   $result = mysqli_query($conn, $sql);
 
-					// Execute the query
-					$result = mysqli_query($conn, $sql);
-
-					// Check if there are any results
-					if (mysqli_num_rows($result) > 0) {
-						// Output data of each row
-						while ($row = mysqli_fetch_assoc($result)) {
-							// Output the HTML structure with product details
-					?>
-
-        <div class="row align-items-left" style="margin-left: -500px;">
-          <div class="col-sm-5 mb-4 mb-sm-0">
-            <div class="product mb-0">
-              <div class="product-thumb-info border-0 mb-0">
-
-                <div class="product-thumb-info-badges-wrapper">
-                  <span class="badge badge-ecommerce text-bg-success">NEW</span>
-
-                </div>
-                <a href="">
-                  <div class=" ">
-                    <img alt="" class="img-fluid" src="<?php echo $row['image']; ?>" style="height: 200px; width: 200px; ">
-
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-7">
-            <div class="summary entry-summary">
-
-              <h2 class="mb-0 font-weight-bold text-7"><a href="shop-product-sidebar-left.html" class="text-color-dark text-color-hover-primary text-decoration-none"><?php echo $row['eventname']; ?></a></h2>
+   // Check if there are any results
+   if (mysqli_num_rows($result) > 0) {
+     // Output data of each row
+     while ($row = mysqli_fetch_assoc($result)) {
+       // Output the HTML structure with product details
+   ?>
 
 
+       <div class="row align-items-center" style="left: 0% !important;  ">
+         <div class="col-sm-5 mb-4 mb-sm-0">
+           <div class="product mb-0">
+             <div class="product-thumb-info border-0 mb-0">
 
-              <div class="divider divider-small">
-                <hr class="bg-color-grey-400">
-              </div>
+               <div class="product-thumb-info-badges-wrapper">
+                 <span class="badge badge-ecommerce text-bg-success">NEW</span>
+
+               </div>
+               <a href="">
+                 <div class=" ">
+                   <img alt="" class="img-fluid" src=" <?php echo $row['image']; ?>" style="height: 200px; width: 200px;">
+
+                 </div>
+               </a>
+             </div>
+           </div>
+         </div>
+         <div class="col-sm-7">
+           <div class="summary entry-summary">
+
+             <h2 class="mb-0 font-weight-bold text-7"><a href="shop-product-sidebar-left.html" class="text-color-dark text-color-hover-primary text-decoration-none"> <?php echo $row['eventname']; ?></a></h2>
 
 
 
-              <div data-plugin-readmore data-plugin-options="{
-              'buttonOpenLabel': 'Read More <i class=\'fas fa-chevron-down text-2 ms-1\'></i>',
-              'buttonCloseLabel': 'Read Less <i class=\'fas fa-chevron-up text-2 ms-1\'></i>'
-               }">
-               <?php echo $row['eventdescription']; ?></p>
-                <div class="readmore-button-wrapper d-none">
-                  <a href="#" class="text-decoration-none">
-                    Read More
-                    <i class="fas fa-chevron-down"></i>
-                  </a>
-                </div>
-                <p>Starting Date: <?php echo $row['startdate']; ?></p>
-                <p>Ending Date: <?php echo $row['enddate']; ?></p>
-              </div>
+             <div class="divider divider-small">
+               <hr class="bg-color-grey-400">
+             </div>
 
 
-            </div>
-          </div>
+
+             <div data-plugin-readmore data-plugin-options="{
+   'buttonOpenLabel': 'Read More <i class=\'fas fa-chevron-down text-2 ms-1\'></i>',
+   'buttonCloseLabel': 'Read Less <i class=\'fas fa-chevron-up text-2 ms-1\'></i>'
+    }">
+               <p> <?php echo $row['eventdescription']; ?></p>
+               <p> Start Date :<?php echo $row['startdate']; ?><br>
+                 End Date :<?php echo $row['enddate']; ?>
+               </p>
+               <div class="readmore-button-wrapper d-none">
+                 <a href="#" class="text-decoration-none">
+                   Read More
+                   <i class="fas fa-chevron-down"></i>
+                 </a>
+               </div>
+             </div>
+
+             <br>
+       <br>
+           </div>
+         </div>
+         
 
 
-        </div>
-        <br>
+     <?php
+     }
+   } else {
+     echo "0 results";
+   }
 
-        <?php
-						}
-					} else {
-						echo "0 results";
-					}
-
-					// Close the database connection
-					mysqli_close($conn);
-					?>
-        <br>
-
-
-        <!-- Bootstrap Bundle with Popper -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-
-        <script>
-          document.addEventListener("DOMContentLoaded", function() {
-            // Get all elements with the class '.read-more'
-            const readMoreButtons = document.querySelectorAll('.read-more');
-
-            // Loop through each read more button
-            readMoreButtons.forEach(function(readMoreButton) {
-              // Get the corresponding collapse element
-              const collapseElement = document.querySelector(readMoreButton.getAttribute('data-bs-target'));
-
-              // Add event listener to the "show.bs.collapse" event of the collapse element
-              collapseElement.addEventListener('show.bs.collapse', function() {
-                // Change button text to "Minimize" and change icon
-                readMoreButton.innerHTML = 'Minimize <i class="fas fa-angle-up"></i>';
-              });
-
-              // Add event listener to the "hide.bs.collapse" event of the collapse element
-              collapseElement.addEventListener('hide.bs.collapse', function() {
-                // Change button text to "Read More" and change icon
-                readMoreButton.innerHTML = 'Read More <i class="fas fa-angle-down"></i>';
-              });
-
-              // Add event listener to the "Read More" button
-              readMoreButton.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent default anchor click behavior
-
-                // Toggle the collapse state of the collapse element
-                const isCollapsed = collapseElement.classList.contains('show');
-                if (isCollapsed) {
-                  collapseElement.classList.remove('show');
-                } else {
-                  collapseElement.classList.add('show');
-                }
-              });
-            });
-          });
-        </script>
-
-
-      </div>
-    </div>
+   // Close the database connection
+   mysqli_close($conn);
+     ?>
+     <br>
 
 
 
 
 
+       </div>
+ </div>
 
-  </div>
-  </div>
+
+</div>
+<br>
 
 
-  <!-- Bootstrap Bundle with Popper and Bootstrap JS -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-  <!-- jQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
-  <script>
-    // JavaScript to toggle collapse state
-    $(document).ready(function() {
-      $(".read-more").click(function() {
-        $(this).toggleClass('active');
-      });
-    });
-  </script>
-  <script>
-    $(document).ready(function() {
-      $('.read-more').click(function(e) {
-        e.preventDefault();
-        var target = $(this).data('bs-target');
-        var $target = $(target);
-        if ($target.hasClass('show')) {
-          $target.collapse('hide');
-        } else {
-          $target.collapse('show');
-        }
-      });
-    });
-  </script>
+<script>
+ document.addEventListener("DOMContentLoaded", function() {
+   // Get all elements with the class '.read-more'
+   const readMoreButtons = document.querySelectorAll('.read-more');
 
-  <script src="vendor/plugins/js/plugins.min.js"></script>
+   // Loop through each read more button
+   readMoreButtons.forEach(function(readMoreButton) {
+     // Get the corresponding collapse element
+     const collapseElement = document.querySelector(readMoreButton.getAttribute('data-bs-target'));
 
-  <!-- Theme Base, Components and Settings -->
-  <script src="js/theme.js"></script>
+     // Add event listener to the "show.bs.collapse" event of the collapse element
+     collapseElement.addEventListener('show.bs.collapse', function() {
+       // Change button text to "Minimize" and change icon
+       readMoreButton.innerHTML = 'Minimize <i class="fas fa-angle-up"></i>';
+     });
 
-  <!-- Theme Custom -->
-  <script src="js/custom.js"></script>
+     // Add event listener to the "hide.bs.collapse" event of the collapse element
+     collapseElement.addEventListener('hide.bs.collapse', function() {
+       // Change button text to "Read More" and change icon
+       readMoreButton.innerHTML = 'Read More <i class="fas fa-angle-down"></i>';
+     });
 
-  <!-- Theme Initialization Files -->
-  <script src="js/theme.init.js"></script>
-  <!-- Vendor -->
-  <script src="vendor/plugins/js/plugins.min.js"></script>
-  <script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
-  <script src="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
-  <script src="vendor/jquery.countdown/jquery.countdown.min.js"></script>
+     // Add event listener to the "Read More" button
+     readMoreButton.addEventListener('click', function(event) {
+       event.preventDefault(); // Prevent default anchor click behavior
 
-  <!-- Theme Base, Components and Settings -->
-  <script src="js/theme.js"></script>
+       // Toggle the collapse state of the collapse element
+       const isCollapsed = collapseElement.classList.contains('show');
+       if (isCollapsed) {
+         collapseElement.classList.remove('show');
+       } else {
+         collapseElement.classList.add('show');
+       }
+     });
+   });
+ });
+</script>
 
-  <!-- Current Page Vendor and Views -->
-  <script src="js/views/view.shop.js"></script>
 
-  <!-- Theme Custom -->
-  <script src="js/custom.js"></script>
+</div>
+</div>
 
-  <!-- Theme Initialization Files -->
-  <script src="js/theme.init.js"></script>
-  <script>
-    let currentPanel = 1;
-    const panelWidth = 1200; // Width of each panel
-    const totalPanels = 4; // Total number of panels
-    const autoScrollInterval = 3000; // Interval for automatic scrolling in milliseconds (adjust as needed)
 
-    function changePanel(direction) {
-      currentPanel += direction;
 
-      if (currentPanel < 1) {
-        currentPanel = totalPanels;
-      } else if (currentPanel > totalPanels) {
-        currentPanel = 1;
-      }
 
-      updateCarousel();
-    }
 
-    function updateCarousel() {
-      const carousel = document.getElementById('carousel');
-      const panelContainer = document.querySelector('.carousel-container');
-      const translateValue = -panelWidth * (currentPanel - 1);
-      carousel.style.transform = `translateX(${translateValue}px)`;
-      panelContainer.style.width = `${panelWidth}px`;
-    }
 
-    function autoScroll() {
-      changePanel(1); // Automatically move to the next panel
-    }
+</div>
+</div>
 
-    // Set up automatic scrolling
-    const autoScrollIntervalId = setInterval(autoScroll, autoScrollInterval);
 
-    // Stop automatic scrolling when user interacts with the carousel
-    document.querySelector('.carousel-container').addEventListener('mouseenter', () => {
-      clearInterval(autoScrollIntervalId);
-    });
+<!-- Bootstrap Bundle with Popper and Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    // Resume automatic scrolling when user stops interacting with the carousel
-    document.querySelector('.carousel-container').addEventListener('mouseleave', () => {
-      setInterval(autoScroll, autoScrollInterval);
-    });
-  </script>
+<script>
+// JavaScript to toggle collapse state
+$(document).ready(function() {
+ $(".read-more").click(function() {
+   $(this).toggleClass('active');
+ });
+});
+</script>
+<script>
+$(document).ready(function() {
+ $('.read-more').click(function(e) {
+   e.preventDefault();
+   var target = $(this).data('bs-target');
+   var $target = $(target);
+   if ($target.hasClass('show')) {
+     $target.collapse('hide');
+   } else {
+     $target.collapse('show');
+   }
+ });
+});
+</script>
 
-  <script>
-    (function($) {
+<script src="vendor/plugins/js/plugins.min.js"></script>
 
-      'use strict';
+<!-- Theme Base, Components and Settings -->
+<script src="js/theme.js"></script>
 
-      $('.open-style-switcher').on('mousedown', function(e) {
-        e.preventDefault();
-        $('.style-switcher-open-loader').trigger('click');
-        return false;
-      });
+<!-- Theme Custom -->
+<script src="js/custom.js"></script>
 
-    }).apply(this, [jQuery]);
-  </script>
-  </div>
-  <?php include "footer.php"; ?>
+<!-- Theme Initialization Files -->
+<script src="js/theme.init.js"></script>
+<!-- Vendor -->
+<script src="vendor/plugins/js/plugins.min.js"></script>
+<script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
+<script src="vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
+<script src="vendor/jquery.countdown/jquery.countdown.min.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="js/theme.js"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="js/views/view.shop.js"></script>
+
+<!-- Theme Custom -->
+<script src="js/custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="js/theme.init.js"></script>
+<script>
+let currentPanel = 1;
+const panelWidth = 1200; // Width of each panel
+const totalPanels = 4; // Total number of panels
+const autoScrollInterval = 3000; // Interval for automatic scrolling in milliseconds (adjust as needed)
+
+function changePanel(direction) {
+ currentPanel += direction;
+
+ if (currentPanel < 1) {
+   currentPanel = totalPanels;
+ } else if (currentPanel > totalPanels) {
+   currentPanel = 1;
+ }
+
+ updateCarousel();
+}
+
+function updateCarousel() {
+ const carousel = document.getElementById('carousel');
+ const panelContainer = document.querySelector('.carousel-container');
+ const translateValue = -panelWidth * (currentPanel - 1);
+ carousel.style.transform = `translateX(${translateValue}px)`;
+ panelContainer.style.width = `${panelWidth}px`;
+}
+
+function autoScroll() {
+ changePanel(1); // Automatically move to the next panel
+}
+
+// Set up automatic scrolling
+const autoScrollIntervalId = setInterval(autoScroll, autoScrollInterval);
+
+// Stop automatic scrolling when user interacts with the carousel
+document.querySelector('.carousel-container').addEventListener('mouseenter', () => {
+ clearInterval(autoScrollIntervalId);
+});
+
+// Resume automatic scrolling when user stops interacting with the carousel
+document.querySelector('.carousel-container').addEventListener('mouseleave', () => {
+ setInterval(autoScroll, autoScrollInterval);
+});
+</script>
+
+<script>
+(function($) {
+
+ 'use strict';
+
+ $('.open-style-switcher').on('mousedown', function(e) {
+   e.preventDefault();
+   $('.style-switcher-open-loader').trigger('click');
+   return false;
+ });
+
+}).apply(this, [jQuery]);
+</script>
+</div>
+<?php include "footer.php"; ?>
 </body>
 
 </html>
