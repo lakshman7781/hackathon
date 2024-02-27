@@ -214,7 +214,7 @@
                
                     <div class="category">
                         <div class="top-deals-container">
-                            <h2 class="top-deals-heading">ACE Updates</h2>
+                            <h2 class="top-deals-heading">CINE CLUB Updates</h2>
                         </div>
                         <div class="#" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
 
@@ -224,7 +224,7 @@
         include 'connect.php';
 
         // Write your SQL query
-        $sql = "SELECT * FROM event WHERE Category='ACE'";
+        $sql = "SELECT * FROM event WHERE Category='CINE'";
 
         // Execute the query
         $result = mysqli_query($conn, $sql);
@@ -253,7 +253,7 @@
                                 <div class="collapse" id="new1" style="width:800px; ">
                                     <div class="card-body">
                                         <p>For More Infromation Contact
-                                            ACE CLUB
+                                           CINE CLUB
                                         </p>
                                     </div>
                                 </div>
