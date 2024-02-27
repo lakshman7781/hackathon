@@ -1,4 +1,6 @@
 <?php
+session_start();
+$reg_no = $_SESSION['idnum'];
 if (isset($_POST['submit'])) {
     /* Attempt MySQL server connection. Assuming
     you are running MySQL server with default 
@@ -19,7 +21,7 @@ if (isset($_POST['submit'])) {
     // Escape user inputs for security
     $un = mysqli_real_escape_string(
         $link,
-        $_REQUEST['uname']
+        $_REQUEST[$reg_no]
     );
     $m = mysqli_real_escape_string(
         $link,
@@ -31,8 +33,7 @@ if (isset($_POST['submit'])) {
     // Attempt insert query execution
     $sql = "INSERT INTO chats (uname, msg, dt)
 		VALUES ('$un', '$m', '$ts')";
-    if (mysqli_query($link, $sql)) {
-        ;
+    if (mysqli_query($link, $sql)) {;
     } else {
         echo "ERROR: Message not sent!!!";
     }
@@ -216,7 +217,7 @@ if (isset($_POST['submit'])) {
             background-color: black;
             border: 2px solid white;
         }
-        }
+        
 
         main footer textarea::placeholder {
             color: #ddd;
@@ -258,11 +259,11 @@ if (isset($_POST['submit'])) {
                     $run = $con->query($query);
                     $i = 0;
 
-                    while ($row = $run->fetch_array()):
+                    while ($row = $run->fetch_array()) :
                         if ($i == 0) {
                             $i = 5;
                             $first = $row;
-                            ?>
+                    ?>
                             <div id="triangle1" class="triangle1"></div>
                             <div id="message1" class="message1">
                                 <span style="color:white;float:right;">
@@ -271,7 +272,7 @@ if (isset($_POST['submit'])) {
                                 <div>
                                     <span style="color:black;float:left;
 font-size:10px;clear:both;">
-                                        <?php echo $row['uname']; ?>,
+                                        <?php echo $row[$reg_no]; ?>,
                                         <?php echo $row['dt']; ?>
                                     </span>
                                 </div>
@@ -279,8 +280,8 @@ font-size:10px;clear:both;">
                             <br /><br />
                             <?php
                         } else {
-                            if ($row['uname'] != $first['uname']) {
-                                ?>
+                            if ($row[$reg_no] != $first[$reg_no]) {
+                            ?>
                                 <div id="triangle" class="triangle"></div>
                                 <div id="message" class="message">
                                     <span style="color:white;float:left;">
@@ -295,9 +296,9 @@ font-size:10px;clear:both;">
                                     </div>
                                 </div>
                                 <br /><br />
-                                <?php
+                            <?php
                             } else {
-                                ?>
+                            ?>
                                 <div id="triangle1" class="triangle1"></div>
                                 <div id="message1" class="message1">
                                     <span style="color:white;float:right;">
@@ -306,13 +307,13 @@ font-size:10px;clear:both;">
                                     <div>
                                         <span style="color:black;float:left;
         font-size:10px;clear:both;">
-                                            <?php echo $row['uname']; ?>,
+                                            <?php echo $row[$reg_no]; ?>,
                                             <?php echo $row['dt']; ?>
                                         </span>
                                     </div>
                                 </div>
                                 <br /><br />
-                                <?php
+                    <?php
                             }
                         }
                     endwhile;
@@ -322,7 +323,7 @@ font-size:10px;clear:both;">
                     <table>
                         <tr>
                             <th>
-                                <input class="input1" type="text" id="uname" name="uname" placeholder="From">
+                                <input class="input1" type="text"  placeholder="From">
                             </th>
                             <th>
                                 <textarea id="msg" name="msg" rows='3' cols='50' placeholder="Type your message">
