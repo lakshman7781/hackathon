@@ -190,10 +190,10 @@
 
                     <h5 class="font-weight-semi-bold pt-3" style="width: 100%">Clubs</h5>
                     <ul class="nav nav-list flex-column">
-                    <li class="nav-item"><a class="nav-link" href="iei.php">IEI</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">IEEE</a></li>
                         <li class="nav-item"><a class="nav-link" href="clubs.php">ACE</a></li>
-                        <li class="nav-item"><a class="nav-link" href="eoc.php">EOC</a></li>
-                        <li class="nav-item"><a class="nav-link" href="gdsc.php">GDSC</a></li>
+                        <li class="nav-item"><a class="nav-link" href="eoc.php">ECO</a></li>
+                        <li class="nav-item"><a class="nav-link" href="iei.php">GDSC</a></li>
                         <li class="nav-item"><a class="nav-link" href="cine.php">CINE</a></li>
                         <li class="nav-item"><a class="nav-link" href="coding.php">CODING</a></li>
                         <li class="nav-item"><a class="nav-link" href="startup.php">STARTUP</a></li>
@@ -214,7 +214,7 @@
                
                     <div class="category">
                         <div class="top-deals-container">
-                            <h2 class="top-deals-heading">ACE Updates</h2>
+                            <h2 class="top-deals-heading">EOC Updates</h2>
                         </div>
                         <div class="#" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
 
@@ -224,7 +224,7 @@
         include 'connect.php';
 
         // Write your SQL query
-        $sql = "SELECT * FROM event WHERE Category='ACE'";
+        $sql = "SELECT * FROM event WHERE Category='EOC'";
 
         // Execute the query
         $result = mysqli_query($conn, $sql);
@@ -253,7 +253,7 @@
                                 <div class="collapse" id="new1" style="width:800px; ">
                                     <div class="card-body">
                                         <p>For More Infromation Contact
-                                            ACE CLUB
+                                           EOC CLUB
                                         </p>
                                     </div>
                                 </div>

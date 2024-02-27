@@ -14,7 +14,7 @@ if(isset($_POST['productId'])) {
     // Execute the query
     if (mysqli_query($conn, $sql)) {
         // If insertion is successful, echo a success message with a custom class
-        echo "<div class='alert alert-success'>Product added to wishlist successfully!</div>";
+        echo "Product added to wishlist successfully!";
     } else {
         // If there's an error with the query, echo the error message
         echo "<div class='alert alert-danger'>Error: " . $sql . "<br>" . mysqli_error($conn) . "</div>";

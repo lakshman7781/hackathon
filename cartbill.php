@@ -243,3 +243,30 @@ session_start();
 </body>
 
 </html>
+<?php
+require __DIR__ . '/vendor/autoload.php';
+use Twilio\Rest\Client;
+
+// Your Account SID and Auth Token from twilio.com/console
+// To set up environmental variables, see http://twil.io/secure
+$account_sid = "AC5c473de347005dcc885efd5affed455b";
+$auth_token = "c3d1b0569a58c66e9c5b55cb79324038";
+// In production, these should be environment variables. E.g.:
+// $auth_token = $_ENV["TWILIO_AUTH_TOKEN"]
+
+// A Twilio number you own with SMS capabilities
+$twilio_number = "+16598883893";
+$message = "Your Order has been placed in Campus Online Successfully.
+Thank you for shopping with us";
+$mobilenum = "+919494410554";
+
+$client = new Client($account_sid, $auth_token);
+$client->messages->create(
+    // Where to send a text message (your cell phone?)
+    $mobilenum,
+    array(
+        'from' => $twilio_number,
+        'body' => $message
+    )
+);
+?>
